@@ -21,6 +21,7 @@
       <argument/>
       <argument>%nucleos_user.model.group.class%</argument>
       <argument>%nucleos_user_admin.admin.group.controller%</argument>
+      <argument type="service" id="nucleos_user.group_manager"/>
       <call method="setTranslationDomain">
         <argument>%nucleos_user_admin.admin.group.translation_domain%</argument>
       </call>

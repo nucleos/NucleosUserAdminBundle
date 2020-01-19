@@ -1,5 +1,5 @@
 {% for role, attributes in roles|sort %}
-    <li>{{ form_widget(attributes.form, {label: attributes.role_translated, value: attributes.role}) }}</li>
+    <li>{{ form_widget(attributes.form, {label: attributes.role_translated, translation_domain: false, value: attributes.role}) }}</li>
     {% if not attributes.is_granted %}
         <script>
             $('input[value="{{ role }}"]').iCheck('disable');

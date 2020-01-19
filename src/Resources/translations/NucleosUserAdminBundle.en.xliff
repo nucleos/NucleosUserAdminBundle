@@ -210,6 +210,10 @@
                 <source>General</source>
                 <target>General</target>
             </trans-unit>
+            <trans-unit id="group_locale">
+                <source>Locale</source>
+                <target>Locale</target>
+            </trans-unit>
             <trans-unit id="form_groups">
                 <source>Groups</source>
                 <target>Groups</target>

@@ -286,6 +286,10 @@
                 <source>General</source>
                 <target>Allgemein</target>
             </trans-unit>
+            <trans-unit id="group_locale">
+                <source>Locale</source>
+                <target>Ort</target>
+            </trans-unit>
             <trans-unit id="group_profile">
                 <source>Profile</source>
                 <target>Profil</target>
@@ -305,10 +309,6 @@
             <trans-unit id="group_roles">
                 <source>Roles</source>
                 <target>Rollen</target>
-            </trans-unit>
-            <trans-unit id="group_keys">
-                <source>Keys</source>
-                <target>Schlüssel</target>
             </trans-unit>
             <trans-unit id="group_security">
                 <source>Security</source>

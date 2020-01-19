@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace Nucleos\UserAdminBundle\Admin\Model;
 
-use Nucleos\UserAdminBundle\Form\Type\SecurityRolesType;
+use DomainException;
+use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
+use Nucleos\UserBundle\Model\LocaleAwareInterface;
 use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
@@ -22,7 +24,9 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\LocaleType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 abstract class UserAdmin extends AbstractAdmin
@@ -37,6 +41,27 @@ abstract class UserAdmin extends AbstractAdmin
         parent::__construct($code, $class, $baseControllerName);
 
         $this->userManager = $userManager;
+    }
+
+    public function getNewInstance()
+    {
+        $instance = $this->userManager->createUser();
+
+        // TODO: Find a better way to create editable form models
+        // BC layer
+        try {
+            $instance->getUsername();
+        } catch (DomainException $exception) {
+            $instance->setUsername('');
+        }
+
+        try {
+            $instance->getEmail();
+        } catch (DomainException $exception) {
+            $instance->setEmail('');
+        }
+
+        return $instance;
     }
 
     public function getFormBuilder(): FormBuilderInterface
@@ -84,12 +109,13 @@ abstract class UserAdmin extends AbstractAdmin
             ->add('email')
             ->add('groups')
             ->add('enabled', null, ['editable' => true])
-            ->add('createdAt')
         ;
 
         if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
             $listMapper
-                ->add('impersonating', 'string', ['template' => '@NucleosUserAdmin/Admin/Field/impersonating.html.twig'])
+                ->add('impersonating', 'string', [
+                    'template' => '@NucleosUserAdmin/Admin/Field/impersonating.html.twig',
+                ])
             ;
         }
     }
@@ -114,10 +140,6 @@ abstract class UserAdmin extends AbstractAdmin
             ->with('Groups')
                 ->add('groups')
             ->end()
-            ->with('Security')
-                ->add('token')
-                ->add('twoStepVerificationCode')
-            ->end()
         ;
     }
 
@@ -126,12 +148,14 @@ abstract class UserAdmin extends AbstractAdmin
         $formMapper
             ->tab('User')
                 ->with('General', ['class' => 'col-md-6'])->end()
+                ->ifTrue($this->isLocaleAwareSubject())
+                    ->with('Locale', ['class' => 'col-md-6'])->end()
+                ->ifEnd()
             ->end()
 
             ->tab('Security')
+                ->with('Groups', ['class' => 'col-md-8'])->end()
                 ->with('Status', ['class' => 'col-md-4'])->end()
-                ->with('Groups', ['class' => 'col-md-4'])->end()
-                ->with('Keys', ['class' => 'col-md-4'])->end()
                 ->with('Roles', ['class' => 'col-md-12'])->end()
             ->end()
         ;
@@ -145,6 +169,16 @@ abstract class UserAdmin extends AbstractAdmin
                         'required' => $this->isNewInstance(),
                     ])
                 ->end()
+                ->ifTrue($this->isLocaleAwareSubject())
+                    ->with('Locale')
+                        ->add('locale', LocaleType::class, [
+                            'required' => false,
+                        ])
+                        ->add('timezone', TimezoneType::class, [
+                            'required'  => false,
+                        ])
+                    ->end()
+                ->ifEnd()
             ->end()
 
             ->tab('Security')
@@ -159,16 +193,12 @@ abstract class UserAdmin extends AbstractAdmin
                     ])
                 ->end()
                 ->with('Roles')
-                    ->add('realRoles', SecurityRolesType::class, [
+                    ->add('roles', RolesMatrixType::class, [
                         'label'    => 'form.label_roles',
                         'expanded' => true,
                         'multiple' => true,
                         'required' => false,
                     ])
-                ->end()
-                ->with('Keys')
-                    ->add('token', null, ['required' => false])
-                    ->add('twoStepVerificationCode', null, ['required' => false])
                 ->end()
             ->end()
         ;
@@ -177,5 +207,10 @@ abstract class UserAdmin extends AbstractAdmin
     private function isNewInstance(): bool
     {
         return !$this->hasSubject() || null === $this->getSubject()|| null === $this->id($this->getSubject());
+    }
+
+    private function isLocaleAwareSubject(): bool
+    {
+        return is_subclass_of($this->getClass(), LocaleAwareInterface::class);
     }
 }
