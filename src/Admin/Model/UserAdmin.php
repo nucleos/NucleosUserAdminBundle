@@ -148,8 +148,8 @@ abstract class UserAdmin extends AbstractAdmin
             ->end()
 
             ->tab('Security')
+                ->with('Groups', ['class' => 'col-md-8'])->end()
                 ->with('Status', ['class' => 'col-md-4'])->end()
-                ->with('Groups', ['class' => 'col-md-4'])->end()
                 ->with('Roles', ['class' => 'col-md-12'])->end()
             ->end()
         ;
