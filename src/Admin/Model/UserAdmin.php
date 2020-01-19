@@ -114,10 +114,6 @@ abstract class UserAdmin extends AbstractAdmin
             ->with('Groups')
                 ->add('groups')
             ->end()
-            ->with('Security')
-                ->add('token')
-                ->add('twoStepVerificationCode')
-            ->end()
         ;
     }
 
@@ -131,7 +127,6 @@ abstract class UserAdmin extends AbstractAdmin
             ->tab('Security')
                 ->with('Status', ['class' => 'col-md-4'])->end()
                 ->with('Groups', ['class' => 'col-md-4'])->end()
-                ->with('Keys', ['class' => 'col-md-4'])->end()
                 ->with('Roles', ['class' => 'col-md-12'])->end()
             ->end()
         ;
@@ -165,10 +160,6 @@ abstract class UserAdmin extends AbstractAdmin
                         'multiple' => true,
                         'required' => false,
                     ])
-                ->end()
-                ->with('Keys')
-                    ->add('token', null, ['required' => false])
-                    ->add('twoStepVerificationCode', null, ['required' => false])
                 ->end()
             ->end()
         ;

@@ -306,10 +306,6 @@
                 <source>Roles</source>
                 <target>Rollen</target>
             </trans-unit>
-            <trans-unit id="group_keys">
-                <source>Keys</source>
-                <target>Schlüssel</target>
-            </trans-unit>
             <trans-unit id="group_security">
                 <source>Security</source>
                 <target>Sicherheit</target>
