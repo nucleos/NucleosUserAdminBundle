@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserAdminBundle\Admin\Model;
 
-use Nucleos\UserAdminBundle\Form\Type\SecurityRolesType;
+use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
 use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
@@ -37,6 +37,11 @@ abstract class UserAdmin extends AbstractAdmin
         parent::__construct($code, $class, $baseControllerName);
 
         $this->userManager = $userManager;
+    }
+
+    public function getNewInstance()
+    {
+        return $this->userManager->createUser();
     }
 
     public function getFormBuilder(): FormBuilderInterface
@@ -84,12 +89,13 @@ abstract class UserAdmin extends AbstractAdmin
             ->add('email')
             ->add('groups')
             ->add('enabled', null, ['editable' => true])
-            ->add('createdAt')
         ;
 
         if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
             $listMapper
-                ->add('impersonating', 'string', ['template' => '@NucleosUserAdmin/Admin/Field/impersonating.html.twig'])
+                ->add('impersonating', 'string', [
+                    'template' => '@NucleosUserAdmin/Admin/Field/impersonating.html.twig',
+                ])
             ;
         }
     }
@@ -154,7 +160,7 @@ abstract class UserAdmin extends AbstractAdmin
                     ])
                 ->end()
                 ->with('Roles')
-                    ->add('realRoles', SecurityRolesType::class, [
+                    ->add('roles', RolesMatrixType::class, [
                         'label'    => 'form.label_roles',
                         'expanded' => true,
                         'multiple' => true,

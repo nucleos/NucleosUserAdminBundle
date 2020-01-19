@@ -11,6 +11,16 @@ parameters:
 			path: src/Action/LoginAction.php
 
 		-
+			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Admin\\\\Model\\\\GroupAdmin\\:\\:\\$groupManager with generic interface Nucleos\\\\UserBundle\\\\Model\\\\GroupManagerInterface does not specify its types\\: GroupTemplate$#"
+			count: 1
+			path: src/Admin/Model/GroupAdmin.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Admin\\\\Model\\\\GroupAdmin\\:\\:__construct\\(\\) has parameter \\$groupManager with generic interface Nucleos\\\\UserBundle\\\\Model\\\\GroupManagerInterface but does not specify its types\\: GroupTemplate$#"
+			count: 1
+			path: src/Admin/Model/GroupAdmin.php
+
+		-
 			message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeDefinition\\:\\:children\\(\\)\\.$#"
 			count: 1
 			path: src/DependencyInjection/Configuration.php

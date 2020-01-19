@@ -13,7 +13,8 @@ declare(strict_types=1);
 
 namespace Nucleos\UserAdminBundle\Admin\Model;
 
-use Nucleos\UserAdminBundle\Form\Type\SecurityRolesType;
+use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
+use Nucleos\UserBundle\Model\GroupManagerInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -28,11 +29,21 @@ abstract class GroupAdmin extends AbstractAdmin
         'validation_groups' => 'Registration',
     ];
 
+    /**
+     * @var GroupManagerInterface
+     */
+    private $groupManager;
+
+    public function __construct($code, $class, $baseControllerName, GroupManagerInterface $groupManager)
+    {
+        parent::__construct($code, $class, $baseControllerName);
+
+        $this->groupManager = $groupManager;
+    }
+
     public function getNewInstance()
     {
-        $class = $this->getClass();
-
-        return new $class('', []);
+        return $this->groupManager->createGroup('');
     }
 
     protected function configureListFields(ListMapper $listMapper): void
@@ -61,7 +72,7 @@ abstract class GroupAdmin extends AbstractAdmin
 
             ->tab('Security')
                 ->with('Roles', ['class' => 'col-md-12'])
-                ->add('roles', SecurityRolesType::class, [
+                ->add('roles', RolesMatrixType::class, [
                     'expanded' => true,
                     'multiple' => true,
                     'required' => false,
