@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the NucleosProfileBundle package.
+ * This file is part of the NucleosUserAdminBundle package.
  *
  * (c) Christian Gripp <mail@core23.de>
  *

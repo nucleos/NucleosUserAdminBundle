@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  <services>
+    <service id="nucleos_user_admin.editable_role_builder" class="Nucleos\UserAdminBundle\Security\EditableRolesBuilder">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authorization_checker"/>
+      <argument type="service" id="sonata.admin.pool"/>
+      <argument>%security.role_hierarchy.roles%</argument>
+      <call method="setTranslator">
+        <argument type="service" id="translator"/>
+      </call>
+    </service>
+    <service id="nucleos_user_admin.form.type.security_roles" class="Nucleos\UserAdminBundle\Form\Type\SecurityRolesType" public="true">
+      <tag name="form.type"/>
+      <argument type="service" id="nucleos_user_admin.editable_role_builder"/>
+    </service>
+    <service id="nucleos_user_admin.matrix_roles_builder" class="Nucleos\UserAdminBundle\Security\RolesBuilder\MatrixRolesBuilder">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="nucleos_user_admin.admin_roles_builder"/>
+      <argument type="service" id="nucleos_user_admin.security_roles_builder"/>
+    </service>
+    <service id="nucleos_user_admin.admin_roles_builder" class="Nucleos\UserAdminBundle\Security\RolesBuilder\AdminRolesBuilder">
+      <argument type="service" id="security.authorization_checker"/>
+      <argument type="service" id="sonata.admin.pool"/>
+      <argument type="service" id="translator"/>
+    </service>
+    <service id="nucleos_user_admin.security_roles_builder" class="Nucleos\UserAdminBundle\Security\RolesBuilder\SecurityRolesBuilder">
+      <argument type="service" id="security.authorization_checker"/>
+      <argument type="service" id="sonata.admin.pool"/>
+      <argument type="service" id="translator"/>
+      <argument>%security.role_hierarchy.roles%</argument>
+    </service>
+    <service id="nucleos_user_admin.form.roles_matrix_type" class="Nucleos\UserAdminBundle\Form\Type\RolesMatrixType" public="true">
+      <tag name="form.type"/>
+      <argument type="service" id="nucleos_user_admin.matrix_roles_builder"/>
+    </service>
+    <service id="nucleos_user_admin.roles_matrix_extension" class="Nucleos\UserAdminBundle\Twig\RolesMatrixExtension">
+      <argument type="service" id="nucleos_user_admin.matrix_roles_builder"/>
+      <tag name="twig.extension"/>
+    </service>
+  </services>
+</container>

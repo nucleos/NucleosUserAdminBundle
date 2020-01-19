@@ -1,27 +1,132 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Method Symfony\\\\Contracts\\\\EventDispatcher\\\\EventDispatcherInterface\\:\\:dispatch\\(\\) invoked with 2 parameters, 1 required\\.$#"
+			count: 1
+			path: src/Action/LoginAction.php
+
+		-
+			message: "#^Call to method Symfony\\\\Component\\\\HttpFoundation\\\\Request\\:\\:hasSession\\(\\) will always evaluate to true\\.$#"
+			count: 1
+			path: src/Action/LoginAction.php
+
+		-
 			message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeDefinition\\:\\:children\\(\\)\\.$#"
 			count: 1
 			path: src/DependencyInjection/Configuration.php
 
 		-
-			message: "#^Parameter \\#1 \\$node of method Nucleos\\\\ProfileBundle\\\\DependencyInjection\\\\Configuration\\:\\:addRegistrationSection\\(\\) expects Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\ArrayNodeDefinition, Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeDefinition given\\.$#"
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:load\\(\\) has parameter \\$configs with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/DependencyInjection/Configuration.php
+			path: src/DependencyInjection/NucleosUserAdminExtension.php
 
 		-
-			message: "#^Parameter \\#1 \\$node of method Nucleos\\\\ProfileBundle\\\\DependencyInjection\\\\Configuration\\:\\:addProfileSection\\(\\) expects Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\ArrayNodeDefinition, Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeDefinition given\\.$#"
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:fixImpersonating\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/DependencyInjection/Configuration.php
+			path: src/DependencyInjection/NucleosUserAdminExtension.php
 
 		-
-			message: "#^Parameter \\#1 \\$node of method Nucleos\\\\ProfileBundle\\\\DependencyInjection\\\\Configuration\\:\\:addServiceSection\\(\\) expects Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\ArrayNodeDefinition, Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeDefinition given\\.$#"
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:fixImpersonating\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/DependencyInjection/Configuration.php
+			path: src/DependencyInjection/NucleosUserAdminExtension.php
 
 		-
-			message: "#^Cannot call method end\\(\\) on Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeParentInterface\\|null\\.$#"
-			count: 3
-			path: src/DependencyInjection/Configuration.php
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureAdminClass\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/DependencyInjection/NucleosUserAdminExtension.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureTranslationDomain\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/DependencyInjection/NucleosUserAdminExtension.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureController\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/DependencyInjection/NucleosUserAdminExtension.php
+
+		-
+			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Form\\\\Transformer\\\\RestoreRolesTransformer\\:\\:\\$originalRoles type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Form/Transformer/RestoreRolesTransformer.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Form\\\\Transformer\\\\RestoreRolesTransformer\\:\\:setOriginalRoles\\(\\) has parameter \\$originalRoles with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Form/Transformer/RestoreRolesTransformer.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Form\\\\Type\\\\SecurityRolesType\\:\\:buildForm\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Form/Type/SecurityRolesType.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Form\\\\Type\\\\SecurityRolesType\\:\\:buildView\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Form/Type/SecurityRolesType.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\Authorization\\\\Voter\\\\UserAclVoter\\:\\:vote\\(\\) has parameter \\$attributes with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Security/Authorization/Voter/UserAclVoter.php
+
+		-
+			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Security\\\\EditableRolesBuilder\\:\\:\\$rolesHierarchy type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Security/EditableRolesBuilder.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\EditableRolesBuilder\\:\\:__construct\\(\\) has parameter \\$rolesHierarchy with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Security/EditableRolesBuilder.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\AdminRolesBuilder\\:\\:getRoles\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Security/RolesBuilder/AdminRolesBuilder.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\ExpandableRolesBuilderInterface\\:\\:getExpandedRoles\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Security/RolesBuilder/ExpandableRolesBuilderInterface.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\RolesBuilderInterface\\:\\:getRoles\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Security/RolesBuilder/RolesBuilderInterface.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\SecurityRolesBuilder\\:\\:__construct\\(\\) has parameter \\$rolesHierarchy with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Security/RolesBuilder/SecurityRolesBuilder.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\SecurityRolesBuilder\\:\\:getHierarchy\\(\\) should return array\\<array\\> but returns array\\<int\\|string, array\\|string\\>\\.$#"
+			count: 1
+			path: src/Security/RolesBuilder/SecurityRolesBuilder.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between false and array\\<int\\|string, array\\(\\)\\|string\\> will always evaluate to false\\.$#"
+			count: 1
+			path: src/Security/RolesBuilder/SecurityRolesBuilder.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\SecurityRolesBuilder\\:\\:getSecurityRoles\\(\\) has parameter \\$hierarchy with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Security/RolesBuilder/SecurityRolesBuilder.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\SecurityRolesBuilder\\:\\:recursiveArraySearch\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Security/RolesBuilder/SecurityRolesBuilder.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Tests\\\\Action\\\\LoginActionTest\\:\\:unauthenticatedProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Action/LoginActionTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertTrue\\(\\) with true and string will always evaluate to true\\.$#"
+			count: 1
+			path: tests/Resources/XliffTest.php
 

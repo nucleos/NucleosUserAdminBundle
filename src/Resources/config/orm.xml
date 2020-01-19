@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  <services>
+    <service id="nucleos_user_admin.orm.user_manager" class="Nucleos\UserAdminBundle\Entity\UserManager">
+      <argument type="service" id="nucleos_user.util.password_updater"/>
+      <argument type="service" id="nucleos_user.util.canonical_fields_updater"/>
+      <argument type="service" id="nucleos_user.object_manager"/>
+      <argument>%nucleos_user.model.user.class%</argument>
+    </service>
+    <service id="nucleos_user_admin.manager.user" class="Nucleos\UserAdminBundle\Entity\UserManagerProxy" public="true">
+      <argument>%nucleos_user.model.user.class%</argument>
+      <argument type="service" id="doctrine"/>
+      <argument type="service" id="nucleos_user_admin.orm.user_manager"/>
+    </service>
+    <service id="nucleos_user_admin.orm.group_manager" class="Nucleos\UserAdminBundle\Entity\GroupManager">
+      <argument type="service" id="nucleos_user.object_manager"/>
+      <argument>%nucleos_user.model.group.class%</argument>
+    </service>
+  </services>
+</container>
