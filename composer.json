@@ -53,7 +53,7 @@
         "matthiasnoback/symfony-dependency-injection-test": "^3.0",
         "nelmio/api-doc-bundle": "^2.4",
         "sonata-project/google-authenticator": "^1.0 || ^2.0",
-        "symfony/phpunit-bridge": "^4.3"
+        "symfony/phpunit-bridge": "^5.0"
     },
     "suggest": {
         "friendsofsymfony/rest-bundle": "For using the public API methods.",
