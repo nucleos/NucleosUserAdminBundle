@@ -1,0 +1,12 @@
+{% extends '@SonataAdmin/CRUD/base_list_field.html.twig' %}
+
+{% block field %}
+    {% if app.user and object.username != app.user.username and nucleos_user_admin.impersonating %}
+        <a href="{{ url(nucleos_user_admin.impersonating.route, nucleos_user_admin.impersonating.parameters | merge({'_switch_user': object.username})) }}"
+           title="{{ 'switch_user'|trans({}, 'NucleosUserAdminBundle') }}">
+            <i class="glyphicon glyphicon-user"></i><i class="glyphicon glyphicon-log-in"></i>
+        </a>
+    {% else %}
+        -
+    {% endif %}
+{% endblock %}

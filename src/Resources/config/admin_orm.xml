@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  <parameters>
+    <parameter key="nucleos_user_admin.admin.groupname">nucleos_user_admin</parameter>
+    <parameter key="nucleos_user_admin.admin.label_catalogue">NucleosUserAdminBundle</parameter>
+    <parameter key="nucleos_user_admin.admin.groupicon"><![CDATA[<i class='fa fa-users'></i>]]></parameter>
+  </parameters>
+  <services>
+    <service id="nucleos_user_admin.admin.user" class="%nucleos_user_admin.admin.user.class%" public="true">
+      <tag name="sonata.admin" manager_type="orm" group="%nucleos_user_admin.admin.groupname%" label="users" label_catalogue="%nucleos_user_admin.admin.label_catalogue%" label_translator_strategy="sonata.admin.label.strategy.underscore" icon="%nucleos_user_admin.admin.groupicon%"/>
+      <argument/>
+      <argument>%nucleos_user.model.user.class%</argument>
+      <argument>%nucleos_user_admin.admin.user.controller%</argument>
+      <argument type="service" id="nucleos_user.user_manager"/>
+      <call method="setTranslationDomain">
+        <argument>%nucleos_user_admin.admin.user.translation_domain%</argument>
+      </call>
+    </service>
+    <service id="nucleos_user_admin.admin.group" class="%nucleos_user_admin.admin.group.class%" public="true">
+      <tag name="sonata.admin" manager_type="orm" group="%nucleos_user_admin.admin.groupname%" label="groups" label_catalogue="%nucleos_user_admin.admin.label_catalogue%" label_translator_strategy="sonata.admin.label.strategy.underscore"/>
+      <argument/>
+      <argument>%nucleos_user.model.group.class%</argument>
+      <argument>%nucleos_user_admin.admin.group.controller%</argument>
+      <call method="setTranslationDomain">
+        <argument>%nucleos_user_admin.admin.group.translation_domain%</argument>
+      </call>
+    </service>
+  </services>
+</container>
