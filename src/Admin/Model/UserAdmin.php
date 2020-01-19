@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserAdminBundle\Admin\Model;
 
+use DomainException;
 use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
 use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManagerInterface;
@@ -41,7 +42,23 @@ abstract class UserAdmin extends AbstractAdmin
 
     public function getNewInstance()
     {
-        return $this->userManager->createUser();
+        $instance = $this->userManager->createUser();
+
+        // TODO: Find a better way to create editable form models
+        // BC layer
+        try {
+            $instance->getUsername();
+        } catch (DomainException $exception) {
+            $instance->setUsername('');
+        }
+
+        try {
+            $instance->getEmail();
+        } catch (DomainException $exception) {
+            $instance->setEmail('');
+        }
+
+        return $instance;
     }
 
     public function getFormBuilder(): FormBuilderInterface
