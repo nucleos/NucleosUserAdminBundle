@@ -206,25 +206,41 @@
                 <source>nucleos_user_admin</source>
                 <target>Users</target>
             </trans-unit>
-            <trans-unit id="form_general">
-                <source>General</source>
-                <target>General</target>
-            </trans-unit>
-            <trans-unit id="group_locale">
-                <source>Locale</source>
-                <target>Locale</target>
-            </trans-unit>
-            <trans-unit id="form_groups">
-                <source>Groups</source>
+            <trans-unit id="form.group_groups">
+                <source>form.group_groups</source>
                 <target>Groups</target>
             </trans-unit>
-            <trans-unit id="form_management">
-                <source>Management</source>
-                <target>Management</target>
+            <trans-unit id="form.group_general">
+                <source>form.group_general</source>
+                <target>General</target>
             </trans-unit>
-            <trans-unit id="form_status">
-                <source>Status</source>
+            <trans-unit id="form.group_locale">
+                <source>form.group_locale</source>
+                <target>Locale</target>
+            </trans-unit>
+            <trans-unit id="form.group_status">
+                <source>form.group_status</source>
                 <target>Status</target>
+            </trans-unit>
+            <trans-unit id="form.group_roles">
+                <source>form.group_roles</source>
+                <target>Roles</target>
+            </trans-unit>
+            <trans-unit id="form.group_security">
+                <source>form.group_security</source>
+                <target>Security</target>
+            </trans-unit>
+            <trans-unit id="form.tab_user">
+                <source>form.tab_user</source>
+                <target>User</target>
+            </trans-unit>
+            <trans-unit id="form.tab_group">
+                <source>form.tab_group</source>
+                <target>Group</target>
+            </trans-unit>
+            <trans-unit id="form.tab_security">
+                <source>form.tab_security</source>
+                <target>Security</target>
             </trans-unit>
             <trans-unit id="field.label_roles_editable">
                 <source>field.label_roles_editable</source>

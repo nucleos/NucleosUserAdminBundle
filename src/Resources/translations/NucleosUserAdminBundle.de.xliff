@@ -278,40 +278,48 @@
                 <source>form.label_mapped_users</source>
                 <target>Zugewiesene Benutzer</target>
             </trans-unit>
-            <trans-unit id="group_groups">
-                <source>Groups</source>
+            <trans-unit id="form.group_groups">
+                <source>form.group_groups</source>
                 <target>Gruppen</target>
             </trans-unit>
-            <trans-unit id="group_general">
-                <source>General</source>
+            <trans-unit id="form.group_general">
+                <source>form.group_general</source>
                 <target>Allgemein</target>
             </trans-unit>
-            <trans-unit id="group_locale">
-                <source>Locale</source>
+            <trans-unit id="form.group_locale">
+                <source>form.group_locale</source>
                 <target>Ort</target>
             </trans-unit>
-            <trans-unit id="group_profile">
+            <trans-unit id="form.group_profile">
                 <source>Profile</source>
                 <target>Profil</target>
             </trans-unit>
-            <trans-unit id="group_user">
-                <source>User</source>
+            <trans-unit id="form.group_user">
+                <source>form.group_user</source>
                 <target>Benutzer</target>
             </trans-unit>
-            <trans-unit id="group_status">
-                <source>Status</source>
+            <trans-unit id="form.group.status">
+                <source>form.group_status</source>
                 <target>Status</target>
             </trans-unit>
-            <trans-unit id="group_social">
-                <source>Social</source>
-                <target>Soziale Kanäle</target>
-            </trans-unit>
-            <trans-unit id="group_roles">
-                <source>Roles</source>
+            <trans-unit id="form.group_roles">
+                <source>form.group_roles</source>
                 <target>Rollen</target>
             </trans-unit>
-            <trans-unit id="group_security">
-                <source>Security</source>
+            <trans-unit id="form.group_security">
+                <source>form.group_security</source>
+                <target>Sicherheit</target>
+            </trans-unit>
+            <trans-unit id="form.tab_user">
+                <source>form.tab_user</source>
+                <target>Benutzer</target>
+            </trans-unit>
+            <trans-unit id="form.tab_group">
+                <source>form.tab_group</source>
+                <target>Gruppen</target>
+            </trans-unit>
+            <trans-unit id="form.tab_security">
+                <source>form.tab_security</source>
                 <target>Sicherheit</target>
             </trans-unit>
             <trans-unit id="link_show_profile">

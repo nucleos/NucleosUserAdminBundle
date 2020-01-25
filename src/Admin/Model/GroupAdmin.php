@@ -64,19 +64,19 @@ abstract class GroupAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->tab('Group')
-                ->with('General', ['class' => 'col-md-6'])
+            ->tab('form.tab_group')
+                ->with('form.group_general', ['class' => 'col-md-6'])
                     ->add('name')
                 ->end()
             ->end()
 
-            ->tab('Security')
-                ->with('Roles', ['class' => 'col-md-12'])
-                ->add('roles', RolesMatrixType::class, [
-                    'expanded' => true,
-                    'multiple' => true,
-                    'required' => false,
-                ])
+            ->tab('form.tab_security')
+                ->with('form.group_roles', ['class' => 'col-md-12'])
+                    ->add('roles', RolesMatrixType::class, [
+                        'expanded' => true,
+                        'multiple' => true,
+                        'required' => false,
+                    ])
                 ->end()
             ->end()
         ;
