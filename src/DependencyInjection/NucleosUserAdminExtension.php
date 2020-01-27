@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserAdminBundle\DependencyInjection;
 
+use Nucleos\UserAdminBundle\Twig\ImpersonateExtension;
 use RuntimeException;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
@@ -74,7 +75,14 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
 
         $container->setParameter('nucleos_user_admin.default_avatar', $config['profile']['default_avatar']);
 
-        $container->setParameter('nucleos_user_admin.impersonating', $config['impersonating']);
+        if (isset($config['impersonating'])) {
+            $loader->load('impersonating.xml');
+
+            $container->getDefinition(ImpersonateExtension::class)
+                ->replaceArgument(1, $config['impersonating']['route'])
+                ->replaceArgument(2, $config['impersonating']['parameters'])
+            ;
+        }
     }
 
     /**

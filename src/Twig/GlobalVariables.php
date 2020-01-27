@@ -25,26 +25,15 @@ final class GlobalVariables
     /**
      * @var string
      */
-    private $impersonatingRoute;
-
-    /**
-     * @var string
-     */
     private $defaultAvatar;
 
     /**
      * GlobalVariables constructor.
      */
-    public function __construct(AdminInterface $admin, string $impersonatingRoute, string $defaultAvatar)
+    public function __construct(AdminInterface $admin, string $defaultAvatar)
     {
         $this->admin              = $admin;
-        $this->impersonatingRoute = $impersonatingRoute;
         $this->defaultAvatar      = $defaultAvatar;
-    }
-
-    public function getImpersonating(): string
-    {
-        return $this->impersonatingRoute;
     }
 
     public function getDefaultAvatar(): string

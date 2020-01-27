@@ -7,9 +7,9 @@
         {% set _profile_text      = 'user_block_profile'|trans({}, 'NucleosUserAdminBundle') %}
         {% set _user_image        = nucleos_user_admin.defaultAvatar ? asset(nucleos_user_admin.defaultAvatar) : null %}
 
-        {% if is_granted('ROLE_PREVIOUS_ADMIN') and nucleos_user_admin.impersonating %}
+        {% if is_granted('ROLE_PREVIOUS_ADMIN')  %}
             {% set _bg_class    = "bg-light-green" %}
-            {% set _logout_uri  = url(nucleos_user_admin.impersonating.route, nucleos_user_admin.impersonating.parameters| merge({'_switch_user': '_exit'})) %}
+            {% set _logout_uri  = impersonateExit() %}
             {% set _logout_text = 'switch_user_exit'|trans({}, 'NucleosUserAdminBundle') %}
         {% endif %}
 
