@@ -5,8 +5,8 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
-      <trans-unit id="nucleos_user_admin">
-        <source>nucleos_user_admin</source>
+      <trans-unit id="user">
+        <source>user</source>
         <target>Benutzer</target>
       </trans-unit>
     </body>
