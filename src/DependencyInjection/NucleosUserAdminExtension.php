@@ -88,7 +88,7 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
     /**
      * Adds aliases for user & group managers depending on $managerType.
      */
-    protected function aliasManagers(ContainerBuilder $container, string $managerType): void
+    private function aliasManagers(ContainerBuilder $container, string $managerType): void
     {
         $container
             ->setAlias('nucleos_user_admin.user_manager', sprintf('nucleos_user_admin.%s.user_manager', $managerType))
