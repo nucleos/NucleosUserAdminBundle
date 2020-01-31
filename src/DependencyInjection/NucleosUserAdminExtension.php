@@ -75,7 +75,7 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
 
         $container->setParameter('nucleos_user_admin.default_avatar', $config['profile']['default_avatar']);
 
-        if (isset($config['impersonating'])) {
+        if (false !== $config['impersonating']) {
             $loader->load('impersonating.xml');
 
             $container->getDefinition(ImpersonateExtension::class)

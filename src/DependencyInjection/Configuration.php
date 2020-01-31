@@ -33,7 +33,7 @@ final class Configuration implements ConfigurationInterface
 
                 ->arrayNode('impersonating')
                     ->children()
-                        ->scalarNode('route')->defaultFalse()->end()
+                        ->scalarNode('route')->defaultNull()->end()
                         ->arrayNode('parameters')
                             ->useAttributeAsKey('id')
                             ->prototype('scalar')->end()
