@@ -22,23 +22,9 @@ final class GlobalVariables
      */
     private $admin;
 
-    /**
-     * @var string
-     */
-    private $defaultAvatar;
-
-    /**
-     * GlobalVariables constructor.
-     */
-    public function __construct(AdminInterface $admin, string $defaultAvatar)
+    public function __construct(AdminInterface $admin)
     {
         $this->admin              = $admin;
-        $this->defaultAvatar      = $defaultAvatar;
-    }
-
-    public function getDefaultAvatar(): string
-    {
-        return $this->defaultAvatar;
     }
 
     public function getUserAdmin(): AdminInterface

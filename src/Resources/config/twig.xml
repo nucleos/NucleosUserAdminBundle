@@ -3,7 +3,6 @@
   <services>
     <service id="nucleos_user_admin.twig.global" class="Nucleos\UserAdminBundle\Twig\GlobalVariables">
       <argument type="service" id="nucleos_user_admin.admin.user"/>
-      <argument>%nucleos_user_admin.default_avatar%</argument>
     </service>
   </services>
 </container>

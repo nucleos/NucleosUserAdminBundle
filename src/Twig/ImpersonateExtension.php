@@ -33,8 +33,6 @@ final class ImpersonateExtension extends AbstractExtension
     private $routeParams;
 
     /**
-     * ImpersonatingExtension constructor.
-     *
      * @param string               $route
      * @param array<string, mixed> $routeParams
      */

@@ -5,7 +5,7 @@
         {% set _logout_text       = 'user_block_logout'|trans({}, 'NucleosUserAdminBundle') %}
         {% set _profile_uri       = nucleos_user_admin.userAdmin.isGranted('EDIT', app.user) ? nucleos_user_admin.userAdmin.generateUrl('edit', {id: app.user.id}) : nucleos_user_admin.userAdmin.generateUrl('show', {id: app.user.id}) %}
         {% set _profile_text      = 'user_block_profile'|trans({}, 'NucleosUserAdminBundle') %}
-        {% set _user_image        = nucleos_user_admin.defaultAvatar ? asset(nucleos_user_admin.defaultAvatar) : null %}
+        {% set _user_image        = asset(userAvatar(app.user)) %}
 
         {% if is_granted('ROLE_PREVIOUS_ADMIN')  %}
             {% set _bg_class    = "bg-light-green" %}
@@ -22,13 +22,14 @@
 
         <li class="user-footer">
             <div class="pull-left">
-                <a href="{{ _profile_uri }}" class="btn btn-default btn-flat"><i
-                        class="fa fa-user"></i> {{ _profile_text }}</a>
+                <a href="{{ _profile_uri }}" class="btn btn-default btn-flat">
+                    <i class="fa fa-user"></i> {{ _profile_text }}</a>
             </div>
 
             <div class="pull-right">
-                <a href="{{ _logout_uri }}" class="btn btn-default btn-flat"><i
-                        class="fa fa-sign-out fa-fw"></i> {{ _logout_text }}</a>
+                <a href="{{ _logout_uri }}" class="btn btn-default btn-flat">
+                    <i class="fa fa-sign-out fa-fw"></i> {{ _logout_text }}
+                </a>
             </div>
         </li>
     {% endif %}
