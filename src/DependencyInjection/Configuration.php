@@ -15,7 +15,9 @@ namespace Nucleos\UserAdminBundle\DependencyInjection;
 
 use Nucleos\UserAdminBundle\Admin\Entity\GroupAdmin;
 use Nucleos\UserAdminBundle\Admin\Entity\UserAdmin;
+use Nucleos\UserAdminBundle\Avatar\StaticAvatarResolver;
 use Sonata\AdminBundle\Controller\CRUDController;
+use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -62,16 +64,26 @@ final class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
+            ->end()
+        ;
 
-                ->arrayNode('profile')
+        $this->addAvatarSection($rootNode);
+
+        return $treeBuilder;
+    }
+
+    private function addAvatarSection(NodeDefinition $node): void
+    {
+        $node
+            ->children()
+                ->arrayNode('avatar')
                     ->addDefaultsIfNotSet()
                     ->children()
+                        ->scalarNode('resolver')->defaultValue(StaticAvatarResolver::class)->end()
                         ->scalarNode('default_avatar')->defaultValue('bundles/nucleosuseradmin/default_avatar.png')->end()
                     ->end()
                 ->end()
             ->end()
-        ;
-
-        return $treeBuilder;
+            ;
     }
 }

@@ -16,6 +16,7 @@ namespace Nucleos\UserAdminBundle\Tests\DependencyInjection;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 use Nucleos\UserAdminBundle\Admin\Entity\GroupAdmin;
 use Nucleos\UserAdminBundle\Admin\Entity\UserAdmin;
+use Nucleos\UserAdminBundle\Avatar\StaticAvatarResolver;
 use Nucleos\UserAdminBundle\DependencyInjection\Configuration;
 use PHPUnit\Framework\TestCase;
 use Sonata\AdminBundle\Controller\CRUDController;
@@ -50,7 +51,8 @@ final class ConfigurationTest extends TestCase
                         'translation' => 'NucleosUserAdminBundle',
                     ],
                 ],
-                'profile'              => [
+                'avatar'              => [
+                    'resolver'       => StaticAvatarResolver::class,
                     'default_avatar' => 'bundles/nucleosuseradmin/default_avatar.png',
                 ],
             ]

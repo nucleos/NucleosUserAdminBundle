@@ -22,11 +22,11 @@ parameters:
 
 		-
 			message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeDefinition\\:\\:children\\(\\)\\.$#"
-			count: 1
+			count: 2
 			path: src/DependencyInjection/Configuration.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:load\\(\\) has parameter \\$configs with no value type specified in iterable type array\\.$#"
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureAvatar\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/DependencyInjection/NucleosUserAdminExtension.php
 
@@ -64,16 +64,6 @@ parameters:
 			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Form\\\\Transformer\\\\RestoreRolesTransformer\\:\\:setOriginalRoles\\(\\) has parameter \\$originalRoles with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Form/Transformer/RestoreRolesTransformer.php
-
-		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Form\\\\Type\\\\SecurityRolesType\\:\\:buildForm\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/Type/SecurityRolesType.php
-
-		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Form\\\\Type\\\\SecurityRolesType\\:\\:buildView\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/Type/SecurityRolesType.php
 
 		-
 			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\Authorization\\\\Voter\\\\UserAclVoter\\:\\:vote\\(\\) has parameter \\$attributes with no value type specified in iterable type array\\.$#"

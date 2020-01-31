@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserAdminBundle\DependencyInjection;
 
+use Nucleos\UserAdminBundle\Twig\AvatarExtension;
 use Nucleos\UserAdminBundle\Twig\ImpersonateExtension;
 use RuntimeException;
 use Symfony\Component\Config\Definition\Processor;
@@ -64,16 +65,16 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
 
         $loader->load('twig.xml');
         $loader->load('actions.xml');
+        $loader->load('avatar.xml');
 
         if ($config['security_acl']) {
             $loader->load('security_acl.xml');
         }
 
+        $this->configureAvatar($config, $container);
         $this->configureAdminClass($config, $container);
         $this->configureTranslationDomain($config, $container);
         $this->configureController($config, $container);
-
-        $container->setParameter('nucleos_user_admin.default_avatar', $config['profile']['default_avatar']);
 
         if (false !== $config['impersonating']) {
             $loader->load('impersonating.xml');
@@ -83,6 +84,14 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
                 ->replaceArgument(2, $config['impersonating']['parameters'])
             ;
         }
+    }
+
+    private function configureAvatar(array $config, ContainerBuilder $container): void
+    {
+        $container->getDefinition(AvatarExtension::class)
+            ->replaceArgument(1, $config['avatar']['resolver'])
+        ;
+        $container->setParameter('nucleos_user_admin.default_avatar', $config['avatar']['default_avatar']);
     }
 
     /**
