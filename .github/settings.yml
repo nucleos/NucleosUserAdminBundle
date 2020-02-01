@@ -3,7 +3,7 @@
 repository:
     name: NucleosUserAdminBundle
     description: Adminstration of users and groups in symfony
-    homepage: https://docs.nucleos.rocks/projects/user-admin-bundle
+    homepage: https://docs.nucleos.rocks/projects/user-admin-bundle/
     topics: symfony, symfony-bundle, bundle, user, management, admin, sonata
 
     default_branch: master

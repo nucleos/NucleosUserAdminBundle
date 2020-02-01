@@ -20,7 +20,7 @@ Documentation
 The source of the documentation is stored in the `docs/` folder
 in this bundle.
 
-[Read the Documentation](https://docs.nucleos.rocks/projects/user-admin-bundle)
+[Read the Documentation](https://docs.nucleos.rocks/projects/user-admin-bundle/)
 
 Installation
 ------------
