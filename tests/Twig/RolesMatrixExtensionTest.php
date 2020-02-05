@@ -102,19 +102,16 @@ final class RolesMatrixExtensionTest extends TestCase
         $this->environment
             ->expects(static::once())
             ->method('render')
-            ->with(
-                '@NucleosUserAdmin/Form/roles_matrix_list.html.twig',
-                [
-                    'roles' => [
-                        'SUPER_TEST_ROLE' => [
-                            'role'            => 'SUPER_TEST_ROLE',
-                            'role_translated' => 'SUPER TEST ROLE TRANSLATED',
-                            'is_granted'      => true,
-                            'form'            => $form,
-                        ],
+            ->with('@NucleosUserAdmin/Form/roles_matrix_list.html.twig', [
+                'roles' => [
+                    'SUPER_TEST_ROLE' => [
+                        'role'            => 'SUPER_TEST_ROLE',
+                        'role_translated' => 'SUPER TEST ROLE TRANSLATED',
+                        'is_granted'      => true,
+                        'form'            => $form,
                     ],
-                ]
-            )
+                ],
+            ])
             ->willReturn('')
         ;
 
@@ -246,24 +243,21 @@ final class RolesMatrixExtensionTest extends TestCase
         $this->environment
             ->expects(static::once())
             ->method('render')
-            ->with(
-                '@NucleosUserAdmin/Form/roles_matrix.html.twig',
-                [
-                    'grouped_roles'     => [
-                        'fooadmin' => [
-                            'BASE_ROLE_FOO_EDIT' => [
-                                'role'            => 'BASE_ROLE_FOO_EDIT',
-                                'label'           => 'EDIT',
-                                'role_translated' => 'ROLE FOO TRANSLATED',
-                                'admin_label'     => 'fooadmin',
-                                'is_granted'      => true,
-                                'form'            => $form,
-                            ],
+            ->with('@NucleosUserAdmin/Form/roles_matrix.html.twig', [
+                'grouped_roles'     => [
+                    'fooadmin' => [
+                        'BASE_ROLE_FOO_EDIT' => [
+                            'role'            => 'BASE_ROLE_FOO_EDIT',
+                            'label'           => 'EDIT',
+                            'role_translated' => 'ROLE FOO TRANSLATED',
+                            'admin_label'     => 'fooadmin',
+                            'is_granted'      => true,
+                            'form'            => $form,
                         ],
                     ],
-                    'permission_labels' => ['EDIT', 'CREATE'],
-                ]
-            )
+                ],
+                'permission_labels' => ['EDIT', 'CREATE'],
+            ])
             ->willReturn('')
         ;
 
@@ -306,23 +300,20 @@ final class RolesMatrixExtensionTest extends TestCase
         $this->environment
             ->expects(static::once())
             ->method('render')
-            ->with(
-                '@NucleosUserAdmin/Form/roles_matrix.html.twig',
-                [
-                    'grouped_roles'     => [
-                        'fooadmin' => [
-                            'BASE_ROLE_FOO_%s' => [
-                                'role'            => 'BASE_ROLE_FOO_EDIT',
-                                'label'           => 'EDIT',
-                                'role_translated' => 'ROLE FOO TRANSLATED',
-                                'admin_label'     => 'fooadmin',
-                                'is_granted'      => true,
-                            ],
+            ->with('@NucleosUserAdmin/Form/roles_matrix.html.twig', [
+                'grouped_roles'     => [
+                    'fooadmin' => [
+                        'BASE_ROLE_FOO_%s' => [
+                            'role'            => 'BASE_ROLE_FOO_EDIT',
+                            'label'           => 'EDIT',
+                            'role_translated' => 'ROLE FOO TRANSLATED',
+                            'admin_label'     => 'fooadmin',
+                            'is_granted'      => true,
                         ],
                     ],
-                    'permission_labels' => ['EDIT', 'CREATE'],
-                ]
-            )
+                ],
+                'permission_labels' => ['EDIT', 'CREATE'],
+            ])
             ->willReturn('')
         ;
 

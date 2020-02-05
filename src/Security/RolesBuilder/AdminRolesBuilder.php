@@ -90,21 +90,52 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
                 continue;
             }
 
-            $baseRole        = $securityHandler->getBaseRole($admin);
+            $baseRole = $securityHandler->getBaseRole($admin);
 
             foreach (array_keys($admin->getSecurityInformation()) as $key) {
                 $role              = sprintf($baseRole, $key);
+
                 $adminRoles[$role] = [
                     'role'            => $role,
                     'label'           => $key,
                     'role_translated' => $this->translateRole($role, $domain),
                     'is_granted'      => $this->isMaster($admin) || $this->authorizationChecker->isGranted($role),
-                    'admin_label'     => $admin->getTranslator()->trans($admin->getLabel()),
+                    'admin_label'     => $this->getAdminLabel($admin),
                 ];
             }
         }
 
         return $adminRoles;
+    }
+
+    private function getAdminLabel(AdminInterface $admin): string
+    {
+        return sprintf(
+            '%s > %s',
+            $this->getGroupLabel($admin),
+            $admin->getTranslator()->trans($admin->getLabel(), [], $admin->getTranslationDomain())
+        );
+    }
+
+    private function getGroupLabel(AdminInterface $admin): string
+    {
+        foreach ($this->pool->getAdminGroups() as $groupName => $groupData) {
+            if (!\is_array($groupData['items'])) {
+                continue;
+            }
+
+            foreach ($groupData['items'] as $item) {
+                if ($item['admin'] === $admin->getCode()) {
+                    return $admin->getTranslator()->trans($groupName, [], 'SonataAdminBundle');
+                }
+            }
+        }
+
+        if (null !== $admin->getParent() && $admin->getParent() !== $admin) {
+            return $this->getGroupLabel($admin->getParent());
+        }
+
+        return $this->guessGroupLabel($admin);
     }
 
     private function isMaster(AdminInterface $admin): bool
@@ -121,5 +152,14 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
         }
 
         return $role;
+    }
+
+    private function guessGroupLabel(AdminInterface $admin): string
+    {
+        $baseRoute = $admin->getBaseCodeRoute();
+
+        $group = substr($baseRoute, 0, (int) strpos($baseRoute, '.'));
+
+        return $admin->getTranslator()->trans($group, [], 'SonataAdminBundle');
     }
 }
