@@ -108,6 +108,10 @@ final class AdminRolesBuilderTest extends TestCase
             ->willReturn($this->securityInformation)
         ;
 
+        $this->admin->method('getBaseCodeRoute')
+            ->willReturn('sonata.admin.bar')
+        ;
+
         $this->pool->expects(static::once())
             ->method('getAdminServiceIds')
             ->willReturn(['sonata.admin.bar'])
@@ -117,6 +121,10 @@ final class AdminRolesBuilderTest extends TestCase
             ->method('getInstance')
             ->with('sonata.admin.bar')
             ->willReturn($this->admin)
+        ;
+
+        $this->pool->method('getAdminGroups')
+            ->willReturn([])
         ;
 
         $rolesBuilder = new AdminRolesBuilder(
@@ -161,6 +169,10 @@ final class AdminRolesBuilderTest extends TestCase
             ->willReturn('Foo')
         ;
 
+        $this->admin->method('getBaseCodeRoute')
+            ->willReturn('sonata.admin.bar')
+        ;
+
         $this->pool->expects(static::once())
             ->method('getAdminServiceIds')
             ->willReturn(['sonata.admin.bar'])
@@ -170,6 +182,10 @@ final class AdminRolesBuilderTest extends TestCase
             ->method('getInstance')
             ->with('sonata.admin.bar')
             ->willReturn($this->admin)
+        ;
+
+        $this->pool->method('getAdminGroups')
+            ->willReturn([])
         ;
 
         $rolesBuilder = new AdminRolesBuilder(
@@ -184,28 +200,28 @@ final class AdminRolesBuilderTest extends TestCase
                 'label'           => 'GUEST',
                 'role_translated' => 'ROLE_SONATA_FOO_GUEST',
                 'is_granted'      => false,
-                'admin_label'     => 'Foo',
+                'admin_label'     => 'sonata > Foo',
             ],
             'ROLE_SONATA_FOO_STAFF'  => [
                 'role'            => 'ROLE_SONATA_FOO_STAFF',
                 'label'           => 'STAFF',
                 'role_translated' => 'ROLE_SONATA_FOO_STAFF',
                 'is_granted'      => false,
-                'admin_label'     => 'Foo',
+                'admin_label'     => 'sonata > Foo',
             ],
             'ROLE_SONATA_FOO_EDITOR' => [
                 'role'            => 'ROLE_SONATA_FOO_EDITOR',
                 'label'           => 'EDITOR',
                 'role_translated' => 'ROLE_SONATA_FOO_EDITOR',
                 'is_granted'      => false,
-                'admin_label'     => 'Foo',
+                'admin_label'     => 'sonata > Foo',
             ],
             'ROLE_SONATA_FOO_ADMIN'  => [
                 'role'            => 'ROLE_SONATA_FOO_ADMIN',
                 'label'           => 'ADMIN',
                 'role_translated' => 'ROLE_SONATA_FOO_ADMIN',
                 'is_granted'      => false,
-                'admin_label'     => 'Foo',
+                'admin_label'     => 'sonata > Foo',
             ],
         ];
 
