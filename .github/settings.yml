@@ -52,7 +52,8 @@ branches:
                     - "Tests (7.4, highest, ~4.4)"
                     - "Code Coverage (7.4)"
                     - "Mutation Tests (7.4)"
-                    - "Lint / DOCtor-RST"
+                    - "Build RST"
+                    - "DOCtor-RST"
                 strict: true
 
             required_pull_request_reviews: null
