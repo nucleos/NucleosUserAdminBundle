@@ -117,7 +117,7 @@ You also need to define some new firewall rules, so the admin backend is protect
             ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
 Step 5: Import NucleosUserAdminBundle routing files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now that you have activated and configured the bundle, all that is left to do is
 import the NucleosUserAdminBundle routing files.
