@@ -57,12 +57,6 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
             }
         }
 
-        if (\in_array($config['manager_type'], ['orm', 'mongodb'], true)) {
-            $loader->load(sprintf('%s.xml', $config['manager_type']));
-
-            $this->aliasManagers($container, $config['manager_type']);
-        }
-
         $loader->load('twig.xml');
         $loader->load('actions.xml');
         $loader->load('avatar.xml');

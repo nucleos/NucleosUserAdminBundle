@@ -32,21 +32,6 @@ final class NucleosUserAdminExtensionTest extends AbstractExtensionTestCase
         $this->setParameter('nucleos_user.storage', 'orm');
     }
 
-    public function testLoadDefault(): void
-    {
-        $this->load();
-
-        $this->assertContainerBuilderHasAlias(
-            'nucleos_user_admin.user_manager',
-            'nucleos_user_admin.orm.user_manager'
-        );
-
-        $this->assertContainerBuilderHasAlias(
-            'nucleos_user_admin.group_manager',
-            'nucleos_user_admin.orm.group_manager'
-        );
-    }
-
     public function testTwigConfigParameterIsSetting(): void
     {
         $fakeContainer = $this->getMockBuilder(ContainerBuilder::class)
