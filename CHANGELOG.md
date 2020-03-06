@@ -1,3 +1,11 @@
+# 1.1.1
+
+## Changes
+
+## 🐛 Bug Fixes
+
+- Fix loading of broken doctrine services @core23 (#19)
+
 # 1.1.0
 
 ## Changes
