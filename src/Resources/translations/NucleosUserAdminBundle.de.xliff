@@ -422,6 +422,10 @@
                 <source>field.label_roles_readonly</source>
                 <target>Rollen</target>
             </trans-unit>
+            <trans-unit id="user">
+                <source>user</source>
+                <target>Benutzer</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
