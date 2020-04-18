@@ -1,3 +1,11 @@
+# 1.1.2
+
+## Changes
+
+## 🐛 Bug Fixes
+
+- Add missing translation for admin menu group @core23 (#20)
+
 # 1.1.1
 
 ## Changes
