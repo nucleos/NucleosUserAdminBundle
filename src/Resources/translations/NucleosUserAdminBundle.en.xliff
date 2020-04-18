@@ -386,6 +386,10 @@
                 <source>field.label_roles_readonly</source>
                 <target>Roles</target>
             </trans-unit>
+            <trans-unit id="user">
+                <source>user</source>
+                <target>User</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
