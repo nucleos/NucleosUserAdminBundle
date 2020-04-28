@@ -1,87 +1,58 @@
-{% extends base_template %}
+{% extends '@NucleosUserAdmin/Admin/Security/layout.html.twig' %}
 
-{% block sonata_nav %}
-{% endblock sonata_nav %}
-
-{% block logo %}
-{% endblock logo %}
-
-{% block sonata_left_side %}
-{% endblock sonata_left_side %}
-
-{% block body_attributes %}class="sonata-bc login-page"{% endblock %}
-
-{% block sonata_wrapper %}
-
-    <div class="login-box">
-        {% block login_box_header %}
-            <div class="login-logo">
-                <a href="{{ path('sonata_admin_dashboard') }}">
-                    {% if sonata_admin.adminPool.getOption('title_mode') in ['single_image', 'both'] %}
-                        <div>
-                            <img style="width:64px;" src="{{ asset(sonata_admin.adminPool.titlelogo) }}"
-                                 alt="{{ sonata_admin.adminPool.title }}">
-                        </div>
-                    {% endif %}
-                    {% if sonata_admin.adminPool.getOption('title_mode') in ['single_text', 'both'] %}
-                        <span>{{ sonata_admin.adminPool.title }}</span>
-                    {% endif %}
-                </a>
+{% block login_box_content %}
+    {% block sonata_admin_login_error %}
+        {% if error %}
+            <div class="alert alert-danger alert-error">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
             </div>
-        {% endblock %}
-        <div class="login-box-body">
-            {% block sonata_admin_login_form %}
-                {% block sonata_admin_login_error %}
-                    {% if error %}
-                        <div class="alert alert-danger alert-error">
-                            {{ error.messageKey|trans(error.messageData, 'security') }}
-                        </div>
-                    {% endif %}
-                {% endblock %}
-                <p class="login-box-msg">{{ 'title_user_authentication'|trans({}, 'NucleosUserAdminBundle') }}</p>
-                <form action="{{ path("nucleos_user_admin_security_check") }}" method="post" role="form">
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+        {% endif %}
+    {% endblock %}
 
-                    <div class="form-group has-feedback">
-                        <input class="form-control"
-                               id="username"
-                               name="_username"
-                               placeholder="{{ 'security.login.username'|trans({}, 'NucleosUserAdminBundle') }}"
-                               required="required"
-                               type="text"
-                               value="{{ last_username }}"/>
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                    </div>
+    <p class="login-box-msg">
+        {{ 'title_user_authentication'|trans({}, 'NucleosUserAdminBundle') }}
+    </p>
 
-                    <div class="form-group has-feedback">
-                        <input class="form-control"
-                               id="password"
-                               name="_password"
-                               placeholder="{{ 'security.login.password'|trans({}, 'NucleosUserAdminBundle') }}"
-                               required="required"
-                               type="password"/>
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    </div>
+    <form action="{{ path("nucleos_user_admin_security_check") }}" method="post" role="form">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
 
-                    <div class="row">
-                        <div class="col-xs-8">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
-                                    {{ 'security.login.remember_me'|trans({}, 'NucleosUserBundle') }}
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-4">
-                            <button type="submit"
-                                    class="btn btn-primary btn-block btn-flat">{{ 'security.login.submit'|trans({}, 'NucleosUserBundle') }}</button>
-                        </div>
-                    </div>
-                </form>
-
-                <a href="{{ reset_route }}">{{ 'forgotten_password'|trans({}, 'NucleosUserAdminBundle') }}</a>
-            {% endblock %}
+        <div class="form-group has-feedback">
+            <input class="form-control"
+                   id="username"
+                   name="_username"
+                   placeholder="{{ 'security.login.username'|trans({}, 'NucleosUserAdminBundle') }}"
+                   required="required"
+                   type="text"
+                   value="{{ last_username }}"/>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
-    </div>
 
-{% endblock sonata_wrapper %}
+        <div class="form-group has-feedback">
+            <input class="form-control"
+                   id="password"
+                   name="_password"
+                   placeholder="{{ 'security.login.password'|trans({}, 'NucleosUserAdminBundle') }}"
+                   required="required"
+                   type="password"/>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                        {{ 'security.login.remember_me'|trans({}, 'NucleosUserBundle') }}
+                    </label>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <button type="submit" class="btn btn-primary btn-block btn-flat">
+                    {{ 'security.login.submit'|trans({}, 'NucleosUserBundle') }}
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <a href="{{ reset_route }}">{{ 'forgotten_password'|trans({}, 'NucleosUserAdminBundle') }}</a>
+{% endblock %}
