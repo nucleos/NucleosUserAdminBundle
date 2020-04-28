@@ -1,3 +1,11 @@
+# 1.2.0
+
+## Changes
+
+## 🚀 Features
+
+- Use common layout for all security templates @core23 (#22)
+
 # 1.1.2
 
 ## Changes
