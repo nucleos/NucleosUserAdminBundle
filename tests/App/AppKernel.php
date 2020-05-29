@@ -18,6 +18,7 @@ use Knp\Bundle\MenuBundle\KnpMenuBundle;
 use Nucleos\UserAdminBundle\NucleosUserAdminBundle;
 use Nucleos\UserBundle\NucleosUserBundle;
 use Sonata\AdminBundle\SonataAdminBundle;
+use Sonata\CoreBundle\SonataCoreBundle;
 use Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -44,6 +45,7 @@ final class AppKernel extends Kernel
         yield new SecurityBundle();
         yield new DoctrineBundle();
         yield new KnpMenuBundle();
+        yield new SonataCoreBundle();
         yield new SonataAdminBundle();
         yield new SonataDoctrineORMAdminBundle();
         yield new NucleosUserBundle();
