@@ -10,7 +10,7 @@ NucleosUserAdminBundle
 [![Daily Downloads](https://poser.pugx.org/nucleos/user-admin-bundle/d/daily)](https://packagist.org/packages/nucleos/user-admin-bundle)
 
 [![Continuous Integration](https://github.com/nucleos/NucleosUserAdminBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/NucleosUserAdminBundle/actions)
-[![Code Coverage](https://codecov.io/gh/nucleos/NucleosUserAdminBundle/branch/master/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosUserAdminBundle)
+[![Code Coverage](https://codecov.io/gh/nucleos/NucleosUserAdminBundle/branch/main/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosUserAdminBundle)
 
 The NucleosUserAdminBundle is an user admin backend for [SonataAdminBundle](https://github.com/sonata-project/SonataAdminBundle).
 
