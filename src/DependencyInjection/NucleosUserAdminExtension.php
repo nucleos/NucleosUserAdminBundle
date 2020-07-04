@@ -20,7 +20,7 @@ use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 final class NucleosUserAdminExtension extends Extension implements PrependExtensionInterface
@@ -47,22 +47,22 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
 
         $bundles = $container->getParameter('kernel.bundles');
 
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         if (isset($bundles['SonataAdminBundle'])) {
-            $loader->load('admin.xml');
+            $loader->load('admin.php');
 
             if (\in_array($config['manager_type'], ['orm', 'mongodb'], true)) {
-                $loader->load(sprintf('admin_%s.xml', $config['manager_type']));
+                $loader->load(sprintf('admin_%s.php', $config['manager_type']));
             }
         }
 
-        $loader->load('twig.xml');
-        $loader->load('actions.xml');
-        $loader->load('avatar.xml');
+        $loader->load('twig.php');
+        $loader->load('action.php');
+        $loader->load('avatar.php');
 
         if ($config['security_acl']) {
-            $loader->load('security_acl.xml');
+            $loader->load('security_acl.php');
         }
 
         $this->configureAvatar($config, $container);
@@ -71,7 +71,7 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
         $this->configureController($config, $container);
 
         if (false !== $config['impersonating']) {
-            $loader->load('impersonating.xml');
+            $loader->load('impersonating.php');
 
             $container->getDefinition(ImpersonateExtension::class)
                 ->replaceArgument(1, $config['impersonating']['route'])
