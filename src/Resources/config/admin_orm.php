@@ -11,8 +11,6 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Symfony\Component\DependencyInjection\Reference;
-
 return static function (ContainerConfigurator $container): void {
     $container->parameters()
 
@@ -36,12 +34,12 @@ return static function (ContainerConfigurator $container): void {
             ])
             ->args([
                 null,
-                'nucleos_user.model.user.class',
-                'nucleos_user_admin.admin.user.controller',
-                new Reference('nucleos_user.user_manager'),
+                '%nucleos_user.model.user.class%',
+                '%nucleos_user_admin.admin.user.controller%',
+                ref('nucleos_user.user_manager'),
             ])
             ->call('setTranslationDomain', [
-                'nucleos_user_admin.admin.user.translation_domain',
+                '%nucleos_user_admin.admin.group.translation_domain%',
             ])
 
         ->set('nucleos_user_admin.admin.group', '%nucleos_user_admin.admin.group.class%')
@@ -56,12 +54,12 @@ return static function (ContainerConfigurator $container): void {
             ])
             ->args([
                 null,
-                'nucleos_user.model.group.class',
-                'nucleos_user_admin.admin.group.controller',
-                new Reference('nucleos_user.group_manager'),
+                '%nucleos_user.model.group.class%',
+                '%nucleos_user_admin.admin.group.controller%',
+                ref('nucleos_user.group_manager'),
             ])
             ->call('setTranslationDomain', [
-                'nucleos_user_admin.admin.group.translation_domain',
+                '%nucleos_user_admin.admin.group.translation_domain%',
             ])
 
     ;

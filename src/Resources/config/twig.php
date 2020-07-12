@@ -12,14 +12,13 @@
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use Nucleos\UserAdminBundle\Twig\GlobalVariables;
-use Symfony\Component\DependencyInjection\Reference;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
 
         ->set('nucleos_user_admin.twig.global', GlobalVariables::class)
             ->args([
-                new Reference('nucleos_user_admin.admin.user'),
+                ref('nucleos_user_admin.admin.user'),
             ])
 
     ;

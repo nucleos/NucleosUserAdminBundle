@@ -18,9 +18,6 @@ use Nucleos\UserAdminBundle\Action\LogoutAction;
 use Nucleos\UserAdminBundle\Action\RequestAction;
 use Nucleos\UserAdminBundle\Action\ResetAction;
 use Nucleos\UserAdminBundle\Action\SendEmailAction;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\DependencyInjection\Parameter;
-use Symfony\Component\DependencyInjection\Reference;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
@@ -28,70 +25,70 @@ return static function (ContainerConfigurator $container): void {
         ->set(RequestAction::class)
             ->public()
             ->args([
-                new Reference('twig'),
-                new Reference('router'),
-                new Reference('security.authorization_checker'),
-                new Reference('sonata.admin.pool'),
-                new Reference('sonata.admin.global_template_registry'),
+                ref('twig'),
+                ref('router'),
+                ref('security.authorization_checker'),
+                ref('sonata.admin.pool'),
+                ref('sonata.admin.global_template_registry'),
             ])
 
         ->set(SendEmailAction::class)
             ->public()
             ->args([
-                new Reference('twig'),
-                new Reference('router'),
-                new Reference('sonata.admin.pool'),
-                new Reference('sonata.admin.global_template_registry'),
-                new Reference('nucleos_user.user_manager'),
-                new Reference('nucleos_user.mailer'),
-                new Reference('nucleos_user.util.token_generator'),
-                new Parameter('nucleos_user.resetting.retry_ttl'),
+                ref('twig'),
+                ref('router'),
+                ref('sonata.admin.pool'),
+                ref('sonata.admin.global_template_registry'),
+                ref('nucleos_user.user_manager'),
+                ref('nucleos_user.mailer'),
+                ref('nucleos_user.util.token_generator'),
+                '%nucleos_user.resetting.retry_ttl%',
             ])
 
         ->set(CheckEmailAction::class)
             ->public()
             ->args([
-                new Reference('twig'),
-                new Reference('router'),
-                new Reference('sonata.admin.pool'),
-                new Reference('sonata.admin.global_template_registry'),
-                new Parameter('nucleos_user.resetting.retry_ttl'),
+                ref('twig'),
+                ref('router'),
+                ref('sonata.admin.pool'),
+                ref('sonata.admin.global_template_registry'),
+                '%nucleos_user.resetting.retry_ttl%',
             ])
 
         ->set(ResetAction::class)
             ->public()
             ->args([
-                new Reference('twig'),
-                new Reference('router'),
-                new Reference('security.authorization_checker'),
-                new Reference('sonata.admin.pool'),
-                new Reference('sonata.admin.global_template_registry'),
-                new Reference('form.factory'),
-                new Reference('nucleos_user.user_manager'),
-                new Reference('nucleos_user.security.login_manager'),
-                new Reference('translator'),
-                new Reference('session'),
-                new Parameter('nucleos_user.resetting.retry_ttl'),
-                new Parameter('nucleos_user.firewall_name'),
+                ref('twig'),
+                ref('router'),
+                ref('security.authorization_checker'),
+                ref('sonata.admin.pool'),
+                ref('sonata.admin.global_template_registry'),
+                ref('form.factory'),
+                ref('nucleos_user.user_manager'),
+                ref('nucleos_user.security.login_manager'),
+                ref('translator'),
+                ref('session'),
+                '%nucleos_user.resetting.retry_ttl%',
+                '%nucleos_user.firewall_name%',
             ])
             ->call('setLogger', [
-                new Reference('logger', ContainerInterface::IGNORE_ON_INVALID_REFERENCE),
+                ref('logger')->ignoreOnInvalid(),
             ])
 
         ->set(LoginAction::class)
             ->public()
             ->args([
-                new Reference('twig'),
-                new Reference('event_dispatcher'),
-                new Reference('router'),
-                new Reference('security.authorization_checker'),
-                new Reference('sonata.admin.pool'),
-                new Reference('sonata.admin.global_template_registry'),
-                new Reference('security.token_storage'),
-                new Reference('session'),
+                ref('twig'),
+                ref('event_dispatcher'),
+                ref('router'),
+                ref('security.authorization_checker'),
+                ref('sonata.admin.pool'),
+                ref('sonata.admin.global_template_registry'),
+                ref('security.token_storage'),
+                ref('session'),
             ])
             ->call('setCsrfTokenManager', [
-                new Reference('security.csrf.token_manager', ContainerInterface::IGNORE_ON_INVALID_REFERENCE),
+                ref('security.csrf.token_manager')->ignoreOnInvalid(),
             ])
 
         ->set(CheckLoginAction::class)
