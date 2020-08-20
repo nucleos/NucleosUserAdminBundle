@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Symfony\\\\Contracts\\\\EventDispatcher\\\\EventDispatcherInterface\\:\\:dispatch\\(\\) invoked with 2 parameters, 1 required\\.$#"
-			count: 1
-			path: src/Action/LoginAction.php
-
-		-
 			message: "#^Call to method Symfony\\\\Component\\\\HttpFoundation\\\\Request\\:\\:hasSession\\(\\) will always evaluate to true\\.$#"
 			count: 1
 			path: src/Action/LoginAction.php
