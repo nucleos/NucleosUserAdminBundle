@@ -14,8 +14,6 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use Nucleos\UserAdminBundle\Avatar\AvatarResolver;
 use Nucleos\UserAdminBundle\Avatar\StaticAvatarResolver;
 use Nucleos\UserAdminBundle\Twig\AvatarExtension;
-use Symfony\Component\DependencyInjection\Parameter;
-use Symfony\Component\DependencyInjection\Reference;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
@@ -23,14 +21,14 @@ return static function (ContainerConfigurator $container): void {
         ->set(AvatarExtension::class)
             ->tag('twig.extension')
             ->args([
-                new Reference(AvatarResolver::class),
+                ref(AvatarResolver::class),
                 null,
                 [],
             ])
 
         ->set(StaticAvatarResolver::class)
             ->args([
-                new Parameter('nucleos_user_admin.default_avatar'),
+                '%nucleos_user_admin.default_avatar%',
             ])
 
         ->alias(AvatarResolver::class, StaticAvatarResolver::class)

@@ -18,62 +18,60 @@ use Nucleos\UserAdminBundle\Security\RolesBuilder\AdminRolesBuilder;
 use Nucleos\UserAdminBundle\Security\RolesBuilder\MatrixRolesBuilder;
 use Nucleos\UserAdminBundle\Security\RolesBuilder\SecurityRolesBuilder;
 use Nucleos\UserAdminBundle\Twig\RolesMatrixExtension;
-use Symfony\Component\DependencyInjection\Parameter;
-use Symfony\Component\DependencyInjection\Reference;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
 
         ->set('nucleos_user_admin.editable_role_builder', EditableRolesBuilder::class)
             ->args([
-                new Reference('security.token_storage'),
-                new Reference('security.authorization_checker'),
-                new Reference('sonata.admin.pool'),
-                new Parameter('security.role_hierarchy.roles'),
+                ref('security.token_storage'),
+                ref('security.authorization_checker'),
+                ref('sonata.admin.pool'),
+                '%security.role_hierarchy.roles%',
             ])
             ->call('setTranslator', [
-                new Reference('translator'),
+                ref('translator'),
             ])
 
         ->set('nucleos_user_admin.form.type.security_roles', SecurityRolesType::class)
             ->tag('form.type')
             ->args([
-                new Reference('nucleos_user_admin.editable_role_builder'),
+                ref('nucleos_user_admin.editable_role_builder'),
             ])
 
         ->set('nucleos_user_admin.matrix_roles_builder', MatrixRolesBuilder::class)
             ->args([
-                new Reference('security.token_storage'),
-                new Reference('nucleos_user_admin.admin_roles_builder'),
-                new Reference('nucleos_user_admin.security_roles_builder'),
+                ref('security.token_storage'),
+                ref('nucleos_user_admin.admin_roles_builder'),
+                ref('nucleos_user_admin.security_roles_builder'),
             ])
 
         ->set('nucleos_user_admin.admin_roles_builder', AdminRolesBuilder::class)
             ->args([
-                new Reference('security.authorization_checker'),
-                new Reference('sonata.admin.pool'),
-                new Reference('translator'),
+                ref('security.authorization_checker'),
+                ref('sonata.admin.pool'),
+                ref('translator'),
             ])
 
         ->set('nucleos_user_admin.security_roles_builder', SecurityRolesBuilder::class)
             ->args([
-                new Reference('security.authorization_checker'),
-                new Reference('sonata.admin.pool'),
-                new Reference('translator'),
-                new Parameter('security.role_hierarchy.roles'),
+                ref('security.authorization_checker'),
+                ref('sonata.admin.pool'),
+                ref('translator'),
+                '%security.role_hierarchy.roles%',
             ])
 
         ->set(RolesMatrixType::class)
             ->public()
             ->tag('form.type')
             ->args([
-                new Reference('nucleos_user_admin.matrix_roles_builder'),
+                ref('nucleos_user_admin.matrix_roles_builder'),
             ])
 
         ->set(RolesMatrixExtension::class)
             ->tag('twig.extension')
             ->args([
-                new Reference('nucleos_user_admin.matrix_roles_builder'),
+                ref('nucleos_user_admin.matrix_roles_builder'),
             ])
     ;
 };

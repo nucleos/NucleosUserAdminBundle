@@ -12,8 +12,6 @@
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use Nucleos\UserAdminBundle\Security\Authorization\Voter\UserAclVoter;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\DependencyInjection\Reference;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
@@ -26,11 +24,11 @@ return static function (ContainerConfigurator $container): void {
                 'priority' => 255,
             ])
             ->args([
-                new Reference('security.acl.provider'),
-                new Reference('security.acl.object_identity_retrieval_strategy'),
-                new Reference('security.acl.security_identity_retrieval_strategy'),
-                new Reference('security.acl.permission.map'),
-                new Reference('logger', ContainerInterface::NULL_ON_INVALID_REFERENCE),
+                ref('security.acl.provider'),
+                ref('security.acl.object_identity_retrieval_strategy'),
+                ref('security.acl.security_identity_retrieval_strategy'),
+                ref('security.acl.permission.map'),
+                ref('logger')->nullOnInvalid(),
             ])
 
     ;

@@ -12,7 +12,6 @@
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use Nucleos\UserAdminBundle\Twig\ImpersonateExtension;
-use Symfony\Component\DependencyInjection\Reference;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
@@ -20,7 +19,7 @@ return static function (ContainerConfigurator $container): void {
         ->set(ImpersonateExtension::class)
             ->tag('twig.extension')
             ->args([
-                new Reference('router'),
+                ref('router'),
                 null,
                 [],
             ])
