@@ -12,7 +12,7 @@
         "phpstan/phpstan-phpunit": "^0.12",
         "phpstan/phpstan-strict-rules": "^0.12",
         "phpstan/phpstan-symfony": "^0.12",
-        "phpunit/phpunit": "^8.5",
+        "phpunit/phpunit": "^9.3",
         "symfony/phpunit-bridge": "^5.1"
     },
     "config": {
