@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="3.14.2@3538fe1955d47f6ee926c0769d71af6db08aa488">
+  <file src="src/Action/LoginAction.php">
+    <TooManyArguments occurrences="1">
+      <code>dispatch</code>
+    </TooManyArguments>
+  </file>
+  <file src="src/Admin/Model/UserAdmin.php">
+    <PossiblyNullArgument occurrences="1">
+      <code>$this-&gt;getSubject()</code>
+    </PossiblyNullArgument>
+  </file>
+  <file src="src/DependencyInjection/Configuration.php">
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>children</code>
+    </PossiblyUndefinedMethod>
+    <UndefinedMethod occurrences="1">
+      <code>children</code>
+    </UndefinedMethod>
+  </file>
+  <file src="src/Form/Type/SecurityRolesType.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$formBuilder</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/Security/Authorization/Voter/UserAclVoter.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$subject</code>
+    </ParamNameMismatch>
+    <PossiblyInvalidMethodCall occurrences="1">
+      <code>isSuperAdmin</code>
+    </PossiblyInvalidMethodCall>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>isSuperAdmin</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/Security/RolesBuilder/AdminRolesBuilder.php">
+    <InvalidArgument occurrences="1">
+      <code>$this-&gt;excludeAdmins</code>
+    </InvalidArgument>
+    <InvalidPropertyAssignmentValue occurrences="1">
+      <code>[]</code>
+    </InvalidPropertyAssignmentValue>
+    <InvalidReturnStatement occurrences="1">
+      <code>$this-&gt;excludeAdmins</code>
+    </InvalidReturnStatement>
+    <InvalidReturnType occurrences="1">
+      <code>string[]</code>
+    </InvalidReturnType>
+    <PossiblyNullArgument occurrences="1">
+      <code>$admin-&gt;getParent()</code>
+    </PossiblyNullArgument>
+  </file>
+  <file src="src/Security/RolesBuilder/SecurityRolesBuilder.php">
+    <InvalidArgument occurrences="1">
+      <code>$this-&gt;rolesHierarchy</code>
+    </InvalidArgument>
+    <InvalidPropertyAssignmentValue occurrences="1">
+      <code>$rolesHierarchy</code>
+    </InvalidPropertyAssignmentValue>
+    <RedundantCondition occurrences="1">
+      <code>$result</code>
+    </RedundantCondition>
+    <TypeDoesNotContainType occurrences="1">
+      <code>false === $result</code>
+    </TypeDoesNotContainType>
+  </file>
+</files>
