@@ -18,15 +18,21 @@ use Sonata\AdminBundle\Admin\AdminInterface;
 final class GlobalVariables
 {
     /**
-     * @var AdminInterface
+     * @var AdminInterface<\Nucleos\UserBundle\Model\UserInterface>
      */
     private $admin;
 
+    /**
+     * @phpstan-param AdminInterface<\Nucleos\UserBundle\Model\UserInterface> $admin
+     */
     public function __construct(AdminInterface $admin)
     {
-        $this->admin              = $admin;
+        $this->admin = $admin;
     }
 
+    /**
+     * @return AdminInterface<\Nucleos\UserBundle\Model\UserInterface>
+     */
     public function getUserAdmin(): AdminInterface
     {
         return $this->admin;

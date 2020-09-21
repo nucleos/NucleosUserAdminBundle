@@ -108,6 +108,9 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
         return $adminRoles;
     }
 
+    /**
+     * @phpstan-param AdminInterface<\Nucleos\UserBundle\Model\UserInterface> $admin
+     */
     private function getAdminLabel(AdminInterface $admin): string
     {
         return sprintf(
@@ -117,6 +120,9 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
         );
     }
 
+    /**
+     * @phpstan-param AdminInterface<\Nucleos\UserBundle\Model\UserInterface> $admin
+     */
     private function getGroupLabel(AdminInterface $admin): string
     {
         foreach ($this->pool->getAdminGroups() as $groupName => $groupData) {
@@ -138,6 +144,9 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
         return $this->guessGroupLabel($admin);
     }
 
+    /**
+     * @phpstan-param AdminInterface<\Nucleos\UserBundle\Model\UserInterface> $admin
+     */
     private function isMaster(AdminInterface $admin): bool
     {
         return $admin->isGranted('MASTER')                                          ||
@@ -154,6 +163,9 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
         return $role;
     }
 
+    /**
+     * @phpstan-param AdminInterface<\Nucleos\UserBundle\Model\UserInterface> $admin
+     */
     private function guessGroupLabel(AdminInterface $admin): string
     {
         $baseRoute = $admin->getBaseCodeRoute();

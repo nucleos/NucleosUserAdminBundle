@@ -20,6 +20,9 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
+/**
+ * @phpstan-extends AbstractAdmin<\Nucleos\UserBundle\Model\GroupInterface>
+ */
 abstract class GroupAdmin extends AbstractAdmin
 {
     /**
@@ -34,6 +37,9 @@ abstract class GroupAdmin extends AbstractAdmin
      */
     private $groupManager;
 
+    /**
+     * @phpstan-param class-string<\Nucleos\UserBundle\Model\GroupInterface> $class
+     */
     public function __construct($code, $class, $baseControllerName, GroupManagerInterface $groupManager)
     {
         parent::__construct($code, $class, $baseControllerName);

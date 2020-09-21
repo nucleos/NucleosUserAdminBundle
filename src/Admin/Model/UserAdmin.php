@@ -16,7 +16,6 @@ namespace Nucleos\UserAdminBundle\Admin\Model;
 use DomainException;
 use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
 use Nucleos\UserBundle\Model\LocaleAwareInterface;
-use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -29,6 +28,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 use Symfony\Component\Form\FormBuilderInterface;
 
+/**
+ * @phpstan-extends AbstractAdmin<\Nucleos\UserBundle\Model\UserInterface>
+ */
 abstract class UserAdmin extends AbstractAdmin
 {
     /**
@@ -36,6 +38,9 @@ abstract class UserAdmin extends AbstractAdmin
      */
     protected $userManager;
 
+    /**
+     * @phpstan-param class-string<\Nucleos\UserBundle\Model\UserInterface> $class
+     */
     public function __construct($code, $class, $baseControllerName, UserManagerInterface $userManager)
     {
         parent::__construct($code, $class, $baseControllerName);
@@ -94,10 +99,6 @@ abstract class UserAdmin extends AbstractAdmin
 
     public function preUpdate($user): void
     {
-        if (!$user instanceof UserInterface) {
-            return;
-        }
-
         $this->userManager->updateCanonicalFields($user);
         $this->userManager->updatePassword($user);
     }

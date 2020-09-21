@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Nucleos\UserAdminBundle\Tests\Admin\Entity;
 
 use Nucleos\UserAdminBundle\Admin\Entity\GroupAdmin;
+use Nucleos\UserBundle\Model\Group;
 use Nucleos\UserBundle\Model\GroupManagerInterface;
 use PHPUnit\Framework\TestCase;
 use Sonata\AdminBundle\Controller\CRUDController;
@@ -24,7 +25,7 @@ final class GroupAdminTest extends TestCase
     {
         $admin = new GroupAdmin(
             'admin.group',
-            'Nucleos\UserAdminBundle\Model\Group',
+            Group::class,
             CRUDController::class,
             $this->createMock(GroupManagerInterface::class)
         );
