@@ -37,7 +37,7 @@ final class AdminRolesBuilderTest extends TestCase
     private $authorizationChecker;
 
     /**
-     * @var MockObject&AdminInterface
+     * @var MockObject&AdminInterface<object>
      */
     private $admin;
 
