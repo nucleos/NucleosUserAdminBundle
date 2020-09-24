@@ -38,6 +38,10 @@ abstract class GroupAdmin extends AbstractAdmin
     private $groupManager;
 
     /**
+     * @param string $code
+     * @param string $class
+     * @param string $baseControllerName
+     *
      * @phpstan-param class-string<\Nucleos\UserBundle\Model\GroupInterface> $class
      */
     public function __construct($code, $class, $baseControllerName, GroupManagerInterface $groupManager)
