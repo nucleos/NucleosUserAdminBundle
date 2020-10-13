@@ -43,7 +43,7 @@
         "symfony/twig-bridge": "^4.4",
         "symfony/twig-bundle": "^4.4",
         "twig/extra-bundle": "^3.0",
-        "twig/string-extra": "^3.0",
+        "twig/string-extra": "^2.13 || ^3.0",
         "twig/twig": "^2.4 || ^3.0"
     },
     "conflict": {
