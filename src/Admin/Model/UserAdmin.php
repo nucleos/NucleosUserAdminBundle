@@ -87,9 +87,6 @@ abstract class UserAdmin extends AbstractAdmin
         return $formBuilder;
     }
 
-    /**
-     * @return mixed[]
-     */
     public function getExportFields(): array
     {
         // avoid security field to be exported
