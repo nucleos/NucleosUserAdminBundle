@@ -64,7 +64,7 @@ final class CheckEmailAction
 
     public function __invoke(Request $request): Response
     {
-        $username = trim((string) $request->query->get('username', ''));
+        $username = trim($request->query->get('username', ''));
 
         if ('' === $username) {
             // the user does not come from the sendEmail action
