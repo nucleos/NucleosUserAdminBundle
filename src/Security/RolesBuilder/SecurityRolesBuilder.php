@@ -35,10 +35,13 @@ final class SecurityRolesBuilder implements ExpandableRolesBuilderInterface
     private $translator;
 
     /**
-     * @var string []
+     * @var array<string, string[]>
      */
     private $rolesHierarchy;
 
+    /**
+     * @param array<string, string[]> $rolesHierarchy
+     */
     public function __construct(
         AuthorizationCheckerInterface $authorizationChecker,
         Pool $pool,
@@ -98,19 +101,18 @@ final class SecurityRolesBuilder implements ExpandableRolesBuilderInterface
     }
 
     /**
-     * @return mixed[][]
+     * @return array<string, string[]>
      */
     private function getHierarchy(): array
     {
-        $result = array_merge(
+        // @phpstan-ignore-next-line
+        return array_merge(
             [
                 $this->pool->getOption('role_super_admin') => [],
                 $this->pool->getOption('role_admin')       => [],
             ],
             $this->rolesHierarchy
         );
-
-        return false === $result ? [] : $result;
     }
 
     /**
