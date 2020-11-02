@@ -91,21 +91,6 @@ parameters:
 			path: src/Security/RolesBuilder/RolesBuilderInterface.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\SecurityRolesBuilder\\:\\:__construct\\(\\) has parameter \\$rolesHierarchy with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Security/RolesBuilder/SecurityRolesBuilder.php
-
-		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\SecurityRolesBuilder\\:\\:getHierarchy\\(\\) should return array\\<array\\> but returns array\\<int\\|string, array\\|string\\>\\.$#"
-			count: 1
-			path: src/Security/RolesBuilder/SecurityRolesBuilder.php
-
-		-
-			message: "#^Strict comparison using \\=\\=\\= between false and array\\<int\\|string, array\\(\\)\\|string\\> will always evaluate to false\\.$#"
-			count: 1
-			path: src/Security/RolesBuilder/SecurityRolesBuilder.php
-
-		-
 			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\SecurityRolesBuilder\\:\\:getSecurityRoles\\(\\) has parameter \\$hierarchy with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Security/RolesBuilder/SecurityRolesBuilder.php
