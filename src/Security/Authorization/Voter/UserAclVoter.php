@@ -34,18 +34,21 @@ final class UserAclVoter extends AclVoter
 
     /**
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     *
+     * @param mixed $subject
      */
     public function vote(TokenInterface $token, $subject, array $attributes): int
     {
-        if (!\is_object($subject) || !$this->supportsClass(\get_class($subject))) {
+        if (!$this->isValidSubject($subject)) {
             return self::ACCESS_ABSTAIN;
         }
 
-        foreach ($attributes as $attribute) {
-            if ($this->supportsAttribute($attribute) && $subject instanceof UserInterface && $token->getUser(
-                ) instanceof UserInterface) {
-                if ($subject->isSuperAdmin() && !$token->getUser()->isSuperAdmin()) {
-                    // deny a non super admin user to edit or delete a super admin user
+        $user = $token->getUser();
+
+        // deny a non super admin user to edit or delete a super admin user
+        if ($subject instanceof UserInterface && $user instanceof UserInterface) {
+            foreach ($attributes as $attribute) {
+                if ($this->supportsAttribute($attribute) && $subject->isSuperAdmin() && !$user->isSuperAdmin()) {
                     return self::ACCESS_DENIED;
                 }
             }
@@ -53,5 +56,13 @@ final class UserAclVoter extends AclVoter
 
         // leave the permission voting to the AclVoter that is using the default permission map
         return self::ACCESS_ABSTAIN;
+    }
+
+    /**
+     * @param mixed $subject
+     */
+    private function isValidSubject($subject): bool
+    {
+        return \is_object($subject) && $this->supportsClass(\get_class($subject));
     }
 }

@@ -130,10 +130,8 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
                 continue;
             }
 
-            foreach ($groupData['items'] as $item) {
-                if ($item['admin'] === $admin->getCode()) {
-                    return $admin->getTranslator()->trans($groupName, [], 'SonataAdminBundle');
-                }
+            if ($this->hasGroupAdmin($groupData['items'], $admin)) {
+                return $admin->getTranslator()->trans($groupName, [], 'SonataAdminBundle');
             }
         }
 
@@ -142,6 +140,22 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
         }
 
         return $this->guessGroupLabel($admin);
+    }
+
+    /**
+     * @param array<string, mixed> $items
+     *
+     * @phpstan-param AdminInterface<\Nucleos\UserBundle\Model\UserInterface> $admin
+     */
+    private function hasGroupAdmin(array $items, AdminInterface $admin): bool
+    {
+        foreach ($items as $item) {
+            if ($item['admin'] === $admin->getCode()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
