@@ -98,6 +98,9 @@ final class ResetAction
      */
     private $firewallName;
 
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     */
     public function __construct(
         Environment $twig,
         UrlGeneratorInterface $urlGenerator,
@@ -127,6 +130,9 @@ final class ResetAction
         $this->logger               = new NullLogger();
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     */
     public function __invoke(Request $request, string $token): Response
     {
         if ($this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {

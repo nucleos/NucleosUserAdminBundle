@@ -180,6 +180,9 @@ final class ResetActionTest extends TestCase
         static::assertSame('/foo', $result->getTargetUrl());
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
     public function testReset(): void
     {
         $request = new Request();
@@ -246,6 +249,9 @@ final class ResetActionTest extends TestCase
         static::assertSame('template content', $result->getContent());
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
     public function testPostedReset(): void
     {
         $request = new Request();

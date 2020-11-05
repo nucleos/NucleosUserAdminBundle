@@ -32,6 +32,9 @@ final class UserAclVoter extends AclVoter
         return 'EDIT' === $attribute || 'DELETE' === $attribute;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     */
     public function vote(TokenInterface $token, $subject, array $attributes): int
     {
         if (!\is_object($subject) || !$this->supportsClass(\get_class($subject))) {

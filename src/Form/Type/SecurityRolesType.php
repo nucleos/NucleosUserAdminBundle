@@ -81,6 +81,10 @@ final class SecurityRolesType extends AbstractType
         $view->vars['read_only_choices'] = $options['read_only_choices'];
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(

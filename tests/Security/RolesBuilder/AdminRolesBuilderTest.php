@@ -143,6 +143,9 @@ final class AdminRolesBuilderTest extends TestCase
         static::assertSame($expected, $rolesBuilder->getPermissionLabels());
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
     public function testGetRoles(): void
     {
         $this->translator->method('trans')

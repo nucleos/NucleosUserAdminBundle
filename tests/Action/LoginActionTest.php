@@ -182,6 +182,8 @@ final class LoginActionTest extends TestCase
 
     /**
      * @dataProvider unauthenticatedProvider
+     *
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     public function testUnauthenticated(string $lastUsername, AuthenticationException $errorMessage = null): void
     {

@@ -208,6 +208,9 @@ final class RolesMatrixExtensionTest extends TestCase
         $rolesMatrixExtension->renderMatrix($this->environment, $this->formView);
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
     public function testRenderMatrix(): void
     {
         $roles = [

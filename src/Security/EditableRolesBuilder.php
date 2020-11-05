@@ -63,6 +63,12 @@ final class EditableRolesBuilder implements EditableRolesBuilderInterface
         $this->translator = $translator;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     *
+     * @param bool|string|null $domain
+     */
     public function getRoles($domain = false, bool $expanded = true): array
     {
         $roles = [];

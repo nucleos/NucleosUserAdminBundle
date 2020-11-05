@@ -31,6 +31,10 @@ final class RolesMatrixType extends AbstractType
         $this->rolesBuilder = $rolesBuilder;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(

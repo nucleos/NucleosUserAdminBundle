@@ -98,6 +98,10 @@ final class LoginAction
         $this->session              = $session;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     */
     public function __invoke(Request $request): Response
     {
         if ($this->isAuthenticated()) {
