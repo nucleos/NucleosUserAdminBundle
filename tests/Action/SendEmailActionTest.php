@@ -204,6 +204,9 @@ final class SendEmailActionTest extends TestCase
         static::assertSame('/foo', $result->getTargetUrl());
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
     public function testEmailSent(): void
     {
         $request = new Request([], ['username' => 'bar']);

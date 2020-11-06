@@ -145,6 +145,9 @@ abstract class UserAdmin extends AbstractAdmin
         ;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper

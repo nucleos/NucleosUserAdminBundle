@@ -98,6 +98,10 @@ final class LoginAction
         $this->session              = $session;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     */
     public function __invoke(Request $request): Response
     {
         if ($this->isAuthenticated()) {
@@ -142,14 +146,10 @@ final class LoginAction
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get($lastUsernameKey);
 
-        $csrfToken = null !== $this->csrfTokenManager
-            ? $this->csrfTokenManager->getToken('authenticate')->getValue()
-            : null;
-
         return new Response($this->twig->render('@NucleosUserAdmin/Admin/Security/login.html.twig', [
             'admin_pool'    => $this->adminPool,
             'base_template' => $this->templateRegistry->getTemplate('layout'),
-            'csrf_token'    => $csrfToken,
+            'csrf_token'    => $this->getCsrfToken(),
             'error'         => $error,
             'last_username' => $lastUsername,
             'reset_route'   => $this->urlGenerator->generate('nucleos_user_admin_resetting_request'),
@@ -172,5 +172,10 @@ final class LoginAction
         $user = $token->getUser();
 
         return $user instanceof UserInterface;
+    }
+
+    private function getCsrfToken(): ?string
+    {
+        return null !== $this->csrfTokenManager ? $this->csrfTokenManager->getToken('authenticate')->getValue() : null;
     }
 }

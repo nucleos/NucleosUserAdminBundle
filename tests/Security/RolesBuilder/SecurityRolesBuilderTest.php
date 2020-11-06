@@ -56,6 +56,9 @@ final class SecurityRolesBuilderTest extends TestCase
         $this->translator           = $this->createMock(TranslatorInterface::class);
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
     public function testGetRoles(): void
     {
         $this->pool->expects(static::exactly(2))
@@ -112,6 +115,9 @@ final class SecurityRolesBuilderTest extends TestCase
         static::assertSame($expected, $securityRolesBuilder->getExpandedRoles());
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
     public function testGetRolesNotExpanded(): void
     {
         $this->pool->expects(static::exactly(2))
@@ -168,6 +174,9 @@ final class SecurityRolesBuilderTest extends TestCase
         static::assertSame($expected, $securityRolesBuilder->getRoles(null));
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
     public function testGetRolesWithExistingRole(): void
     {
         $this->pool->expects(static::exactly(2))

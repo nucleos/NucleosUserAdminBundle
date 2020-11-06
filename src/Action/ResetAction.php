@@ -16,6 +16,7 @@ namespace Nucleos\UserAdminBundle\Action;
 use DateTime;
 use Nucleos\UserBundle\Form\Model\Resetting;
 use Nucleos\UserBundle\Form\Type\ResettingFormType;
+use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Nucleos\UserBundle\Security\LoginManagerInterface;
 use Psr\Log\LoggerAwareTrait;
@@ -98,6 +99,9 @@ final class ResetAction
      */
     private $firewallName;
 
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     */
     public function __construct(
         Environment $twig,
         UrlGeneratorInterface $urlGenerator,
@@ -127,6 +131,9 @@ final class ResetAction
         $this->logger               = new NullLogger();
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     */
     public function __invoke(Request $request, string $token): Response
     {
         if ($this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
@@ -152,31 +159,14 @@ final class ResetAction
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setConfirmationToken(null);
-            $user->setPasswordRequestedAt(null);
-            $user->setEnabled(true);
-
-            $message = $this->translator->trans('resetting.flash.success', [], 'NucleosUserBundle');
-            $this->session->getFlashBag()->add('success', $message);
+            $this->session->getFlashBag()->add(
+                'success',
+                $this->translator->trans('resetting.flash.success', [], 'NucleosUserBundle')
+            );
 
             $response = new RedirectResponse($this->urlGenerator->generate('sonata_admin_dashboard'));
 
-            try {
-                $this->loginManager->logInUser($this->firewallName, $user, $response);
-                $user->setLastLogin(new DateTime());
-            } catch (AccountStatusException $ex) {
-                // We simply do not authenticate users which do not pass the user
-                // checker (not enabled, expired, etc.).
-                $this->logger->warning(
-                    sprintf(
-                        'Unable to login user %d after password reset',
-                        $user->getId()
-                    ),
-                    ['exception' => $ex]
-                );
-            }
-
-            $this->userManager->updateUser($user);
+            $this->resetUser($user, $response);
 
             return $response;
         }
@@ -192,5 +182,27 @@ final class ResetAction
                 ]
             )
         );
+    }
+
+    private function resetUser(UserInterface $user, RedirectResponse $response): void
+    {
+        try {
+            $user->setConfirmationToken(null);
+            $user->setPasswordRequestedAt(null);
+            $user->setEnabled(true);
+
+            $this->loginManager->logInUser($this->firewallName, $user, $response);
+
+            $user->setLastLogin(new DateTime());
+
+            $this->userManager->updateUser($user);
+        } catch (AccountStatusException $ex) {
+            // We simply do not authenticate users which do not pass the user
+            // checker (not enabled, expired, etc.).
+            $this->logger->warning(
+                sprintf('Unable to login user %d after password reset', $user->getId()),
+                ['exception' => $ex]
+            );
+        }
     }
 }
