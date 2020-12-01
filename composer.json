@@ -58,7 +58,7 @@
         "knplabs/knp-menu": "^2.3 || ^3.0",
         "sonata-project/doctrine-orm-admin-bundle": "^3.13",
         "symfony/asset": "^4.4",
-        "symfony/browser-kit": "^4.4",
+        "symfony/browser-kit": "^5.2",
         "symfony/doctrine-bridge": "^4.4",
         "twig/extensions": "^1.5"
     },
