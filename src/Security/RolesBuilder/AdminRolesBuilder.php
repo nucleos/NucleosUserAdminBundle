@@ -163,9 +163,9 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
      */
     private function isMaster(AdminInterface $admin): bool
     {
-        return $admin->isGranted('MASTER')                                          ||
-            $admin->isGranted('OPERATOR')                                           ||
-            $this->authorizationChecker->isGranted($this->pool->getOption('role_super_admin'));
+        return $admin->isGranted('MASTER')
+            || $admin->isGranted('OPERATOR')
+            || $this->authorizationChecker->isGranted($this->pool->getOption('role_super_admin'));
     }
 
     private function translateRole(string $role, ?string $domain): string
