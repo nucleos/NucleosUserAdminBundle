@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="3.14.2@3538fe1955d47f6ee926c0769d71af6db08aa488">
+<files psalm-version="4.3.1@2feba22a005a18bf31d4c7b9bdb9252c73897476">
   <file src="src/Action/LoginAction.php">
     <TooManyArguments occurrences="1">
       <code>dispatch</code>
     </TooManyArguments>
   </file>
   <file src="src/Admin/Model/UserAdmin.php">
+    <ArgumentTypeCoercion occurrences="3">
+      <code>$this-&gt;getSubject()</code>
+      <code>$user</code>
+      <code>$user</code>
+    </ArgumentTypeCoercion>
     <PossiblyNullArgument occurrences="1">
       <code>$this-&gt;getSubject()</code>
     </PossiblyNullArgument>
@@ -27,12 +32,11 @@
     <ParamNameMismatch occurrences="1">
       <code>$subject</code>
     </ParamNameMismatch>
-    <PossiblyInvalidMethodCall occurrences="1">
-      <code>isSuperAdmin</code>
-    </PossiblyInvalidMethodCall>
-    <UndefinedInterfaceMethod occurrences="1">
-      <code>isSuperAdmin</code>
-    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/Security/EditableRolesBuilder.php">
+    <LessSpecificImplementedReturnType occurrences="1">
+      <code>array</code>
+    </LessSpecificImplementedReturnType>
   </file>
   <file src="src/Security/RolesBuilder/AdminRolesBuilder.php">
     <InvalidArgument occurrences="1">
@@ -52,17 +56,24 @@
     </PossiblyNullArgument>
   </file>
   <file src="src/Security/RolesBuilder/SecurityRolesBuilder.php">
-    <InvalidArgument occurrences="1">
-      <code>$this-&gt;rolesHierarchy</code>
+    <InvalidArgument occurrences="6">
+      <code>$childRoles</code>
+      <code>$childRoles</code>
+      <code>$childRoles</code>
+      <code>$role</code>
+      <code>$securityRoles</code>
+      <code>$securityRoles</code>
     </InvalidArgument>
-    <InvalidPropertyAssignmentValue occurrences="1">
-      <code>$rolesHierarchy</code>
-    </InvalidPropertyAssignmentValue>
-    <RedundantCondition occurrences="1">
-      <code>$result</code>
-    </RedundantCondition>
-    <TypeDoesNotContainType occurrences="1">
-      <code>false === $result</code>
-    </TypeDoesNotContainType>
+    <InvalidOperand occurrences="1">
+      <code>$role</code>
+    </InvalidOperand>
+    <InvalidReturnStatement occurrences="2">
+      <code>$securityRoles</code>
+      <code>$securityRoles</code>
+    </InvalidReturnStatement>
+    <InvalidReturnType occurrences="2">
+      <code>mixed[]</code>
+      <code>mixed[]</code>
+    </InvalidReturnType>
   </file>
 </files>

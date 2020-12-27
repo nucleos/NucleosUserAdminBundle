@@ -37,7 +37,7 @@ final class EditableRolesBuilder implements EditableRolesBuilderInterface
     private $pool;
 
     /**
-     * @var TranslatorInterface
+     * @var TranslatorInterface|null
      */
     private $translator;
 
