@@ -4,7 +4,7 @@
 
 ## 🚀 Features
 
-- Use common layout for all security templates @core23 (#22)
+- Use common layout for all security templates [@core23] ([#22])
 
 # 1.1.2
 
@@ -12,7 +12,7 @@
 
 ## 🐛 Bug Fixes
 
-- Add missing translation for admin menu group @core23 (#20)
+- Add missing translation for admin menu group [@core23] ([#20])
 
 # 1.1.1
 
@@ -20,7 +20,7 @@
 
 ## 🐛 Bug Fixes
 
-- Fix loading of broken doctrine services @core23 (#19)
+- Fix loading of broken doctrine services [@core23] ([#19])
 
 # 1.1.0
 
@@ -28,7 +28,7 @@
 
 ## 🚀 Features
 
-- Fix grouping of roles in permission matrix @core23 (#16)
+- Fix grouping of roles in permission matrix [@core23] ([#16])
 
 # 1.0.1
 
@@ -36,4 +36,11 @@
 
 ## 🐛 Bug Fixes
 
-- Add missing tagging of ImpersonateExtension @core23 (#14)
+- Add missing tagging of ImpersonateExtension [@core23] ([#14])
+
+[#22]: https://github.com/nucleos/NucleosUserAdminBundle/pull/22
+[#20]: https://github.com/nucleos/NucleosUserAdminBundle/pull/20
+[#19]: https://github.com/nucleos/NucleosUserAdminBundle/pull/19
+[#16]: https://github.com/nucleos/NucleosUserAdminBundle/pull/16
+[#14]: https://github.com/nucleos/NucleosUserAdminBundle/pull/14
+[@core23]: https://github.com/core23
