@@ -211,7 +211,7 @@ abstract class UserAdmin extends AbstractAdmin
 
     private function isNewInstance(): bool
     {
-        return !$this->hasSubject() || null === $this->getSubject()|| null === $this->id($this->getSubject());
+        return !$this->hasSubject() || null === $this->getSubject() || null === $this->id($this->getSubject());
     }
 
     private function isLocaleAwareSubject(): bool
