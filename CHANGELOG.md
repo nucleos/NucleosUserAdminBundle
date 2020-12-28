@@ -1,3 +1,23 @@
+# 1.3.0
+
+## Changes
+
+- Move submit buttons to form definition @core23 (#150)
+
+## 🚀 Features
+
+- Move configuration to PHP @core23 (#36)
+
+## 🐛 Bug Fixes
+
+- Catch possible null error @core23 (#160)
+- Fix wrong service arguments @core23 (#39)
+
+## 📦 Dependencies
+
+- Add support for PHP 8 @core23 (#129)
+- Remove unused twig/string-extra dependency @core23 (#96)
+
 # 1.2.0
 
 ## Changes
