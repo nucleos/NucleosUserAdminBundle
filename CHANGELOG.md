@@ -2,21 +2,21 @@
 
 ## Changes
 
-- Move submit buttons to form definition @core23 (#150)
+- Move submit buttons to form definition [@core23] ([#150])
 
 ## 🚀 Features
 
-- Move configuration to PHP @core23 (#36)
+- Move configuration to PHP [@core23] ([#36])
 
 ## 🐛 Bug Fixes
 
-- Catch possible null error @core23 (#160)
-- Fix wrong service arguments @core23 (#39)
+- Catch possible null error [@core23] ([#160])
+- Fix wrong service arguments [@core23] ([#39])
 
 ## 📦 Dependencies
 
-- Add support for PHP 8 @core23 (#129)
-- Remove unused twig/string-extra dependency @core23 (#96)
+- Add support for PHP 8 [@core23] ([#129])
+- Remove unused twig/string-extra dependency [@core23] ([#96])
 
 # 1.2.0
 
@@ -64,3 +64,9 @@
 [#16]: https://github.com/nucleos/NucleosUserAdminBundle/pull/16
 [#14]: https://github.com/nucleos/NucleosUserAdminBundle/pull/14
 [@core23]: https://github.com/core23
+[#160]: https://github.com/nucleos/NucleosUserAdminBundle/pull/160
+[#150]: https://github.com/nucleos/NucleosUserAdminBundle/pull/150
+[#129]: https://github.com/nucleos/NucleosUserAdminBundle/pull/129
+[#96]: https://github.com/nucleos/NucleosUserAdminBundle/pull/96
+[#39]: https://github.com/nucleos/NucleosUserAdminBundle/pull/39
+[#36]: https://github.com/nucleos/NucleosUserAdminBundle/pull/36
