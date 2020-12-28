@@ -150,6 +150,10 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
     private function hasGroupAdmin(array $items, AdminInterface $admin): bool
     {
         foreach ($items as $item) {
+            if (!isset($item['admin'])) {
+                continue;
+            }
+
             if ($item['admin'] === $admin->getCode()) {
                 return true;
             }
