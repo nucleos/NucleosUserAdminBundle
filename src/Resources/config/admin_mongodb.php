@@ -16,7 +16,7 @@ return static function (ContainerConfigurator $container): void {
 
         ->set('nucleos_user_admin.admin.groupname', 'user')
         ->set('nucleos_user_admin.admin.label_catalogue', 'NucleosUserAdminBundle')
-        ->set('nucleos_user_admin.admin.groupicon', '<![CDATA[<i class=\'fa fa-users\'></i>]]>')
+        ->set('nucleos_user_admin.admin.groupicon', '<i class=\'fa fa-users\'></i>')
 
     ;
 
