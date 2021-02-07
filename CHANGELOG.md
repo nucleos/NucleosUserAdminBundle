@@ -1,60 +1,87 @@
-# 1.3.0
+# Changelog
 
-## Changes
+All notable changes to this project will be documented in this file, in reverse chronological order by release.
+
+## 1.4.0 - TBD
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
+
+## 1.3.0
+
+### Changes
 
 - Move submit buttons to form definition [@core23] ([#150])
 
-## 🚀 Features
+### 🚀 Features
 
 - Move configuration to PHP [@core23] ([#36])
 
-## 🐛 Bug Fixes
+### 🐛 Bug Fixes
 
 - Catch possible null error [@core23] ([#160])
 - Fix wrong service arguments [@core23] ([#39])
 
-## 📦 Dependencies
+### 📦 Dependencies
 
 - Add support for PHP 8 [@core23] ([#129])
 - Remove unused twig/string-extra dependency [@core23] ([#96])
 
-# 1.2.0
+## 1.2.0
 
-## Changes
+### Changes
 
-## 🚀 Features
+### 🚀 Features
 
 - Use common layout for all security templates [@core23] ([#22])
 
-# 1.1.2
+## 1.1.2
 
-## Changes
+### Changes
 
-## 🐛 Bug Fixes
+### 🐛 Bug Fixes
 
 - Add missing translation for admin menu group [@core23] ([#20])
 
-# 1.1.1
+## 1.1.1
 
-## Changes
+### Changes
 
-## 🐛 Bug Fixes
+### 🐛 Bug Fixes
 
 - Fix loading of broken doctrine services [@core23] ([#19])
 
-# 1.1.0
+## 1.1.0
 
-## Changes
+### Changes
 
-## 🚀 Features
+### 🚀 Features
 
 - Fix grouping of roles in permission matrix [@core23] ([#16])
 
-# 1.0.1
+## 1.0.1
 
-## Changes
+### Changes
 
-## 🐛 Bug Fixes
+### 🐛 Bug Fixes
 
 - Add missing tagging of ImpersonateExtension [@core23] ([#14])
 
