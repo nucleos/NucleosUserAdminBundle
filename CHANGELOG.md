@@ -2,28 +2,25 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.3.1 - TBD
+## 1.3.1 - 2021-02-08
 
-### Added
 
-- Nothing.
 
-### Changed
+-----
 
-- Nothing.
+### Release Notes for [1.3.1](https://github.com/nucleos/NucleosUserAdminBundle/milestone/1)
 
-### Deprecated
 
-- Nothing.
 
-### Removed
+### 1.3.1
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Fixed
+#### Bug
 
-- Nothing.
-
+ - [162: Fix group icon](https://github.com/nucleos/NucleosUserAdminBundle/pull/162) thanks to @core23
 
 ## 1.3.0
 
