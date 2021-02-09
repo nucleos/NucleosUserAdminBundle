@@ -116,7 +116,7 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
         return sprintf(
             '%s > %s',
             $this->getGroupLabel($admin),
-            $admin->getTranslator()->trans($admin->getLabel(), [], $admin->getTranslationDomain())
+            $admin->getTranslator()->trans($admin->getLabel() ?? '', [], $admin->getTranslationDomain())
         );
     }
 

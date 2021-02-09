@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.3.1@2feba22a005a18bf31d4c7b9bdb9252c73897476">
+<files psalm-version="4.4.1@9fd7a7d885b3a216cff8dec9d8c21a132f275224">
   <file src="src/Action/LoginAction.php">
     <TooManyArguments occurrences="1">
       <code>dispatch</code>
     </TooManyArguments>
   </file>
   <file src="src/Admin/Model/UserAdmin.php">
-    <ArgumentTypeCoercion occurrences="3">
-      <code>$this-&gt;getSubject()</code>
-      <code>$user</code>
-      <code>$user</code>
-    </ArgumentTypeCoercion>
     <PossiblyNullArgument occurrences="1">
       <code>$this-&gt;getSubject()</code>
     </PossiblyNullArgument>
@@ -64,6 +59,10 @@
       <code>$securityRoles</code>
       <code>$securityRoles</code>
     </InvalidArgument>
+    <InvalidArrayOffset occurrences="2">
+      <code>$securityRoles[$role]</code>
+      <code>$securityRoles[$role]</code>
+    </InvalidArrayOffset>
     <InvalidOperand occurrences="1">
       <code>$role</code>
     </InvalidOperand>
