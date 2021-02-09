@@ -45,6 +45,7 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
 
         $config['manager_type'] = $container->getParameter('nucleos_user.storage');
 
+        /** @var array<string, mixed> $bundles */
         $bundles = $container->getParameter('kernel.bundles');
 
         $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
