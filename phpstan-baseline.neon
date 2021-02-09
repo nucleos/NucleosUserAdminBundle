@@ -61,6 +61,11 @@ parameters:
 			path: src/Form/Transformer/RestoreRolesTransformer.php
 
 		-
+			message: "#^Strict comparison using \\=\\=\\= between false and array\\<\\(int\\|string\\)\\> will always evaluate to false\\.$#"
+			count: 1
+			path: src/Form/Type/RolesMatrixType.php
+
+		-
 			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\Authorization\\\\Voter\\\\UserAclVoter\\:\\:vote\\(\\) has parameter \\$attributes with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Security/Authorization/Voter/UserAclVoter.php
@@ -76,7 +81,17 @@ parameters:
 			path: src/Security/EditableRolesBuilder.php
 
 		-
+			message: "#^Strict comparison using \\=\\=\\= between null and Sonata\\\\AdminBundle\\\\Security\\\\Handler\\\\SecurityHandlerInterface will always evaluate to false\\.$#"
+			count: 1
+			path: src/Security/EditableRolesBuilder.php
+
+		-
 			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\AdminRolesBuilder\\:\\:getRoles\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Security/RolesBuilder/AdminRolesBuilder.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between null and Sonata\\\\AdminBundle\\\\Security\\\\Handler\\\\SecurityHandlerInterface will always evaluate to false\\.$#"
 			count: 1
 			path: src/Security/RolesBuilder/AdminRolesBuilder.php
 
