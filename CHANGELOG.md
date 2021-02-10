@@ -24,6 +24,25 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
+
+## 1.3.2 - 2021-02-10
+
+-----
+
+### Release Notes for [1.3.2](https://github.com/nucleos/NucleosUserAdminBundle/milestone/2)
+
+1.3.x bugfix release (patch)
+
+### 1.3.2
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
+
+#### Bug
+
+ - [210: Fix minor phpstan findings](https://github.com/nucleos/NucleosUserAdminBundle/pull/210) thanks to @core23
+
 ## 1.3.1 - 2021-02-08
 
 
