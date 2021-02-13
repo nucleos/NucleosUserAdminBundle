@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.4.1@9fd7a7d885b3a216cff8dec9d8c21a132f275224">
+<files psalm-version="4.5.1@257a1ca672a79dedc852be1285a7b97154646418">
   <file src="src/Action/LoginAction.php">
     <TooManyArguments occurrences="1">
       <code>dispatch</code>
     </TooManyArguments>
+  </file>
+  <file src="src/Admin/Model/GroupAdmin.php">
+    <NonInvariantDocblockPropertyType occurrences="1">
+      <code>$formOptions</code>
+    </NonInvariantDocblockPropertyType>
   </file>
   <file src="src/Admin/Model/UserAdmin.php">
     <PossiblyNullArgument occurrences="1">
@@ -34,6 +39,11 @@
     </LessSpecificImplementedReturnType>
   </file>
   <file src="src/Security/RolesBuilder/AdminRolesBuilder.php">
+    <ArgumentTypeCoercion occurrences="3">
+      <code>$admin</code>
+      <code>$admin</code>
+      <code>$admin-&gt;getParent()</code>
+    </ArgumentTypeCoercion>
     <InvalidArgument occurrences="1">
       <code>$this-&gt;excludeAdmins</code>
     </InvalidArgument>
