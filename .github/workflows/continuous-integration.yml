@@ -1,3 +1,5 @@
+name: 'Continuous Integration'
+
 on:
   create:
   pull_request:
@@ -6,8 +8,6 @@ on:
       - "*.x"
     tags:
       - "**"
-
-name: "Continuous Integration"
 
 jobs:
   coding-standards:
