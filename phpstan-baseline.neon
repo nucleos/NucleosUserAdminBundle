@@ -16,11 +16,6 @@ parameters:
 			path: src/Admin/Model/GroupAdmin.php
 
 		-
-			message: "#^Cannot call method arrayNode\\(\\) on Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeParentInterface\\|null\\.$#"
-			count: 1
-			path: src/DependencyInjection/Configuration.php
-
-		-
 			message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeDefinition\\:\\:children\\(\\)\\.$#"
 			count: 1
 			path: src/DependencyInjection/Configuration.php
