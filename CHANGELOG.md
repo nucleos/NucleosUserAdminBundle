@@ -24,6 +24,21 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
+-----
+
+### Release Notes for [1.3.3](https://github.com/nucleos/NucleosUserAdminBundle/milestone/5)
+
+1.3.x bugfix release (patch)
+
+### 1.3.3
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
+
+#### Bug
+
+ - [234: Fix loading twig services](https://github.com/nucleos/NucleosUserAdminBundle/pull/234) thanks to @core23
 
 ## 1.3.2 - 2021-02-10
 
