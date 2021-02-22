@@ -18,7 +18,7 @@ return static function (ContainerConfigurator $container): void {
 
         ->set('nucleos_user_admin.twig.global', GlobalVariables::class)
             ->args([
-                ref('nucleos_user_admin.admin.user'),
+                ref('nucleos_user_admin.admin.user')->ignoreOnInvalid(),
             ])
 
     ;

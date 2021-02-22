@@ -13,19 +13,20 @@ declare(strict_types=1);
 
 namespace Nucleos\UserAdminBundle\Twig;
 
+use LogicException;
 use Sonata\AdminBundle\Admin\AdminInterface;
 
 final class GlobalVariables
 {
     /**
-     * @var AdminInterface<\Nucleos\UserBundle\Model\UserInterface>
+     * @var AdminInterface<\Nucleos\UserBundle\Model\UserInterface>|null
      */
     private $admin;
 
     /**
      * @phpstan-param AdminInterface<\Nucleos\UserBundle\Model\UserInterface> $admin
      */
-    public function __construct(AdminInterface $admin)
+    public function __construct(?AdminInterface $admin)
     {
         $this->admin = $admin;
     }
@@ -35,6 +36,10 @@ final class GlobalVariables
      */
     public function getUserAdmin(): AdminInterface
     {
+        if (null === $this->admin) {
+            throw new LogicException('No admin service is registered');
+        }
+
         return $this->admin;
     }
 }

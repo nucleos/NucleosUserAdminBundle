@@ -30,7 +30,6 @@ doctrine:
         auto_mapping: true
 
 nucleos_user:
-    db_driver:      orm
     firewall_name:  main
 
     from_email:  'no-reply@localhost'
