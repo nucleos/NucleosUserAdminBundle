@@ -81,7 +81,7 @@ final class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('resolver')->defaultValue(StaticAvatarResolver::class)->end()
-                        ->scalarNode('default_avatar')->defaultValue('bundles/nucleosuseradmin/default_avatar.png')->end()
+                        ->scalarNode('default_avatar')->defaultValue('/bundles/nucleosuseradmin/default_avatar.png')->end()
                     ->end()
                 ->end()
             ->end()
