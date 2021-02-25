@@ -24,6 +24,27 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
+## 1.3.4 - 2021-02-25
+
+
+-----
+
+### Release Notes for [1.3.4](https://github.com/nucleos/NucleosUserAdminBundle/milestone/6)
+
+1.3.x bugfix release (patch)
+
+### 1.3.4
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
+
+#### Bug
+
+ - [237: Fix external avatar display](https://github.com/nucleos/NucleosUserAdminBundle/pull/237) thanks to @core23
+
+## 1.3.3 - 2021-02-22
+
 -----
 
 ### Release Notes for [1.3.3](https://github.com/nucleos/NucleosUserAdminBundle/milestone/5)
