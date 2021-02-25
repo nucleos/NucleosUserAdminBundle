@@ -22,4 +22,4 @@ All available configuration options are listed below with their default values.
                 translation:        'NucleosUserAdminBundle'
         avatar:
             resolver:               'Nucleos\UserAdminBundle\Avatar\StaticAvatarResolver'
-            default_avatar:         'bundles/nucleosuseradmin/default_avatar.png'
+            default_avatar:         '/bundles/nucleosuseradmin/default_avatar.png'
