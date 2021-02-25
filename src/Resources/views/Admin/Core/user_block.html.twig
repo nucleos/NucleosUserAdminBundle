@@ -5,7 +5,7 @@
         {% set _logout_text       = 'user_block_logout'|trans({}, 'NucleosUserAdminBundle') %}
         {% set _profile_uri       = nucleos_user_admin.userAdmin.isGranted('EDIT', app.user) ? nucleos_user_admin.userAdmin.generateUrl('edit', {id: app.user.id}) : nucleos_user_admin.userAdmin.generateUrl('show', {id: app.user.id}) %}
         {% set _profile_text      = 'user_block_profile'|trans({}, 'NucleosUserAdminBundle') %}
-        {% set _user_image        = asset(userAvatar(app.user)) %}
+        {% set _user_image        = userAvatar(app.user) %}
 
         {% if is_granted('ROLE_PREVIOUS_ADMIN')  %}
             {% set _bg_class    = "bg-light-green" %}

@@ -53,7 +53,7 @@ final class ConfigurationTest extends TestCase
                 ],
                 'avatar'              => [
                     'resolver'       => StaticAvatarResolver::class,
-                    'default_avatar' => 'bundles/nucleosuseradmin/default_avatar.png',
+                    'default_avatar' => '/bundles/nucleosuseradmin/default_avatar.png',
                 ],
             ]
         );
