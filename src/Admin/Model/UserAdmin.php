@@ -52,7 +52,38 @@ abstract class UserAdmin extends AbstractAdmin
         $this->userManager = $userManager;
     }
 
-    public function getNewInstance()
+    public function getFormBuilder(): FormBuilderInterface
+    {
+        $this->formOptions['data_class'] = $this->getClass();
+
+        $options                      = $this->formOptions;
+        $options['validation_groups'] = $this->isNewInstance() ? 'Registration' : 'Profile';
+
+        $formBuilder = $this->getFormContractor()->getFormBuilder($this->getUniqid(), $options);
+
+        $this->defineFormBuilder($formBuilder);
+
+        return $formBuilder;
+    }
+
+    public function preUpdate($user): void
+    {
+        $this->userManager->updateCanonicalFields($user);
+        $this->userManager->updatePassword($user);
+    }
+
+    protected function configureExportFields(): array
+    {
+        // avoid security field to be exported
+        return array_filter(
+            parent::configureExportFields(),
+            static function ($v): bool {
+                return !\in_array($v, ['password', 'salt'], true);
+            }
+        );
+    }
+
+    protected function createNewInstance(): object
     {
         $instance = $this->userManager->createUser();
 
@@ -71,37 +102,6 @@ abstract class UserAdmin extends AbstractAdmin
         }
 
         return $instance;
-    }
-
-    public function getFormBuilder(): FormBuilderInterface
-    {
-        $this->formOptions['data_class'] = $this->getClass();
-
-        $options                      = $this->formOptions;
-        $options['validation_groups'] = $this->isNewInstance() ? 'Registration' : 'Profile';
-
-        $formBuilder = $this->getFormContractor()->getFormBuilder($this->getUniqid(), $options);
-
-        $this->defineFormBuilder($formBuilder);
-
-        return $formBuilder;
-    }
-
-    public function getExportFields(): array
-    {
-        // avoid security field to be exported
-        return array_filter(
-            parent::getExportFields(),
-            static function ($v): bool {
-                return !\in_array($v, ['password', 'salt'], true);
-            }
-        );
-    }
-
-    public function preUpdate($user): void
-    {
-        $this->userManager->updateCanonicalFields($user);
-        $this->userManager->updatePassword($user);
     }
 
     protected function configureListFields(ListMapper $listMapper): void

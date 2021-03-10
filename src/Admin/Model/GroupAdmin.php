@@ -51,7 +51,7 @@ abstract class GroupAdmin extends AbstractAdmin
         $this->groupManager = $groupManager;
     }
 
-    public function getNewInstance()
+    protected function createNewInstance(): object
     {
         return $this->groupManager->createGroup('');
     }
