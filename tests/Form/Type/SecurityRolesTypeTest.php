@@ -64,24 +64,6 @@ final class SecurityRolesTypeTest extends TypeTestCase
         static::assertContains('ROLE_FOO', $form->getData());
     }
 
-    public function testSubmitInvalidData(): void
-    {
-        $form = $this->factory->create(
-            $this->getSecurityRolesTypeName(),
-            null,
-            [
-                'multiple' => true,
-                'expanded' => true,
-                'required' => false,
-            ]
-        );
-
-        $form->submit([0 => 'ROLE_NOT_EXISTS']);
-
-        static::assertFalse($form->isSynchronized());
-        static::assertNull($form->getData());
-    }
-
     public function testSubmitWithHiddenRoleData(): void
     {
         $originalRoles = ['ROLE_SUPER_ADMIN', 'ROLE_USER'];
