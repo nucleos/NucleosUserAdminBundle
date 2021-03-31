@@ -65,24 +65,6 @@ final class RolesMatrixTypeTest extends TypeTestCase
         static::assertContains('ROLE_FOO', $form->getData());
     }
 
-    public function testSubmitInvalidData(): void
-    {
-        $form = $this->factory->create(
-            RolesMatrixType::class,
-            null,
-            [
-                'multiple' => true,
-                'expanded' => true,
-                'required' => false,
-            ]
-        );
-
-        $form->submit([0 => 'ROLE_NOT_EXISTS']);
-
-        static::assertFalse($form->isSynchronized());
-        static::assertNull($form->getData());
-    }
-
     /**
      * @return PreloadedExtension[]
      */
