@@ -93,15 +93,7 @@ final class SendEmailAction
 
         $user = $this->userManager->findUserByUsernameOrEmail($username);
 
-        if (null === $user) {
-            return new Response($this->twig->render('@NucleosUserAdmin/Admin/Security/Resetting/request.html.twig', [
-                'base_template'    => $this->templateRegistry->getTemplate('layout'),
-                'admin_pool'       => $this->adminPool,
-                'invalid_username' => $username,
-            ]));
-        }
-
-        if (!$user->isPasswordRequestNonExpired($this->resetTtl)) {
+        if (null !== $user && !$user->isPasswordRequestNonExpired($this->resetTtl)) {
             if (!$user->isAccountNonLocked()) {
                 return new RedirectResponse(
                     $this->urlGenerator->generate('nucleos_user_admin_resetting_request')
