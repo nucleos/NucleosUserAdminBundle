@@ -91,7 +91,7 @@ final class SendEmailAction
     {
         $username = $request->request->get('username');
 
-        $user = $this->userManager->findUserByUsernameOrEmail($username);
+        $user = null === $username ? null : $this->userManager->findUserByUsernameOrEmail($username);
 
         if (null === $user) {
             return new Response($this->twig->render('@NucleosUserAdmin/Admin/Security/Resetting/request.html.twig', [
