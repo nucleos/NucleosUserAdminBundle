@@ -20,13 +20,10 @@ use Nucleos\UserBundle\Model\UserManagerInterface;
 use Nucleos\UserBundle\Util\TokenGeneratorInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Sonata\AdminBundle\Admin\Pool;
-use Sonata\AdminBundle\Templating\TemplateRegistryInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Twig\Environment;
 
 final class SendEmailActionTest extends TestCase
 {
@@ -34,16 +31,6 @@ final class SendEmailActionTest extends TestCase
      * @var MockObject|UrlGeneratorInterface
      */
     protected $urlGenerator;
-
-    /**
-     * @var MockObject|Pool
-     */
-    protected $pool;
-
-    /**
-     * @var MockObject|TemplateRegistryInterface
-     */
-    protected $templateRegistry;
 
     /**
      * @var MockObject|UserManagerInterface
@@ -71,32 +58,18 @@ final class SendEmailActionTest extends TestCase
     protected $fromEmail;
 
     /**
-     * @var string
-     */
-    protected $template;
-
-    /**
      * @var ContainerBuilder&MockObject
      */
     protected $container;
 
-    /**
-     * @var Environment&MockObject
-     */
-    protected $templating;
-
     protected function setUp(): void
     {
-        $this->templating       = $this->createMock(Environment::class);
         $this->urlGenerator     = $this->createMock(UrlGeneratorInterface::class);
-        $this->pool             = $this->createMock(Pool::class);
-        $this->templateRegistry = $this->createMock(TemplateRegistryInterface::class);
         $this->userManager      = $this->createMock(UserManagerInterface::class);
         $this->mailer           = $this->createMock(MailerInterface::class);
         $this->tokenGenerator   = $this->createMock(TokenGeneratorInterface::class);
         $this->resetTtl         = 60;
         $this->fromEmail        = 'noreply@localhost';
-        $this->template         = 'email.txt.twig';
         $this->container        = $this->createMock(ContainerBuilder::class);
     }
 
@@ -104,34 +77,27 @@ final class SendEmailActionTest extends TestCase
     {
         $request = new Request([], ['username' => 'bar']);
 
-        $parameters = [
-            'base_template'    => 'base.html.twig',
-            'admin_pool'       => $this->pool,
-            'invalid_username' => 'bar',
-        ];
-
-        $this->templating->expects(static::once())
-            ->method('render')
-            ->with('@NucleosUserAdmin/Admin/Security/Resetting/request.html.twig', $parameters)
-            ->willReturn('template content')
-        ;
-
-        $this->templateRegistry
-            ->method('getTemplate')
-            ->with('layout')
-            ->willReturn('base.html.twig')
-        ;
-
         $this->userManager
             ->method('findUserByUsernameOrEmail')
             ->with('bar')
             ->willReturn(null)
         ;
 
+        $this->urlGenerator
+            ->method('generate')
+            ->withConsecutive(
+                ['nucleos_user_admin_resetting_check_email', ['username' => 'bar']]
+            )
+            ->willReturnOnConsecutiveCalls(
+                '/check-email'
+            )
+        ;
+
         $action = $this->getAction();
         $result = $action($request);
 
-        static::assertSame('template content', $result->getContent());
+        static::assertInstanceOf(RedirectResponse::class, $result);
+        static::assertSame('/check-email', $result->getTargetUrl());
     }
 
     public function testPasswordRequestNonExpired(): void
@@ -278,10 +244,7 @@ final class SendEmailActionTest extends TestCase
     private function getAction(): SendEmailAction
     {
         return new SendEmailAction(
-            $this->templating,
             $this->urlGenerator,
-            $this->pool,
-            $this->templateRegistry,
             $this->userManager,
             $this->mailer,
             $this->tokenGenerator,
