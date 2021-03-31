@@ -2,27 +2,27 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.3.5 - TBD
+## 1.3.5 - 2021-03-31
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [1.3.5](https://github.com/nucleos/NucleosUserAdminBundle/milestone/7)
 
-- Nothing.
+1.3.x bugfix release (patch)
 
-### Deprecated
+### 1.3.5
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **3**
+- Total contributors: **1**
 
-### Removed
+ - [266: Fix tests](https://github.com/nucleos/NucleosUserAdminBundle/pull/266) thanks to @core23
 
-- Nothing.
+#### Bug
 
-### Fixed
-
-- Nothing.
+ - [265: Fix exposing used mail addresses](https://github.com/nucleos/NucleosUserAdminBundle/pull/265) thanks to @core23
+ - [264: Catch null error](https://github.com/nucleos/NucleosUserAdminBundle/pull/264) thanks to @core23
 
 ## 1.3.4 - 2021-02-25
 
