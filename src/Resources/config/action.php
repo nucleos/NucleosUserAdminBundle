@@ -35,10 +35,7 @@ return static function (ContainerConfigurator $container): void {
         ->set(SendEmailAction::class)
             ->public()
             ->args([
-                ref('twig'),
                 ref('router'),
-                ref('sonata.admin.pool'),
-                ref('sonata.admin.global_template_registry'),
                 ref('nucleos_user.user_manager'),
                 ref('nucleos_user.mailer'),
                 ref('nucleos_user.util.token_generator'),
