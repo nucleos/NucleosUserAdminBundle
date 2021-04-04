@@ -24,6 +24,25 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
+## 1.3.6 - 2021-04-04
+
+
+-----
+
+### Release Notes for [1.3.6](https://github.com/nucleos/NucleosUserAdminBundle/milestone/8)
+
+1.3.x bugfix release (patch)
+
+### 1.3.6
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
+
+#### Enhancement
+
+ - [269: Add missing translations](https://github.com/nucleos/NucleosUserAdminBundle/pull/269) thanks to @core23
+
 ## 1.3.5 - 2021-03-31
 
 
