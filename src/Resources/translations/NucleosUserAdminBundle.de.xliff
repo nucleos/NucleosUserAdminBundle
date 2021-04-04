@@ -310,6 +310,14 @@
                 <source>form.group_security</source>
                 <target>Sicherheit</target>
             </trans-unit>
+            <trans-unit id="form.tab_general">
+                <source>form.tab_general</source>
+                <target>Allgemein</target>
+            </trans-unit>
+            <trans-unit id="form.tab_groups">
+                <source>form.tab_groups</source>
+                <target>Gruppen</target>
+            </trans-unit>
             <trans-unit id="form.tab_user">
                 <source>form.tab_user</source>
                 <target>Benutzer</target>
