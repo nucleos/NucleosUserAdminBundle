@@ -13,15 +13,7 @@
             <th>{{ admin_label }}</th>
             {% for role, attributes in roles|sort %}
                 <td>
-                    {{ form_widget(attributes.form, { label: false }) }}
-                    {% if not attributes.is_granted %}
-                        <script>
-                            $('input[value="{{ role }}"]').iCheck('disable');
-                            $('form').on('submit', function () {
-                                $('input[value="{{ role }}"]').iCheck('enable');
-                            });
-                        </script>
-                    {% endif %}
+                    {{ form_widget(attributes.form, { label: false, disabled: not attributes.is_granted }) }}
                 </td>
             {% endfor %}
         </tr>
