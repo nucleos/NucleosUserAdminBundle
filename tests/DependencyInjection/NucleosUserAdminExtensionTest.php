@@ -18,6 +18,7 @@ use Nucleos\UserAdminBundle\Admin\Entity\GroupAdmin;
 use Nucleos\UserAdminBundle\Admin\Entity\UserAdmin;
 use Nucleos\UserAdminBundle\DependencyInjection\Configuration;
 use Nucleos\UserAdminBundle\DependencyInjection\NucleosUserAdminExtension;
+use Nucleos\UserAdminBundle\Twig\ImpersonateExtension;
 use Symfony\Bundle\TwigBundle\DependencyInjection\TwigExtension;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -88,6 +89,29 @@ final class NucleosUserAdminExtensionTest extends AbstractExtensionTestCase
         $twigConfigurations = $this->container->getExtensionConfig('twig');
 
         static::assertArrayNotHasKey(0, $twigConfigurations);
+    }
+
+    public function testLoadWithoutImpersonating(): void
+    {
+        $this->load();
+
+        $this->assertContainerBuilderHasService(ImpersonateExtension::class);
+    }
+
+    public function testLoadWithImpersonating(): void
+    {
+        $this->load([
+            'impersonating' => [
+                'route'      => 'my_route',
+                'parameters' => [
+                    'foo' => 'bar',
+                ],
+            ],
+        ]);
+
+        $this->assertContainerBuilderHasService(ImpersonateExtension::class);
+        $this->assertContainerBuilderHasServiceDefinitionWithArgument(ImpersonateExtension::class, 1, 'my_route');
+        $this->assertContainerBuilderHasServiceDefinitionWithArgument(ImpersonateExtension::class, 2, ['foo' => 'bar']);
     }
 
     /**
