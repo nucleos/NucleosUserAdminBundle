@@ -71,9 +71,9 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
         $this->configureTranslationDomain($config, $container);
         $this->configureController($config, $container);
 
-        if (false !== $config['impersonating']) {
-            $loader->load('impersonating.php');
+        $loader->load('impersonating.php');
 
+        if (false !== $config['impersonating']) {
             $container->getDefinition(ImpersonateExtension::class)
                 ->replaceArgument(1, $config['impersonating']['route'])
                 ->replaceArgument(2, $config['impersonating']['parameters'])
@@ -87,21 +87,6 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
             ->replaceArgument(1, $config['avatar']['resolver'])
         ;
         $container->setParameter('nucleos_user_admin.default_avatar', $config['avatar']['default_avatar']);
-    }
-
-    /**
-     * Adds aliases for user & group managers depending on $managerType.
-     */
-    private function aliasManagers(ContainerBuilder $container, string $managerType): void
-    {
-        $container
-            ->setAlias('nucleos_user_admin.user_manager', sprintf('nucleos_user_admin.%s.user_manager', $managerType))
-            ->setPublic(true)
-        ;
-        $container
-            ->setAlias('nucleos_user_admin.group_manager', sprintf('nucleos_user_admin.%s.group_manager', $managerType))
-            ->setPublic(true)
-        ;
     }
 
     /**
