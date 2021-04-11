@@ -2,27 +2,24 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.4.1 - TBD
+## 1.4.1 - 2021-04-11
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [1.4.1](https://github.com/nucleos/NucleosUserAdminBundle/milestone/10)
 
-- Nothing.
+1.4.x bugfix release (patch)
 
-### Deprecated
+### 1.4.1
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [277: Fix loading bundle with disabled impersonating](https://github.com/nucleos/NucleosUserAdminBundle/pull/277) thanks to @core23
 
 ## 1.4.0 - 2021-04-04
 
