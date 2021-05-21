@@ -19,7 +19,7 @@ use Nucleos\UserBundle\Form\Type\ResettingFormType;
 use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Nucleos\UserBundle\Security\LoginManagerInterface;
-use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Sonata\AdminBundle\Admin\Pool;
 use Sonata\AdminBundle\Templating\TemplateRegistryInterface;
@@ -37,7 +37,10 @@ use Twig\Environment;
 
 final class ResetAction
 {
-    use LoggerAwareTrait;
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
 
     /**
      * @var Environment
@@ -182,6 +185,11 @@ final class ResetAction
                 ]
             )
         );
+    }
+
+    public function setLogger(LoggerInterface $logger): void
+    {
+        $this->logger = $logger;
     }
 
     private function resetUser(UserInterface $user, RedirectResponse $response): void
