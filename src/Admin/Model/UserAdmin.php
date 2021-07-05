@@ -66,10 +66,10 @@ abstract class UserAdmin extends AbstractAdmin
         return $formBuilder;
     }
 
-    public function preUpdate($user): void
+    public function preUpdate($object): void
     {
-        $this->userManager->updateCanonicalFields($user);
-        $this->userManager->updatePassword($user);
+        $this->userManager->updateCanonicalFields($object);
+        $this->userManager->updatePassword($object);
     }
 
     protected function configureExportFields(): array
@@ -104,9 +104,9 @@ abstract class UserAdmin extends AbstractAdmin
         return $instance;
     }
 
-    protected function configureListFields(ListMapper $listMapper): void
+    protected function configureListFields(ListMapper $list): void
     {
-        $listMapper
+        $list
             ->addIdentifier('username')
             ->add('email')
             ->add('groups')
@@ -114,7 +114,7 @@ abstract class UserAdmin extends AbstractAdmin
         ;
 
         if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
-            $listMapper
+            $list
                 ->add('impersonating', 'string', [
                     'template' => '@NucleosUserAdmin/Admin/Field/impersonating.html.twig',
                 ])
@@ -122,9 +122,9 @@ abstract class UserAdmin extends AbstractAdmin
         }
     }
 
-    protected function configureDatagridFilters(DatagridMapper $filterMapper): void
+    protected function configureDatagridFilters(DatagridMapper $filter): void
     {
-        $filterMapper
+        $filter
             ->add('id')
             ->add('username')
             ->add('email')
@@ -132,9 +132,9 @@ abstract class UserAdmin extends AbstractAdmin
         ;
     }
 
-    protected function configureShowFields(ShowMapper $showMapper): void
+    protected function configureShowFields(ShowMapper $show): void
     {
-        $showMapper
+        $show
             ->with('form.tab_general')
                 ->add('username')
                 ->add('email')
@@ -148,9 +148,9 @@ abstract class UserAdmin extends AbstractAdmin
     /**
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
-    protected function configureFormFields(FormMapper $formMapper): void
+    protected function configureFormFields(FormMapper $form): void
     {
-        $formMapper
+        $form
             ->tab('form.tab_user')
                 ->with('form.group_general', ['class' => 'col-md-6'])->end()
                 ->ifTrue($this->isLocaleAwareSubject())
@@ -165,7 +165,7 @@ abstract class UserAdmin extends AbstractAdmin
             ->end()
         ;
 
-        $formMapper
+        $form
             ->tab('form.tab_user')
                 ->with('form.group_general')
                     ->add('username')
