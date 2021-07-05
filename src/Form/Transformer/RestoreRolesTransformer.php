@@ -62,11 +62,11 @@ final class RestoreRolesTransformer implements DataTransformerInterface
     }
 
     /**
-     * @param mixed $selectedRoles
+     * @param mixed $value
      *
      * @return mixed[]
      */
-    public function reverseTransform($selectedRoles): array
+    public function reverseTransform($value): array
     {
         if (null === $this->originalRoles) {
             throw new RuntimeException('Invalid state, originalRoles array is not set');
@@ -76,6 +76,6 @@ final class RestoreRolesTransformer implements DataTransformerInterface
 
         $hiddenRoles = array_diff($this->originalRoles, array_keys($availableRoles));
 
-        return array_merge($selectedRoles, $hiddenRoles);
+        return array_merge($value, $hiddenRoles);
     }
 }
