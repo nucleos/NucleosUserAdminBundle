@@ -67,6 +67,8 @@ final class SendEmailAction
     {
         $username = $request->request->get('username');
 
+        \assert(null === $username || \is_string($username));
+
         $user = null === $username ? null : $this->userManager->findUserByUsernameOrEmail($username);
 
         if (null !== $user && !$user->isPasswordRequestNonExpired($this->resetTtl)) {
