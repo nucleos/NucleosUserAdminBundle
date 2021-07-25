@@ -29,6 +29,18 @@
             </div>
         {% endblock %}
 
+        {% if app.request.hasPreviousSession %}
+            {% for label, messages in app.flashes %}
+                <div class="alert alert-{{ label }}" role="alert">
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        {% endif %}
+
         <div class="login-box-body">
             {% block login_box_content %}
             {% endblock %}
