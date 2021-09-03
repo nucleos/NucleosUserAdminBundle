@@ -1,12 +1,12 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Admin\\\\Model\\\\GroupAdmin\\:\\:\\$groupManager with generic interface Nucleos\\\\UserBundle\\\\Model\\\\GroupManagerInterface does not specify its types\\: GroupTemplate$#"
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Admin\\\\Model\\\\GroupAdmin\\:\\:__construct\\(\\) has parameter \\$groupManager with generic interface Nucleos\\\\UserBundle\\\\Model\\\\GroupManagerInterface but does not specify its types\\: GroupTemplate$#"
 			count: 1
 			path: src/Admin/Model/GroupAdmin.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Admin\\\\Model\\\\GroupAdmin\\:\\:__construct\\(\\) has parameter \\$groupManager with generic interface Nucleos\\\\UserBundle\\\\Model\\\\GroupManagerInterface but does not specify its types\\: GroupTemplate$#"
+			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Admin\\\\Model\\\\GroupAdmin\\:\\:\\$groupManager with generic interface Nucleos\\\\UserBundle\\\\Model\\\\GroupManagerInterface does not specify its types\\: GroupTemplate$#"
 			count: 1
 			path: src/Admin/Model/GroupAdmin.php
 
@@ -16,7 +16,22 @@ parameters:
 			path: src/DependencyInjection/Configuration.php
 
 		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureAdminClass\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/DependencyInjection/NucleosUserAdminExtension.php
+
+		-
 			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureAvatar\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/DependencyInjection/NucleosUserAdminExtension.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureController\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/DependencyInjection/NucleosUserAdminExtension.php
+
+		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureTranslationDomain\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/DependencyInjection/NucleosUserAdminExtension.php
 
@@ -31,27 +46,12 @@ parameters:
 			path: src/DependencyInjection/NucleosUserAdminExtension.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureAdminClass\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/DependencyInjection/NucleosUserAdminExtension.php
-
-		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureTranslationDomain\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/DependencyInjection/NucleosUserAdminExtension.php
-
-		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureController\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/DependencyInjection/NucleosUserAdminExtension.php
-
-		-
-			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Form\\\\Transformer\\\\RestoreRolesTransformer\\:\\:\\$originalRoles type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Form\\\\Transformer\\\\RestoreRolesTransformer\\:\\:setOriginalRoles\\(\\) has parameter \\$originalRoles with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Form/Transformer/RestoreRolesTransformer.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Form\\\\Transformer\\\\RestoreRolesTransformer\\:\\:setOriginalRoles\\(\\) has parameter \\$originalRoles with no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Form\\\\Transformer\\\\RestoreRolesTransformer\\:\\:\\$originalRoles type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Form/Transformer/RestoreRolesTransformer.php
 
@@ -66,12 +66,12 @@ parameters:
 			path: src/Security/Authorization/Voter/UserAclVoter.php
 
 		-
-			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Security\\\\EditableRolesBuilder\\:\\:\\$rolesHierarchy type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\EditableRolesBuilder\\:\\:__construct\\(\\) has parameter \\$rolesHierarchy with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Security/EditableRolesBuilder.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\EditableRolesBuilder\\:\\:__construct\\(\\) has parameter \\$rolesHierarchy with no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Security\\\\EditableRolesBuilder\\:\\:\\$rolesHierarchy type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Security/EditableRolesBuilder.php
 
@@ -116,7 +116,7 @@ parameters:
 			path: tests/Action/LoginActionTest.php
 
 		-
-			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertTrue\\(\\) with true and string will always evaluate to true\\.$#"
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertTrue\\(\\) with true and non\\-empty\\-string will always evaluate to true\\.$#"
 			count: 1
 			path: tests/Resources/XliffTest.php
 
