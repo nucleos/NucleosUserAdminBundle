@@ -15,6 +15,7 @@ namespace Nucleos\UserAdminBundle\Security;
 
 use Exception;
 use Sonata\AdminBundle\Admin\Pool;
+use Sonata\AdminBundle\SonataConfiguration;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -37,6 +38,11 @@ final class EditableRolesBuilder implements EditableRolesBuilderInterface
     private $pool;
 
     /**
+     * @var SonataConfiguration
+     */
+    private $configuration;
+
+    /**
      * @var TranslatorInterface|null
      */
     private $translator;
@@ -50,11 +56,13 @@ final class EditableRolesBuilder implements EditableRolesBuilderInterface
         TokenStorageInterface $tokenStorage,
         AuthorizationCheckerInterface $authorizationChecker,
         Pool $pool,
+        SonataConfiguration $configuration,
         array $rolesHierarchy = []
     ) {
         $this->tokenStorage         = $tokenStorage;
         $this->authorizationChecker = $authorizationChecker;
         $this->pool                 = $pool;
+        $this->configuration        = $configuration;
         $this->rolesHierarchy       = $rolesHierarchy;
     }
 
@@ -87,7 +95,7 @@ final class EditableRolesBuilder implements EditableRolesBuilderInterface
         );
 
         $isMaster = $this->authorizationChecker->isGranted(
-            $this->pool->getOption('role_super_admin', 'ROLE_SUPER_ADMIN')
+            $this->configuration->getOption('role_super_admin', 'ROLE_SUPER_ADMIN')
         );
 
         // get roles from the service container
@@ -145,10 +153,6 @@ final class EditableRolesBuilder implements EditableRolesBuilderInterface
 
             $isMaster        = $admin->isGranted('MASTER');
             $securityHandler = $admin->getSecurityHandler();
-
-            if (null === $securityHandler) {
-                continue;
-            }
 
             // TODO get the base role from the admin or security handler
             $baseRole = $securityHandler->getBaseRole($admin);

@@ -27,6 +27,7 @@ return static function (ContainerConfigurator $container): void {
                 ref('security.token_storage'),
                 ref('security.authorization_checker'),
                 ref('sonata.admin.pool'),
+                ref('sonata.admin.configuration'),
                 '%security.role_hierarchy.roles%',
             ])
             ->call('setTranslator', [
@@ -50,13 +51,14 @@ return static function (ContainerConfigurator $container): void {
             ->args([
                 ref('security.authorization_checker'),
                 ref('sonata.admin.pool'),
+                ref('sonata.admin.configuration'),
                 ref('translator'),
             ])
 
         ->set('nucleos_user_admin.security_roles_builder', SecurityRolesBuilder::class)
             ->args([
                 ref('security.authorization_checker'),
-                ref('sonata.admin.pool'),
+                ref('sonata.admin.configuration'),
                 ref('translator'),
                 '%security.role_hierarchy.roles%',
             ])

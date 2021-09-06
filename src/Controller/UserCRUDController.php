@@ -15,6 +15,7 @@ use Nucleos\UserBundle\Event\AccountDeletionEvent;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Sonata\AdminBundle\Controller\CRUDController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 /**
@@ -22,7 +23,7 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
  */
 class UserCRUDController extends CRUDController
 {
-    protected function preDelete(Request $request, $object)
+    protected function preDelete(Request $request, $object): ?Response
     {
         $this->getEventDispatcher()->dispatch(new AccountDeletionEvent($object, $request), NucleosUserEvents::ACCOUNT_DELETION);
 

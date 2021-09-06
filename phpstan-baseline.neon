@@ -76,9 +76,9 @@ parameters:
 			path: src/Security/EditableRolesBuilder.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between null and Sonata\\\\AdminBundle\\\\Security\\\\Handler\\\\SecurityHandlerInterface will always evaluate to false\\.$#"
+			message: "#^Call to function is_array\\(\\) with array\\<array\\(\\?'admin' \\=\\> string, 'label' \\=\\> string, 'roles' \\=\\> array\\<int, string\\>, 'route' \\=\\> string, 'route_absolute' \\=\\> bool, 'route_params' \\=\\> array\\<string, string\\>\\)\\> will always evaluate to true\\.$#"
 			count: 1
-			path: src/Security/EditableRolesBuilder.php
+			path: src/Security/RolesBuilder/AdminRolesBuilder.php
 
 		-
 			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\AdminRolesBuilder\\:\\:getRoles\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -86,7 +86,17 @@ parameters:
 			path: src/Security/RolesBuilder/AdminRolesBuilder.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between null and Sonata\\\\AdminBundle\\\\Security\\\\Handler\\\\SecurityHandlerInterface will always evaluate to false\\.$#"
+			message: "#^Parameter \\#1 \\$admin of method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\AdminRolesBuilder\\:\\:getAdminLabel\\(\\) expects Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface\\<Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\>, Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface\\<object\\> given\\.$#"
+			count: 1
+			path: src/Security/RolesBuilder/AdminRolesBuilder.php
+
+		-
+			message: "#^Parameter \\#1 \\$admin of method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\AdminRolesBuilder\\:\\:getGroupLabel\\(\\) expects Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface\\<Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\>, Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface\\<object\\> given\\.$#"
+			count: 1
+			path: src/Security/RolesBuilder/AdminRolesBuilder.php
+
+		-
+			message: "#^Parameter \\#1 \\$admin of method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\AdminRolesBuilder\\:\\:isMaster\\(\\) expects Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface\\<Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\>, Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface\\<object\\> given\\.$#"
 			count: 1
 			path: src/Security/RolesBuilder/AdminRolesBuilder.php
 
@@ -116,7 +126,27 @@ parameters:
 			path: tests/Action/LoginActionTest.php
 
 		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Tests\\\\Fixtures\\\\PoolMockFactory\\:\\:create\\(\\) has parameter \\$adminServiceIds with generic interface Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface but does not specify its types\\: T$#"
+			count: 1
+			path: tests/Fixtures/PoolMockFactory.php
+
+		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertTrue\\(\\) with true and non\\-empty\\-string will always evaluate to true\\.$#"
 			count: 1
 			path: tests/Resources/XliffTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\('confirm_exit' \\=\\> bool, 'default_group' \\=\\> string, 'default_icon' \\=\\> string, 'default_label_catalogue' \\=\\> string, 'dropdown_number_groups_per_colums' \\=\\> int, 'form_type' \\=\\> string, 'html5_validate' \\=\\> bool, 'javascripts' \\=\\> array\\<int, string\\>, \\.\\.\\.\\), array\\(\\) given\\.$#"
+			count: 3
+			path: tests/Security/Authorization/Voter/EditableRolesBuilderTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\('confirm_exit' \\=\\> bool, 'default_group' \\=\\> string, 'default_icon' \\=\\> string, 'default_label_catalogue' \\=\\> string, 'dropdown_number_groups_per_colums' \\=\\> int, 'form_type' \\=\\> string, 'html5_validate' \\=\\> bool, 'javascripts' \\=\\> array\\<int, string\\>, \\.\\.\\.\\), array\\(\\) given\\.$#"
+			count: 1
+			path: tests/Security/RolesBuilder/AdminRolesBuilderTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\('confirm_exit' \\=\\> bool, 'default_group' \\=\\> string, 'default_icon' \\=\\> string, 'default_label_catalogue' \\=\\> string, 'dropdown_number_groups_per_colums' \\=\\> int, 'form_type' \\=\\> string, 'html5_validate' \\=\\> bool, 'javascripts' \\=\\> array\\<int, string\\>, \\.\\.\\.\\), array\\('role_super_admin' \\=\\> 'ROLE_SUPER_ADMIN', 'role_admin' \\=\\> 'ROLE_SONATA_ADMIN'\\) given\\.$#"
+			count: 1
+			path: tests/Security/RolesBuilder/SecurityRolesBuilderTest.php
 

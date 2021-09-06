@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Nucleos\UserAdminBundle\Tests\Action;
 
 use Nucleos\UserAdminBundle\Action\CheckEmailAction;
+use Nucleos\UserAdminBundle\Tests\Fixtures\PoolMockFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\AdminBundle\Admin\Pool;
@@ -36,7 +37,7 @@ final class CheckEmailActionTest extends TestCase
     protected $urlGenerator;
 
     /**
-     * @var MockObject|Pool
+     * @var Pool
      */
     protected $pool;
 
@@ -52,11 +53,11 @@ final class CheckEmailActionTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->templating       = $this->createMock(Environment::class);
-        $this->urlGenerator     = $this->createMock(UrlGeneratorInterface::class);
-        $this->pool             = $this->createMock(Pool::class);
-        $this->templateRegistry = $this->createMock(TemplateRegistryInterface::class);
-        $this->resetTtl         = 60;
+        $this->templating           = $this->createMock(Environment::class);
+        $this->urlGenerator         = $this->createMock(UrlGeneratorInterface::class);
+        $this->pool                 = PoolMockFactory::create();
+        $this->templateRegistry     = $this->createMock(TemplateRegistryInterface::class);
+        $this->resetTtl             = 60;
     }
 
     public function testWithoutUsername(): void

@@ -14,11 +14,13 @@ declare(strict_types=1);
 namespace Nucleos\UserAdminBundle\Tests\Security\RolesBuilder;
 
 use Nucleos\UserAdminBundle\Security\RolesBuilder\AdminRolesBuilder;
+use Nucleos\UserAdminBundle\Tests\Fixtures\PoolMockFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Admin\Pool;
 use Sonata\AdminBundle\Security\Handler\SecurityHandlerInterface;
+use Sonata\AdminBundle\SonataConfiguration;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
@@ -52,9 +54,14 @@ final class AdminRolesBuilderTest extends TestCase
     private $token;
 
     /**
-     * @var MockObject&Pool
+     * @var Pool
      */
     private $pool;
+
+    /**
+     * @var SonataConfiguration
+     */
+    private $configuration;
 
     /**
      * @var MockObject&TranslatorInterface
@@ -78,7 +85,10 @@ final class AdminRolesBuilderTest extends TestCase
         $this->admin                = $this->createMock(AdminInterface::class);
         $this->tokenStorage         = $this->createMock(TokenStorageInterface::class);
         $this->token                = $this->createMock(TokenInterface::class);
-        $this->pool                 = $this->createMock(Pool::class);
+        $this->pool                 = PoolMockFactory::create([
+            'sonata.admin.bar' => $this->admin,
+        ]);
+        $this->configuration        = new SonataConfiguration('title', 'logo.png', []);
         $this->translator           = $this->createMock(TranslatorInterface::class);
     }
 
@@ -112,24 +122,10 @@ final class AdminRolesBuilderTest extends TestCase
             ->willReturn('sonata.admin.bar')
         ;
 
-        $this->pool->expects(static::once())
-            ->method('getAdminServiceIds')
-            ->willReturn(['sonata.admin.bar'])
-        ;
-
-        $this->pool->expects(static::once())
-            ->method('getInstance')
-            ->with('sonata.admin.bar')
-            ->willReturn($this->admin)
-        ;
-
-        $this->pool->method('getAdminGroups')
-            ->willReturn([])
-        ;
-
         $rolesBuilder = new AdminRolesBuilder(
             $this->authorizationChecker,
             $this->pool,
+            $this->configuration,
             $this->translator
         );
 
@@ -176,24 +172,10 @@ final class AdminRolesBuilderTest extends TestCase
             ->willReturn('sonata.admin.bar')
         ;
 
-        $this->pool->expects(static::once())
-            ->method('getAdminServiceIds')
-            ->willReturn(['sonata.admin.bar'])
-        ;
-
-        $this->pool->expects(static::once())
-            ->method('getInstance')
-            ->with('sonata.admin.bar')
-            ->willReturn($this->admin)
-        ;
-
-        $this->pool->method('getAdminGroups')
-            ->willReturn([])
-        ;
-
         $rolesBuilder = new AdminRolesBuilder(
             $this->authorizationChecker,
             $this->pool,
+            $this->configuration,
             $this->translator
         );
 
@@ -236,6 +218,7 @@ final class AdminRolesBuilderTest extends TestCase
         $rolesBuilder = new AdminRolesBuilder(
             $this->authorizationChecker,
             $this->pool,
+            $this->configuration,
             $this->translator
         );
         $rolesBuilder->addExcludeAdmin('sonata.admin.bar');

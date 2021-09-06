@@ -26,7 +26,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\LocaleType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
-use Symfony\Component\Form\FormBuilderInterface;
 
 /**
  * @phpstan-extends AbstractAdmin<\Nucleos\UserBundle\Model\UserInterface>
@@ -52,24 +51,15 @@ abstract class UserAdmin extends AbstractAdmin
         $this->userManager = $userManager;
     }
 
-    public function getFormBuilder(): FormBuilderInterface
-    {
-        $this->formOptions['data_class'] = $this->getClass();
-
-        $options                      = $this->formOptions;
-        $options['validation_groups'] = $this->isNewInstance() ? 'Registration' : 'Profile';
-
-        $formBuilder = $this->getFormContractor()->getFormBuilder($this->getUniqid(), $options);
-
-        $this->defineFormBuilder($formBuilder);
-
-        return $formBuilder;
-    }
-
     public function preUpdate($object): void
     {
         $this->userManager->updateCanonicalFields($object);
         $this->userManager->updatePassword($object);
+    }
+
+    protected function configureFormOptions(array &$formOptions): void
+    {
+        $formOptions['validation_groups'] = $this->isNewInstance() ? 'Registration' : 'Profile';
     }
 
     protected function configureExportFields(): array
@@ -211,7 +201,7 @@ abstract class UserAdmin extends AbstractAdmin
 
     private function isNewInstance(): bool
     {
-        return !$this->hasSubject() || null === $this->getSubject() || null === $this->id($this->getSubject());
+        return !$this->hasSubject() || null === $this->id($this->getSubject());
     }
 
     private function isLocaleAwareSubject(): bool
