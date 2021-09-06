@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.6.4@97fe86c4e158b5a57c5150aa5055c38b5a809aab">
+<files psalm-version="4.10.0@916b098b008f6de4543892b1e0651c1c3b92cbfa">
   <file src="src/Action/LoginAction.php">
     <TooManyArguments occurrences="1">
       <code>dispatch</code>
     </TooManyArguments>
-  </file>
-  <file src="src/Admin/Model/GroupAdmin.php">
-    <NonInvariantDocblockPropertyType occurrences="1">
-      <code>$formOptions</code>
-    </NonInvariantDocblockPropertyType>
-  </file>
-  <file src="src/Admin/Model/UserAdmin.php">
-    <PossiblyNullArgument occurrences="1">
-      <code>$this-&gt;getSubject()</code>
-    </PossiblyNullArgument>
   </file>
   <file src="src/Controller/UserCRUDController.php">
     <TooManyArguments occurrences="1">
@@ -31,11 +21,6 @@
   <file src="src/Form/Type/SecurityRolesType.php">
     <ParamNameMismatch occurrences="1">
       <code>$formBuilder</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="src/Security/Authorization/Voter/UserAclVoter.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$subject</code>
     </ParamNameMismatch>
   </file>
   <file src="src/Security/EditableRolesBuilder.php">
@@ -61,18 +46,13 @@
     <InvalidReturnType occurrences="1">
       <code>string[]</code>
     </InvalidReturnType>
-    <PossiblyNullArgument occurrences="1">
-      <code>$admin-&gt;getParent()</code>
-    </PossiblyNullArgument>
   </file>
   <file src="src/Security/RolesBuilder/SecurityRolesBuilder.php">
-    <InvalidArgument occurrences="6">
+    <InvalidArgument occurrences="4">
       <code>$childRoles</code>
       <code>$childRoles</code>
       <code>$childRoles</code>
       <code>$role</code>
-      <code>$securityRoles</code>
-      <code>$securityRoles</code>
     </InvalidArgument>
     <InvalidArrayOffset occurrences="2">
       <code>$securityRoles[$role]</code>
@@ -81,13 +61,5 @@
     <InvalidOperand occurrences="1">
       <code>$role</code>
     </InvalidOperand>
-    <InvalidReturnStatement occurrences="2">
-      <code>$securityRoles</code>
-      <code>$securityRoles</code>
-    </InvalidReturnStatement>
-    <InvalidReturnType occurrences="2">
-      <code>mixed[]</code>
-      <code>mixed[]</code>
-    </InvalidReturnType>
   </file>
 </files>

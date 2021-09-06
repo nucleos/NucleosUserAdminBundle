@@ -17,7 +17,7 @@ use Nucleos\UserAdminBundle\Security\RolesBuilder\SecurityRolesBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\AdminBundle\Admin\AdminInterface;
-use Sonata\AdminBundle\Admin\Pool;
+use Sonata\AdminBundle\SonataConfiguration;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -34,9 +34,9 @@ final class SecurityRolesBuilderTest extends TestCase
     private $admin;
 
     /**
-     * @var MockObject&Pool
+     * @var SonataConfiguration
      */
-    private $pool;
+    private $configuration;
 
     /**
      * @var MockObject&TranslatorInterface
@@ -52,7 +52,10 @@ final class SecurityRolesBuilderTest extends TestCase
     {
         $this->authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
         $this->admin                = $this->createMock(AdminInterface::class);
-        $this->pool                 = $this->createMock(Pool::class);
+        $this->configuration        = new SonataConfiguration('title', 'logo.png', [
+            'role_super_admin' => 'ROLE_SUPER_ADMIN',
+            'role_admin'       => 'ROLE_SONATA_ADMIN',
+        ]);
         $this->translator           = $this->createMock(TranslatorInterface::class);
     }
 
@@ -61,21 +64,9 @@ final class SecurityRolesBuilderTest extends TestCase
      */
     public function testGetRoles(): void
     {
-        $this->pool->expects(static::exactly(2))
-            ->method('getOption')
-            ->withConsecutive(
-                ['role_super_admin'],
-                ['role_admin']
-            )
-            ->willReturn(
-                'ROLE_SUPER_ADMIN',
-                'ROLE_SONATA_ADMIN'
-            )
-        ;
-
         $securityRolesBuilder = new SecurityRolesBuilder(
             $this->authorizationChecker,
-            $this->pool,
+            $this->configuration,
             $this->translator,
             $this->rolesHierarchy
         );
@@ -120,21 +111,9 @@ final class SecurityRolesBuilderTest extends TestCase
      */
     public function testGetRolesNotExpanded(): void
     {
-        $this->pool->expects(static::exactly(2))
-            ->method('getOption')
-            ->withConsecutive(
-                ['role_super_admin'],
-                ['role_admin']
-            )
-            ->willReturn(
-                'ROLE_SUPER_ADMIN',
-                'ROLE_SONATA_ADMIN'
-            )
-        ;
-
         $securityRolesBuilder = new SecurityRolesBuilder(
             $this->authorizationChecker,
-            $this->pool,
+            $this->configuration,
             $this->translator,
             $this->rolesHierarchy
         );
@@ -179,23 +158,11 @@ final class SecurityRolesBuilderTest extends TestCase
      */
     public function testGetRolesWithExistingRole(): void
     {
-        $this->pool->expects(static::exactly(2))
-            ->method('getOption')
-            ->withConsecutive(
-                ['role_super_admin'],
-                ['role_admin']
-            )
-            ->willReturn(
-                'ROLE_SUPER_ADMIN',
-                'ROLE_SONATA_ADMIN'
-            )
-        ;
-
         $this->rolesHierarchy['ROLE_STAFF'] = ['ROLE_SUPER_ADMIN', 'ROLE_SUPER_ADMIN'];
 
         $securityRolesBuilder = new SecurityRolesBuilder(
             $this->authorizationChecker,
-            $this->pool,
+            $this->configuration,
             $this->translator,
             $this->rolesHierarchy
         );

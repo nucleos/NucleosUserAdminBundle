@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Nucleos\UserAdminBundle\Tests\Action;
 
 use Nucleos\UserAdminBundle\Action\RequestAction;
+use Nucleos\UserAdminBundle\Tests\Fixtures\PoolMockFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\AdminBundle\Admin\Pool;
@@ -42,7 +43,7 @@ final class RequestActionTest extends TestCase
     protected $authorizationChecker;
 
     /**
-     * @var MockObject|Pool
+     * @var Pool
      */
     protected $pool;
 
@@ -56,7 +57,7 @@ final class RequestActionTest extends TestCase
         $this->templating           = $this->createMock(Environment::class);
         $this->urlGenerator         = $this->createMock(UrlGeneratorInterface::class);
         $this->authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
-        $this->pool                 = $this->createMock(Pool::class);
+        $this->pool                 = PoolMockFactory::create();
         $this->templateRegistry     = $this->createMock(TemplateRegistryInterface::class);
     }
 

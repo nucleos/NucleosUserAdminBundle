@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Nucleos\UserAdminBundle\Tests\Action;
 
 use Nucleos\UserAdminBundle\Action\LoginAction;
+use Nucleos\UserAdminBundle\Tests\Fixtures\PoolMockFactory;
 use Nucleos\UserBundle\Model\UserInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -56,7 +57,7 @@ final class LoginActionTest extends TestCase
     protected $authorizationChecker;
 
     /**
-     * @var MockObject|Pool
+     * @var Pool
      */
     protected $pool;
 
@@ -86,7 +87,7 @@ final class LoginActionTest extends TestCase
         $this->eventDispatcher      = $this->createMock(EventDispatcherInterface::class);
         $this->urlGenerator         = $this->createMock(UrlGeneratorInterface::class);
         $this->authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
-        $this->pool                 = $this->createMock(Pool::class);
+        $this->pool                 = PoolMockFactory::create();
         $this->templateRegistry     = $this->createMock(TemplateRegistryInterface::class);
         $this->tokenStorage         = $this->createMock(TokenStorageInterface::class);
         $this->session              = $this->createMock(Session::class);
