@@ -1,5 +1,9 @@
 {% extends '@NucleosUserAdmin/Admin/Security/layout.html.twig' %}
 
+{% trans_default_domain 'NucleosUserAdminBundle' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
 {% block login_box_content %}
     {% block sonata_admin_login_error %}
         {% if error %}
@@ -13,46 +17,19 @@
         {{ 'title_user_authentication'|trans({}, 'NucleosUserAdminBundle') }}
     </p>
 
-    <form action="{{ path("nucleos_user_admin_security_check") }}" method="post" role="form">
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+    {{ form_start(form) }}
 
-        <div class="form-group has-feedback">
-            <input class="form-control"
-                   id="username"
-                   name="_username"
-                   placeholder="{{ 'security.login.username'|trans({}, 'NucleosUserAdminBundle') }}"
-                   required="required"
-                   type="text"
-                   value="{{ last_username }}"/>
-            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-        </div>
+    {% set actions %}{{ form_widget(form.save, { attr: { class: 'btn btn-primary btn-block' } }) }}{% endset %}
 
-        <div class="form-group has-feedback">
-            <input class="form-control"
-                   id="password"
-                   name="_password"
-                   placeholder="{{ 'security.login.password'|trans({}, 'NucleosUserAdminBundle') }}"
-                   required="required"
-                   type="password"/>
-            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        </div>
+    {{ form_rest(form) }}
 
-        <div class="row">
-            <div class="col-xs-8">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
-                        {{ 'security.login.remember_me'|trans({}, 'NucleosUserBundle') }}
-                    </label>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <button type="submit" class="btn btn-primary btn-block btn-flat">
-                    {{ 'security.login.submit'|trans({}, 'NucleosUserBundle') }}
-                </button>
-            </div>
-        </div>
-    </form>
+    {{ actions }}
 
-    <a href="{{ reset_route }}">{{ 'forgotten_password'|trans({}, 'NucleosUserAdminBundle') }}</a>
+    {{ form_end(form) }}
+
+    <div>
+        <a href="{{ path('nucleos_user_admin_resetting_request') }}">
+            {{ 'forgotten_password'|trans }}
+        </a>
+    </div>
 {% endblock %}

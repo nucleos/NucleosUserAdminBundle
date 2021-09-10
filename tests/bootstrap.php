@@ -23,3 +23,6 @@ EOT;
 
     exit(1);
 }
+
+// Workaround  for phpunit Printer error
+session_start();
