@@ -11,17 +11,12 @@
     </TooManyArguments>
   </file>
   <file src="src/DependencyInjection/Configuration.php">
-    <PossiblyUndefinedMethod occurrences="1">
+    <UndefinedMethod occurrences="4">
       <code>children</code>
-    </PossiblyUndefinedMethod>
-    <UndefinedMethod occurrences="1">
+      <code>children</code>
+      <code>children</code>
       <code>children</code>
     </UndefinedMethod>
-  </file>
-  <file src="src/Form/Type/SecurityRolesType.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$formBuilder</code>
-    </ParamNameMismatch>
   </file>
   <file src="src/Security/EditableRolesBuilder.php">
     <LessSpecificImplementedReturnType occurrences="1">
