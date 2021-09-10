@@ -18,6 +18,7 @@ use Nucleos\UserAdminBundle\Security\RolesBuilder\AdminRolesBuilder;
 use Nucleos\UserAdminBundle\Security\RolesBuilder\MatrixRolesBuilder;
 use Nucleos\UserAdminBundle\Security\RolesBuilder\SecurityRolesBuilder;
 use Nucleos\UserAdminBundle\Twig\RolesMatrixExtension;
+use Nucleos\UserAdminBundle\Twig\RolesMatrixRuntime;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
@@ -72,6 +73,9 @@ return static function (ContainerConfigurator $container): void {
 
         ->set(RolesMatrixExtension::class)
             ->tag('twig.extension')
+
+        ->set(RolesMatrixRuntime::class)
+            ->tag('twig.runtime')
             ->args([
                 ref('nucleos_user_admin.matrix_roles_builder'),
             ])

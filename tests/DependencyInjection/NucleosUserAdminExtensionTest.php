@@ -19,6 +19,7 @@ use Nucleos\UserAdminBundle\Admin\Entity\UserAdmin;
 use Nucleos\UserAdminBundle\DependencyInjection\Configuration;
 use Nucleos\UserAdminBundle\DependencyInjection\NucleosUserAdminExtension;
 use Nucleos\UserAdminBundle\Twig\ImpersonateExtension;
+use Nucleos\UserAdminBundle\Twig\ImpersonateRuntime;
 use Symfony\Bundle\TwigBundle\DependencyInjection\TwigExtension;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -96,6 +97,7 @@ final class NucleosUserAdminExtensionTest extends AbstractExtensionTestCase
         $this->load();
 
         $this->assertContainerBuilderHasService(ImpersonateExtension::class);
+        $this->assertContainerBuilderHasService(ImpersonateRuntime::class);
     }
 
     public function testLoadWithImpersonating(): void
@@ -110,8 +112,9 @@ final class NucleosUserAdminExtensionTest extends AbstractExtensionTestCase
         ]);
 
         $this->assertContainerBuilderHasService(ImpersonateExtension::class);
-        $this->assertContainerBuilderHasServiceDefinitionWithArgument(ImpersonateExtension::class, 1, 'my_route');
-        $this->assertContainerBuilderHasServiceDefinitionWithArgument(ImpersonateExtension::class, 2, ['foo' => 'bar']);
+        $this->assertContainerBuilderHasService(ImpersonateRuntime::class);
+        $this->assertContainerBuilderHasServiceDefinitionWithArgument(ImpersonateRuntime::class, 1, 'my_route');
+        $this->assertContainerBuilderHasServiceDefinitionWithArgument(ImpersonateRuntime::class, 2, ['foo' => 'bar']);
     }
 
     /**

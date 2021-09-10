@@ -11,32 +11,15 @@
 
 namespace Nucleos\UserAdminBundle\Twig;
 
-use Nucleos\UserAdminBundle\Avatar\AvatarResolver;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 final class AvatarExtension extends AbstractExtension
 {
-    private AvatarResolver $avatarResolver;
-
-    public function __construct(AvatarResolver $avatarResolver)
-    {
-        $this->avatarResolver = $avatarResolver;
-    }
-
-    /**
-     * @return TwigFunction[]
-     */
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('userAvatar', [$this, 'userAvatar']),
+            new TwigFunction('userAvatar', [AvatarRuntime::class, 'userAvatar']),
         ];
-    }
-
-    public function userAvatar(?UserInterface $user): string
-    {
-        return $this->avatarResolver->avatarUrl($user);
     }
 }

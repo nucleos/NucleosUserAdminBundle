@@ -11,53 +11,16 @@
 
 namespace Nucleos\UserAdminBundle\Twig;
 
-use Symfony\Component\Routing\RouterInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 final class ImpersonateExtension extends AbstractExtension
 {
-    private RouterInterface $router;
-
-    private ?string $route;
-
-    /**
-     * @var array<string, mixed>
-     */
-    private $routeParams;
-
-    /**
-     * @param array<string, mixed> $routeParams
-     */
-    public function __construct(RouterInterface $router, ?string $route, array $routeParams)
-    {
-        $this->router      = $router;
-        $this->route       = $route;
-        $this->routeParams = $routeParams;
-    }
-
-    /**
-     * @return TwigFunction[]
-     */
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('impersonate', [$this, 'switchRoute']),
-            new TwigFunction('impersonateExit', [$this, 'exitRoute']),
+            new TwigFunction('impersonate', [ImpersonateRuntime::class, 'switchRoute']),
+            new TwigFunction('impersonateExit', [ImpersonateRuntime::class, 'exitRoute']),
         ];
-    }
-
-    public function switchRoute(string $username): string
-    {
-        if (null === $this->route) {
-            return '#';
-        }
-
-        return $this->router->generate($this->route, array_merge($this->routeParams, ['_switch_user' => $username]));
-    }
-
-    public function exitRoute(): string
-    {
-        return $this->switchRoute('_exit');
     }
 }

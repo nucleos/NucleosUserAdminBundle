@@ -14,12 +14,16 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use Nucleos\UserAdminBundle\Avatar\AvatarResolver;
 use Nucleos\UserAdminBundle\Avatar\StaticAvatarResolver;
 use Nucleos\UserAdminBundle\Twig\AvatarExtension;
+use Nucleos\UserAdminBundle\Twig\AvatarRuntime;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
 
         ->set(AvatarExtension::class)
             ->tag('twig.extension')
+
+        ->set(AvatarRuntime::class)
+            ->tag('twig.runtime')
             ->args([
                 ref(AvatarResolver::class),
                 null,
