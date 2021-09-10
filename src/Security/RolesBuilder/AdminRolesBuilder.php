@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserAdminBundle\Security\RolesBuilder;
 
+use Nucleos\UserBundle\Model\UserInterface;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Admin\Pool;
 use Sonata\AdminBundle\SonataConfiguration;
@@ -113,7 +114,7 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
     }
 
     /**
-     * @phpstan-param AdminInterface<\Nucleos\UserBundle\Model\UserInterface> $admin
+     * @phpstan-param AdminInterface<UserInterface> $admin
      */
     private function getAdminLabel(AdminInterface $admin): string
     {
@@ -125,7 +126,7 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
     }
 
     /**
-     * @phpstan-param AdminInterface<\Nucleos\UserBundle\Model\UserInterface> $admin
+     * @phpstan-param AdminInterface<UserInterface> $admin
      */
     private function getGroupLabel(AdminInterface $admin): string
     {
@@ -149,7 +150,7 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
     /**
      * @param array<string, mixed> $items
      *
-     * @phpstan-param AdminInterface<\Nucleos\UserBundle\Model\UserInterface> $admin
+     * @phpstan-param AdminInterface<UserInterface> $admin
      */
     private function hasGroupAdmin(array $items, AdminInterface $admin): bool
     {
@@ -167,7 +168,7 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
     }
 
     /**
-     * @phpstan-param AdminInterface<\Nucleos\UserBundle\Model\UserInterface> $admin
+     * @phpstan-param AdminInterface<UserInterface> $admin
      */
     private function isMaster(AdminInterface $admin): bool
     {
@@ -186,7 +187,7 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
     }
 
     /**
-     * @phpstan-param AdminInterface<\Nucleos\UserBundle\Model\UserInterface> $admin
+     * @phpstan-param AdminInterface<UserInterface> $admin
      */
     private function guessGroupLabel(AdminInterface $admin): string
     {

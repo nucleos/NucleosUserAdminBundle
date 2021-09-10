@@ -51,7 +51,7 @@ final class RestoreRolesTransformer implements DataTransformerInterface
     public function transform($value)
     {
         if (null === $value) {
-            return $value;
+            return null;
         }
 
         if (null === $this->originalRoles) {

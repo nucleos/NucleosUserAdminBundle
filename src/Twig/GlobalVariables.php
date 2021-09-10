@@ -14,17 +14,18 @@ declare(strict_types=1);
 namespace Nucleos\UserAdminBundle\Twig;
 
 use LogicException;
+use Nucleos\UserBundle\Model\UserInterface;
 use Sonata\AdminBundle\Admin\AdminInterface;
 
 final class GlobalVariables
 {
     /**
-     * @var AdminInterface<\Nucleos\UserBundle\Model\UserInterface>|null
+     * @var AdminInterface<UserInterface>|null
      */
     private $admin;
 
     /**
-     * @phpstan-param AdminInterface<\Nucleos\UserBundle\Model\UserInterface> $admin
+     * @phpstan-param AdminInterface<UserInterface> $admin
      */
     public function __construct(?AdminInterface $admin)
     {
@@ -32,7 +33,7 @@ final class GlobalVariables
     }
 
     /**
-     * @return AdminInterface<\Nucleos\UserBundle\Model\UserInterface>
+     * @return AdminInterface<UserInterface>
      */
     public function getUserAdmin(): AdminInterface
     {
