@@ -26,13 +26,6 @@ use Sonata\AdminBundle\Form\FormMapper;
  */
 abstract class GroupAdmin extends AbstractAdmin
 {
-    /**
-     * @var string[]
-     */
-    protected $formOptions = [
-        'validation_groups' => 'Registration',
-    ];
-
     private GroupManagerInterface $groupManager;
 
     /**
@@ -48,6 +41,11 @@ abstract class GroupAdmin extends AbstractAdmin
     protected function createNewInstance(): object
     {
         return $this->groupManager->createGroup('');
+    }
+
+    protected function configureFormOptions(array &$formOptions): void
+    {
+        $formOptions['validation_groups'] = $this->isNewInstance() ? 'Registration' : 'Profile';
     }
 
     protected function configureListFields(ListMapper $list): void
@@ -84,5 +82,10 @@ abstract class GroupAdmin extends AbstractAdmin
                 ->end()
             ->end()
         ;
+    }
+
+    private function isNewInstance(): bool
+    {
+        return !$this->hasSubject() || null === $this->id($this->getSubject());
     }
 }
