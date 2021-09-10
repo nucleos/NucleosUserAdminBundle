@@ -18,7 +18,7 @@
         }
     ],
     "require": {
-        "php": "^7.3 || ^8.0",
+        "php": "^7.4 || ^8.0",
         "ext-json": "*",
         "nucleos/user-bundle": "^1.9",
         "psr/log": "^1.0",
