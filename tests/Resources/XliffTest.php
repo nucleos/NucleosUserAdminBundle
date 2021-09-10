@@ -19,15 +19,12 @@ use Symfony\Component\Translation\Loader\XliffFileLoader;
 
 final class XliffTest extends TestCase
 {
-    /**
-     * @var XliffFileLoader
-     */
-    private $loader;
+    private XliffFileLoader $loader;
 
     /**
      * @var string[]
      */
-    private $errors = [];
+    private array $errors = [];
 
     protected function setUp(): void
     {

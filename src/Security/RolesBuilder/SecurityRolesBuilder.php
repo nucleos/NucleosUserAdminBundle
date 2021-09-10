@@ -19,20 +19,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class SecurityRolesBuilder implements ExpandableRolesBuilderInterface
 {
-    /**
-     * @var AuthorizationCheckerInterface
-     */
-    private $authorizationChecker;
+    private AuthorizationCheckerInterface $authorizationChecker;
 
-    /**
-     * @var SonataConfiguration
-     */
-    private $configuration;
+    private SonataConfiguration $configuration;
 
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private TranslatorInterface $translator;
 
     /**
      * @var array<string, string[]>

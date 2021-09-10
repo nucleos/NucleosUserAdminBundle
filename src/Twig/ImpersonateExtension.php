@@ -17,15 +17,9 @@ use Twig\TwigFunction;
 
 final class ImpersonateExtension extends AbstractExtension
 {
-    /**
-     * @var RouterInterface
-     */
-    private $router;
+    private RouterInterface $router;
 
-    /**
-     * @var string|null
-     */
-    private $route;
+    private ?string $route;
 
     /**
      * @var array<string, mixed>
@@ -33,7 +27,6 @@ final class ImpersonateExtension extends AbstractExtension
     private $routeParams;
 
     /**
-     * @param string               $route
      * @param array<string, mixed> $routeParams
      */
     public function __construct(RouterInterface $router, ?string $route, array $routeParams)

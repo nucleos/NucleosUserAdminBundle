@@ -47,7 +47,7 @@ final class LoginActionTest extends TestCase
     protected $eventDispatcher;
 
     /**
-     * @var MockObject|UrlGeneratorInterface
+     * @var MockObject&UrlGeneratorInterface
      */
     protected $urlGenerator;
 
@@ -56,23 +56,20 @@ final class LoginActionTest extends TestCase
      */
     protected $authorizationChecker;
 
-    /**
-     * @var Pool
-     */
-    protected $pool;
+    protected Pool $pool;
 
     /**
-     * @var MockObject|TemplateRegistryInterface
+     * @var MockObject&TemplateRegistryInterface
      */
     protected $templateRegistry;
 
     /**
-     * @var MockObject|TokenStorageInterface
+     * @var MockObject&TokenStorageInterface
      */
     protected $tokenStorage;
 
     /**
-     * @var MockObject|Session
+     * @var MockObject&Session
      */
     protected $session;
 

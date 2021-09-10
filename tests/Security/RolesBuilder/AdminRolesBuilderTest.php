@@ -53,15 +53,9 @@ final class AdminRolesBuilderTest extends TestCase
      */
     private $token;
 
-    /**
-     * @var Pool
-     */
-    private $pool;
+    private Pool $pool;
 
-    /**
-     * @var SonataConfiguration
-     */
-    private $configuration;
+    private SonataConfiguration $configuration;
 
     /**
      * @var MockObject&TranslatorInterface
@@ -71,7 +65,7 @@ final class AdminRolesBuilderTest extends TestCase
     /**
      * @var string[][]
      */
-    private $securityInformation = [
+    private array $securityInformation = [
         'GUEST'  => [0 => 'VIEW', 1 => 'LIST'],
         'STAFF'  => [0 => 'EDIT', 1 => 'LIST', 2 => 'CREATE'],
         'EDITOR' => [0 => 'OPERATOR', 1 => 'EXPORT'],

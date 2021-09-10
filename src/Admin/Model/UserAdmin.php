@@ -33,19 +33,12 @@ use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
  */
 abstract class UserAdmin extends AbstractAdmin
 {
-    /**
-     * @var UserManagerInterface
-     */
-    protected $userManager;
+    protected UserManagerInterface $userManager;
 
     /**
-     * @param string $code
-     * @param string $class
-     * @param string $baseControllerName
-     *
      * @phpstan-param class-string<UserInterface> $class
      */
-    public function __construct($code, $class, $baseControllerName, UserManagerInterface $userManager)
+    public function __construct(string $code, string $class, string $baseControllerName, UserManagerInterface $userManager)
     {
         parent::__construct($code, $class, $baseControllerName);
 

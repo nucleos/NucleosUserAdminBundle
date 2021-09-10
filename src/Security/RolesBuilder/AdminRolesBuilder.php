@@ -22,30 +22,18 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class AdminRolesBuilder implements AdminRolesBuilderInterface
 {
-    /**
-     * @var AuthorizationCheckerInterface
-     */
-    private $authorizationChecker;
+    private AuthorizationCheckerInterface $authorizationChecker;
 
-    /**
-     * @var Pool
-     */
-    private $pool;
+    private Pool $pool;
 
-    /**
-     * @var SonataConfiguration
-     */
-    private $configuration;
+    private SonataConfiguration $configuration;
 
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private TranslatorInterface $translator;
 
     /**
      * @var string []
      */
-    private $excludeAdmins = [];
+    private array $excludeAdmins = [];
 
     public function __construct(
         AuthorizationCheckerInterface $authorizationChecker,

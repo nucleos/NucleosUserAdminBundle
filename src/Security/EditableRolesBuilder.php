@@ -22,35 +22,17 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class EditableRolesBuilder implements EditableRolesBuilderInterface
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    private $tokenStorage;
+    private TokenStorageInterface $tokenStorage;
 
-    /**
-     * @var AuthorizationCheckerInterface
-     */
-    private $authorizationChecker;
+    private AuthorizationCheckerInterface $authorizationChecker;
 
-    /**
-     * @var Pool
-     */
-    private $pool;
+    private Pool $pool;
 
-    /**
-     * @var SonataConfiguration
-     */
-    private $configuration;
+    private SonataConfiguration $configuration;
 
-    /**
-     * @var TranslatorInterface|null
-     */
-    private $translator;
+    private ?TranslatorInterface $translator = null;
 
-    /**
-     * @var array
-     */
-    private $rolesHierarchy;
+    private array $rolesHierarchy;
 
     public function __construct(
         TokenStorageInterface $tokenStorage,
