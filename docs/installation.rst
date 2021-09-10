@@ -126,7 +126,7 @@ import the NucleosUserAdminBundle routing files.
 
     # config/routes/nucleos_user_admin.yaml
     nucleos_user_admin_admin_security:
-        resource: "@NucleosUserAdminBundle/Resources/config/routing/all.xml"
+        resource: "@NucleosUserAdminBundle/Resources/config/routing/all.php"
 
 
 .. _Symfony documentation: https://symfony.com/doc/current/book/translation.html

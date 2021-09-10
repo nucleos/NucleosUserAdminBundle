@@ -70,14 +70,13 @@ final class AppKernel extends Kernel
     protected function configureRoutes(RouteCollectionBuilder $routes): void
     {
         $routes->import('@SonataAdminBundle/Resources/config/routing/sonata_admin.xml');
-        $routes->import(__DIR__.'/../../src/Resources/config/routing/admin_security.xml');
-        $routes->import(__DIR__.'/../../src/Resources/config/routing/admin_resetting.xml');
+        $routes->import(__DIR__.'/../../src/Resources/config/routing/admin_security.php');
+        $routes->import(__DIR__.'/../../src/Resources/config/routing/admin_resetting.php');
     }
 
     protected function configureContainer(ContainerBuilder $containerBuilder, LoaderInterface $loader): void
     {
-        $loader->load(__DIR__.'/config/config.yaml');
-        $loader->load(__DIR__.'/config/security.yaml');
+        $loader->load(__DIR__.'/config/config.php');
     }
 
     private function getBaseDir(): string
