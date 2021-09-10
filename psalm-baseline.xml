@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.10.0@916b098b008f6de4543892b1e0651c1c3b92cbfa">
-  <file src="src/Action/LoginAction.php">
-    <TooManyArguments occurrences="1">
-      <code>dispatch</code>
-    </TooManyArguments>
-  </file>
-  <file src="src/Controller/UserCRUDController.php">
-    <TooManyArguments occurrences="1">
-      <code>dispatch</code>
-    </TooManyArguments>
+  <file src="src/Action/CheckEmailAction.php">
+    <InvalidArgument occurrences="1">
+      <code>$username</code>
+    </InvalidArgument>
   </file>
   <file src="src/DependencyInjection/Configuration.php">
     <UndefinedMethod occurrences="4">
