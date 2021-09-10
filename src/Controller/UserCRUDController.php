@@ -12,6 +12,7 @@
 namespace Nucleos\UserAdminBundle\Controller;
 
 use Nucleos\UserBundle\Event\AccountDeletionEvent;
+use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Sonata\AdminBundle\Controller\CRUDController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 /**
- * @phpstan-extends CRUDController<\Nucleos\UserBundle\Model\UserInterface>
+ * @phpstan-extends CRUDController<UserInterface>
  */
 class UserCRUDController extends CRUDController
 {

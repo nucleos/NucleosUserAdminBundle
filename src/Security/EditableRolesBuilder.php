@@ -100,7 +100,7 @@ final class EditableRolesBuilder implements EditableRolesBuilderInterface
 
         // get roles from the service container
         foreach ($this->rolesHierarchy as $name => $rolesHierarchy) {
-            if ($this->authorizationChecker->isGranted($name) || $isMaster) {
+            if ($isMaster || $this->authorizationChecker->isGranted($name)) {
                 $roles[$name] = $this->translateRole($name, $domain);
                 if ($expanded) {
                     $result       = array_map(

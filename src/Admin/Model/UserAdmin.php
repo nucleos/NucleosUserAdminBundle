@@ -16,6 +16,7 @@ namespace Nucleos\UserAdminBundle\Admin\Model;
 use DomainException;
 use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
 use Nucleos\UserBundle\Model\LocaleAwareInterface;
+use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -28,7 +29,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 
 /**
- * @phpstan-extends AbstractAdmin<\Nucleos\UserBundle\Model\UserInterface>
+ * @phpstan-extends AbstractAdmin<UserInterface>
  */
 abstract class UserAdmin extends AbstractAdmin
 {
@@ -42,7 +43,7 @@ abstract class UserAdmin extends AbstractAdmin
      * @param string $class
      * @param string $baseControllerName
      *
-     * @phpstan-param class-string<\Nucleos\UserBundle\Model\UserInterface> $class
+     * @phpstan-param class-string<UserInterface> $class
      */
     public function __construct($code, $class, $baseControllerName, UserManagerInterface $userManager)
     {

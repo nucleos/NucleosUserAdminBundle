@@ -37,7 +37,7 @@ final class SecurityRolesType extends AbstractType
         $this->rolesBuilder = $rolesBuilder;
     }
 
-    public function buildForm(FormBuilderInterface $formBuilder, array $options): void
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         /*
          * The form shows only roles that the current user can edit for the targeted user. Now we still need to persist
@@ -49,7 +49,7 @@ final class SecurityRolesType extends AbstractType
         $transformer = new RestoreRolesTransformer($this->rolesBuilder);
 
         // GET METHOD
-        $formBuilder->addEventListener(
+        $builder->addEventListener(
             FormEvents::PRE_SET_DATA,
             static function (FormEvent $event) use ($transformer): void {
                 $transformer->setOriginalRoles($event->getData());
@@ -57,14 +57,14 @@ final class SecurityRolesType extends AbstractType
         );
 
         // POST METHOD
-        $formBuilder->addEventListener(
+        $builder->addEventListener(
             FormEvents::PRE_SUBMIT,
             static function (FormEvent $event) use ($transformer): void {
                 $transformer->setOriginalRoles($event->getForm()->getData());
             }
         );
 
-        $formBuilder->addModelTransformer($transformer);
+        $builder->addModelTransformer($transformer);
     }
 
     public function buildView(FormView $view, FormInterface $form, array $options): void
