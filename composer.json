@@ -21,7 +21,7 @@
         "php": "^7.4 || ^8.0",
         "ext-json": "*",
         "nucleos/user-bundle": "^1.9",
-        "psr/log": "^1.0",
+        "psr/log": "^1.0 || ^2.0 || ^3.0",
         "sonata-project/admin-bundle": "^3.90 || ^4.0",
         "sonata-project/doctrine-extensions": "^1.5.1",
         "symfony/config": "^4.4 || ^5.3",
