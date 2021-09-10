@@ -2,27 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.5.0 - TBD
+## 1.5.0 - 2021-09-10
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [1.5.0](https://github.com/nucleos/NucleosUserAdminBundle/milestone/11)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 1.5.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **1**
 
-### Removed
+#### Feature Request
 
-- Nothing.
+ - [346: Show flash messages on login form](https://github.com/nucleos/NucleosUserAdminBundle/pull/346) thanks to @core23
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [275: Replace iCheck with native html attributes](https://github.com/nucleos/NucleosUserAdminBundle/pull/275) thanks to @core23
 
 ## 1.4.1 - 2021-04-11
 
