@@ -33,19 +33,12 @@ abstract class GroupAdmin extends AbstractAdmin
         'validation_groups' => 'Registration',
     ];
 
-    /**
-     * @var GroupManagerInterface
-     */
-    private $groupManager;
+    private GroupManagerInterface $groupManager;
 
     /**
-     * @param string $code
-     * @param string $class
-     * @param string $baseControllerName
-     *
      * @phpstan-param class-string<GroupInterface> $class
      */
-    public function __construct($code, $class, $baseControllerName, GroupManagerInterface $groupManager)
+    public function __construct(string $code, string $class, string $baseControllerName, GroupManagerInterface $groupManager)
     {
         parent::__construct($code, $class, $baseControllerName);
 

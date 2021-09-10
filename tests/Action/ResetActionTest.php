@@ -43,7 +43,7 @@ final class ResetActionTest extends TestCase
     protected $templating;
 
     /**
-     * @var MockObject|UrlGeneratorInterface
+     * @var MockObject&UrlGeneratorInterface
      */
     protected $urlGenerator;
 
@@ -52,13 +52,10 @@ final class ResetActionTest extends TestCase
      */
     protected $authorizationChecker;
 
-    /**
-     * @var Pool
-     */
-    protected $pool;
+    protected Pool $pool;
 
     /**
-     * @var MockObject|TemplateRegistryInterface
+     * @var MockObject&TemplateRegistryInterface
      */
     protected $templateRegistry;
 
@@ -68,7 +65,7 @@ final class ResetActionTest extends TestCase
     protected $formFactory;
 
     /**
-     * @var MockObject|UserManagerInterface
+     * @var MockObject&UserManagerInterface
      */
     protected $userManager;
 
@@ -78,24 +75,18 @@ final class ResetActionTest extends TestCase
     protected $loginManager;
 
     /**
-     * @var MockObject|TranslatorInterface
+     * @var MockObject&TranslatorInterface
      */
     protected $translator;
 
     /**
-     * @var MockObject|Session
+     * @var MockObject&Session
      */
     protected $session;
 
-    /**
-     * @var int
-     */
-    protected $resetTtl;
+    protected int $resetTtl;
 
-    /**
-     * @var string
-     */
-    protected $firewallName;
+    protected string $firewallName;
 
     protected function setUp(): void
     {

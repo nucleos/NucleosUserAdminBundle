@@ -33,10 +33,7 @@ final class SecurityRolesBuilderTest extends TestCase
      */
     private $admin;
 
-    /**
-     * @var SonataConfiguration
-     */
-    private $configuration;
+    private SonataConfiguration $configuration;
 
     /**
      * @var MockObject&TranslatorInterface
@@ -46,7 +43,7 @@ final class SecurityRolesBuilderTest extends TestCase
     /**
      * @var string[][]
      */
-    private $rolesHierarchy = ['ROLE_FOO' => ['ROLE_BAR', 'ROLE_ADMIN']];
+    private array $rolesHierarchy = ['ROLE_FOO' => ['ROLE_BAR', 'ROLE_ADMIN']];
 
     protected function setUp(): void
     {

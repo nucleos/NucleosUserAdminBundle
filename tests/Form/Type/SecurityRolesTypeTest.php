@@ -22,10 +22,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class SecurityRolesTypeTest extends TypeTestCase
 {
-    /**
-     * @var EditableRolesBuilderInterface
-     */
-    private $roleBuilder;
+    private EditableRolesBuilderInterface $roleBuilder;
 
     public function testGetDefaultOptions(): void
     {

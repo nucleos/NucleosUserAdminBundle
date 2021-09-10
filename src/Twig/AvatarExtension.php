@@ -18,10 +18,7 @@ use Twig\TwigFunction;
 
 final class AvatarExtension extends AbstractExtension
 {
-    /**
-     * @var AvatarResolver
-     */
-    private $avatarResolver;
+    private AvatarResolver $avatarResolver;
 
     public function __construct(AvatarResolver $avatarResolver)
     {

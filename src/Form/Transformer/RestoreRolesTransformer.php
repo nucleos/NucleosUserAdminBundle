@@ -19,15 +19,9 @@ use Symfony\Component\Form\DataTransformerInterface;
 
 final class RestoreRolesTransformer implements DataTransformerInterface
 {
-    /**
-     * @var array
-     */
-    private $originalRoles;
+    private ?array $originalRoles = null;
 
-    /**
-     * @var EditableRolesBuilderInterface
-     */
-    private $rolesBuilder;
+    private EditableRolesBuilderInterface $rolesBuilder;
 
     public function __construct(EditableRolesBuilderInterface $rolesBuilder)
     {

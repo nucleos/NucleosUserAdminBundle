@@ -33,7 +33,7 @@ final class RequestActionTest extends TestCase
     protected $templating;
 
     /**
-     * @var MockObject|UrlGeneratorInterface
+     * @var MockObject&UrlGeneratorInterface
      */
     protected $urlGenerator;
 
@@ -42,13 +42,10 @@ final class RequestActionTest extends TestCase
      */
     protected $authorizationChecker;
 
-    /**
-     * @var Pool
-     */
-    protected $pool;
+    protected Pool $pool;
 
     /**
-     * @var MockObject|TemplateRegistryInterface
+     * @var MockObject&TemplateRegistryInterface
      */
     protected $templateRegistry;
 

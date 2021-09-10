@@ -15,10 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 final class StaticAvatarResolver implements AvatarResolver
 {
-    /**
-     * @var string
-     */
-    private $defaultAvatar;
+    private string $defaultAvatar;
 
     public function __construct(string $defaultAvatar)
     {
