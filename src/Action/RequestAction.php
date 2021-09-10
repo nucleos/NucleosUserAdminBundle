@@ -13,12 +13,14 @@ declare(strict_types=1);
 
 namespace Nucleos\UserAdminBundle\Action;
 
+use Nucleos\UserBundle\Form\Type\RequestPasswordFormType;
 use Sonata\AdminBundle\Admin\Pool;
 use Sonata\AdminBundle\Templating\TemplateRegistryInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Twig\Environment;
 
@@ -26,7 +28,7 @@ final class RequestAction
 {
     private Environment $twig;
 
-    private UrlGeneratorInterface $urlGenerator;
+    private RouterInterface $router;
 
     private AuthorizationCheckerInterface $authorizationChecker;
 
@@ -34,34 +36,39 @@ final class RequestAction
 
     private TemplateRegistryInterface $templateRegistry;
 
+    private FormFactoryInterface $formFactory;
+
     public function __construct(
         Environment $twig,
-        UrlGeneratorInterface $urlGenerator,
+        RouterInterface $router,
         AuthorizationCheckerInterface $authorizationChecker,
         Pool $adminPool,
-        TemplateRegistryInterface $templateRegistry
+        TemplateRegistryInterface $templateRegistry,
+        FormFactoryInterface $formFactory
     ) {
         $this->twig                 = $twig;
-        $this->urlGenerator         = $urlGenerator;
+        $this->router               = $router;
         $this->authorizationChecker = $authorizationChecker;
         $this->adminPool            = $adminPool;
         $this->templateRegistry     = $templateRegistry;
+        $this->formFactory          = $formFactory;
     }
 
     public function __invoke(Request $request): Response
     {
         if ($this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
-            return new RedirectResponse($this->urlGenerator->generate('sonata_admin_dashboard'));
+            return new RedirectResponse($this->router->generate('sonata_admin_dashboard'));
         }
 
-        return new Response(
-            $this->twig->render(
-                '@NucleosUserAdmin/Admin/Security/Resetting/request.html.twig',
-                [
-                    'base_template' => $this->templateRegistry->getTemplate('layout'),
-                    'admin_pool'    => $this->adminPool,
-                ]
-            )
-        );
+        $form = $this->formFactory->create(RequestPasswordFormType::class, null, [
+            'action' => $this->router->generate('nucleos_user_admin_resetting_send_email'),
+            'method' => 'POST',
+        ]);
+
+        return new Response($this->twig->render('@NucleosUserAdmin/Admin/Security/Resetting/request.html.twig', [
+            'form'          => $form->createView(),
+            'base_template' => $this->templateRegistry->getTemplate('layout'),
+            'admin_pool'    => $this->adminPool,
+        ]));
     }
 }

@@ -19,9 +19,11 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\AdminBundle\Admin\Pool;
 use Sonata\AdminBundle\Templating\TemplateRegistryInterface;
+use Symfony\Component\Form\Form;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Twig\Environment;
 
@@ -33,9 +35,9 @@ final class RequestActionTest extends TestCase
     protected $templating;
 
     /**
-     * @var MockObject&UrlGeneratorInterface
+     * @var MockObject&RouterInterface
      */
-    protected $urlGenerator;
+    protected $router;
 
     /**
      * @var AuthorizationCheckerInterface&MockObject
@@ -49,13 +51,19 @@ final class RequestActionTest extends TestCase
      */
     protected $templateRegistry;
 
+    /**
+     * @var MockObject&FormFactoryInterface
+     */
+    private $formFactory;
+
     protected function setUp(): void
     {
         $this->templating           = $this->createMock(Environment::class);
-        $this->urlGenerator         = $this->createMock(UrlGeneratorInterface::class);
+        $this->router               = $this->createMock(RouterInterface::class);
         $this->authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
         $this->pool                 = PoolMockFactory::create();
         $this->templateRegistry     = $this->createMock(TemplateRegistryInterface::class);
+        $this->formFactory          = $this->createMock(FormFactoryInterface::class);
     }
 
     public function testAuthenticated(): void
@@ -67,7 +75,7 @@ final class RequestActionTest extends TestCase
             ->willReturn(true)
         ;
 
-        $this->urlGenerator
+        $this->router
             ->method('generate')
             ->with('sonata_admin_dashboard')
             ->willReturn('/foo')
@@ -87,6 +95,7 @@ final class RequestActionTest extends TestCase
         $parameters = [
             'base_template' => 'base.html.twig',
             'admin_pool'    => $this->pool,
+            'form'          => 'Form View',
         ];
 
         $this->authorizationChecker->expects(static::once())
@@ -106,6 +115,31 @@ final class RequestActionTest extends TestCase
             ->willReturn('base.html.twig')
         ;
 
+        $form = $this->createMock(Form::class);
+        $form
+            ->method('isValid')
+            ->willReturn(true)
+        ;
+        $form
+            ->method('isSubmitted')
+            ->willReturn(false)
+        ;
+        $form->expects(static::once())
+            ->method('createView')
+            ->willReturn('Form View')
+        ;
+
+        $this->formFactory->expects(static::once())
+            ->method('create')
+            ->willReturn($form)
+        ;
+
+        $this->router
+            ->method('generate')
+            ->with('nucleos_user_admin_resetting_send_email')
+            ->willReturn('/foo')
+        ;
+
         $action = $this->getAction();
         $result = $action($request);
 
@@ -116,10 +150,11 @@ final class RequestActionTest extends TestCase
     {
         return new RequestAction(
             $this->templating,
-            $this->urlGenerator,
+            $this->router,
             $this->authorizationChecker,
             $this->pool,
-            $this->templateRegistry
+            $this->templateRegistry,
+            $this->formFactory
         );
     }
 }

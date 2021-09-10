@@ -29,7 +29,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Exception\AccountStatusException;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -41,7 +41,7 @@ final class ResetAction
 
     private Environment $twig;
 
-    private UrlGeneratorInterface $urlGenerator;
+    private RouterInterface $router;
 
     private AuthorizationCheckerInterface $authorizationChecker;
 
@@ -68,7 +68,7 @@ final class ResetAction
      */
     public function __construct(
         Environment $twig,
-        UrlGeneratorInterface $urlGenerator,
+        RouterInterface $router,
         AuthorizationCheckerInterface $authorizationChecker,
         Pool $adminPool,
         TemplateRegistryInterface $templateRegistry,
@@ -81,7 +81,7 @@ final class ResetAction
         string $firewallName
     ) {
         $this->twig                 = $twig;
-        $this->urlGenerator         = $urlGenerator;
+        $this->router               = $router;
         $this->authorizationChecker = $authorizationChecker;
         $this->adminPool            = $adminPool;
         $this->templateRegistry     = $templateRegistry;
@@ -101,7 +101,7 @@ final class ResetAction
     public function __invoke(Request $request, string $token): Response
     {
         if ($this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
-            return new RedirectResponse($this->urlGenerator->generate('sonata_admin_dashboard'));
+            return new RedirectResponse($this->router->generate('sonata_admin_dashboard'));
         }
 
         $user = $this->userManager->findUserByConfirmationToken($token);
@@ -113,10 +113,13 @@ final class ResetAction
         }
 
         if (!$user->isPasswordRequestNonExpired($this->resetTtl)) {
-            return new RedirectResponse($this->urlGenerator->generate('nucleos_user_admin_resetting_request'));
+            return new RedirectResponse($this->router->generate('nucleos_user_admin_resetting_request'));
         }
 
         $form = $this->formFactory->create(ResettingFormType::class, new Resetting($user), [
+            'action'            => $this->router->generate('nucleos_user_admin_security_check', [
+                'token' => $token,
+            ]),
             'validation_groups' => ['ResetPassword', 'Default'],
         ]);
 
@@ -128,24 +131,19 @@ final class ResetAction
                 $this->translator->trans('resetting.flash.success', [], 'NucleosUserBundle')
             );
 
-            $response = new RedirectResponse($this->urlGenerator->generate('sonata_admin_dashboard'));
+            $response = new RedirectResponse($this->router->generate('sonata_admin_dashboard'));
 
             $this->resetUser($user, $response);
 
             return $response;
         }
 
-        return new Response(
-            $this->twig->render(
-                '@NucleosUserAdmin/Admin/Security/Resetting/reset.html.twig',
-                [
-                    'token'         => $token,
-                    'form'          => $form->createView(),
-                    'base_template' => $this->templateRegistry->getTemplate('layout'),
-                    'admin_pool'    => $this->adminPool,
-                ]
-            )
-        );
+        return new Response($this->twig->render('@NucleosUserAdmin/Admin/Security/Resetting/reset.html.twig', [
+            'token'         => $token,
+            'form'          => $form->createView(),
+            'base_template' => $this->templateRegistry->getTemplate('layout'),
+            'admin_pool'    => $this->adminPool,
+        ]));
     }
 
     public function setLogger(LoggerInterface $logger): void

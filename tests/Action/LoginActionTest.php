@@ -20,11 +20,12 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\AdminBundle\Admin\Pool;
 use Sonata\AdminBundle\Templating\TemplateRegistryInterface;
+use Symfony\Component\Form\Form;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
@@ -47,9 +48,9 @@ final class LoginActionTest extends TestCase
     protected $eventDispatcher;
 
     /**
-     * @var MockObject&UrlGeneratorInterface
+     * @var MockObject&RouterInterface
      */
-    protected $urlGenerator;
+    protected $router;
 
     /**
      * @var AuthorizationCheckerInterface&MockObject
@@ -69,32 +70,30 @@ final class LoginActionTest extends TestCase
     protected $tokenStorage;
 
     /**
-     * @var MockObject&Session
-     */
-    protected $session;
-
-    /**
      * @var CsrfTokenManagerInterface&MockObject
      */
     protected $csrfTokenManager;
+
+    /**
+     * @var MockObject&FormFactoryInterface
+     */
+    private $formFactory;
 
     protected function setUp(): void
     {
         $this->templating           = $this->createMock(Environment::class);
         $this->eventDispatcher      = $this->createMock(EventDispatcherInterface::class);
-        $this->urlGenerator         = $this->createMock(UrlGeneratorInterface::class);
+        $this->router               = $this->createMock(RouterInterface::class);
         $this->authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
         $this->pool                 = PoolMockFactory::create();
         $this->templateRegistry     = $this->createMock(TemplateRegistryInterface::class);
         $this->tokenStorage         = $this->createMock(TokenStorageInterface::class);
-        $this->session              = $this->createMock(Session::class);
         $this->csrfTokenManager     = $this->createMock(CsrfTokenManagerInterface::class);
+        $this->formFactory          = $this->createMock(FormFactoryInterface::class);
     }
 
     public function testAlreadyAuthenticated(): void
     {
-        $request = new Request();
-
         $user = $this->createMock(UserInterface::class);
 
         $token = $this->createMock(TokenInterface::class);
@@ -108,18 +107,12 @@ final class LoginActionTest extends TestCase
             ->willReturn($token)
         ;
 
-        $bag = $this->createMock(FlashBag::class);
-        $bag->expects(static::once())
-            ->method('add')
-            ->with('nucleos_user_admin_error', 'nucleos_user_admin_already_authenticated')
-        ;
+        $session = new Session();
 
-        $this->session
-            ->method('getFlashBag')
-            ->willReturn($bag)
-        ;
+        $request = new Request();
+        $request->setSession($session);
 
-        $this->urlGenerator
+        $this->router
             ->method('generate')
             ->with('sonata_admin_dashboard')
             ->willReturn('/foo')
@@ -130,6 +123,10 @@ final class LoginActionTest extends TestCase
 
         static::assertInstanceOf(RedirectResponse::class, $result);
         static::assertSame('/foo', $result->getTargetUrl());
+
+        static::assertSame([
+            'nucleos_user_admin_error' => ['nucleos_user_admin_already_authenticated'],
+        ], $session->getFlashBag()->all());
     }
 
     /**
@@ -147,7 +144,7 @@ final class LoginActionTest extends TestCase
             ->willReturn(null)
         ;
 
-        $this->urlGenerator
+        $this->router
             ->method('generate')
             ->with('sonata_admin_dashboard')
             ->willReturn('/foo')
@@ -215,7 +212,8 @@ final class LoginActionTest extends TestCase
             'csrf_token'    => 'csrf-token',
             'error'         => $errorMessage,
             'last_username' => $lastUsername,
-            'reset_route'   => '/foo',
+            'reset_route'   => '/reset',
+            'form'          => 'Form View',
         ];
 
         $csrfToken = $this->createMock(CsrfToken::class);
@@ -229,10 +227,37 @@ final class LoginActionTest extends TestCase
             ->willReturn(null)
         ;
 
-        $this->urlGenerator
+        $form = $this->createMock(Form::class);
+        $form
+            ->method('isValid')
+            ->willReturn(true)
+        ;
+        $form
+            ->method('isSubmitted')
+            ->willReturn(false)
+        ;
+        $form
+            ->method('add')
+            ->willReturnSelf()
+        ;
+        $form->expects(static::once())
+            ->method('createView')
+            ->willReturn('Form View')
+        ;
+
+        $this->formFactory->expects(static::once())
+            ->method('create')
+            ->willReturn($form)
+        ;
+
+        $this->router
             ->method('generate')
-            ->with('nucleos_user_admin_resetting_request')
-            ->willReturn('/foo')
+            ->withConsecutive([
+                'nucleos_user_admin_security_check',
+            ], [
+                'nucleos_user_admin_resetting_request',
+            ])
+            ->willReturn('/check', '/reset')
         ;
 
         $this->authorizationChecker->expects(static::once())
@@ -280,12 +305,12 @@ final class LoginActionTest extends TestCase
         $action = new LoginAction(
             $this->templating,
             $this->eventDispatcher,
-            $this->urlGenerator,
+            $this->router,
             $this->authorizationChecker,
             $this->pool,
             $this->templateRegistry,
             $this->tokenStorage,
-            $this->session
+            $this->formFactory
         );
         $action->setCsrfTokenManager($this->csrfTokenManager);
 

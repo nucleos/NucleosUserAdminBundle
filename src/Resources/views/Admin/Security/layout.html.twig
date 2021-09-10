@@ -17,13 +17,13 @@
             <div class="login-logo">
                 <a href="{{ path('sonata_admin_dashboard') }}">
                     {% if sonata_config.getOption('title_mode') in ['single_image', 'both'] %}
-                        <img src="{{ asset(sonata_config.getOption('titlelogo')) }}"
-                             alt="{{ sonata_config.getOption('title') }}"
+                        <img src="{{ asset(sonata_config.logo) }}"
+                             alt="{{ sonata_config.title }}"
                              class="center-block img-responsive"
                         />
                     {% endif %}
                     {% if sonata_config.getOption('title_mode') in ['single_text', 'both'] %}
-                        <span>{{ sonata_config.getOption('title') }}</span>
+                        <span>{{ sonata_config.title }}</span>
                     {% endif %}
                 </a>
             </div>

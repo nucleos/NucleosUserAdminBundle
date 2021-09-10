@@ -30,7 +30,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
@@ -43,9 +43,9 @@ final class ResetActionTest extends TestCase
     protected $templating;
 
     /**
-     * @var MockObject&UrlGeneratorInterface
+     * @var MockObject&RouterInterface
      */
-    protected $urlGenerator;
+    protected $router;
 
     /**
      * @var AuthorizationCheckerInterface&MockObject
@@ -91,7 +91,7 @@ final class ResetActionTest extends TestCase
     protected function setUp(): void
     {
         $this->templating           = $this->createMock(Environment::class);
-        $this->urlGenerator         = $this->createMock(UrlGeneratorInterface::class);
+        $this->router               = $this->createMock(RouterInterface::class);
         $this->authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
         $this->pool                 = PoolMockFactory::create();
         $this->templateRegistry     = $this->createMock(TemplateRegistryInterface::class);
@@ -113,7 +113,7 @@ final class ResetActionTest extends TestCase
             ->willReturn(true)
         ;
 
-        $this->urlGenerator
+        $this->router
             ->method('generate')
             ->with('sonata_admin_dashboard')
             ->willReturn('/foo')
@@ -159,7 +159,7 @@ final class ResetActionTest extends TestCase
             ->willReturn($user)
         ;
 
-        $this->urlGenerator
+        $this->router
             ->method('generate')
             ->with('nucleos_user_admin_resetting_request')
             ->willReturn('/foo')
@@ -217,10 +217,10 @@ final class ResetActionTest extends TestCase
             ->willReturn($form)
         ;
 
-        $this->urlGenerator
+        $this->router
             ->method('generate')
-            ->with('sonata_admin_dashboard')
-            ->willReturn('/foo')
+            ->with('nucleos_user_admin_security_check')
+            ->willReturn('/check')
         ;
 
         $this->templating
@@ -319,24 +319,28 @@ final class ResetActionTest extends TestCase
             ->willReturn($form)
         ;
 
-        $this->urlGenerator
+        $this->router
             ->method('generate')
-            ->with('sonata_admin_dashboard')
-            ->willReturn('/foo')
+            ->withConsecutive([
+                'nucleos_user_admin_security_check', ['token' => 'token'],
+            ], [
+                'sonata_admin_dashboard',
+            ])
+            ->willReturn('/check', '/dashboard')
         ;
 
         $action = $this->getAction();
         $result = $action($request, 'token');
 
         static::assertInstanceOf(RedirectResponse::class, $result);
-        static::assertSame('/foo', $result->getTargetUrl());
+        static::assertSame('/dashboard', $result->getTargetUrl());
     }
 
     private function getAction(): ResetAction
     {
         return new ResetAction(
             $this->templating,
-            $this->urlGenerator,
+            $this->router,
             $this->authorizationChecker,
             $this->pool,
             $this->templateRegistry,

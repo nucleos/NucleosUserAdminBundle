@@ -1,13 +1,19 @@
 {% extends '@NucleosUserAdmin/Admin/Security/layout.html.twig' %}
 
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
 {% block login_box_content %}
     <p class="login-box-msg">
         {{ 'resetting.reset.submit'|trans({}, 'NucleosUserBundle') }}
     </p>
 
-    {{ form_start(form, { 'action': path('nucleos_user_admin_resetting_reset', {'token': token}) }) }}
+    {{ form_start(form) }}
+
+    {% set actions %}{{ form_widget(form.save, { attr: { class: 'btn btn-primary btn-block' } }) }}{% endset %}
 
     {{ form_widget(form) }}
 
+    {{ actions }}
+
     {{ form_end(form) }}
-{% endblock sonata_wrapper %}
+{% endblock login_box_content %}

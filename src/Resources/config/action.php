@@ -30,6 +30,7 @@ return static function (ContainerConfigurator $container): void {
                 ref('security.authorization_checker'),
                 ref('sonata.admin.pool'),
                 ref('sonata.admin.global_template_registry'),
+                ref('form.factory'),
             ])
 
         ->set(SendEmailAction::class)
@@ -82,7 +83,7 @@ return static function (ContainerConfigurator $container): void {
                 ref('sonata.admin.pool'),
                 ref('sonata.admin.global_template_registry'),
                 ref('security.token_storage'),
-                ref('session'),
+                ref('form.factory'),
             ])
             ->call('setCsrfTokenManager', [
                 ref('security.csrf.token_manager')->ignoreOnInvalid(),
