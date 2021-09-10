@@ -12,17 +12,20 @@
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use Nucleos\UserAdminBundle\Twig\ImpersonateExtension;
+use Nucleos\UserAdminBundle\Twig\ImpersonateRuntime;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
 
         ->set(ImpersonateExtension::class)
             ->tag('twig.extension')
+
+        ->set(ImpersonateRuntime::class)
+            ->tag('twig.runtime')
             ->args([
                 ref('router'),
                 null,
                 [],
             ])
-
     ;
 };

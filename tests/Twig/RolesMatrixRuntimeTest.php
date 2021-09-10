@@ -14,13 +14,13 @@ declare(strict_types=1);
 namespace Nucleos\UserAdminBundle\Tests\Twig;
 
 use Nucleos\UserAdminBundle\Security\RolesBuilder\MatrixRolesBuilderInterface;
-use Nucleos\UserAdminBundle\Twig\RolesMatrixExtension;
+use Nucleos\UserAdminBundle\Twig\RolesMatrixRuntime;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\FormView;
 use Twig\Environment;
 
-final class RolesMatrixExtensionTest extends TestCase
+final class RolesMatrixRuntimeTest extends TestCase
 {
     /**
      * @var MatrixRolesBuilderInterface&MockObject
@@ -72,8 +72,8 @@ final class RolesMatrixExtensionTest extends TestCase
             ->willReturn('')
         ;
 
-        $rolesMatrixExtension = new RolesMatrixExtension($this->rolesBuilder);
-        $rolesMatrixExtension->renderRolesList($this->environment, $this->formView);
+        $rolesMatrixRuntime = new RolesMatrixRuntime($this->rolesBuilder);
+        $rolesMatrixRuntime->renderRolesList($this->environment, $this->formView);
     }
 
     public function testRenderRolesList(): void
@@ -115,8 +115,8 @@ final class RolesMatrixExtensionTest extends TestCase
             ->willReturn('')
         ;
 
-        $rolesMatrixExtension = new RolesMatrixExtension($this->rolesBuilder);
-        $rolesMatrixExtension->renderRolesList($this->environment, $this->formView);
+        $rolesMatrixRuntime = new RolesMatrixRuntime($this->rolesBuilder);
+        $rolesMatrixRuntime->renderRolesList($this->environment, $this->formView);
     }
 
     public function testRenderRolesListWithoutFormValue(): void
@@ -160,8 +160,8 @@ final class RolesMatrixExtensionTest extends TestCase
             ->willReturn('')
         ;
 
-        $rolesMatrixExtension = new RolesMatrixExtension($this->rolesBuilder);
-        $rolesMatrixExtension->renderRolesList($this->environment, $this->formView);
+        $rolesMatrixRuntime = new RolesMatrixRuntime($this->rolesBuilder);
+        $rolesMatrixRuntime->renderRolesList($this->environment, $this->formView);
     }
 
     public function testRenderMatrixWithoutAdminLabels(): void
@@ -204,8 +204,8 @@ final class RolesMatrixExtensionTest extends TestCase
             ->willReturn('')
         ;
 
-        $rolesMatrixExtension = new RolesMatrixExtension($this->rolesBuilder);
-        $rolesMatrixExtension->renderMatrix($this->environment, $this->formView);
+        $rolesMatrixRuntime = new RolesMatrixRuntime($this->rolesBuilder);
+        $rolesMatrixRuntime->renderMatrix($this->environment, $this->formView);
     }
 
     /**
@@ -264,8 +264,8 @@ final class RolesMatrixExtensionTest extends TestCase
             ->willReturn('')
         ;
 
-        $rolesMatrixExtension = new RolesMatrixExtension($this->rolesBuilder);
-        $rolesMatrixExtension->renderMatrix($this->environment, $this->formView);
+        $rolesMatrixRuntime = new RolesMatrixRuntime($this->rolesBuilder);
+        $rolesMatrixRuntime->renderMatrix($this->environment, $this->formView);
     }
 
     public function testRenderMatrixFormVarsNotSet(): void
@@ -320,7 +320,7 @@ final class RolesMatrixExtensionTest extends TestCase
             ->willReturn('')
         ;
 
-        $rolesMatrixExtension = new RolesMatrixExtension($this->rolesBuilder);
-        $rolesMatrixExtension->renderMatrix($this->environment, $this->formView);
+        $rolesMatrixRuntime = new RolesMatrixRuntime($this->rolesBuilder);
+        $rolesMatrixRuntime->renderMatrix($this->environment, $this->formView);
     }
 }
