@@ -30,10 +30,28 @@ final class Configuration implements ConfigurationInterface
 
         $rootNode = $treeBuilder->getRootNode();
 
-        $rootNode
+        $this->addSecuritySection($rootNode);
+        $this->addImpersonatingSection($rootNode);
+        $this->addAdminSection($rootNode);
+        $this->addAvatarSection($rootNode);
+
+        return $treeBuilder;
+    }
+
+    private function addSecuritySection(NodeDefinition $node): void
+    {
+        $node
             ->children()
                 ->booleanNode('security_acl')->defaultFalse()->end()
 
+            ->end()
+        ;
+    }
+
+    private function addImpersonatingSection(NodeDefinition $node): void
+    {
+        $node
+            ->children()
                 ->arrayNode('impersonating')
                     ->children()
                         ->scalarNode('route')->defaultNull()->end()
@@ -43,7 +61,14 @@ final class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
+            ->end()
+        ;
+    }
 
+    private function addAdminSection(NodeDefinition $node): void
+    {
+        $node
+            ->children()
                 ->arrayNode('admin')
                     ->addDefaultsIfNotSet()
                     ->children()
@@ -66,11 +91,7 @@ final class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
             ->end()
-        ;
-
-        $this->addAvatarSection($rootNode);
-
-        return $treeBuilder;
+            ;
     }
 
     private function addAvatarSection(NodeDefinition $node): void
