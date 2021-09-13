@@ -32,6 +32,7 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Twig\Environment;
 
@@ -55,6 +56,8 @@ final class LoginAction
 
     private FormFactoryInterface $formFactory;
 
+    private ?AuthenticationUtils $authenticationUtils;
+
     public function __construct(
         Environment $twig,
         EventDispatcherInterface $eventDispatcher,
@@ -63,7 +66,8 @@ final class LoginAction
         Pool $adminPool,
         TemplateRegistryInterface $templateRegistry,
         TokenStorageInterface $tokenStorage,
-        FormFactoryInterface $formFactory
+        FormFactoryInterface $formFactory,
+        ?AuthenticationUtils $authenticationUtils = null
     ) {
         $this->twig                 = $twig;
         $this->eventDispatcher      = $eventDispatcher;
@@ -73,6 +77,7 @@ final class LoginAction
         $this->templateRegistry     = $templateRegistry;
         $this->tokenStorage         = $tokenStorage;
         $this->formFactory          = $formFactory;
+        $this->authenticationUtils  = $authenticationUtils;
     }
 
     /**
@@ -94,22 +99,6 @@ final class LoginAction
 
         if (null !== $event->getResponse()) {
             return $event->getResponse();
-        }
-
-        $authErrorKey = Security::AUTHENTICATION_ERROR;
-
-        // get the error if any (works with forward and redirect -- see below)
-        if ($request->attributes->has($authErrorKey)) {
-            $error = $request->attributes->get($authErrorKey);
-        } elseif (null !== $session && $session->has($authErrorKey)) {
-            $error = $session->get($authErrorKey);
-            $session->remove($authErrorKey);
-        } else {
-            $error = null;
-        }
-
-        if (!$error instanceof AuthenticationException) {
-            $error = null; // The value does not come from the security component.
         }
 
         if ($this->authorizationChecker->isGranted('ROLE_ADMIN')) {
@@ -136,7 +125,7 @@ final class LoginAction
             'admin_pool'    => $this->adminPool,
             'base_template' => $this->templateRegistry->getTemplate('layout'),
             'csrf_token'    => $this->getCsrfToken(),
-            'error'         => $error,
+            'error'         => $this->getLastAuthenticationError($request),
             'last_username' => $this->getLastUsername($session),
             'reset_route'   => $this->router->generate('nucleos_user_admin_resetting_request'),
         ]));
@@ -147,8 +136,41 @@ final class LoginAction
         $this->csrfTokenManager = $csrfTokenManager;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     */
+    private function getLastAuthenticationError(Request $request): ?AuthenticationException
+    {
+        if (null !== $this->authenticationUtils) {
+            return $this->authenticationUtils->getLastAuthenticationError();
+        }
+
+        $authErrorKey = Security::AUTHENTICATION_ERROR;
+        $session      = $request->hasSession() ? $request->getSession() : null;
+
+        // get the error if any (works with forward and redirect -- see below)
+        if ($request->attributes->has($authErrorKey)) {
+            $error = $request->attributes->get($authErrorKey);
+        } elseif (null !== $session && $session->has($authErrorKey)) {
+            $error = $session->get($authErrorKey);
+            $session->remove($authErrorKey);
+        } else {
+            $error = null;
+        }
+
+        if (!$error instanceof AuthenticationException) {
+            $error = null; // The value does not come from the security component.
+        }
+
+        return $error;
+    }
+
     private function getLastUsername(?SessionInterface $session): ?string
     {
+        if (null !== $this->authenticationUtils) {
+            return $this->authenticationUtils->getLastUsername();
+        }
+
         return (null === $session) ? '' : $session->get(Security::LAST_USERNAME);
     }
 
