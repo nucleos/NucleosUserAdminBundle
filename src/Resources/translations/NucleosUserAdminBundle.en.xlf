@@ -1,150 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-    <file source-language="en" datatype="plaintext" original="">
+    <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="title_user_registration">
                 <source>title_user_registration</source>
-                <target>Registrierung</target>
+                <target>Register</target>
             </trans-unit>
             <trans-unit id="title_user_account">
                 <source>title_user_account</source>
-                <target>Benutzerprofil</target>
+                <target>User Profile</target>
             </trans-unit>
             <trans-unit id="title_user_edit_profile">
                 <source>title_user_edit_profile</source>
-                <target>Bearbeiten</target>
+                <target>Edit</target>
             </trans-unit>
             <trans-unit id="title_user_authentication">
                 <source>title_user_authentication</source>
-                <target>Authentifizierung</target>
+                <target>Authentication</target>
             </trans-unit>
             <trans-unit id="nucleos_user_admin_submit">
                 <source>nucleos_user_admin_submit</source>
-                <target>Absenden</target>
+                <target>Submit</target>
             </trans-unit>
             <trans-unit id="breadcrumb.link_user_list">
                 <source>breadcrumb.link_user_list</source>
-                <target>Benutzer</target>
+                <target>Users</target>
             </trans-unit>
             <trans-unit id="breadcrumb.link_user_create">
                 <source>breadcrumb.link_user_create</source>
-                <target>Anlegen</target>
+                <target>Create</target>
             </trans-unit>
             <trans-unit id="breadcrumb.link_user_edit">
                 <source>breadcrumb.link_user_edit</source>
-                <target>Bearbeiten</target>
+                <target>Edit</target>
             </trans-unit>
             <trans-unit id="breadcrumb.link_user_delete">
                 <source>breadcrumb.link_user_delete</source>
-                <target>Benutzer löschen</target>
+                <target>Delete</target>
             </trans-unit>
             <trans-unit id="breadcrumb.link_group_list">
                 <source>breadcrumb.link_group_list</source>
-                <target>Gruppen</target>
+                <target>Groups</target>
             </trans-unit>
             <trans-unit id="breadcrumb.link_group_create">
                 <source>breadcrumb.link_group_create</source>
-                <target>Anlegen</target>
+                <target>Create</target>
             </trans-unit>
             <trans-unit id="breadcrumb.link_group_edit">
                 <source>breadcrumb.link_group_edit</source>
-                <target>Bearbeiten</target>
-            </trans-unit>
-            <trans-unit id="breadcrumb.link_group_delete">
-                <source>breadcrumb.link_group_delete</source>
-                <target>Gruppe löschen</target>
-            </trans-unit>
-            <trans-unit id="breadcrumb.link_user_show">
-                <source>breadcrumb.link_user_show</source>
-                <target>Benutzer anzeigen</target>
+                <target>Edit</target>
             </trans-unit>
             <trans-unit id="users">
                 <source>users</source>
-                <target>Benutzer</target>
+                <target>Users</target>
             </trans-unit>
             <trans-unit id="groups">
                 <source>groups</source>
-                <target>Gruppen</target>
+                <target>Groups</target>
             </trans-unit>
             <trans-unit id="switch_user_exit">
                 <source>switch_user_exit</source>
-                <target>Benutzer imitieren beenden</target>
-            </trans-unit>
-            <trans-unit id="user_block_profile">
-                <source>user_block_profile</source>
-                <target>Profil</target>
+                <target>Exit impersonating mode</target>
             </trans-unit>
             <trans-unit id="switch_user">
                 <source>switch_user</source>
-                <target>Benutzer imitieren</target>
+                <target>Impersonate User</target>
             </trans-unit>
             <trans-unit id="user_block_logout">
                 <source>user_block_logout</source>
-                <target>abmelden</target>
+                <target>Logout</target>
+            </trans-unit>
+            <trans-unit id="user_block_profile">
+                <source>user_block_profile</source>
+                <target>Profile</target>
             </trans-unit>
             <trans-unit id="user_form.label_username">
                 <source>form.label_username</source>
-                <target>Benutzername</target>
+                <target>Username</target>
             </trans-unit>
             <trans-unit id="form.label_email">
                 <source>form.label_email</source>
-                <target>E-Mail-Adresse</target>
+                <target>E-Mail-Address</target>
             </trans-unit>
             <trans-unit id="form.label_plain_password">
                 <source>form.label_plain_password</source>
-                <target>Klartextpasswort</target>
+                <target>Plain password</target>
             </trans-unit>
             <trans-unit id="form.label_groups">
                 <source>form.label_groups</source>
-                <target>Gruppen</target>
+                <target>Groups</target>
             </trans-unit>
             <trans-unit id="form.label_roles">
                 <source>form.label_roles</source>
-                <target>Rollen</target>
+                <target>Roles</target>
             </trans-unit>
             <trans-unit id="form.label_locked">
                 <source>form.label_locked</source>
-                <target>Gesperrt</target>
+                <target>Locked</target>
             </trans-unit>
             <trans-unit id="form.label_expired">
                 <source>form.label_expired</source>
-                <target>Abgelaufen</target>
+                <target>Expired</target>
             </trans-unit>
             <trans-unit id="form.label_enabled">
                 <source>form.label_enabled</source>
-                <target>Aktiviert</target>
+                <target>Enabled</target>
             </trans-unit>
             <trans-unit id="form.label_credentials_expired">
                 <source>form.label_credentials_expired</source>
-                <target>Rechte abgelaufen</target>
+                <target>Credentials expired</target>
             </trans-unit>
-            <trans-unit id="form.label_country">
-                <source>form.label_country</source>
-                <target>Land</target>
+            <trans-unit id="form.label_created_at">
+                <source>form.label_created_at</source>
+                <target>Created at</target>
             </trans-unit>
-            <trans-unit id="form.label_locale">
-                <source>form.label_locale</source>
-                <target>Sprache</target>
-            </trans-unit>
-            <trans-unit id="form.label_timezone">
-                <source>form.label_timezone</source>
-                <target>Zeitzone</target>
-            </trans-unit>
-            <trans-unit id="form.label_token">
-                <source>form.label_token</source>
-                <target>Kürzel</target>
+            <trans-unit id="form.label_last_login">
+                <source>form.label_last_login</source>
+                <target>Last login</target>
             </trans-unit>
             <trans-unit id="user_form.label_name">
                 <source>form.label_name</source>
                 <target>Name</target>
             </trans-unit>
-            <trans-unit id="field.label_roles_editable">
-                <source>field.label_roles_editable</source>
-                <target>Rollen</target>
-            </trans-unit>
             <trans-unit id="filter.label_username">
                 <source>filter.label_username</source>
-                <target>Benutzername</target>
+                <target>Username</target>
             </trans-unit>
             <trans-unit id="filter.label_name">
                 <source>filter.label_name</source>
@@ -152,63 +132,39 @@
             </trans-unit>
             <trans-unit id="filter.label_email">
                 <source>filter.label_email</source>
-                <target>E-Mail-Adresse</target>
-            </trans-unit>
-            <trans-unit id="filter.label_plain_password">
-                <source>filter.label_plain_password</source>
-                <target>Klartextpasswort</target>
-            </trans-unit>
-            <trans-unit id="filter.label_groups">
-                <source>filter.label_groups</source>
-                <target>Gruppen</target>
-            </trans-unit>
-            <trans-unit id="filter.label_roles">
-                <source>filter.label_roles</source>
-                <target>Rollen</target>
+                <target>E-Mail-Address</target>
             </trans-unit>
             <trans-unit id="filter.label_locked">
                 <source>filter.label_locked</source>
-                <target>Gesperrt</target>
+                <target>Locked</target>
             </trans-unit>
             <trans-unit id="filter.label_id">
                 <source>filter.label_id</source>
                 <target>ID</target>
             </trans-unit>
-            <trans-unit id="filter.label_expired">
-                <source>filter.label_expired</source>
-                <target>Abgelaufen</target>
-            </trans-unit>
             <trans-unit id="filter.label_enabled">
                 <source>filter.label_enabled</source>
-                <target>Aktiviert</target>
+                <target>Active</target>
             </trans-unit>
-            <trans-unit id="filter.label_credentials_expired">
-                <source>filter.label_credentials_expired</source>
-                <target>Rechte abgelaufen</target>
+            <trans-unit id="filter.label_groups">
+                <source>filter.label_groups</source>
+                <target>Groups</target>
             </trans-unit>
-            <trans-unit id="filter.label_country">
-                <source>filter.label_country</source>
-                <target>Land</target>
+            <trans-unit id="filter.label_created_at">
+                <source>filter.label_created_at</source>
+                <target>Created at</target>
             </trans-unit>
-            <trans-unit id="filter.label_locale">
-                <source>filter.label_locale</source>
-                <target>Sprache</target>
+            <trans-unit id="filter.label_last_login">
+                <source>filter.label_last_login</source>
+                <target>Last login</target>
             </trans-unit>
-            <trans-unit id="filter.label_timezone">
-                <source>filter.label_timezone</source>
-                <target>Zeitzone</target>
-            </trans-unit>
-            <trans-unit id="filter.label_token">
-                <source>filter.label_token</source>
-                <target>Kürzel</target>
-            </trans-unit>
-            <trans-unit id="filter.label_roles_editable">
-                <source>field.label_roles_editable</source>
-                <target>Rollen</target>
+            <trans-unit id="filter.label_roles">
+                <source>filter.label_roles</source>
+                <target>Roles</target>
             </trans-unit>
             <trans-unit id="list.label_username">
                 <source>list.label_username</source>
-                <target>Benutzername</target>
+                <target>Username</target>
             </trans-unit>
             <trans-unit id="list.label_name">
                 <source>list.label_name</source>
@@ -216,223 +172,231 @@
             </trans-unit>
             <trans-unit id="list.label_email">
                 <source>list.label_email</source>
-                <target>E-Mail-Adresse</target>
+                <target>E-Mail-Address</target>
             </trans-unit>
             <trans-unit id="list.label_groups">
                 <source>list.label_groups</source>
-                <target>Gruppen</target>
+                <target>Groups</target>
             </trans-unit>
             <trans-unit id="list.label_locked">
                 <source>list.label_locked</source>
-                <target>Gesperrt</target>
+                <target>Locked</target>
             </trans-unit>
             <trans-unit id="list.label_enabled">
                 <source>list.label_enabled</source>
-                <target>Aktiviert</target>
+                <target>Enabled</target>
             </trans-unit>
             <trans-unit id="list.label_created_at">
                 <source>list.label_created_at</source>
-                <target>Erstellt am</target>
+                <target>Created at</target>
+            </trans-unit>
+            <trans-unit id="list.label_last_login">
+                <source>list.label_last_login</source>
+                <target>Last login</target>
             </trans-unit>
             <trans-unit id="list.label_impersonating">
                 <source>list.label_impersonating</source>
-                <target>Benutzer imitieren</target>
+                <target>Impersonate User</target>
             </trans-unit>
             <trans-unit id="list.label_roles">
                 <source>list.label_roles</source>
-                <target>Rollen</target>
+                <target>Roles</target>
             </trans-unit>
             <trans-unit id="nucleos_user_admin">
                 <source>nucleos_user_admin</source>
-                <target>Benutzer</target>
-            </trans-unit>
-            <trans-unit id="show.label_username">
-                <source>show.label_username</source>
-                <target>Benutzername</target>
-            </trans-unit>
-            <trans-unit id="show.label_email">
-                <source>show.label_email</source>
-                <target>E-Mail Adresse</target>
-            </trans-unit>
-            <trans-unit id="show.label_groups">
-                <source>show.label_groups</source>
-                <target>Gruppen</target>
-            </trans-unit>
-            <trans-unit id="show.label_locale">
-                <source>show.label_locale</source>
-                <target>Sprache</target>
-            </trans-unit>
-            <trans-unit id="show.label_timezone">
-                <source>show.label_timezone</source>
-                <target>Zeitzone</target>
-            </trans-unit>
-            <trans-unit id="show.label_token">
-                <source>show.label_token</source>
-                <target>Kürzel</target>
-            </trans-unit>
-            <trans-unit id="form.label_users">
-                <source>form.label_users</source>
-                <target>Benutzer</target>
-            </trans-unit>
-            <trans-unit id="form.label_mapped_users">
-                <source>form.label_mapped_users</source>
-                <target>Zugewiesene Benutzer</target>
+                <target>Users</target>
             </trans-unit>
             <trans-unit id="form.group_groups">
                 <source>form.group_groups</source>
-                <target>Gruppen</target>
+                <target>Groups</target>
             </trans-unit>
             <trans-unit id="form.group_general">
                 <source>form.group_general</source>
-                <target>Allgemein</target>
+                <target>General</target>
             </trans-unit>
             <trans-unit id="form.group_locale">
                 <source>form.group_locale</source>
-                <target>Ort</target>
+                <target>Locale</target>
             </trans-unit>
-            <trans-unit id="form.group_profile">
-                <source>Profile</source>
-                <target>Profil</target>
-            </trans-unit>
-            <trans-unit id="form.group_user">
-                <source>form.group_user</source>
-                <target>Benutzer</target>
-            </trans-unit>
-            <trans-unit id="form.group.status">
+            <trans-unit id="form.group_status">
                 <source>form.group_status</source>
                 <target>Status</target>
             </trans-unit>
             <trans-unit id="form.group_roles">
                 <source>form.group_roles</source>
-                <target>Rollen</target>
+                <target>Roles</target>
             </trans-unit>
             <trans-unit id="form.group_security">
                 <source>form.group_security</source>
-                <target>Sicherheit</target>
+                <target>Security</target>
             </trans-unit>
             <trans-unit id="form.tab_general">
                 <source>form.tab_general</source>
-                <target>Allgemein</target>
+                <target>General</target>
             </trans-unit>
             <trans-unit id="form.tab_groups">
                 <source>form.tab_groups</source>
-                <target>Gruppen</target>
+                <target>Groups</target>
             </trans-unit>
             <trans-unit id="form.tab_user">
                 <source>form.tab_user</source>
-                <target>Benutzer</target>
+                <target>User</target>
             </trans-unit>
             <trans-unit id="form.tab_group">
                 <source>form.tab_group</source>
-                <target>Gruppen</target>
+                <target>Group</target>
             </trans-unit>
             <trans-unit id="form.tab_security">
                 <source>form.tab_security</source>
-                <target>Sicherheit</target>
+                <target>Security</target>
+            </trans-unit>
+            <trans-unit id="field.label_roles_editable">
+                <source>field.label_roles_editable</source>
+                <target>Roles</target>
+            </trans-unit>
+            <trans-unit id="form.label_locale">
+                <source>form.label_locale</source>
+                <target>Locale</target>
+            </trans-unit>
+            <trans-unit id="form.label_timezone">
+                <source>form.label_timezone</source>
+                <target>Timezone</target>
+            </trans-unit>
+            <trans-unit id="form.label_token">
+                <source>form.label_token</source>
+                <target>Token</target>
+            </trans-unit>
+            <trans-unit id="show.label_username">
+                <source>show.label_username</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="show.label_email">
+                <source>show.label_email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="show.label_groups">
+                <source>show.label_groups</source>
+                <target>Groups</target>
+            </trans-unit>
+            <trans-unit id="show.label_locale">
+                <source>show.label_locale</source>
+                <target>Locale</target>
+            </trans-unit>
+            <trans-unit id="show.label_timezone">
+                <source>show.label_timezone</source>
+                <target>Timezone</target>
+            </trans-unit>
+            <trans-unit id="show.label_token">
+                <source>show.label_token</source>
+                <target>Token</target>
+            </trans-unit>
+            <trans-unit id="show.label_created_at">
+                <source>show.label_created_at</source>
+                <target>Created at</target>
+            </trans-unit>
+            <trans-unit id="show.label_last_login">
+                <source>show.label_last_login</source>
+                <target>Last login</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_user_show">
+                <source>breadcrumb.link_user_show</source>
+                <target>Show</target>
             </trans-unit>
             <trans-unit id="link_show_profile">
                 <source>link_show_profile</source>
-                <target>Profil</target>
+                <target>Dashboard</target>
             </trans-unit>
             <trans-unit id="link_edit_profile">
                 <source>link_edit_profile</source>
-                <target>Profil bearbeiten</target>
+                <target>Profile</target>
             </trans-unit>
             <trans-unit id="title_user_edit_authentication">
                 <source>title_user_edit_authentication</source>
-                <target>Anmeldedaten bearbeiten</target>
+                <target>Authentication</target>
             </trans-unit>
             <trans-unit id="link_edit_authentication">
                 <source>link_edit_authentication</source>
-                <target>Anmeldedaten bearbeiten</target>
-            </trans-unit>
-            <trans-unit id="label_profile_locale">
-                <source>label_profile_locale</source>
-                <target>Sprache</target>
-            </trans-unit>
-            <trans-unit id="label_profile_timezone">
-                <source>label_profile_timezone</source>
-                <target>Zeitzone</target>
+                <target>Authentication</target>
             </trans-unit>
             <trans-unit id="profile.flash.updated">
                 <source>profile.flash.updated</source>
-                <target>Profil gespeichert</target>
+                <target>Your profile has been updated.</target>
             </trans-unit>
             <trans-unit id="link_register">
                 <source>link_register</source>
-                <target>Registrieren</target>
+                <target>Register</target>
             </trans-unit>
             <trans-unit id="link_login">
                 <source>link_login</source>
-                <target>Login</target>
+                <target>Log In</target>
             </trans-unit>
             <trans-unit id="link_logout">
                 <source>link_logout</source>
-                <target>Logout</target>
+                <target>Log out</target>
             </trans-unit>
             <trans-unit id="registration.flash.user_created">
                 <source>registration.flash.user_created</source>
-                <target>Benutzer angelegt</target>
+                <target>Your account has been created successfully!</target>
             </trans-unit>
             <trans-unit id="forgotten_password">
                 <source>forgotten_password</source>
-                <target>Passwort vergessen?</target>
+                <target>Forgotten password?</target>
             </trans-unit>
             <trans-unit id="nucleos_user_admin_profile_breadcrumb_index">
                 <source>nucleos_user_admin_profile_breadcrumb_index</source>
-                <target>Profil</target>
+                <target>Dashboard</target>
             </trans-unit>
             <trans-unit id="nucleos_user_admin_profile_breadcrumb_edit">
                 <source>nucleos_user_admin_profile_breadcrumb_edit</source>
-                <target>bearbeiten</target>
+                <target>Edit profile</target>
             </trans-unit>
             <trans-unit id="nucleos_user_admin_already_authenticated">
                 <source>nucleos_user_admin_already_authenticated</source>
-                <target>Sie sind schon angemeldet.</target>
+                <target>You are already logged in</target>
             </trans-unit>
             <trans-unit id="security.login.username">
                 <source>security.login.username</source>
-                <target>Benutzername</target>
+                <target>Username</target>
             </trans-unit>
             <trans-unit id="security.login.password">
                 <source>security.login.password</source>
-                <target>Passwort</target>
+                <target>Password</target>
             </trans-unit>
             <trans-unit id="form.username">
                 <source>form.username</source>
-                <target>Benutzername</target>
+                <target>Username</target>
             </trans-unit>
             <trans-unit id="form.email">
                 <source>form.email</source>
-                <target>E-Mail Adresse</target>
+                <target>Email</target>
             </trans-unit>
             <trans-unit id="form.password">
                 <source>form.password</source>
-                <target>Passwort</target>
+                <target>Password</target>
             </trans-unit>
             <trans-unit id="form.password_confirmation">
                 <source>form.password_confirmation</source>
-                <target>Passwort bestätigen</target>
+                <target>Verification</target>
             </trans-unit>
             <trans-unit id="title_user_edit_password">
                 <source>title_user_edit_password</source>
-                <target>Passwort ändern</target>
+                <target>Change password</target>
             </trans-unit>
             <trans-unit id="title_user_resetting">
                 <source>title_user_resetting</source>
-                <target>Password vergessen</target>
+                <target>Request password</target>
             </trans-unit>
             <trans-unit id="title_user_resetting_reset">
                 <source>title_user_resetting_reset</source>
-                <target>Password zurücksetzen</target>
+                <target>Reset password</target>
             </trans-unit>
             <trans-unit id="field.label_roles_readonly">
                 <source>field.label_roles_readonly</source>
-                <target>Rollen</target>
+                <target>Roles</target>
             </trans-unit>
             <trans-unit id="user">
                 <source>user</source>
-                <target>Benutzer</target>
+                <target>User</target>
             </trans-unit>
         </body>
     </file>
