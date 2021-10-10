@@ -62,7 +62,7 @@ final class XliffTest extends TestCase
 
     private function validatePath(string $path): void
     {
-        $files = glob(sprintf('%s/*.xliff', $path));
+        $files = glob(sprintf('%s/*.xlf', $path));
 
         if (false === $files) {
             return;
