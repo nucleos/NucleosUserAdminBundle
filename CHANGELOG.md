@@ -2,27 +2,25 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.1.0 - TBD
+## 2.1.0 - 2021-10-30
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [2.1.0](https://github.com/nucleos/NucleosUserAdminBundle/milestone/15)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 2.1.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **1**
 
-### Removed
+#### Enhancement
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [391: Rename translation file extension](https://github.com/nucleos/NucleosUserAdminBundle/pull/391) thanks to @core23
+ - [385: Use AuthenticationUtils to access login data](https://github.com/nucleos/NucleosUserAdminBundle/pull/385) thanks to @core23
 
 ## 1.5.0 - 2021-09-10
 
