@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserAdminBundle\DependencyInjection;
 
+use Nucleos\UserAdminBundle\Controller\UserCRUDController;
 use Nucleos\UserAdminBundle\Twig\AvatarRuntime;
 use Nucleos\UserAdminBundle\Twig\ImpersonateRuntime;
 use RuntimeException;
@@ -22,6 +23,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Contracts\Service\ServiceSubscriberInterface;
 
 final class NucleosUserAdminExtension extends Extension implements PrependExtensionInterface
 {
@@ -79,6 +81,8 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
                 ->replaceArgument(2, $config['impersonating']['parameters'])
             ;
         }
+
+        $this->fixControllerConfig($container);
     }
 
     private function configureAvatar(array $config, ContainerBuilder $container): void
@@ -127,5 +131,17 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
     {
         $container->setParameter('nucleos_user_admin.admin.user.controller', $config['admin']['user']['controller']);
         $container->setParameter('nucleos_user_admin.admin.group.controller', $config['admin']['group']['controller']);
+    }
+
+    private function fixControllerConfig(ContainerBuilder $container): void
+    {
+        if (!is_subclass_of(UserCRUDController::class, ServiceSubscriberInterface::class)) {
+            return;
+        }
+
+        $container
+            ->getDefinition('nucleos_user_admin.controller.user')
+            ->addTag('container.service_subscriber')
+        ;
     }
 }

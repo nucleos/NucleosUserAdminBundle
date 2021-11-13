@@ -16,8 +16,6 @@ namespace Nucleos\UserAdminBundle\DependencyInjection;
 use Nucleos\UserAdminBundle\Admin\Entity\GroupAdmin;
 use Nucleos\UserAdminBundle\Admin\Entity\UserAdmin;
 use Nucleos\UserAdminBundle\Avatar\StaticAvatarResolver;
-use Nucleos\UserAdminBundle\Controller\UserCRUDController;
-use Sonata\AdminBundle\Controller\CRUDController;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -76,7 +74,7 @@ final class Configuration implements ConfigurationInterface
                             ->addDefaultsIfNotSet()
                             ->children()
                                 ->scalarNode('class')->cannotBeEmpty()->defaultValue(GroupAdmin::class)->end()
-                                ->scalarNode('controller')->cannotBeEmpty()->defaultValue(CRUDController::class)->end()
+                                ->scalarNode('controller')->cannotBeEmpty()->defaultValue('%sonata.admin.configuration.default_controller%')->end()
                                 ->scalarNode('translation')->cannotBeEmpty()->defaultValue('NucleosUserAdminBundle')->end()
                             ->end()
                         ->end()
@@ -84,7 +82,7 @@ final class Configuration implements ConfigurationInterface
                             ->addDefaultsIfNotSet()
                             ->children()
                                 ->scalarNode('class')->cannotBeEmpty()->defaultValue(UserAdmin::class)->end()
-                                ->scalarNode('controller')->cannotBeEmpty()->defaultValue(UserCRUDController::class)->end()
+                                ->scalarNode('controller')->cannotBeEmpty()->defaultValue('nucleos_user_admin.controller.user')->end()
                                 ->scalarNode('translation')->cannotBeEmpty()->defaultValue('NucleosUserAdminBundle')->end()
                             ->end()
                         ->end()
