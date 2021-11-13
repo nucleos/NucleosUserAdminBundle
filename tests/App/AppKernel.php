@@ -18,7 +18,10 @@ use Knp\Bundle\MenuBundle\KnpMenuBundle;
 use Nucleos\UserAdminBundle\NucleosUserAdminBundle;
 use Nucleos\UserBundle\NucleosUserBundle;
 use Sonata\AdminBundle\SonataAdminBundle;
+use Sonata\BlockBundle\SonataBlockBundle;
+use Sonata\Doctrine\Bridge\Symfony\SonataDoctrineBundle;
 use Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle;
+use Sonata\Twig\Bridge\Symfony\SonataTwigBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Bundle\SecurityBundle\SecurityBundle;
@@ -46,8 +49,11 @@ final class AppKernel extends Kernel
         yield new SecurityBundle();
         yield new DoctrineBundle();
         yield new KnpMenuBundle();
+        yield new SonataBlockBundle();
         yield new SonataAdminBundle();
         yield new SonataDoctrineORMAdminBundle();
+        yield new SonataDoctrineBundle();
+        yield new SonataTwigBundle();
         yield new NucleosUserBundle();
         yield new NucleosUserAdminBundle();
     }
@@ -69,7 +75,8 @@ final class AppKernel extends Kernel
 
     protected function configureRoutes(RouteCollectionBuilder $routes): void
     {
-        $routes->import('@SonataAdminBundle/Resources/config/routing/sonata_admin.xml');
+        $routes->import('@SonataAdminBundle/Resources/config/routing/sonata_admin.xml', '/admin');
+        $routes->import('.', '/admin', 'sonata_admin');
         $routes->import(__DIR__.'/../../src/Resources/config/routing/admin_security.php');
         $routes->import(__DIR__.'/../../src/Resources/config/routing/admin_resetting.php');
     }
