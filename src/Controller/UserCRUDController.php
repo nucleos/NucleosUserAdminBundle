@@ -24,19 +24,21 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
  */
 class UserCRUDController extends CRUDController
 {
-    protected function preDelete(Request $request, $object): ?Response
-    {
-        $this->getEventDispatcher()->dispatch(new AccountDeletionEvent($object, $request), NucleosUserEvents::ACCOUNT_DELETION);
+    private ?EventDispatcherInterface $eventDispatcher;
 
-        return null;
+    public function __construct(?EventDispatcherInterface $eventDispatcher = null)
+    {
+        $this->eventDispatcher = $eventDispatcher;
     }
 
-    private function getEventDispatcher(): EventDispatcherInterface
+    protected function preDelete(Request $request, $object): ?Response
     {
-        $eventDispatcher = $this->get('event_dispatcher');
+        if (null === $this->eventDispatcher) {
+            return null;
+        }
 
-        \assert($eventDispatcher instanceof EventDispatcherInterface);
+        $this->eventDispatcher->dispatch(new AccountDeletionEvent($object, $request), NucleosUserEvents::ACCOUNT_DELETION);
 
-        return $eventDispatcher;
+        return null;
     }
 }
