@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use Nucleos\UserAdminBundle\Controller\UserCRUDController;
 use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
 use Nucleos\UserAdminBundle\Form\Type\SecurityRolesType;
 use Nucleos\UserAdminBundle\Security\EditableRolesBuilder;
@@ -19,6 +20,7 @@ use Nucleos\UserAdminBundle\Security\RolesBuilder\MatrixRolesBuilder;
 use Nucleos\UserAdminBundle\Security\RolesBuilder\SecurityRolesBuilder;
 use Nucleos\UserAdminBundle\Twig\RolesMatrixExtension;
 use Nucleos\UserAdminBundle\Twig\RolesMatrixRuntime;
+use Psr\Container\ContainerInterface;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
@@ -79,5 +81,13 @@ return static function (ContainerConfigurator $container): void {
             ->args([
                 ref('nucleos_user_admin.matrix_roles_builder'),
             ])
+
+        ->set('nucleos_user_admin.controller.user', UserCRUDController::class)
+            ->public()
+            ->args([
+                ref('event_dispatcher'),
+            ])
+            ->call('setContainer', [new ReferenceConfigurator(ContainerInterface::class)])
+
     ;
 };
