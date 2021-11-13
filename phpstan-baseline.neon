@@ -16,6 +16,11 @@ parameters:
 			path: src/DependencyInjection/Configuration.php
 
 		-
+			message: "#^Call to function is_subclass_of\\(\\) with 'Nucleos\\\\\\\\UserAdminBundle\\\\\\\\Controller\\\\\\\\UserCRUDController' and 'Symfony\\\\\\\\Contracts\\\\\\\\Service\\\\\\\\ServiceSubscriberInterface' will always evaluate to true\\.$#"
+			count: 1
+			path: src/DependencyInjection/NucleosUserAdminExtension.php
+
+		-
 			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureAdminClass\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/DependencyInjection/NucleosUserAdminExtension.php

@@ -17,10 +17,8 @@ use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 use Nucleos\UserAdminBundle\Admin\Entity\GroupAdmin;
 use Nucleos\UserAdminBundle\Admin\Entity\UserAdmin;
 use Nucleos\UserAdminBundle\Avatar\StaticAvatarResolver;
-use Nucleos\UserAdminBundle\Controller\UserCRUDController;
 use Nucleos\UserAdminBundle\DependencyInjection\Configuration;
 use PHPUnit\Framework\TestCase;
-use Sonata\AdminBundle\Controller\CRUDController;
 
 final class ConfigurationTest extends TestCase
 {
@@ -43,12 +41,12 @@ final class ConfigurationTest extends TestCase
                 'admin'                => [
                     'user'  => [
                         'class'       => UserAdmin::class,
-                        'controller'  => UserCRUDController::class,
+                        'controller'  => 'nucleos_user_admin.controller.user',
                         'translation' => 'NucleosUserAdminBundle',
                     ],
                     'group' => [
                         'class'       => GroupAdmin::class,
-                        'controller'  => CRUDController::class,
+                        'controller'  => '%sonata.admin.configuration.default_controller%',
                         'translation' => 'NucleosUserAdminBundle',
                     ],
                 ],
