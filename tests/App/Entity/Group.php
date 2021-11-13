@@ -13,15 +13,19 @@ declare(strict_types=1);
 
 namespace Nucleos\UserAdminBundle\Tests\App\Entity;
 
-use Nucleos\UserBundle\Model\User;
+use Doctrine\ORM\Mapping as ORM;
+use Nucleos\UserBundle\Model\Group as BaseGroup;
 
 /**
- * @phpstan-extends User<\Nucleos\UserBundle\Model\GroupInterface>
+ * @ORM\Entity()
+ * @ORM\Table(name="user__group")
  */
-class TestUser extends User
+class Group extends BaseGroup
 {
-    public function setId(string $id): void
-    {
-        $this->id = $id;
-    }
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
 }
