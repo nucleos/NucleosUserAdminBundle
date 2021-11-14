@@ -24,6 +24,25 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
+## 2.1.1 - 2021-11-14
+
+
+-----
+
+### Release Notes for [2.1.1](https://github.com/nucleos/NucleosUserAdminBundle/milestone/17)
+
+2.1.x bugfix release (patch)
+
+### 2.1.1
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
+
+#### Bug
+
+ - [399: Fix sonata admin controller config](https://github.com/nucleos/NucleosUserAdminBundle/pull/399) thanks to @core23
+
 ## 2.1.0 - 2021-10-30
 
 
