@@ -99,7 +99,7 @@ abstract class UserAdmin extends AbstractAdmin
 
         if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
             $list
-                ->add('impersonating', 'string', [
+                ->add('id', 'string', [
                     'template' => '@NucleosUserAdmin/Admin/Field/impersonating.html.twig',
                 ])
             ;
