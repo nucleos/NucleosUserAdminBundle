@@ -11,19 +11,22 @@
 
 namespace Nucleos\UserAdminBundle\Avatar;
 
+use Symfony\Component\Asset\Packages;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 final class StaticAvatarResolver implements AvatarResolver
 {
+    private Packages $packages;
     private string $defaultAvatar;
 
-    public function __construct(string $defaultAvatar)
+    public function __construct(Packages $packages, string $defaultAvatar)
     {
+        $this->packages = $packages;
         $this->defaultAvatar = $defaultAvatar;
     }
 
     public function avatarUrl(?UserInterface $user): string
     {
-        return $this->defaultAvatar;
+        return $this->packages->getUrl($this->defaultAvatar);
     }
 }

@@ -15,6 +15,7 @@ use Nucleos\UserAdminBundle\Avatar\AvatarResolver;
 use Nucleos\UserAdminBundle\Avatar\StaticAvatarResolver;
 use Nucleos\UserAdminBundle\Twig\AvatarExtension;
 use Nucleos\UserAdminBundle\Twig\AvatarRuntime;
+use Symfony\Component\Asset\Packages;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
@@ -32,6 +33,7 @@ return static function (ContainerConfigurator $container): void {
 
         ->set(StaticAvatarResolver::class)
             ->args([
+                ref(Packages::class),
                 '%nucleos_user_admin.default_avatar%',
             ])
 
