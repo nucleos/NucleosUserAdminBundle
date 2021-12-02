@@ -16,17 +16,21 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 final class StaticAvatarResolver implements AvatarResolver
 {
-    private Packages $packages;
     private string $defaultAvatar;
+    private ?Packages $packages;
 
-    public function __construct(Packages $packages, string $defaultAvatar)
+    public function __construct(string $defaultAvatar, ?Packages $packages = null)
     {
-        $this->packages = $packages;
+        $this->packages      = $packages;
         $this->defaultAvatar = $defaultAvatar;
     }
 
     public function avatarUrl(?UserInterface $user): string
     {
+        if (null === $this->packages) {
+            return $this->defaultAvatar;
+        }
+
         return $this->packages->getUrl($this->defaultAvatar);
     }
 }

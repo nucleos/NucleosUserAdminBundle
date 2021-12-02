@@ -33,8 +33,8 @@ return static function (ContainerConfigurator $container): void {
 
         ->set(StaticAvatarResolver::class)
             ->args([
-                ref(Packages::class),
                 '%nucleos_user_admin.default_avatar%',
+                ref(Packages::class),
             ])
 
         ->alias(AvatarResolver::class, StaticAvatarResolver::class)
