@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.10.0@916b098b008f6de4543892b1e0651c1c3b92cbfa">
+<files psalm-version="4.13.1@5cf660f63b548ccd4a56f62d916ee4d6028e01a3">
   <file src="src/Action/CheckEmailAction.php">
     <InvalidArgument occurrences="1">
       <code>$username</code>
@@ -12,6 +12,11 @@
       <code>children</code>
       <code>children</code>
     </UndefinedMethod>
+  </file>
+  <file src="src/Form/Transformer/RestoreRolesTransformer.php">
+    <TooManyTemplateParams occurrences="1">
+      <code>DataTransformerInterface</code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Security/EditableRolesBuilder.php">
     <LessSpecificImplementedReturnType occurrences="1">

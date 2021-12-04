@@ -56,7 +56,7 @@ abstract class IntegrationTestCase extends WebTestCase
 
     protected function getEntityManager(): EntityManagerInterface
     {
-        $manager = self::$container->get('doctrine.orm.entity_manager');
+        $manager = self::getContainer()->get('doctrine.orm.entity_manager');
 
         \assert($manager instanceof EntityManagerInterface);
 

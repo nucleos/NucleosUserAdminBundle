@@ -92,6 +92,9 @@ final class LoginActionTest extends TestCase
         $this->formFactory          = $this->createMock(FormFactoryInterface::class);
     }
 
+    /**
+     * @runInSeparateProcess
+     */
     public function testAlreadyAuthenticated(): void
     {
         $user = $this->createMock(UserInterface::class);
