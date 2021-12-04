@@ -298,7 +298,7 @@
                 <source>form.group_user</source>
                 <target>Benutzer</target>
             </trans-unit>
-            <trans-unit id="form.group.status">
+            <trans-unit id="form.group_status">
                 <source>form.group_status</source>
                 <target>Status</target>
             </trans-unit>
@@ -308,26 +308,6 @@
             </trans-unit>
             <trans-unit id="form.group_security">
                 <source>form.group_security</source>
-                <target>Sicherheit</target>
-            </trans-unit>
-            <trans-unit id="form.tab_general">
-                <source>form.tab_general</source>
-                <target>Allgemein</target>
-            </trans-unit>
-            <trans-unit id="form.tab_groups">
-                <source>form.tab_groups</source>
-                <target>Gruppen</target>
-            </trans-unit>
-            <trans-unit id="form.tab_user">
-                <source>form.tab_user</source>
-                <target>Benutzer</target>
-            </trans-unit>
-            <trans-unit id="form.tab_group">
-                <source>form.tab_group</source>
-                <target>Gruppen</target>
-            </trans-unit>
-            <trans-unit id="form.tab_security">
-                <source>form.tab_security</source>
                 <target>Sicherheit</target>
             </trans-unit>
             <trans-unit id="link_show_profile">
@@ -433,6 +413,14 @@
             <trans-unit id="user">
                 <source>user</source>
                 <target>Benutzer</target>
+            </trans-unit>
+            <trans-unit id="show.group_general">
+                <source>show.group_general</source>
+                <target>Allgemein</target>
+            </trans-unit>
+            <trans-unit id="show.group_groups">
+                <source>show.group_groups</source>
+                <target>Gruppen</target>
             </trans-unit>
         </body>
     </file>

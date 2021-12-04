@@ -119,11 +119,11 @@ abstract class UserAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $show): void
     {
         $show
-            ->with('form.tab_general')
+            ->with('general', ['label' => 'show.group_general'])
                 ->add('username')
                 ->add('email')
             ->end()
-            ->with('form.tab_groups')
+            ->with('groups', ['label' => 'show.group_groups'])
                 ->add('groups')
             ->end()
         ;
@@ -135,23 +135,23 @@ abstract class UserAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form): void
     {
         $form
-            ->tab('form.tab_user')
-                ->with('form.group_general', ['class' => 'col-md-6'])->end()
+            ->tab('user', ['label' => 'form.group_user'])
+                ->with('general', ['class' => 'col-md-6'])->end()
                 ->ifTrue($this->isLocaleAwareSubject())
-                    ->with('form.group_locale', ['class' => 'col-md-6'])->end()
+                    ->with('locale', ['class' => 'col-md-6'])->end()
                 ->ifEnd()
             ->end()
 
-            ->tab('form.tab_security')
-                ->with('form.group_groups', ['class' => 'col-md-8'])->end()
-                ->with('form.group_status', ['class' => 'col-md-4'])->end()
-                ->with('form.group_roles', ['class' => 'col-md-12'])->end()
+            ->tab('security', ['label' => 'form.group_security'])
+                ->with('groups', ['class' => 'col-md-8', 'label' => 'form.group_groups'])->end()
+                ->with('status', ['class' => 'col-md-4', 'label' => 'form.group_status'])->end()
+                ->with('roles', ['class' => 'col-md-12', 'label' => 'form.group_roles'])->end()
             ->end()
         ;
 
         $form
-            ->tab('form.tab_user')
-                ->with('form.group_general')
+            ->tab('user')
+                ->with('general')
                     ->add('username')
                     ->add('email')
                     ->add('plainPassword', TextType::class, [
@@ -159,7 +159,7 @@ abstract class UserAdmin extends AbstractAdmin
                     ])
                 ->end()
                 ->ifTrue($this->isLocaleAwareSubject())
-                    ->with('form.group_locale')
+                    ->with('locale')
                         ->add('locale', LocaleType::class, [
                             'required' => false,
                         ])
@@ -170,18 +170,18 @@ abstract class UserAdmin extends AbstractAdmin
                 ->ifEnd()
             ->end()
 
-            ->tab('form.tab_security')
-                ->with('form.group_status')
+            ->tab('security')
+                ->with('status')
                     ->add('enabled', null, ['required' => false])
                 ->end()
-                ->with('form.group_groups')
+                ->with('groups')
                     ->add('groups', ModelType::class, [
                         'required' => false,
                         'expanded' => true,
                         'multiple' => true,
                     ])
                 ->end()
-                ->with('form.group_roles')
+                ->with('roles')
                     ->add('roles', RolesMatrixType::class, [
                         'label'    => 'form.label_roles',
                         'expanded' => true,
