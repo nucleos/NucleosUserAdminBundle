@@ -2,27 +2,33 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.2.0 - TBD
+## 2.2.0 - 2021-12-04
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [2.2.0](https://github.com/nucleos/NucleosUserAdminBundle/milestone/18)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 2.2.0
 
-- Nothing.
+- Total issues resolved: **1**
+- Total pull requests resolved: **4**
+- Total contributors: **2**
 
-### Removed
+#### Bug
 
-- Nothing.
+ - [420: Fix admin group translation](https://github.com/nucleos/NucleosUserAdminBundle/pull/420) thanks to @core23 and @Hanmac
 
-### Fixed
+#### dependency
 
-- Nothing.
+ - [419: Bump symfony 5.4](https://github.com/nucleos/NucleosUserAdminBundle/pull/419) thanks to @core23
+
+#### Enhancement
+
+ - [415: Use Asset for DefaultAvatar Url](https://github.com/nucleos/NucleosUserAdminBundle/pull/415) thanks to @Hanmac
+ - [407: Drop PHP 7 support](https://github.com/nucleos/NucleosUserAdminBundle/pull/407) thanks to @core23
 
 ## 2.1.1 - 2021-11-14
 
