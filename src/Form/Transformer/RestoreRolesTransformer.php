@@ -17,8 +17,14 @@ use Nucleos\UserAdminBundle\Security\EditableRolesBuilderInterface;
 use RuntimeException;
 use Symfony\Component\Form\DataTransformerInterface;
 
+/**
+ * @phpstan-implements DataTransformerInterface<string[], string[]>
+ */
 final class RestoreRolesTransformer implements DataTransformerInterface
 {
+    /**
+     * @var string[]|null
+     */
     private ?array $originalRoles = null;
 
     private EditableRolesBuilderInterface $rolesBuilder;
@@ -28,6 +34,9 @@ final class RestoreRolesTransformer implements DataTransformerInterface
         $this->rolesBuilder = $rolesBuilder;
     }
 
+    /**
+     * @param string[]|null $originalRoles
+     */
     public function setOriginalRoles(?array $originalRoles = []): void
     {
         if (null === $originalRoles) {
@@ -37,12 +46,7 @@ final class RestoreRolesTransformer implements DataTransformerInterface
         $this->originalRoles = $originalRoles;
     }
 
-    /**
-     * @param mixed $value
-     *
-     * @return mixed|null
-     */
-    public function transform($value)
+    public function transform($value): mixed
     {
         if (null === $value) {
             return null;
@@ -55,13 +59,12 @@ final class RestoreRolesTransformer implements DataTransformerInterface
         return $value;
     }
 
-    /**
-     * @param mixed $value
-     *
-     * @return mixed[]
-     */
-    public function reverseTransform($value): array
+    public function reverseTransform($value): mixed
     {
+        if (null === $value) {
+            $value = [];
+        }
+
         if (null === $this->originalRoles) {
             throw new RuntimeException('Invalid state, originalRoles array is not set');
         }

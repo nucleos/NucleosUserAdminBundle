@@ -23,7 +23,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $containerConfigurator->extension('framework', ['test' => true]);
 
-    $containerConfigurator->extension('framework', ['session' => ['storage_id' => 'session.storage.mock_file']]);
+    $containerConfigurator->extension('framework', ['session' => ['storage_factory_id' => 'session.storage.factory.mock_file']]);
 
     $containerConfigurator->extension('framework', ['cache' => ['pools' => ['avatar.preview.cache' => ['adapter' => 'cache.app', 'default_lifetime' => 60]]]]);
 
