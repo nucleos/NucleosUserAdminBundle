@@ -34,6 +34,7 @@ use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
 
 final class LoginAction
@@ -56,6 +57,8 @@ final class LoginAction
 
     private FormFactoryInterface $formFactory;
 
+    private TranslatorInterface $translator;
+
     private ?AuthenticationUtils $authenticationUtils;
 
     public function __construct(
@@ -67,6 +70,7 @@ final class LoginAction
         TemplateRegistryInterface $templateRegistry,
         TokenStorageInterface $tokenStorage,
         FormFactoryInterface $formFactory,
+        TranslatorInterface $translator,
         ?AuthenticationUtils $authenticationUtils = null
     ) {
         $this->twig                 = $twig;
@@ -77,6 +81,7 @@ final class LoginAction
         $this->templateRegistry     = $templateRegistry;
         $this->tokenStorage         = $tokenStorage;
         $this->formFactory          = $formFactory;
+        $this->translator           = $translator;
         $this->authenticationUtils  = $authenticationUtils;
     }
 
@@ -89,7 +94,8 @@ final class LoginAction
         $session = $request->hasSession() ? $request->getSession() : null;
 
         if ($this->isAuthenticated()) {
-            $this->addFlash($session, 'nucleos_user_admin_error', 'nucleos_user_admin_already_authenticated');
+            $message = $this->translator->trans('nucleos_user_admin_already_authenticated', [], 'NucleosUserAdminBundle');
+            $this->addFlash($session, 'sonata_flash_info', $message);
 
             return new RedirectResponse($this->router->generate('sonata_admin_dashboard'));
         }
