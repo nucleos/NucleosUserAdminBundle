@@ -16,13 +16,19 @@
         {% block login_box_header %}
             <div class="login-logo">
                 <a href="{{ path('sonata_admin_dashboard') }}">
-                    {% if sonata_config.getOption('title_mode') in ['single_image', 'both'] %}
+                    {% if 'icon' == sonata_config.getOption('logo_content')
+                        or 'all' == sonata_config.getOption('logo_content')
+                        and ('single_image' == sonata_config.getOption('title_mode') or 'both' == sonata_config.getOption('title_mode'))
+                    %}
                         <img src="{{ asset(sonata_config.logo) }}"
                              alt="{{ sonata_config.title }}"
                              class="center-block img-responsive"
                         />
                     {% endif %}
-                    {% if sonata_config.getOption('title_mode') in ['single_text', 'both'] %}
+                    {% if 'text' == sonata_config.getOption('logo_content')
+                        or 'all' == sonata_config.getOption('logo_content')
+                        and ('single_text' == sonata_config.getOption('title_mode') or 'both' == sonata_config.getOption('title_mode'))
+                    %}
                         <span>{{ sonata_config.title }}</span>
                     {% endif %}
                 </a>
