@@ -33,6 +33,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
 
 final class LoginActionTest extends TestCase
@@ -79,6 +80,11 @@ final class LoginActionTest extends TestCase
      */
     private $formFactory;
 
+    /**
+     * @var MockObject&TranslatorInterface
+     */
+    protected $translator;
+
     protected function setUp(): void
     {
         $this->templating           = $this->createMock(Environment::class);
@@ -90,6 +96,8 @@ final class LoginActionTest extends TestCase
         $this->tokenStorage         = $this->createMock(TokenStorageInterface::class);
         $this->csrfTokenManager     = $this->createMock(CsrfTokenManagerInterface::class);
         $this->formFactory          = $this->createMock(FormFactoryInterface::class);
+        $this->translator           = $this->createMock(TranslatorInterface::class);
+
     }
 
     public function testAlreadyAuthenticated(): void
@@ -310,7 +318,8 @@ final class LoginActionTest extends TestCase
             $this->pool,
             $this->templateRegistry,
             $this->tokenStorage,
-            $this->formFactory
+            $this->formFactory,
+            $this->translator
         );
         $action->setCsrfTokenManager($this->csrfTokenManager);
 
