@@ -118,7 +118,7 @@ final class LoginActionTest extends TestCase
             ->method('trans')
             ->willReturnCallback(
                 static function (string $message): string {
-                    return $message;
+                    return 'trans.'.$message;
                 }
             )
         ;
@@ -141,7 +141,7 @@ final class LoginActionTest extends TestCase
         static::assertSame('/foo', $result->getTargetUrl());
 
         static::assertSame([
-            'sonata_flash_info' => ['nucleos_user_admin_already_authenticated'],
+            'sonata_flash_info' => ['trans.nucleos_user_admin_already_authenticated'],
         ], $session->getFlashBag()->all());
     }
 

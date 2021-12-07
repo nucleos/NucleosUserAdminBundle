@@ -61,6 +61,9 @@ final class LoginAction
 
     private ?TranslatorInterface $translator;
 
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     */
     public function __construct(
         Environment $twig,
         EventDispatcherInterface $eventDispatcher,
