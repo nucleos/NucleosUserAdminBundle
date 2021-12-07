@@ -85,7 +85,7 @@ return static function (ContainerConfigurator $container): void {
                 ref('security.token_storage'),
                 ref('form.factory'),
                 ref('security.authentication_utils'),
-                ref('translator')
+                ref('translator'),
             ])
             ->call('setCsrfTokenManager', [
                 ref('security.csrf.token_manager')->ignoreOnInvalid(),
