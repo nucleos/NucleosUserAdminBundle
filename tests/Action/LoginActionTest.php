@@ -97,7 +97,6 @@ final class LoginActionTest extends TestCase
         $this->csrfTokenManager     = $this->createMock(CsrfTokenManagerInterface::class);
         $this->formFactory          = $this->createMock(FormFactoryInterface::class);
         $this->translator           = $this->createMock(TranslatorInterface::class);
-
     }
 
     public function testAlreadyAuthenticated(): void
@@ -138,10 +137,10 @@ final class LoginActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request);
 
-        self::assertInstanceOf(RedirectResponse::class, $result);
-        self::assertSame('/foo', $result->getTargetUrl());
+        static::assertInstanceOf(RedirectResponse::class, $result);
+        static::assertSame('/foo', $result->getTargetUrl());
 
-        self::assertSame([
+        static::assertSame([
             'sonata_flash_info' => ['nucleos_user_admin_already_authenticated'],
         ], $session->getFlashBag()->all());
     }
@@ -167,7 +166,7 @@ final class LoginActionTest extends TestCase
             ->willReturn('/foo')
         ;
 
-        $this->authorizationChecker->expects(self::once())
+        $this->authorizationChecker->expects(static::once())
             ->method('isGranted')
             ->with('ROLE_ADMIN')
             ->willReturn(true)
@@ -176,8 +175,8 @@ final class LoginActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request);
 
-        self::assertInstanceOf(RedirectResponse::class, $result);
-        self::assertSame($expectedRedirectUrl, $result->getTargetUrl());
+        static::assertInstanceOf(RedirectResponse::class, $result);
+        static::assertSame($expectedRedirectUrl, $result->getTargetUrl());
     }
 
     /**
@@ -257,12 +256,12 @@ final class LoginActionTest extends TestCase
             ->method('add')
             ->willReturnSelf()
         ;
-        $form->expects(self::once())
+        $form->expects(static::once())
             ->method('createView')
             ->willReturn('Form View')
         ;
 
-        $this->formFactory->expects(self::once())
+        $this->formFactory->expects(static::once())
             ->method('create')
             ->willReturn($form)
         ;
@@ -277,7 +276,7 @@ final class LoginActionTest extends TestCase
             ->willReturn('/check', '/reset')
         ;
 
-        $this->authorizationChecker->expects(self::once())
+        $this->authorizationChecker->expects(static::once())
             ->method('isGranted')
             ->with('ROLE_ADMIN')
             ->willReturn(false)
@@ -304,7 +303,7 @@ final class LoginActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request);
 
-        self::assertSame('template content', $result->getContent());
+        static::assertSame('template content', $result->getContent());
     }
 
     public function unauthenticatedProvider(): array
