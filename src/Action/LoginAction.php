@@ -95,7 +95,7 @@ final class LoginAction
 
         if ($this->isAuthenticated()) {
             $message = 'nucleos_user_admin_already_authenticated';
-            $message = $this->translator ? $this->translator->trans($message, [], 'NucleosUserAdminBundle') : $message;
+            $message = $this->translator != null ? $this->translator->trans($message, [], 'NucleosUserAdminBundle') : $message;
             $this->addFlash($session, 'sonata_flash_info', $message);
 
             return new RedirectResponse($this->router->generate('sonata_admin_dashboard'));

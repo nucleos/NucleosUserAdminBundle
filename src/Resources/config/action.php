@@ -84,8 +84,8 @@ return static function (ContainerConfigurator $container): void {
                 ref('sonata.admin.global_template_registry'),
                 ref('security.token_storage'),
                 ref('form.factory'),
-                ref('translator'),
                 ref('security.authentication_utils'),
+                ref('translator')
             ])
             ->call('setCsrfTokenManager', [
                 ref('security.csrf.token_manager')->ignoreOnInvalid(),

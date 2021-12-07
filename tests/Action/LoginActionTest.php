@@ -78,7 +78,7 @@ final class LoginActionTest extends TestCase
     /**
      * @var MockObject&FormFactoryInterface
      */
-    private $formFactory;
+    protected $formFactory;
 
     /**
      * @var MockObject&TranslatorInterface
@@ -138,10 +138,10 @@ final class LoginActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request);
 
-        static::assertInstanceOf(RedirectResponse::class, $result);
-        static::assertSame('/foo', $result->getTargetUrl());
+        self::assertInstanceOf(RedirectResponse::class, $result);
+        self::assertSame('/foo', $result->getTargetUrl());
 
-        static::assertSame([
+        self::assertSame([
             'sonata_flash_info' => ['nucleos_user_admin_already_authenticated'],
         ], $session->getFlashBag()->all());
     }
@@ -152,7 +152,7 @@ final class LoginActionTest extends TestCase
     public function testUserGrantedAdmin(string $referer, string $expectedRedirectUrl): void
     {
         $session = $this->createMock(Session::class);
-        $request = Request::create('http://some.url.com/exact-request-uri');
+        $request = Request::create('https://some.url.com/exact-request-uri');
         $request->server->add(['HTTP_REFERER' => $referer]);
         $request->setSession($session);
 
@@ -167,7 +167,7 @@ final class LoginActionTest extends TestCase
             ->willReturn('/foo')
         ;
 
-        $this->authorizationChecker->expects(static::once())
+        $this->authorizationChecker->expects(self::once())
             ->method('isGranted')
             ->with('ROLE_ADMIN')
             ->willReturn(true)
@@ -176,8 +176,8 @@ final class LoginActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request);
 
-        static::assertInstanceOf(RedirectResponse::class, $result);
-        static::assertSame($expectedRedirectUrl, $result->getTargetUrl());
+        self::assertInstanceOf(RedirectResponse::class, $result);
+        self::assertSame($expectedRedirectUrl, $result->getTargetUrl());
     }
 
     /**
@@ -187,8 +187,8 @@ final class LoginActionTest extends TestCase
     {
         return [
             ['', '/foo'],
-            ['http://some.url.com/exact-request-uri', '/foo'],
-            ['http://some.url.com', 'http://some.url.com'],
+            ['https://some.url.com/exact-request-uri', '/foo'],
+            ['https://some.url.com', 'https://some.url.com'],
         ];
     }
 
@@ -257,12 +257,12 @@ final class LoginActionTest extends TestCase
             ->method('add')
             ->willReturnSelf()
         ;
-        $form->expects(static::once())
+        $form->expects(self::once())
             ->method('createView')
             ->willReturn('Form View')
         ;
 
-        $this->formFactory->expects(static::once())
+        $this->formFactory->expects(self::once())
             ->method('create')
             ->willReturn($form)
         ;
@@ -277,7 +277,7 @@ final class LoginActionTest extends TestCase
             ->willReturn('/check', '/reset')
         ;
 
-        $this->authorizationChecker->expects(static::once())
+        $this->authorizationChecker->expects(self::once())
             ->method('isGranted')
             ->with('ROLE_ADMIN')
             ->willReturn(false)
@@ -304,7 +304,7 @@ final class LoginActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request);
 
-        static::assertSame('template content', $result->getContent());
+        self::assertSame('template content', $result->getContent());
     }
 
     public function unauthenticatedProvider(): array
