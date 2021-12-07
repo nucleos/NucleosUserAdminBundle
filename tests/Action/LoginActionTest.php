@@ -115,6 +115,15 @@ final class LoginActionTest extends TestCase
             ->willReturn($token)
         ;
 
+        $this->translator
+            ->method('trans')
+            ->willReturnCallback(
+                static function (string $message): string {
+                    return $message;
+                }
+            )
+        ;
+
         $session = new Session();
 
         $request = new Request();
@@ -133,7 +142,7 @@ final class LoginActionTest extends TestCase
         static::assertSame('/foo', $result->getTargetUrl());
 
         static::assertSame([
-            'nucleos_user_admin_error' => ['nucleos_user_admin_already_authenticated'],
+            'sonata_flash_info' => ['nucleos_user_admin_already_authenticated'],
         ], $session->getFlashBag()->all());
     }
 
@@ -319,6 +328,7 @@ final class LoginActionTest extends TestCase
             $this->templateRegistry,
             $this->tokenStorage,
             $this->formFactory,
+            null,
             $this->translator
         );
         $action->setCsrfTokenManager($this->csrfTokenManager);

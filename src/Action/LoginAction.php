@@ -57,9 +57,9 @@ final class LoginAction
 
     private FormFactoryInterface $formFactory;
 
-    private TranslatorInterface $translator;
-
     private ?AuthenticationUtils $authenticationUtils;
+
+    private ?TranslatorInterface $translator;
 
     public function __construct(
         Environment $twig,
@@ -70,8 +70,8 @@ final class LoginAction
         TemplateRegistryInterface $templateRegistry,
         TokenStorageInterface $tokenStorage,
         FormFactoryInterface $formFactory,
-        TranslatorInterface $translator,
-        ?AuthenticationUtils $authenticationUtils = null
+        ?AuthenticationUtils $authenticationUtils = null,
+        ?TranslatorInterface $translator = null
     ) {
         $this->twig                 = $twig;
         $this->eventDispatcher      = $eventDispatcher;
@@ -81,8 +81,8 @@ final class LoginAction
         $this->templateRegistry     = $templateRegistry;
         $this->tokenStorage         = $tokenStorage;
         $this->formFactory          = $formFactory;
-        $this->translator           = $translator;
         $this->authenticationUtils  = $authenticationUtils;
+        $this->translator           = $translator;
     }
 
     /**
@@ -94,7 +94,8 @@ final class LoginAction
         $session = $request->hasSession() ? $request->getSession() : null;
 
         if ($this->isAuthenticated()) {
-            $message = $this->translator->trans('nucleos_user_admin_already_authenticated', [], 'NucleosUserAdminBundle');
+            $message = 'nucleos_user_admin_already_authenticated';
+            $message = $this->translator ? $this->translator->trans($message, [], 'NucleosUserAdminBundle') : $message;
             $this->addFlash($session, 'sonata_flash_info', $message);
 
             return new RedirectResponse($this->router->generate('sonata_admin_dashboard'));
