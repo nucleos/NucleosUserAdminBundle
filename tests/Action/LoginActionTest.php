@@ -33,6 +33,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
 
 final class LoginActionTest extends TestCase
@@ -77,7 +78,12 @@ final class LoginActionTest extends TestCase
     /**
      * @var MockObject&FormFactoryInterface
      */
-    private $formFactory;
+    protected $formFactory;
+
+    /**
+     * @var MockObject&TranslatorInterface
+     */
+    protected $translator;
 
     protected function setUp(): void
     {
@@ -90,6 +96,7 @@ final class LoginActionTest extends TestCase
         $this->tokenStorage         = $this->createMock(TokenStorageInterface::class);
         $this->csrfTokenManager     = $this->createMock(CsrfTokenManagerInterface::class);
         $this->formFactory          = $this->createMock(FormFactoryInterface::class);
+        $this->translator           = $this->createMock(TranslatorInterface::class);
     }
 
     /**
@@ -110,6 +117,15 @@ final class LoginActionTest extends TestCase
             ->willReturn($token)
         ;
 
+        $this->translator
+            ->method('trans')
+            ->willReturnCallback(
+                static function (string $message): string {
+                    return 'trans.'.$message;
+                }
+            )
+        ;
+
         $session = new Session();
 
         $request = new Request();
@@ -128,7 +144,7 @@ final class LoginActionTest extends TestCase
         static::assertSame('/foo', $result->getTargetUrl());
 
         static::assertSame([
-            'nucleos_user_admin_error' => ['nucleos_user_admin_already_authenticated'],
+            'sonata_flash_info' => ['trans.nucleos_user_admin_already_authenticated'],
         ], $session->getFlashBag()->all());
     }
 
@@ -138,7 +154,7 @@ final class LoginActionTest extends TestCase
     public function testUserGrantedAdmin(string $referer, string $expectedRedirectUrl): void
     {
         $session = $this->createMock(Session::class);
-        $request = Request::create('http://some.url.com/exact-request-uri');
+        $request = Request::create('https://some.url.com/exact-request-uri');
         $request->server->add(['HTTP_REFERER' => $referer]);
         $request->setSession($session);
 
@@ -173,8 +189,8 @@ final class LoginActionTest extends TestCase
     {
         return [
             ['', '/foo'],
-            ['http://some.url.com/exact-request-uri', '/foo'],
-            ['http://some.url.com', 'http://some.url.com'],
+            ['https://some.url.com/exact-request-uri', '/foo'],
+            ['https://some.url.com', 'https://some.url.com'],
         ];
     }
 
@@ -313,7 +329,9 @@ final class LoginActionTest extends TestCase
             $this->pool,
             $this->templateRegistry,
             $this->tokenStorage,
-            $this->formFactory
+            $this->formFactory,
+            null,
+            $this->translator
         );
         $action->setCsrfTokenManager($this->csrfTokenManager);
 
