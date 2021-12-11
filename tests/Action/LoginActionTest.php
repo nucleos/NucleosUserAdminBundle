@@ -77,7 +77,7 @@ final class LoginActionTest extends TestCase
     protected $csrfTokenManager;
 
     /**
-     * @var MockObject&FormFactoryInterface
+     * @var FormFactoryInterface&MockObject
      */
     protected $formFactory;
 

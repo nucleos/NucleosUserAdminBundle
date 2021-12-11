@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserAdminBundle\Tests\Twig;
 
+use ArrayIterator;
 use Nucleos\UserAdminBundle\Security\RolesBuilder\MatrixRolesBuilderInterface;
 use Nucleos\UserAdminBundle\Twig\RolesMatrixRuntime;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -28,12 +29,12 @@ final class RolesMatrixRuntimeTest extends TestCase
     private $rolesBuilder;
 
     /**
-     * @var MockObject&Environment
+     * @var Environment&MockObject
      */
     private $environment;
 
     /**
-     * @var MockObject&FormView
+     * @var FormView&MockObject
      */
     private $formView;
 
@@ -96,7 +97,7 @@ final class RolesMatrixRuntimeTest extends TestCase
 
         $this->formView
             ->method('getIterator')
-            ->willReturn([$form])
+            ->willReturn(new ArrayIterator([$form]))
         ;
 
         $this->environment
@@ -139,7 +140,7 @@ final class RolesMatrixRuntimeTest extends TestCase
 
         $this->formView
             ->method('getIterator')
-            ->willReturn([$form])
+            ->willReturn(new ArrayIterator([$form]))
         ;
 
         $this->environment
@@ -240,7 +241,7 @@ final class RolesMatrixRuntimeTest extends TestCase
         $this->formView
             ->expects(static::once())
             ->method('getIterator')
-            ->willReturn([$form])
+            ->willReturn(new ArrayIterator([$form]))
         ;
 
         $this->environment
@@ -297,7 +298,7 @@ final class RolesMatrixRuntimeTest extends TestCase
         $this->formView
             ->expects(static::once())
             ->method('getIterator')
-            ->willReturn([$form])
+            ->willReturn(new ArrayIterator([$form]))
         ;
 
         $this->environment
