@@ -24,12 +24,12 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 final class SecurityRolesBuilderTest extends TestCase
 {
     /**
-     * @var MockObject&AuthorizationCheckerInterface
+     * @var AuthorizationCheckerInterface&MockObject
      */
     private $authorizationChecker;
 
     /**
-     * @var MockObject&AdminInterface<object>
+     * @var AdminInterface<object>&MockObject
      */
     private $admin;
 

@@ -24,6 +24,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 final class SendEmailActionTest extends TestCase
@@ -39,7 +40,7 @@ final class SendEmailActionTest extends TestCase
     protected $userManager;
 
     /**
-     * @var ResettingMailer&MockObject
+     * @var MockObject&ResettingMailer
      */
     protected $mailer;
 
@@ -68,10 +69,16 @@ final class SendEmailActionTest extends TestCase
         $this->userManager      = $this->createMock(UserManager::class);
         $this->mailer           = $this->createMock(ResettingMailer::class);
         $this->tokenGenerator   = $this->createMock(TokenGenerator::class);
-        $this->userProvider     = $this->getMockBuilder(UserProviderInterface::class)
-            ->addMethods(['loadUserByIdentifier'])
-            ->getMockForAbstractClass()
-        ;
+
+        if (method_exists(UserProviderInterface::class, 'loadUserByIdentifier')) {
+            $this->userProvider     = $this->getMockBuilder(UserProviderInterface::class)
+                ->addMethods(['loadUserByIdentifier'])
+                ->getMockForAbstractClass()
+            ;
+        } else {
+            $this->userProvider     = $this->createMock(UserProviderInterface::class);
+        }
+
         $this->resetTtl         = 60;
         $this->fromEmail        = 'noreply@localhost';
         $this->container        = $this->createMock(ContainerBuilder::class);
@@ -84,7 +91,7 @@ final class SendEmailActionTest extends TestCase
         $this->userProvider
             ->method('loadUserByIdentifier')
             ->with('bar')
-            ->willReturn(null)
+            ->willThrowException(new UserNotFoundException())
         ;
 
         $this->urlGenerator

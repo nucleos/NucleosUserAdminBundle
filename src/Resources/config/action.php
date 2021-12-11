@@ -66,7 +66,7 @@ return static function (ContainerConfigurator $container): void {
                 service('nucleos_user.user_manager'),
                 service('nucleos_user.security.login_manager'),
                 service('translator'),
-                service('session'),
+                service('session')->nullOnInvalid(),
                 '%nucleos_user.resetting.retry_ttl%',
                 '%nucleos_user.firewall_name%',
             ])

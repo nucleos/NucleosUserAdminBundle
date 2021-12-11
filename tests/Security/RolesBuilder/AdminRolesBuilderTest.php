@@ -34,12 +34,12 @@ final class AdminRolesBuilderTest extends TestCase
     private $securityHandler;
 
     /**
-     * @var MockObject&AuthorizationCheckerInterface
+     * @var AuthorizationCheckerInterface&MockObject
      */
     private $authorizationChecker;
 
     /**
-     * @var MockObject&AdminInterface<object>
+     * @var AdminInterface<object>&MockObject
      */
     private $admin;
 
@@ -89,7 +89,7 @@ final class AdminRolesBuilderTest extends TestCase
     public function testGetPermissionLabels(): void
     {
         $this->translator->method('trans')
-            ->willReturn(static::returnArgument(0))
+            ->willReturnArgument(0)
         ;
 
         $this->securityHandler->method('getBaseRole')
@@ -139,7 +139,7 @@ final class AdminRolesBuilderTest extends TestCase
     public function testGetRoles(): void
     {
         $this->translator->method('trans')
-            ->willReturn(static::returnArgument(0))
+            ->willReturnArgument(0)
         ;
 
         $this->securityHandler->method('getBaseRole')

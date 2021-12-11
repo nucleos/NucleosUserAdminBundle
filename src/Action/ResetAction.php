@@ -57,7 +57,7 @@ final class ResetAction
 
     private TranslatorInterface $translator;
 
-    private Session $session;
+    private ?Session $session = null;
 
     private int $resetTtl;
 
@@ -76,7 +76,7 @@ final class ResetAction
         UserManager $userManager,
         LoginManager $loginManager,
         TranslatorInterface $translator,
-        Session $session,
+        ?object $session,
         int $resetTtl,
         string $firewallName
     ) {
@@ -89,7 +89,7 @@ final class ResetAction
         $this->userManager          = $userManager;
         $this->loginManager         = $loginManager;
         $this->translator           = $translator;
-        $this->session              = $session;
+        $this->session              = $session instanceof Session ? $session : null;
         $this->resetTtl             = $resetTtl;
         $this->firewallName         = $firewallName;
         $this->logger               = new NullLogger();
@@ -126,7 +126,9 @@ final class ResetAction
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->session->getFlashBag()->add(
+            $session = $this->session ?? $request->getSession();
+
+            $session->getFlashBag()->add(
                 'success',
                 $this->translator->trans('resetting.flash.success', [], 'NucleosUserBundle')
             );

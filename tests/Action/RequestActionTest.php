@@ -53,7 +53,7 @@ final class RequestActionTest extends TestCase
     protected $templateRegistry;
 
     /**
-     * @var MockObject&FormFactoryInterface
+     * @var FormFactoryInterface&MockObject
      */
     private $formFactory;
 
@@ -97,6 +97,13 @@ final class RequestActionTest extends TestCase
             ->method('isGranted')
             ->willReturn(false)
         ;
+
+        $this->templateRegistry
+            ->method('getTemplate')
+            ->with('layout')
+            ->willReturn('base.html.twig')
+        ;
+
         $view = $this->createMock(FormView::class);
 
         $form = $this->createMock(FormInterface::class);
