@@ -36,7 +36,7 @@ return static function (ContainerConfigurator $container): void {
                 null,
                 '%nucleos_user.model.user.class%',
                 '%nucleos_user_admin.admin.user.controller%',
-                ref('nucleos_user.user_manager'),
+                service('nucleos_user.user_manager'),
             ])
             ->call('setTranslationDomain', [
                 '%nucleos_user_admin.admin.group.translation_domain%',
@@ -56,7 +56,7 @@ return static function (ContainerConfigurator $container): void {
                 null,
                 '%nucleos_user.model.group.class%',
                 '%nucleos_user_admin.admin.group.controller%',
-                ref('nucleos_user.group_manager'),
+                service('nucleos_user.group_manager'),
             ])
             ->call('setTranslationDomain', [
                 '%nucleos_user_admin.admin.group.translation_domain%',

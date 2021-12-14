@@ -25,70 +25,70 @@ return static function (ContainerConfigurator $container): void {
         ->set(RequestAction::class)
             ->public()
             ->args([
-                ref('twig'),
-                ref('router'),
-                ref('security.authorization_checker'),
-                ref('sonata.admin.pool'),
-                ref('sonata.admin.global_template_registry'),
-                ref('form.factory'),
+                service('twig'),
+                service('router'),
+                service('security.authorization_checker'),
+                service('sonata.admin.pool'),
+                service('sonata.admin.global_template_registry'),
+                service('form.factory'),
             ])
 
         ->set(SendEmailAction::class)
             ->public()
             ->args([
-                ref('router'),
-                ref('nucleos_user.user_manager'),
-                ref('nucleos_user.mailer'),
-                ref('nucleos_user.util.token_generator'),
+                service('router'),
+                service('nucleos_user.user_manager'),
+                service('nucleos_user.mailer'),
+                service('nucleos_user.util.token_generator'),
                 '%nucleos_user.resetting.retry_ttl%',
             ])
 
         ->set(CheckEmailAction::class)
             ->public()
             ->args([
-                ref('twig'),
-                ref('router'),
-                ref('sonata.admin.pool'),
-                ref('sonata.admin.global_template_registry'),
+                service('twig'),
+                service('router'),
+                service('sonata.admin.pool'),
+                service('sonata.admin.global_template_registry'),
                 '%nucleos_user.resetting.retry_ttl%',
             ])
 
         ->set(ResetAction::class)
             ->public()
             ->args([
-                ref('twig'),
-                ref('router'),
-                ref('security.authorization_checker'),
-                ref('sonata.admin.pool'),
-                ref('sonata.admin.global_template_registry'),
-                ref('form.factory'),
-                ref('nucleos_user.user_manager'),
-                ref('nucleos_user.security.login_manager'),
-                ref('translator'),
-                ref('session'),
+                service('twig'),
+                service('router'),
+                service('security.authorization_checker'),
+                service('sonata.admin.pool'),
+                service('sonata.admin.global_template_registry'),
+                service('form.factory'),
+                service('nucleos_user.user_manager'),
+                service('nucleos_user.security.login_manager'),
+                service('translator'),
+                service('session'),
                 '%nucleos_user.resetting.retry_ttl%',
                 '%nucleos_user.firewall_name%',
             ])
             ->call('setLogger', [
-                ref('logger')->ignoreOnInvalid(),
+                service('logger')->ignoreOnInvalid(),
             ])
 
         ->set(LoginAction::class)
             ->public()
             ->args([
-                ref('twig'),
-                ref('event_dispatcher'),
-                ref('router'),
-                ref('security.authorization_checker'),
-                ref('sonata.admin.pool'),
-                ref('sonata.admin.global_template_registry'),
-                ref('security.token_storage'),
-                ref('form.factory'),
-                ref('security.authentication_utils'),
-                ref('translator'),
+                service('twig'),
+                service('event_dispatcher'),
+                service('router'),
+                service('security.authorization_checker'),
+                service('sonata.admin.pool'),
+                service('sonata.admin.global_template_registry'),
+                service('security.token_storage'),
+                service('form.factory'),
+                service('security.authentication_utils'),
+                service('translator'),
             ])
             ->call('setCsrfTokenManager', [
-                ref('security.csrf.token_manager')->ignoreOnInvalid(),
+                service('security.csrf.token_manager')->ignoreOnInvalid(),
             ])
 
         ->set(CheckLoginAction::class)
