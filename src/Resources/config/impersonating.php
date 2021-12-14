@@ -23,7 +23,7 @@ return static function (ContainerConfigurator $container): void {
         ->set(ImpersonateRuntime::class)
             ->tag('twig.runtime')
             ->args([
-                ref('router'),
+                service('router'),
                 null,
                 [],
             ])

@@ -24,11 +24,11 @@ return static function (ContainerConfigurator $container): void {
                 'priority' => 255,
             ])
             ->args([
-                ref('security.acl.provider'),
-                ref('security.acl.object_identity_retrieval_strategy'),
-                ref('security.acl.security_identity_retrieval_strategy'),
-                ref('security.acl.permission.map'),
-                ref('logger')->nullOnInvalid(),
+                service('security.acl.provider'),
+                service('security.acl.object_identity_retrieval_strategy'),
+                service('security.acl.security_identity_retrieval_strategy'),
+                service('security.acl.permission.map'),
+                service('logger')->nullOnInvalid(),
             ])
 
     ;

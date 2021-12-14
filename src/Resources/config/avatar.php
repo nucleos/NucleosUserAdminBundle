@@ -26,7 +26,7 @@ return static function (ContainerConfigurator $container): void {
         ->set(AvatarRuntime::class)
             ->tag('twig.runtime')
             ->args([
-                ref(AvatarResolver::class),
+                service(AvatarResolver::class),
                 null,
                 [],
             ])
@@ -34,7 +34,7 @@ return static function (ContainerConfigurator $container): void {
         ->set(StaticAvatarResolver::class)
             ->args([
                 '%nucleos_user_admin.default_avatar%',
-                ref(Packages::class),
+                service(Packages::class),
             ])
 
         ->alias(AvatarResolver::class, StaticAvatarResolver::class)

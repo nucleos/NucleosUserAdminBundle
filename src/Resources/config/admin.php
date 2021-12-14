@@ -27,42 +27,42 @@ return static function (ContainerConfigurator $container): void {
 
         ->set('nucleos_user_admin.editable_role_builder', EditableRolesBuilder::class)
             ->args([
-                ref('security.token_storage'),
-                ref('security.authorization_checker'),
-                ref('sonata.admin.pool'),
-                ref('sonata.admin.configuration'),
+                service('security.token_storage'),
+                service('security.authorization_checker'),
+                service('sonata.admin.pool'),
+                service('sonata.admin.configuration'),
                 '%security.role_hierarchy.roles%',
             ])
             ->call('setTranslator', [
-                ref('translator'),
+                service('translator'),
             ])
 
         ->set('nucleos_user_admin.form.type.security_roles', SecurityRolesType::class)
             ->tag('form.type')
             ->args([
-                ref('nucleos_user_admin.editable_role_builder'),
+                service('nucleos_user_admin.editable_role_builder'),
             ])
 
         ->set('nucleos_user_admin.matrix_roles_builder', MatrixRolesBuilder::class)
             ->args([
-                ref('security.token_storage'),
-                ref('nucleos_user_admin.admin_roles_builder'),
-                ref('nucleos_user_admin.security_roles_builder'),
+                service('security.token_storage'),
+                service('nucleos_user_admin.admin_roles_builder'),
+                service('nucleos_user_admin.security_roles_builder'),
             ])
 
         ->set('nucleos_user_admin.admin_roles_builder', AdminRolesBuilder::class)
             ->args([
-                ref('security.authorization_checker'),
-                ref('sonata.admin.pool'),
-                ref('sonata.admin.configuration'),
-                ref('translator'),
+                service('security.authorization_checker'),
+                service('sonata.admin.pool'),
+                service('sonata.admin.configuration'),
+                service('translator'),
             ])
 
         ->set('nucleos_user_admin.security_roles_builder', SecurityRolesBuilder::class)
             ->args([
-                ref('security.authorization_checker'),
-                ref('sonata.admin.configuration'),
-                ref('translator'),
+                service('security.authorization_checker'),
+                service('sonata.admin.configuration'),
+                service('translator'),
                 '%security.role_hierarchy.roles%',
             ])
 
@@ -70,7 +70,7 @@ return static function (ContainerConfigurator $container): void {
             ->public()
             ->tag('form.type')
             ->args([
-                ref('nucleos_user_admin.matrix_roles_builder'),
+                service('nucleos_user_admin.matrix_roles_builder'),
             ])
 
         ->set(RolesMatrixExtension::class)
@@ -79,13 +79,13 @@ return static function (ContainerConfigurator $container): void {
         ->set(RolesMatrixRuntime::class)
             ->tag('twig.runtime')
             ->args([
-                ref('nucleos_user_admin.matrix_roles_builder'),
+                service('nucleos_user_admin.matrix_roles_builder'),
             ])
 
         ->set('nucleos_user_admin.controller.user', UserCRUDController::class)
             ->public()
             ->args([
-                ref('event_dispatcher'),
+                service('event_dispatcher'),
             ])
             ->call('setContainer', [new ReferenceConfigurator(ContainerInterface::class)])
 

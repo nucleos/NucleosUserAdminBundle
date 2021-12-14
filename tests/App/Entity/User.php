@@ -95,6 +95,11 @@ class User extends BaseUser
         ] = $data;
     }
 
+    public function getUserIdentifier(): string
+    {
+        return $this->getUsername();
+    }
+
     public function toString(): string
     {
         return $this->getUsername();
