@@ -27,3 +27,5 @@ Installation
 ------------
 
 All the installation instructions are located in the documentation.
+
+TEST
