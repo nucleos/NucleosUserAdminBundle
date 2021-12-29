@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Nucleos\UserAdminBundle\Tests\App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Nucleos\UserBundle\Model\GroupInterface;
 use Nucleos\UserBundle\Model\User as BaseUser;
@@ -31,7 +32,7 @@ class User extends BaseUser
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    protected ?int $id = null;
 
     /**
      * @ORM\ManyToMany(targetEntity="Nucleos\UserAdminBundle\Tests\App\Entity\Group")
@@ -40,7 +41,7 @@ class User extends BaseUser
      *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
      * )
      */
-    protected $groups;
+    protected Collection $groups;
 
     public function __construct()
     {
@@ -56,7 +57,6 @@ class User extends BaseUser
     {
         return [
             $this->password,
-            $this->salt,
             $this->usernameCanonical,
             $this->username,
             $this->enabled,
@@ -73,19 +73,8 @@ class User extends BaseUser
     {
         $data = unserialize($serialized);
 
-        if (13 === \count($data)) {
-            // Unserializing a User object from 1.3.x
-            unset($data[4], $data[5], $data[6], $data[9], $data[10]);
-            $data = array_values($data);
-        } elseif (11 === \count($data)) {
-            // Unserializing a User from a dev version somewhere between 2.0-alpha3 and 2.0-beta1
-            unset($data[4], $data[7], $data[8]);
-            $data = array_values($data);
-        }
-
         [
             $this->password,
-            $this->salt,
             $this->usernameCanonical,
             $this->username,
             $this->enabled,
@@ -93,6 +82,16 @@ class User extends BaseUser
             $this->email,
             $this->emailCanonical
         ] = $data;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(?int $id): void
+    {
+        $this->id = $id;
     }
 
     public function getUserIdentifier(): string

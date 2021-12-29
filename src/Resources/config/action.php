@@ -40,6 +40,7 @@ return static function (ContainerConfigurator $container): void {
                 service('nucleos_user.user_manager'),
                 service('nucleos_user.mailer'),
                 service('nucleos_user.util.token_generator'),
+                service('security.user_providers'),
                 '%nucleos_user.resetting.retry_ttl%',
             ])
 

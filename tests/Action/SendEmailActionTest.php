@@ -14,16 +14,17 @@ declare(strict_types=1);
 namespace Nucleos\UserAdminBundle\Tests\Action;
 
 use Nucleos\UserAdminBundle\Action\SendEmailAction;
-use Nucleos\UserBundle\Mailer\MailerInterface;
+use Nucleos\UserBundle\Mailer\ResettingMailer;
 use Nucleos\UserBundle\Model\User;
-use Nucleos\UserBundle\Model\UserManagerInterface;
-use Nucleos\UserBundle\Util\TokenGeneratorInterface;
+use Nucleos\UserBundle\Model\UserManager;
+use Nucleos\UserBundle\Util\TokenGenerator;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 final class SendEmailActionTest extends TestCase
 {
@@ -33,19 +34,24 @@ final class SendEmailActionTest extends TestCase
     protected $urlGenerator;
 
     /**
-     * @var MockObject&UserManagerInterface
+     * @var MockObject&UserManager
      */
     protected $userManager;
 
     /**
-     * @var MailerInterface&MockObject
+     * @var ResettingMailer&MockObject
      */
     protected $mailer;
 
     /**
-     * @var MockObject&TokenGeneratorInterface
+     * @var MockObject&TokenGenerator
      */
     protected $tokenGenerator;
+
+    /**
+     * @var MockObject&UserProviderInterface
+     */
+    protected $userProvider;
 
     protected int $resetTtl;
 
@@ -59,9 +65,13 @@ final class SendEmailActionTest extends TestCase
     protected function setUp(): void
     {
         $this->urlGenerator     = $this->createMock(UrlGeneratorInterface::class);
-        $this->userManager      = $this->createMock(UserManagerInterface::class);
-        $this->mailer           = $this->createMock(MailerInterface::class);
-        $this->tokenGenerator   = $this->createMock(TokenGeneratorInterface::class);
+        $this->userManager      = $this->createMock(UserManager::class);
+        $this->mailer           = $this->createMock(ResettingMailer::class);
+        $this->tokenGenerator   = $this->createMock(TokenGenerator::class);
+        $this->userProvider     = $this->getMockBuilder(UserProviderInterface::class)
+            ->addMethods(['loadUserByIdentifier'])
+            ->getMockForAbstractClass()
+        ;
         $this->resetTtl         = 60;
         $this->fromEmail        = 'noreply@localhost';
         $this->container        = $this->createMock(ContainerBuilder::class);
@@ -71,8 +81,8 @@ final class SendEmailActionTest extends TestCase
     {
         $request = new Request([], ['username' => 'bar']);
 
-        $this->userManager
-            ->method('findUserByUsernameOrEmail')
+        $this->userProvider
+            ->method('loadUserByIdentifier')
             ->with('bar')
             ->willReturn(null)
         ;
@@ -104,8 +114,8 @@ final class SendEmailActionTest extends TestCase
             ->willReturn(true)
         ;
 
-        $this->userManager
-            ->method('findUserByUsernameOrEmail')
+        $this->userProvider
+            ->method('loadUserByIdentifier')
             ->with('bar')
             ->willReturn($user)
         ;
@@ -141,8 +151,8 @@ final class SendEmailActionTest extends TestCase
             ->willReturn(false)
         ;
 
-        $this->userManager
-            ->method('findUserByUsernameOrEmail')
+        $this->userProvider
+            ->method('loadUserByIdentifier')
             ->with('bar')
             ->willReturn($user)
         ;
@@ -203,8 +213,8 @@ final class SendEmailActionTest extends TestCase
             )
         ;
 
-        $this->userManager
-            ->method('findUserByUsernameOrEmail')
+        $this->userProvider
+            ->method('loadUserByIdentifier')
             ->with('bar')
             ->willReturn($user)
         ;
@@ -242,6 +252,7 @@ final class SendEmailActionTest extends TestCase
             $this->userManager,
             $this->mailer,
             $this->tokenGenerator,
+            $this->userProvider,
             $this->resetTtl
         );
     }

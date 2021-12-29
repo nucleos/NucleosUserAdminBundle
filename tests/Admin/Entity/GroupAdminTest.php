@@ -15,7 +15,7 @@ namespace Nucleos\UserAdminBundle\Tests\Admin\Entity;
 
 use Nucleos\UserAdminBundle\Admin\Entity\GroupAdmin;
 use Nucleos\UserBundle\Model\Group;
-use Nucleos\UserBundle\Model\GroupManagerInterface;
+use Nucleos\UserBundle\Model\GroupManager;
 use PHPUnit\Framework\TestCase;
 use Sonata\AdminBundle\Controller\CRUDController;
 
@@ -27,7 +27,7 @@ final class GroupAdminTest extends TestCase
             'admin.group',
             Group::class,
             CRUDController::class,
-            $this->createMock(GroupManagerInterface::class)
+            $this->createMock(GroupManager::class)
         );
 
         static::assertNotEmpty($admin);

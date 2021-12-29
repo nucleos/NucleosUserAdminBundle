@@ -14,49 +14,59 @@ declare(strict_types=1);
 namespace Nucleos\UserAdminBundle\Action;
 
 use DateTime;
-use Nucleos\UserBundle\Mailer\MailerInterface;
-use Nucleos\UserBundle\Model\UserManagerInterface;
-use Nucleos\UserBundle\Util\TokenGeneratorInterface;
+use Nucleos\UserBundle\Mailer\ResettingMailer;
+use Nucleos\UserBundle\Model\UserInterface;
+use Nucleos\UserBundle\Model\UserManager;
+use Nucleos\UserBundle\Util\TokenGenerator;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Core\Exception\UserNotFoundException;
+use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 final class SendEmailAction
 {
     private UrlGeneratorInterface $urlGenerator;
 
-    private UserManagerInterface $userManager;
+    private UserManager $userManager;
 
-    private MailerInterface $mailer;
+    private ResettingMailer $mailer;
 
-    private TokenGeneratorInterface $tokenGenerator;
+    private TokenGenerator $tokenGenerator;
+
+    private UserProviderInterface $userProvider;
 
     private int $resetTtl;
 
     public function __construct(
         UrlGeneratorInterface $urlGenerator,
-        UserManagerInterface $userManager,
-        MailerInterface $mailer,
-        TokenGeneratorInterface $tokenGenerator,
+        UserManager $userManager,
+        ResettingMailer $resettingMailer,
+        TokenGenerator $tokenGenerator,
+        UserProviderInterface $userProvider,
         int $resetTtl
     ) {
         $this->urlGenerator     = $urlGenerator;
         $this->userManager      = $userManager;
-        $this->mailer           = $mailer;
+        $this->mailer           = $resettingMailer;
         $this->tokenGenerator   = $tokenGenerator;
         $this->resetTtl         = $resetTtl;
+        $this->userProvider     = $userProvider;
     }
 
     public function __invoke(Request $request): Response
     {
-        $username = $request->request->get('username');
+        $username = (string) $request->request->get('username', '');
 
-        \assert(null === $username || \is_string($username));
+        $user = null;
 
-        $user = null === $username ? null : $this->userManager->findUserByUsernameOrEmail($username);
+        try {
+            $user = '' === $username ? null : $this->userProvider->loadUserByIdentifier($username);
+        } catch (UserNotFoundException) {
+        }
 
-        if (null !== $user && !$user->isPasswordRequestNonExpired($this->resetTtl)) {
+        if ($user instanceof UserInterface && !$user->isPasswordRequestNonExpired($this->resetTtl)) {
             if (!$user->isAccountNonLocked()) {
                 return new RedirectResponse(
                     $this->urlGenerator->generate('nucleos_user_admin_resetting_request')
