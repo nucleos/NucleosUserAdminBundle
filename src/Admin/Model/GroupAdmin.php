@@ -15,7 +15,7 @@ namespace Nucleos\UserAdminBundle\Admin\Model;
 
 use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
 use Nucleos\UserBundle\Model\GroupInterface;
-use Nucleos\UserBundle\Model\GroupManagerInterface;
+use Nucleos\UserBundle\Model\GroupManager;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -26,12 +26,12 @@ use Sonata\AdminBundle\Form\FormMapper;
  */
 abstract class GroupAdmin extends AbstractAdmin
 {
-    private GroupManagerInterface $groupManager;
+    private GroupManager $groupManager;
 
     /**
      * @phpstan-param class-string<GroupInterface> $class
      */
-    public function __construct(string $code, string $class, string $baseControllerName, GroupManagerInterface $groupManager)
+    public function __construct(string $code, string $class, string $baseControllerName, GroupManager $groupManager)
     {
         parent::__construct($code, $class, $baseControllerName);
 

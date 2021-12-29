@@ -17,8 +17,8 @@ use DateTime;
 use Nucleos\UserBundle\Form\Model\Resetting;
 use Nucleos\UserBundle\Form\Type\ResettingFormType;
 use Nucleos\UserBundle\Model\UserInterface;
-use Nucleos\UserBundle\Model\UserManagerInterface;
-use Nucleos\UserBundle\Security\LoginManagerInterface;
+use Nucleos\UserBundle\Model\UserManager;
+use Nucleos\UserBundle\Security\LoginManager;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Sonata\AdminBundle\Admin\Pool;
@@ -51,9 +51,9 @@ final class ResetAction
 
     private FormFactoryInterface $formFactory;
 
-    private UserManagerInterface $userManager;
+    private UserManager $userManager;
 
-    private LoginManagerInterface $loginManager;
+    private LoginManager $loginManager;
 
     private TranslatorInterface $translator;
 
@@ -73,8 +73,8 @@ final class ResetAction
         Pool $adminPool,
         TemplateRegistryInterface $templateRegistry,
         FormFactoryInterface $formFactory,
-        UserManagerInterface $userManager,
-        LoginManagerInterface $loginManager,
+        UserManager $userManager,
+        LoginManager $loginManager,
         TranslatorInterface $translator,
         Session $session,
         int $resetTtl,
@@ -167,7 +167,7 @@ final class ResetAction
             // We simply do not authenticate users which do not pass the user
             // checker (not enabled, expired, etc.).
             $this->logger->warning(
-                sprintf('Unable to login user %d after password reset', $user->getId()),
+                sprintf('Unable to login user %d after password reset', $user->getUserIdentifier()),
                 ['exception' => $ex]
             );
         }

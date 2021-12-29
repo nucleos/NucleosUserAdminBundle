@@ -15,6 +15,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use Nucleos\UserAdminBundle\Tests\App\Entity\Group;
 use Nucleos\UserAdminBundle\Tests\App\Entity\User;
+use Nucleos\UserBundle\Model\UserInterface;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->extension('framework', ['secret' => 'MySecret']);
@@ -31,8 +32,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $containerConfigurator->extension('twig', ['exception_controller' => null]);
 
-    $containerConfigurator->extension('security', ['encoders' => [
-        \Symfony\Component\Security\Core\User\User::class => 'auto',
+    $containerConfigurator->extension('security', ['password_hashers' => [
+        UserInterface::class => 'plaintext',
     ]]);
 
     $containerConfigurator->extension('security', ['providers' => [
@@ -48,13 +49,14 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->extension('security', [
         'firewalls' => [
             'main' => [
-                'anonymous'  => true,
                 'http_basic' => ['provider' => 'test_users'],
             ],
         ],
     ]);
 
-    $containerConfigurator->extension('security', ['access_control' => [['path' => '^/.*', 'role' => 'IS_AUTHENTICATED_ANONYMOUSLY']]]);
+    $containerConfigurator->extension('security', ['enable_authenticator_manager' => true]);
+
+    $containerConfigurator->extension('security', ['access_control' => [['path' => '^/.*', 'role' => 'PUBLIC_ACCESS']]]);
 
     $containerConfigurator->extension('doctrine', ['dbal' => ['url' => 'sqlite:///%kernel.cache_dir%/data.db']]);
 
@@ -80,4 +82,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->extension('nucleos_user', ['user_class' => User::class]);
 
     $containerConfigurator->extension('nucleos_user', ['group' => ['group_class' => Group::class]]);
+
+    $containerConfigurator->extension('nucleos_user', ['loggedin' => ['route' => 'home']]);
 };

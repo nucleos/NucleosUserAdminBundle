@@ -15,9 +15,9 @@ namespace Nucleos\UserAdminBundle\Admin\Model;
 
 use DomainException;
 use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
-use Nucleos\UserBundle\Model\LocaleAwareInterface;
+use Nucleos\UserBundle\Model\LocaleAwareUser;
 use Nucleos\UserBundle\Model\UserInterface;
-use Nucleos\UserBundle\Model\UserManagerInterface;
+use Nucleos\UserBundle\Model\UserManager;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -33,12 +33,12 @@ use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
  */
 abstract class UserAdmin extends AbstractAdmin
 {
-    protected UserManagerInterface $userManager;
+    protected UserManager $userManager;
 
     /**
      * @phpstan-param class-string<UserInterface> $class
      */
-    public function __construct(string $code, string $class, string $baseControllerName, UserManagerInterface $userManager)
+    public function __construct(string $code, string $class, string $baseControllerName, UserManager $userManager)
     {
         parent::__construct($code, $class, $baseControllerName);
 
@@ -48,7 +48,6 @@ abstract class UserAdmin extends AbstractAdmin
     public function preUpdate($object): void
     {
         $this->userManager->updateCanonicalFields($object);
-        $this->userManager->updatePassword($object);
     }
 
     protected function configureFormOptions(array &$formOptions): void
@@ -200,6 +199,6 @@ abstract class UserAdmin extends AbstractAdmin
 
     private function isLocaleAwareSubject(): bool
     {
-        return is_subclass_of($this->getClass(), LocaleAwareInterface::class);
+        return is_subclass_of($this->getClass(), LocaleAwareUser::class);
     }
 }

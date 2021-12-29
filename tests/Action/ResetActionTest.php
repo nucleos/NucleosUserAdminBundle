@@ -16,8 +16,8 @@ namespace Nucleos\UserAdminBundle\Tests\Action;
 use Nucleos\UserAdminBundle\Action\ResetAction;
 use Nucleos\UserAdminBundle\Tests\Fixtures\PoolMockFactory;
 use Nucleos\UserBundle\Model\User;
-use Nucleos\UserBundle\Model\UserManagerInterface;
-use Nucleos\UserBundle\Security\LoginManagerInterface;
+use Nucleos\UserBundle\Model\UserManager;
+use Nucleos\UserBundle\Security\LoginManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\AdminBundle\Admin\Pool;
@@ -65,12 +65,12 @@ final class ResetActionTest extends TestCase
     protected $formFactory;
 
     /**
-     * @var MockObject&UserManagerInterface
+     * @var MockObject&UserManager
      */
     protected $userManager;
 
     /**
-     * @var LoginManagerInterface&MockObject
+     * @var LoginManager&MockObject
      */
     protected $loginManager;
 
@@ -96,8 +96,8 @@ final class ResetActionTest extends TestCase
         $this->pool                 = PoolMockFactory::create();
         $this->templateRegistry     = $this->createMock(TemplateRegistryInterface::class);
         $this->formFactory          = $this->createMock(FormFactoryInterface::class);
-        $this->userManager          = $this->createMock(UserManagerInterface::class);
-        $this->loginManager         = $this->createMock(LoginManagerInterface::class);
+        $this->userManager          = $this->createMock(UserManager::class);
+        $this->loginManager         = $this->createMock(LoginManager::class);
         $this->translator           = $this->createMock(TranslatorInterface::class);
         $this->session              = $this->createMock(Session::class);
         $this->resetTtl             = 60;
