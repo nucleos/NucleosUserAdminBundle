@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.3.0 - TBD
+## 3.0.0 - TBD
 
 ### Added
 
@@ -23,6 +23,31 @@ All notable changes to this project will be documented in this file, in reverse 
 ### Fixed
 
 - Nothing.
+
+## 2.3.0 - 2021-12-29
+
+
+-----
+
+### Release Notes for [2.3.0](https://github.com/nucleos/NucleosUserAdminBundle/milestone/20)
+
+Feature release (minor)
+
+### 2.3.0
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **4**
+- Total contributors: **1**
+
+#### Enhancement
+
+ - [435: Remove deprecations](https://github.com/nucleos/NucleosUserAdminBundle/pull/435) thanks to @core23
+ - [432: Remove composer-bin plugin](https://github.com/nucleos/NucleosUserAdminBundle/pull/432) thanks to @core23
+
+#### Bug
+
+ - [430: Fix translation on login page](https://github.com/nucleos/NucleosUserAdminBundle/pull/430) thanks to @core23
+ - [427: Fix title mode](https://github.com/nucleos/NucleosUserAdminBundle/pull/427) thanks to @core23
 
 ## 2.2.0 - 2021-12-04
 
