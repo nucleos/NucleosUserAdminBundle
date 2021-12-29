@@ -131,12 +131,12 @@ parameters:
 			path: tests/Resources/XliffTest.php
 
 		-
-			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\{confirm_exit\\: bool, default_group\\: string, default_icon\\: string, default_label_catalogue\\: string, dropdown_number_groups_per_colums\\: int, form_type\\: string, html5_validate\\: bool, javascripts\\: array\\<int, string\\>, \\.\\.\\.\\}, array\\{\\} given\\.$#"
+			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\{confirm_exit\\: bool, default_group\\: string, default_icon\\: string, default_label_catalogue\\: string, dropdown_number_groups_per_colums\\: int, form_type\\: 'horizontal'\\|'standard', html5_validate\\: bool, javascripts\\: array\\<int, string\\>, \\.\\.\\.\\}, array\\{\\} given\\.$#"
 			count: 3
 			path: tests/Security/Authorization/Voter/EditableRolesBuilderTest.php
 
 		-
-			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\{confirm_exit\\: bool, default_group\\: string, default_icon\\: string, default_label_catalogue\\: string, dropdown_number_groups_per_colums\\: int, form_type\\: string, html5_validate\\: bool, javascripts\\: array\\<int, string\\>, \\.\\.\\.\\}, array\\{\\} given\\.$#"
+			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\{confirm_exit\\: bool, default_group\\: string, default_icon\\: string, default_label_catalogue\\: string, dropdown_number_groups_per_colums\\: int, form_type\\: 'horizontal'\\|'standard', html5_validate\\: bool, javascripts\\: array\\<int, string\\>, \\.\\.\\.\\}, array\\{\\} given\\.$#"
 			count: 1
 			path: tests/Security/RolesBuilder/AdminRolesBuilderTest.php
 
@@ -151,7 +151,7 @@ parameters:
 			path: tests/Security/RolesBuilder/AdminRolesBuilderTest.php
 
 		-
-			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\{confirm_exit\\: bool, default_group\\: string, default_icon\\: string, default_label_catalogue\\: string, dropdown_number_groups_per_colums\\: int, form_type\\: string, html5_validate\\: bool, javascripts\\: array\\<int, string\\>, \\.\\.\\.\\}, array\\{role_super_admin\\: 'ROLE_SUPER_ADMIN', role_admin\\: 'ROLE_SONATA_ADMIN'\\} given\\.$#"
+			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\{confirm_exit\\: bool, default_group\\: string, default_icon\\: string, default_label_catalogue\\: string, dropdown_number_groups_per_colums\\: int, form_type\\: 'horizontal'\\|'standard', html5_validate\\: bool, javascripts\\: array\\<int, string\\>, \\.\\.\\.\\}, array\\{role_super_admin\\: 'ROLE_SUPER_ADMIN', role_admin\\: 'ROLE_SONATA_ADMIN'\\} given\\.$#"
 			count: 1
 			path: tests/Security/RolesBuilder/SecurityRolesBuilderTest.php
 
