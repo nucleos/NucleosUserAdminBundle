@@ -23,7 +23,7 @@ final class ImpersonateRuntime implements RuntimeExtensionInterface
     /**
      * @var array<string, mixed>
      */
-    private $routeParams;
+    private array $routeParams;
 
     /**
      * @param array<string, mixed> $routeParams

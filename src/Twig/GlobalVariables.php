@@ -22,7 +22,7 @@ final class GlobalVariables
     /**
      * @var AdminInterface<UserInterface>|null
      */
-    private $admin;
+    private ?AdminInterface $admin;
 
     /**
      * @phpstan-param AdminInterface<UserInterface> $admin

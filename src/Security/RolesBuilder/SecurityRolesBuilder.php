@@ -28,7 +28,7 @@ final class SecurityRolesBuilder implements ExpandableRolesBuilderInterface
     /**
      * @var array<string, string[]>
      */
-    private $rolesHierarchy;
+    private array $rolesHierarchy;
 
     /**
      * @param array<string, string[]> $rolesHierarchy
