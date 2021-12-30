@@ -2,27 +2,32 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.0.0 - TBD
+## 3.0.0 - 2021-12-30
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.0.0](https://github.com/nucleos/NucleosUserAdminBundle/milestone/16)
 
-- Nothing.
+Backwards incompatible release (major)
 
-### Deprecated
+### 3.0.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **3**
+- Total contributors: **1**
 
-### Removed
+#### Enhancement
 
-- Nothing.
+ - [446: Next major preparations](https://github.com/nucleos/NucleosUserAdminBundle/pull/446) thanks to @core23
 
-### Fixed
+#### BC Break
 
-- Nothing.
+ - [445: Remove all.php routing](https://github.com/nucleos/NucleosUserAdminBundle/pull/445) thanks to @core23
+
+#### dependency
+
+ - [443: Bump nucleos/user-bundle](https://github.com/nucleos/NucleosUserAdminBundle/pull/443) thanks to @core23
 
 ## 2.3.0 - 2021-12-29
 
