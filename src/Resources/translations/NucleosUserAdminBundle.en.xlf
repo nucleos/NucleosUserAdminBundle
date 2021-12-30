@@ -230,6 +230,10 @@
                 <source>form.group_security</source>
                 <target>Security</target>
             </trans-unit>
+            <trans-unit id="form.group_user">
+                <source>form.group_user</source>
+                <target>User</target>
+            </trans-unit>
             <trans-unit id="field.label_roles_editable">
                 <source>field.label_roles_editable</source>
                 <target>Roles</target>
