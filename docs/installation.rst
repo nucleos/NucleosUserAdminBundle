@@ -126,8 +126,12 @@ import the NucleosUserAdminBundle routing files.
 
     # config/routes/nucleos_user_admin.yaml
     nucleos_user_admin_admin_security:
-        resource: "@NucleosUserAdminBundle/Resources/config/routing/all.php"
+        resource: "@NucleosUserAdminBundle/Resources/config/routing/admin_security.php"
+        prefix: /admin
 
+    nucleos_user_admin_admin_resetting:
+        resource: "@NucleosUserAdminBundle/Resources/config/routing/admin_resetting.php"
+        prefix: /admin/resetting
 
 .. _Symfony documentation: https://symfony.com/doc/current/book/translation.html
 .. _SonataAdminBundle documentation: https://sonata-project.org/bundles/admin

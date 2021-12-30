@@ -9,7 +9,6 @@ The following documents are available:
     :maxdepth: 1
 
     installation
-    routing
     user_impersonation
     configuration
 
