@@ -19,8 +19,9 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\AdminBundle\Admin\Pool;
 use Sonata\AdminBundle\Templating\TemplateRegistryInterface;
-use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
@@ -92,30 +93,13 @@ final class RequestActionTest extends TestCase
     {
         $request = new Request();
 
-        $parameters = [
-            'base_template' => 'base.html.twig',
-            'admin_pool'    => $this->pool,
-            'form'          => 'Form View',
-        ];
-
         $this->authorizationChecker->expects(static::once())
             ->method('isGranted')
             ->willReturn(false)
         ;
+        $view = $this->createMock(FormView::class);
 
-        $this->templating->expects(static::once())
-            ->method('render')
-            ->with('@NucleosUserAdmin/Admin/Security/Resetting/request.html.twig', $parameters)
-            ->willReturn('template content')
-        ;
-
-        $this->templateRegistry
-            ->method('getTemplate')
-            ->with('layout')
-            ->willReturn('base.html.twig')
-        ;
-
-        $form = $this->createMock(Form::class);
+        $form = $this->createMock(FormInterface::class);
         $form
             ->method('isValid')
             ->willReturn(true)
@@ -126,7 +110,7 @@ final class RequestActionTest extends TestCase
         ;
         $form->expects(static::once())
             ->method('createView')
-            ->willReturn('Form View')
+            ->willReturn($view)
         ;
 
         $this->formFactory->expects(static::once())
@@ -138,6 +122,22 @@ final class RequestActionTest extends TestCase
             ->method('generate')
             ->with('nucleos_user_admin_resetting_send_email')
             ->willReturn('/foo')
+        ;
+
+        $this->templating->expects(static::once())
+            ->method('render')
+            ->with('@NucleosUserAdmin/Admin/Security/Resetting/request.html.twig', [
+                'base_template' => 'base.html.twig',
+                'admin_pool'    => $this->pool,
+                'form'          => $view,
+            ])
+            ->willReturn('template content')
+        ;
+
+        $this->templateRegistry
+            ->method('getTemplate')
+            ->with('layout')
+            ->willReturn('base.html.twig')
         ;
 
         $action = $this->getAction();

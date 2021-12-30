@@ -22,8 +22,9 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\AdminBundle\Admin\Pool;
 use Sonata\AdminBundle\Templating\TemplateRegistryInterface;
-use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -179,20 +180,15 @@ final class ResetActionTest extends TestCase
     {
         $request = new Request();
 
-        $parameters = [
-            'token'         => 'user-token',
-            'form'          => 'Form View',
-            'base_template' => 'base.html.twig',
-            'admin_pool'    => $this->pool,
-        ];
-
         $user = $this->createMock(User::class);
         $user
             ->method('isPasswordRequestNonExpired')
             ->willReturn(true)
         ;
 
-        $form = $this->createMock(Form::class);
+        $view = $this->createMock(FormView::class);
+
+        $form = $this->createMock(FormInterface::class);
         $form
             ->method('isValid')
             ->willReturn(true)
@@ -203,7 +199,7 @@ final class ResetActionTest extends TestCase
         ;
         $form->expects(static::once())
             ->method('createView')
-            ->willReturn('Form View')
+            ->willReturn($view)
         ;
 
         $this->userManager
@@ -225,7 +221,12 @@ final class ResetActionTest extends TestCase
 
         $this->templating
             ->method('render')
-            ->with('@NucleosUserAdmin/Admin/Security/Resetting/reset.html.twig', $parameters)
+            ->with('@NucleosUserAdmin/Admin/Security/Resetting/reset.html.twig', [
+                'token'         => 'user-token',
+                'form'          => $view,
+                'base_template' => 'base.html.twig',
+                'admin_pool'    => $this->pool,
+            ])
             ->willReturn('template content')
         ;
 
@@ -269,7 +270,7 @@ final class ResetActionTest extends TestCase
             ->with(true)
         ;
 
-        $form = $this->createMock(Form::class);
+        $form = $this->createMock(FormInterface::class);
         $form
             ->method('isValid')
             ->willReturn(true)

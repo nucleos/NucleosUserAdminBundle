@@ -20,8 +20,9 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\AdminBundle\Admin\Pool;
 use Sonata\AdminBundle\Templating\TemplateRegistryInterface;
-use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -225,16 +226,6 @@ final class LoginActionTest extends TestCase
         $request = new Request();
         $request->setSession($session);
 
-        $parameters = [
-            'admin_pool'    => $this->pool,
-            'base_template' => 'base.html.twig',
-            'csrf_token'    => 'csrf-token',
-            'error'         => $errorMessage,
-            'last_username' => $lastUsername,
-            'reset_route'   => '/reset',
-            'form'          => 'Form View',
-        ];
-
         $csrfToken = $this->createMock(CsrfToken::class);
         $csrfToken
             ->method('getValue')
@@ -246,7 +237,9 @@ final class LoginActionTest extends TestCase
             ->willReturn(null)
         ;
 
-        $form = $this->createMock(Form::class);
+        $view = $this->createMock(FormView::class);
+
+        $form = $this->createMock(FormInterface::class);
         $form
             ->method('isValid')
             ->willReturn(true)
@@ -261,7 +254,7 @@ final class LoginActionTest extends TestCase
         ;
         $form->expects(static::once())
             ->method('createView')
-            ->willReturn('Form View')
+            ->willReturn($view)
         ;
 
         $this->formFactory->expects(static::once())
@@ -299,7 +292,15 @@ final class LoginActionTest extends TestCase
 
         $this->templating
             ->method('render')
-            ->with('@NucleosUserAdmin/Admin/Security/login.html.twig', $parameters)
+            ->with('@NucleosUserAdmin/Admin/Security/login.html.twig', [
+                'admin_pool'    => $this->pool,
+                'base_template' => 'base.html.twig',
+                'csrf_token'    => 'csrf-token',
+                'error'         => $errorMessage,
+                'last_username' => $lastUsername,
+                'reset_route'   => '/reset',
+                'form'          => $view,
+            ])
             ->willReturn('template content')
         ;
 
