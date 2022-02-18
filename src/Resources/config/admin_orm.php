@@ -26,6 +26,8 @@ return static function (ContainerConfigurator $container): void {
             ->public()
             ->tag('sonata.admin', [
                 'manager_type'              => 'orm',
+                'model_class'               => '%nucleos_user.model.user.class%',
+                'controller'                => '%nucleos_user_admin.admin.user.controller%',
                 'group'                     => '%nucleos_user_admin.admin.groupname%',
                 'label'                     => 'users',
                 'label_catalogue'           => '%nucleos_user_admin.admin.label_catalogue%',
@@ -33,9 +35,6 @@ return static function (ContainerConfigurator $container): void {
                 'icon'                      => '%nucleos_user_admin.admin.groupicon%',
             ])
             ->args([
-                null,
-                '%nucleos_user.model.user.class%',
-                '%nucleos_user_admin.admin.user.controller%',
                 service('nucleos_user.user_manager'),
             ])
             ->call('setTranslationDomain', [
@@ -46,6 +45,8 @@ return static function (ContainerConfigurator $container): void {
             ->public()
             ->tag('sonata.admin', [
                 'manager_type'              => 'orm',
+                'model_class'               => '%nucleos_user.model.group.class%',
+                'controller'                => '%nucleos_user_admin.admin.group.controller%',
                 'group'                     => '%nucleos_user_admin.admin.groupname%',
                 'label'                     => 'groups',
                 'label_catalogue'           => '%nucleos_user_admin.admin.label_catalogue%',
@@ -53,9 +54,6 @@ return static function (ContainerConfigurator $container): void {
                 'icon'                      => '%nucleos_user_admin.admin.groupicon%',
             ])
             ->args([
-                null,
-                '%nucleos_user.model.group.class%',
-                '%nucleos_user_admin.admin.group.controller%',
                 service('nucleos_user.group_manager'),
             ])
             ->call('setTranslationDomain', [

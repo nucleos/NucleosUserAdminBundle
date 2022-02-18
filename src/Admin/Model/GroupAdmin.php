@@ -29,11 +29,13 @@ abstract class GroupAdmin extends AbstractAdmin
     private GroupManager $groupManager;
 
     /**
-     * @phpstan-param class-string<GroupInterface> $class
+     * @phpstan-param GroupManager|class-string<GroupInterface> $class
+     *
+     * @param mixed $codeOrGroupManager
      */
-    public function __construct(string $code, string $class, string $baseControllerName, GroupManager $groupManager)
+    public function __construct($codeOrGroupManager, string $class = null, string $baseControllerName = null, GroupManager $groupManager = null)
     {
-        parent::__construct($code, $class, $baseControllerName);
+        parent::__construct($codeOrGroupManager, $class, $baseControllerName);
 
         $this->groupManager = $groupManager;
     }
