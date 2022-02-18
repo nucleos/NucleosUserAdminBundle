@@ -2,27 +2,30 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.1.0 - TBD
+## 3.1.0 - 2022-02-18
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.1.0](https://github.com/nucleos/NucleosUserAdminBundle/milestone/24)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.1.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **4**
+- Total contributors: **1**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [484: Bump sonata-project/admin-bundle](https://github.com/nucleos/NucleosUserAdminBundle/pull/484) thanks to @core23
+ - [431: Add symfony 6 support](https://github.com/nucleos/NucleosUserAdminBundle/pull/431) thanks to @core23
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [452: Use shared pipelines](https://github.com/nucleos/NucleosUserAdminBundle/pull/452) thanks to @core23
+ - [448: Rework build triggers](https://github.com/nucleos/NucleosUserAdminBundle/pull/448) thanks to @core23
 
 ## 3.0.0 - 2021-12-30
 
