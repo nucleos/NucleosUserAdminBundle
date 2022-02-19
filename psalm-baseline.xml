@@ -10,6 +10,11 @@
       <code>getFlashBag</code>
     </PossiblyUndefinedMethod>
   </file>
+  <file src="src/Action/ResetAction.php">
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>getFlashBag</code>
+    </PossiblyUndefinedMethod>
+  </file>
   <file src="src/Admin/Model/GroupAdmin.php">
     <MismatchingDocblockParamType occurrences="1">
       <code>GroupManager|class-string&lt;GroupInterface&gt;</code>
