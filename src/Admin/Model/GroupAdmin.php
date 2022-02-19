@@ -16,6 +16,7 @@ namespace Nucleos\UserAdminBundle\Admin\Model;
 use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
 use Nucleos\UserBundle\Model\GroupInterface;
 use Nucleos\UserBundle\Model\GroupManager;
+use RuntimeException;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -29,15 +30,24 @@ abstract class GroupAdmin extends AbstractAdmin
     private GroupManager $groupManager;
 
     /**
-     * @phpstan-param GroupManager|class-string<GroupInterface> $class
+     * @phpstan-param GroupManager|string $codeOrGroupManager
+     * @phpstan-param class-string<GroupInterface> $class
      *
      * @param mixed $codeOrGroupManager
      */
     public function __construct($codeOrGroupManager, string $class = null, string $baseControllerName = null, GroupManager $groupManager = null)
     {
-        parent::__construct($codeOrGroupManager, $class, $baseControllerName);
+        if ($codeOrGroupManager instanceof GroupManager) {
+            $this->groupManager = $codeOrGroupManager;
+        } else {
+            parent::__construct($codeOrGroupManager, $class, $baseControllerName);
 
-        $this->groupManager = $groupManager;
+            if (null === $groupManager) {
+                throw new RuntimeException('Cannot create admin. GroupManager cannot be null');
+            }
+
+            $this->groupManager = $groupManager;
+        }
     }
 
     protected function createNewInstance(): object
