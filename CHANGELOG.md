@@ -24,6 +24,25 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
+## 3.1.1 - 2022-02-19
+
+
+-----
+
+### Release Notes for [3.1.1](https://github.com/nucleos/NucleosUserAdminBundle/milestone/26)
+
+3.1.x bugfix release (patch)
+
+### 3.1.1
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
+
+#### Bug
+
+ - [486: Fix admin construction](https://github.com/nucleos/NucleosUserAdminBundle/pull/486) thanks to @core23
+
 ## 3.1.0 - 2022-02-18
 
 
