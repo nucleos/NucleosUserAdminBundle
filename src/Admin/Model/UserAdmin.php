@@ -18,6 +18,7 @@ use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
 use Nucleos\UserBundle\Model\LocaleAwareUser;
 use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManager;
+use RuntimeException;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -36,15 +37,24 @@ abstract class UserAdmin extends AbstractAdmin
     protected UserManager $userManager;
 
     /**
-     * @phpstan-param UserManager|class-string<UserInterface> $class
+     * @phpstan-param UserManager|string $codeOrUserManager
+     * @phpstan-param class-string<UserInterface> $class
      *
      * @param mixed $codeOrUserManager
      */
     public function __construct($codeOrUserManager, string $class = null, string $baseControllerName = null, UserManager $userManager = null)
     {
-        parent::__construct($codeOrUserManager, $class, $baseControllerName);
+        if ($codeOrUserManager instanceof UserManager) {
+            $this->userManager = $codeOrUserManager;
+        } else {
+            parent::__construct($codeOrUserManager, $class, $baseControllerName);
 
-        $this->userManager = $userManager;
+            if (null === $userManager) {
+                throw new RuntimeException('Cannot create admin. UserManager cannot be null');
+            }
+
+            $this->userManager = $userManager;
+        }
     }
 
     public function preUpdate($object): void
