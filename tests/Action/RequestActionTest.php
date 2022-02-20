@@ -122,6 +122,10 @@ final class RequestActionTest extends TestCase
             ->method('createView')
             ->willReturn($view)
         ;
+        $form
+            ->method('add')
+            ->willReturnSelf()
+        ;
 
         $this->formFactory->expects(static::once())
             ->method('create')
