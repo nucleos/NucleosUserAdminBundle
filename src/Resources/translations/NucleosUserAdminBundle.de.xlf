@@ -422,6 +422,10 @@
                 <source>show.group_groups</source>
                 <target>Gruppen</target>
             </trans-unit>
+            <trans-unit id="list.label_id">
+                <source>list.label_id</source>
+                <target>ID</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
