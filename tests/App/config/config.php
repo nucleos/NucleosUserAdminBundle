@@ -48,8 +48,16 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $containerConfigurator->extension('security', [
         'firewalls' => [
-            'main' => [
-                'http_basic' => ['provider' => 'test_users'],
+            'admin' => [
+                'pattern'    => '/admin/(.*)',
+                'form_login' => [
+                    'login_path' => '/admin/login',
+                    'check_path' => '/admin/login_check',
+                ],
+                'logout' => [
+                    'path'   => '/admin/logout',
+                    'target' => '/admin/login',
+                ],
             ],
         ],
     ]);
@@ -75,7 +83,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $containerConfigurator->extension('nucleos_user', ['db_driver' => 'orm']);
 
-    $containerConfigurator->extension('nucleos_user', ['firewall_name' => 'main']);
+    $containerConfigurator->extension('nucleos_user', ['firewall_name' => 'admin']);
 
     $containerConfigurator->extension('nucleos_user', ['from_email' => 'no-reply@localhost']);
 
