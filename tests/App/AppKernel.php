@@ -17,6 +17,7 @@ use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Knp\Bundle\MenuBundle\KnpMenuBundle;
 use Nucleos\UserAdminBundle\NucleosUserAdminBundle;
 use Nucleos\UserBundle\NucleosUserBundle;
+use Psr\Log\NullLogger;
 use Sonata\AdminBundle\SonataAdminBundle;
 use Sonata\BlockBundle\SonataBlockBundle;
 use Sonata\Doctrine\Bridge\Symfony\SonataDoctrineBundle;
@@ -26,6 +27,7 @@ use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
@@ -97,6 +99,11 @@ final class AppKernel extends Kernel
     protected function configureContainer(ContainerConfigurator $container): void
     {
         $container->import(__DIR__.'/config/config.php');
+    }
+
+    protected function build(ContainerBuilder $container): void
+    {
+        $container->register('logger', NullLogger::class);
     }
 
     private function getBaseDir(): string

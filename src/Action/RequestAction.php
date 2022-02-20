@@ -16,6 +16,7 @@ namespace Nucleos\UserAdminBundle\Action;
 use Nucleos\UserBundle\Form\Type\RequestPasswordFormType;
 use Sonata\AdminBundle\Admin\Pool;
 use Sonata\AdminBundle\Templating\TemplateRegistryInterface;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -60,10 +61,15 @@ final class RequestAction
             return new RedirectResponse($this->router->generate('sonata_admin_dashboard'));
         }
 
-        $form = $this->formFactory->create(RequestPasswordFormType::class, null, [
-            'action' => $this->router->generate('nucleos_user_admin_resetting_send_email'),
-            'method' => 'POST',
-        ]);
+        $form = $this->formFactory
+            ->create(RequestPasswordFormType::class, null, [
+                'action' => $this->router->generate('nucleos_user_admin_resetting_send_email'),
+                'method' => 'POST',
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'resetting.request.submit',
+            ])
+        ;
 
         return new Response($this->twig->render('@NucleosUserAdmin/Admin/Security/Resetting/request.html.twig', [
             'form'          => $form->createView(),
