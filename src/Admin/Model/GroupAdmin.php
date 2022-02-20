@@ -64,7 +64,7 @@ abstract class GroupAdmin extends AbstractAdmin
     {
         $form
             ->tab('group', ['label' => 'form.group_groups'])
-                ->with('general', ['class' => 'col-md-6', 'label' => 'focl'])
+                ->with('general', ['class' => 'col-md-6', 'label' => 'form.group_general'])
                     ->add('name')
                 ->end()
             ->end()
