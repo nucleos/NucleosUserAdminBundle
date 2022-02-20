@@ -2,27 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.1.2 - TBD
+## 3.1.2 - 2022-02-20
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.1.2](https://github.com/nucleos/NucleosUserAdminBundle/milestone/29)
 
-- Nothing.
+3.1.x bugfix release (patch)
 
-### Deprecated
+### 3.1.2
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
+ - [489: Fix typo in form group label](https://github.com/nucleos/NucleosUserAdminBundle/pull/489) thanks to @core23
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [488: Add missing translation](https://github.com/nucleos/NucleosUserAdminBundle/pull/488) thanks to @core23
 
 ## 3.1.1 - 2022-02-19
 
