@@ -24,6 +24,25 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
+## 3.1.3 - 2022-02-20
+
+
+-----
+
+### Release Notes for [3.1.3](https://github.com/nucleos/NucleosUserAdminBundle/milestone/30)
+
+3.1.x bugfix release (patch)
+
+### 3.1.3
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
+
+#### Bug
+
+ - [491: Add missing submit button to RequestAction](https://github.com/nucleos/NucleosUserAdminBundle/pull/491) thanks to @core23
+
 ## 3.1.2 - 2022-02-20
 
 
