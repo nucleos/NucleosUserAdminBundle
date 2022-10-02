@@ -1,9 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.13.1@5cf660f63b548ccd4a56f62d916ee4d6028e01a3">
+<files psalm-version="4.20.0@f82a70e7edfc6cf2705e9374c8a0b6a974a779ed">
   <file src="src/Action/CheckEmailAction.php">
     <InvalidArgument occurrences="1">
       <code>$username</code>
     </InvalidArgument>
+  </file>
+  <file src="src/Action/ResetAction.php">
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>getFlashBag</code>
+    </PossiblyUndefinedMethod>
+  </file>
+  <file src="src/Admin/Model/GroupAdmin.php">
+    <MismatchingDocblockParamType occurrences="1">
+      <code>GroupManager|class-string&lt;GroupInterface&gt;</code>
+    </MismatchingDocblockParamType>
+    <PossiblyInvalidArgument occurrences="1">
+      <code>$class</code>
+    </PossiblyInvalidArgument>
+    <PossiblyNullPropertyAssignmentValue occurrences="1">
+      <code>$groupManager</code>
+    </PossiblyNullPropertyAssignmentValue>
+  </file>
+  <file src="src/Admin/Model/UserAdmin.php">
+    <MismatchingDocblockParamType occurrences="1">
+      <code>UserManager|class-string&lt;UserInterface&gt;</code>
+    </MismatchingDocblockParamType>
+    <PossiblyInvalidArgument occurrences="1">
+      <code>$class</code>
+    </PossiblyInvalidArgument>
+    <PossiblyNullPropertyAssignmentValue occurrences="1">
+      <code>$userManager</code>
+    </PossiblyNullPropertyAssignmentValue>
   </file>
   <file src="src/DependencyInjection/Configuration.php">
     <UndefinedMethod occurrences="4">
@@ -41,6 +68,9 @@
     <InvalidReturnType occurrences="1">
       <code>string[]</code>
     </InvalidReturnType>
+    <InvalidScalarArgument occurrences="1">
+      <code>$groupData['items']</code>
+    </InvalidScalarArgument>
   </file>
   <file src="src/Security/RolesBuilder/SecurityRolesBuilder.php">
     <InvalidArgument occurrences="4">
