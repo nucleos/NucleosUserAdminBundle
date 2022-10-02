@@ -89,7 +89,7 @@ final class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
             ->end()
-            ;
+        ;
     }
 
     private function addAvatarSection(NodeDefinition $node): void
@@ -104,6 +104,6 @@ final class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
             ->end()
-            ;
+        ;
     }
 }

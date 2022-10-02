@@ -128,7 +128,7 @@ final class SecurityRolesBuilder implements ExpandableRolesBuilderInterface
         $securityRoles = [];
         foreach ($roles as $role) {
             if (!\array_key_exists($role, $hierarchy) && !isset($securityRoles[$role])
-                && !$this->recursiveArraySearch($role, $securityRoles)) {
+                                                      && !$this->recursiveArraySearch($role, $securityRoles)) {
                 $securityRoles[$role] = $this->getSecurityRole($role, $domain);
             }
         }
