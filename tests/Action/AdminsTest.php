@@ -44,15 +44,23 @@ final class AdminsTest extends IntegrationTestCase
     public static function provideCrudUrlsCases(): iterable
     {
         yield 'List User' => ['/admin/tests/app/user/list'];
+
         yield 'Create User' => ['/admin/tests/app/user/create'];
+
         yield 'Edit User' => ['/admin/tests/app/user/1/edit'];
+
         yield 'Show User' => ['/admin/tests/app/user/1/show'];
+
         yield 'Delete User' => ['/admin/tests/app/user/1/delete'];
 
         yield 'List group' => ['/admin/tests/app/group/list'];
+
         yield 'Create group' => ['/admin/tests/app/group/create'];
+
         yield 'Edit group' => ['/admin/tests/app/group/1/edit'];
+
         yield 'Show group' => ['/admin/tests/app/group/1/show'];
+
         yield 'Delete group' => ['/admin/tests/app/group/1/delete'];
     }
 
