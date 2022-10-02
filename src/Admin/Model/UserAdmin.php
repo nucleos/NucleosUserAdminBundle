@@ -35,14 +35,9 @@ abstract class UserAdmin extends AbstractAdmin
 {
     protected UserManager $userManager;
 
-    /**
-     * @phpstan-param UserManager|class-string<UserInterface> $class
-     *
-     * @param mixed $codeOrUserManager
-     */
-    public function __construct($codeOrUserManager, string $class = null, string $baseControllerName = null, UserManager $userManager = null)
+    public function __construct(UserManager $userManager)
     {
-        parent::__construct($codeOrUserManager, $class, $baseControllerName);
+        parent::__construct();
 
         $this->userManager = $userManager;
     }
