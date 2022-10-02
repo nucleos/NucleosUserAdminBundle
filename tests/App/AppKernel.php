@@ -21,6 +21,7 @@ use Sonata\AdminBundle\SonataAdminBundle;
 use Sonata\BlockBundle\SonataBlockBundle;
 use Sonata\Doctrine\Bridge\Symfony\SonataDoctrineBundle;
 use Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle;
+use Sonata\Form\Bridge\Symfony\SonataFormBundle;
 use Sonata\Twig\Bridge\Symfony\SonataTwigBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -61,6 +62,8 @@ final class AppKernel extends Kernel
         yield new SonataDoctrineORMAdminBundle();
 
         yield new SonataDoctrineBundle();
+
+        yield new SonataFormBundle();
 
         yield new SonataTwigBundle();
 

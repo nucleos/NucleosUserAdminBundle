@@ -70,7 +70,7 @@ final class SendEmailActionTest extends TestCase
         $this->mailer           = $this->createMock(ResettingMailer::class);
         $this->tokenGenerator   = $this->createMock(TokenGenerator::class);
 
-        if (method_exists(UserProviderInterface::class, 'loadUserByIdentifier')) {
+        if (!method_exists(UserProviderInterface::class, 'loadUserByIdentifier')) {
             $this->userProvider     = $this->getMockBuilder(UserProviderInterface::class)
                 ->addMethods(['loadUserByIdentifier'])
                 ->getMockForAbstractClass()
