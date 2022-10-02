@@ -89,6 +89,9 @@ final class RequestActionTest extends TestCase
         static::assertSame('/foo', $result->getTargetUrl());
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
     public function testUnauthenticated(): void
     {
         $request = new Request();
