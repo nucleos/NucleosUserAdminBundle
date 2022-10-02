@@ -6,9 +6,39 @@ parameters:
 			path: src/Admin/Model/GroupAdmin.php
 
 		-
+			message: "#^PHPDoc tag @param for parameter \\$class with type class\\-string\\<Nucleos\\\\UserBundle\\\\Model\\\\GroupInterface\\>\\|Nucleos\\\\UserBundle\\\\Model\\\\GroupManager is not subtype of native type string\\|null\\.$#"
+			count: 1
+			path: src/Admin/Model/GroupAdmin.php
+
+		-
+			message: "#^Parameter \\#2 \\$class of method Sonata\\\\AdminBundle\\\\DependencyInjection\\\\Admin\\\\AbstractTaggedAdmin\\<Nucleos\\\\UserBundle\\\\Model\\\\GroupInterface\\>\\:\\:__construct\\(\\) expects class\\-string\\<Nucleos\\\\UserBundle\\\\Model\\\\GroupInterface\\>\\|null, string\\|null given\\.$#"
+			count: 1
+			path: src/Admin/Model/GroupAdmin.php
+
+		-
+			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Admin\\\\Model\\\\GroupAdmin\\:\\:\\$groupManager \\(Nucleos\\\\UserBundle\\\\Model\\\\GroupManager\\) does not accept Nucleos\\\\UserBundle\\\\Model\\\\GroupManager\\|null\\.$#"
+			count: 1
+			path: src/Admin/Model/GroupAdmin.php
+
+		-
 			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Admin\\\\Model\\\\GroupAdmin\\:\\:\\$groupManager with generic interface Nucleos\\\\UserBundle\\\\Model\\\\GroupManager does not specify its types\\: GroupTemplate$#"
 			count: 1
 			path: src/Admin/Model/GroupAdmin.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$class with type class\\-string\\<Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\>\\|Nucleos\\\\UserBundle\\\\Model\\\\UserManager is not subtype of native type string\\|null\\.$#"
+			count: 1
+			path: src/Admin/Model/UserAdmin.php
+
+		-
+			message: "#^Parameter \\#2 \\$class of method Sonata\\\\AdminBundle\\\\DependencyInjection\\\\Admin\\\\AbstractTaggedAdmin\\<Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\>\\:\\:__construct\\(\\) expects class\\-string\\<Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\>\\|null, string\\|null given\\.$#"
+			count: 1
+			path: src/Admin/Model/UserAdmin.php
+
+		-
+			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Admin\\\\Model\\\\UserAdmin\\:\\:\\$userManager \\(Nucleos\\\\UserBundle\\\\Model\\\\UserManager\\) does not accept Nucleos\\\\UserBundle\\\\Model\\\\UserManager\\|null\\.$#"
+			count: 1
+			path: src/Admin/Model/UserAdmin.php
 
 		-
 			message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeDefinition\\:\\:children\\(\\)\\.$#"
@@ -71,7 +101,7 @@ parameters:
 			path: src/Security/EditableRolesBuilder.php
 
 		-
-			message: "#^Call to function is_array\\(\\) with array\\<array\\{admin\\?\\: string, label\\: string, roles\\: array\\<int, string\\>, route\\: string, route_absolute\\: bool, route_params\\: array\\<string, string\\>\\}\\> will always evaluate to true\\.$#"
+			message: "#^Call to function is_array\\(\\) with array\\<int, array\\{admin\\: string, roles\\: array\\<int, string\\>, route_absolute\\: bool, route_params\\: array\\<string, string\\>\\}\\|array\\{label\\: string, roles\\: array\\<int, string\\>, route\\: string, route_absolute\\: bool, route_params\\: array\\<string, string\\>\\}\\> will always evaluate to true\\.$#"
 			count: 1
 			path: src/Security/RolesBuilder/AdminRolesBuilder.php
 
@@ -92,6 +122,11 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$admin of method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\AdminRolesBuilder\\:\\:isMaster\\(\\) expects Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface\\<Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\>, Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface\\<object\\> given\\.$#"
+			count: 1
+			path: src/Security/RolesBuilder/AdminRolesBuilder.php
+
+		-
+			message: "#^Parameter \\#1 \\$items of method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\AdminRolesBuilder\\:\\:hasGroupAdmin\\(\\) expects array\\<string, mixed\\>, array\\<int, array\\<string, array\\<int\\|string, string\\>\\|bool\\|string\\>\\> given\\.$#"
 			count: 1
 			path: src/Security/RolesBuilder/AdminRolesBuilder.php
 
@@ -121,6 +156,11 @@ parameters:
 			path: tests/Action/LoginActionTest.php
 
 		-
+			message: "#^Call to function method_exists\\(\\) with 'Symfony\\\\\\\\Component\\\\\\\\Security\\\\\\\\Core\\\\\\\\User\\\\\\\\UserProviderInterface' and 'loadUserByIdentifier' will always evaluate to true\\.$#"
+			count: 1
+			path: tests/Action/SendEmailActionTest.php
+
+		-
 			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Tests\\\\Fixtures\\\\PoolMockFactory\\:\\:create\\(\\) has parameter \\$adminServiceIds with generic interface Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface but does not specify its types\\: T$#"
 			count: 1
 			path: tests/Fixtures/PoolMockFactory.php
@@ -131,12 +171,12 @@ parameters:
 			path: tests/Resources/XliffTest.php
 
 		-
-			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\{confirm_exit\\: bool, default_group\\: string, default_icon\\: string, default_label_catalogue\\: string, dropdown_number_groups_per_colums\\: int, form_type\\: 'horizontal'\\|'standard', html5_validate\\: bool, javascripts\\: array\\<int, string\\>, \\.\\.\\.\\}, array\\{\\} given\\.$#"
+			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\{confirm_exit\\: bool, default_admin_route\\: string, default_group\\: string, default_icon\\: string, default_translation_domain\\: string, dropdown_number_groups_per_colums\\: int, form_type\\: 'horizontal'\\|'standard', html5_validate\\: bool, \\.\\.\\.\\}, array\\{\\} given\\.$#"
 			count: 3
 			path: tests/Security/Authorization/Voter/EditableRolesBuilderTest.php
 
 		-
-			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\{confirm_exit\\: bool, default_group\\: string, default_icon\\: string, default_label_catalogue\\: string, dropdown_number_groups_per_colums\\: int, form_type\\: 'horizontal'\\|'standard', html5_validate\\: bool, javascripts\\: array\\<int, string\\>, \\.\\.\\.\\}, array\\{\\} given\\.$#"
+			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\{confirm_exit\\: bool, default_admin_route\\: string, default_group\\: string, default_icon\\: string, default_translation_domain\\: string, dropdown_number_groups_per_colums\\: int, form_type\\: 'horizontal'\\|'standard', html5_validate\\: bool, \\.\\.\\.\\}, array\\{\\} given\\.$#"
 			count: 1
 			path: tests/Security/RolesBuilder/AdminRolesBuilderTest.php
 
@@ -151,7 +191,7 @@ parameters:
 			path: tests/Security/RolesBuilder/AdminRolesBuilderTest.php
 
 		-
-			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\{confirm_exit\\: bool, default_group\\: string, default_icon\\: string, default_label_catalogue\\: string, dropdown_number_groups_per_colums\\: int, form_type\\: 'horizontal'\\|'standard', html5_validate\\: bool, javascripts\\: array\\<int, string\\>, \\.\\.\\.\\}, array\\{role_super_admin\\: 'ROLE_SUPER_ADMIN', role_admin\\: 'ROLE_SONATA_ADMIN'\\} given\\.$#"
+			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\{confirm_exit\\: bool, default_admin_route\\: string, default_group\\: string, default_icon\\: string, default_translation_domain\\: string, dropdown_number_groups_per_colums\\: int, form_type\\: 'horizontal'\\|'standard', html5_validate\\: bool, \\.\\.\\.\\}, array\\{role_super_admin\\: 'ROLE_SUPER_ADMIN', role_admin\\: 'ROLE_SONATA_ADMIN'\\} given\\.$#"
 			count: 1
 			path: tests/Security/RolesBuilder/SecurityRolesBuilderTest.php
 
