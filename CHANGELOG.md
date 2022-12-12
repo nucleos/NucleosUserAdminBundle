@@ -2,27 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.2.0 - TBD
+## 3.2.0 - 2022-12-12
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.2.0](https://github.com/nucleos/NucleosUserAdminBundle/milestone/27)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.2.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **2**
 
-### Removed
+#### Bug,hacktoberfest-accepted
 
-- Nothing.
+ - [559: Fix admin service construction](https://github.com/nucleos/NucleosUserAdminBundle/pull/559) thanks to @core23
 
-### Fixed
+#### dependency
 
-- Nothing.
+ - [558: Update dependency sonata-project/doctrine-extensions to ^1.5.1 || ^2.0.0](https://github.com/nucleos/NucleosUserAdminBundle/pull/558) thanks to @renovate[bot]
 
 ## 3.1.3 - 2022-02-20
 
