@@ -39,7 +39,7 @@ final class EditableRolesBuilderTest extends TestCase
         $configuration = new SonataConfiguration('title', 'logo.png', []);
 
         $rolesHierarchy = [
-            'ROLE_ADMIN' => [
+            'ROLE_ADMIN'       => [
                 0 => 'ROLE_USER',
             ],
             'ROLE_SUPER_ADMIN' => [
@@ -50,7 +50,7 @@ final class EditableRolesBuilderTest extends TestCase
                 4 => 'ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT',
                 5 => 'ROLE_SONATA_PAGE_ADMIN_BLOCK_EDIT',
             ],
-            'SONATA' => [],
+            'SONATA'           => [],
         ];
 
         $expected = [

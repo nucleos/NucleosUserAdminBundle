@@ -50,7 +50,7 @@ final class ConfigurationTest extends TestCase
                         'translation' => 'NucleosUserAdminBundle',
                     ],
                 ],
-                'avatar'              => [
+                'avatar'               => [
                     'resolver'       => StaticAvatarResolver::class,
                     'default_avatar' => '/bundles/nucleosuseradmin/default_avatar.png',
                 ],

@@ -54,7 +54,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                     'login_path' => '/admin/login',
                     'check_path' => '/admin/login_check',
                 ],
-                'logout' => [
+                'logout'     => [
                     'path'   => '/admin/logout',
                     'target' => '/admin/login',
                 ],

@@ -73,7 +73,7 @@ final class RolesMatrixType extends AbstractType
                     return $value;
                 },
 
-                'data_class' => null,
+                'data_class'                => null,
             ]
         );
     }

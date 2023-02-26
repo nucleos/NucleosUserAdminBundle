@@ -87,9 +87,9 @@ final class SecurityRolesType extends AbstractType
         $resolver->setDefaults(
             [
                 // make expanded default value
-                'expanded' => true,
+                'expanded'                  => true,
 
-                'choices' => function (Options $options, $parentChoices): array {
+                'choices'                   => function (Options $options, $parentChoices): array {
                     if (false === $parentChoices) {
                         return [];
                     }
@@ -99,7 +99,7 @@ final class SecurityRolesType extends AbstractType
                     return array_flip($roles);
                 },
 
-                'read_only_choices' => function (Options $options): array {
+                'read_only_choices'         => function (Options $options): array {
                     if (0 === \count($options['choices'])) {
                         return [];
                     }
@@ -129,7 +129,7 @@ final class SecurityRolesType extends AbstractType
                     return $value;
                 },
 
-                'data_class' => null,
+                'data_class'                => null,
             ]
         );
     }

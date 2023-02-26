@@ -18,13 +18,16 @@ use Nucleos\UserBundle\Model\Group as BaseGroup;
 
 /**
  * @ORM\Entity()
+ *
  * @ORM\Table(name="user__group")
  */
 class Group extends BaseGroup
 {
     /**
      * @ORM\Id
+     *
      * @ORM\Column(type="integer")
+     *
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected ?int $id = null;
