@@ -1,6 +1,11 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Call to an undefined method Symfony\\\\Component\\\\HttpFoundation\\\\Session\\\\SessionInterface\\:\\:getFlashBag\\(\\)\\.$#"
+			count: 1
+			path: src/Action/ResetAction.php
+
+		-
 			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Admin\\\\Model\\\\GroupAdmin\\:\\:__construct\\(\\) has parameter \\$groupManager with generic interface Nucleos\\\\UserBundle\\\\Model\\\\GroupManager but does not specify its types\\: GroupTemplate$#"
 			count: 1
 			path: src/Admin/Model/GroupAdmin.php
@@ -54,11 +59,6 @@ parameters:
 			message: "#^Strict comparison using \\=\\=\\= between false and array\\<\\(int\\|string\\)\\> will always evaluate to false\\.$#"
 			count: 1
 			path: src/Form/Type/RolesMatrixType.php
-
-		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\Authorization\\\\Voter\\\\UserAclVoter\\:\\:vote\\(\\) has parameter \\$attributes with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Security/Authorization/Voter/UserAclVoter.php
 
 		-
 			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\EditableRolesBuilder\\:\\:__construct\\(\\) has parameter \\$rolesHierarchy with no value type specified in iterable type array\\.$#"
@@ -131,12 +131,22 @@ parameters:
 			path: tests/Action/SendEmailActionTest.php
 
 		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotEmpty\\(\\) with Nucleos\\\\UserAdminBundle\\\\Admin\\\\Entity\\\\GroupAdmin will always evaluate to true\\.$#"
+			count: 1
+			path: tests/Admin/Entity/GroupAdminTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotEmpty\\(\\) with Nucleos\\\\UserAdminBundle\\\\Admin\\\\Entity\\\\UserAdmin will always evaluate to true\\.$#"
+			count: 1
+			path: tests/Admin/Entity/UserAdminTest.php
+
+		-
 			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Tests\\\\Fixtures\\\\PoolMockFactory\\:\\:create\\(\\) has parameter \\$adminServiceIds with generic interface Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface but does not specify its types\\: T$#"
 			count: 1
 			path: tests/Fixtures/PoolMockFactory.php
 
 		-
-			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertTrue\\(\\) with true and non\\-empty\\-string will always evaluate to true\\.$#"
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertTrue\\(\\) with true and non\\-falsy\\-string will always evaluate to true\\.$#"
 			count: 1
 			path: tests/Resources/XliffTest.php
 

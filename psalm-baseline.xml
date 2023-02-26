@@ -1,44 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.20.0@f82a70e7edfc6cf2705e9374c8a0b6a974a779ed">
+<files psalm-version="5.7.7@e028ba46ba0d7f9a78bc3201c251e137383e145f">
   <file src="src/Action/CheckEmailAction.php">
-    <InvalidArgument occurrences="1">
+    <ArgumentTypeCoercion>
       <code>$username</code>
-    </InvalidArgument>
+    </ArgumentTypeCoercion>
+    <PossiblyNullArgument>
+      <code>$username</code>
+    </PossiblyNullArgument>
   </file>
   <file src="src/Action/ResetAction.php">
-    <PossiblyUndefinedMethod occurrences="1">
+    <PossiblyUndefinedMethod>
       <code>getFlashBag</code>
     </PossiblyUndefinedMethod>
-  </file>
-  <file src="src/Action/ResetAction.php">
-    <PossiblyUndefinedMethod occurrences="1">
-      <code>getFlashBag</code>
-    </PossiblyUndefinedMethod>
-  </file>
-  <file src="src/Admin/Model/GroupAdmin.php">
-    <MismatchingDocblockParamType occurrences="1">
-      <code>GroupManager|class-string&lt;GroupInterface&gt;</code>
-    </MismatchingDocblockParamType>
-    <PossiblyInvalidArgument occurrences="1">
-      <code>$class</code>
-    </PossiblyInvalidArgument>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$groupManager</code>
-    </PossiblyNullPropertyAssignmentValue>
-  </file>
-  <file src="src/Admin/Model/UserAdmin.php">
-    <MismatchingDocblockParamType occurrences="1">
-      <code>UserManager|class-string&lt;UserInterface&gt;</code>
-    </MismatchingDocblockParamType>
-    <PossiblyInvalidArgument occurrences="1">
-      <code>$class</code>
-    </PossiblyInvalidArgument>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$userManager</code>
-    </PossiblyNullPropertyAssignmentValue>
   </file>
   <file src="src/DependencyInjection/Configuration.php">
-    <UndefinedMethod occurrences="4">
+    <UndefinedMethod>
       <code>children</code>
       <code>children</code>
       <code>children</code>
@@ -46,50 +22,58 @@
     </UndefinedMethod>
   </file>
   <file src="src/Form/Transformer/RestoreRolesTransformer.php">
-    <TooManyTemplateParams occurrences="1">
+    <TooManyTemplateParams>
       <code>DataTransformerInterface</code>
     </TooManyTemplateParams>
   </file>
   <file src="src/Security/EditableRolesBuilder.php">
-    <LessSpecificImplementedReturnType occurrences="1">
+    <LessSpecificImplementedReturnType>
       <code>array</code>
     </LessSpecificImplementedReturnType>
   </file>
   <file src="src/Security/RolesBuilder/AdminRolesBuilder.php">
-    <ArgumentTypeCoercion occurrences="3">
+    <ArgumentTypeCoercion>
       <code>$admin</code>
       <code>$admin</code>
-      <code>$admin-&gt;getParent()</code>
+      <code><![CDATA[$admin->getParent()]]></code>
     </ArgumentTypeCoercion>
-    <InvalidArgument occurrences="1">
-      <code>$this-&gt;excludeAdmins</code>
+    <InvalidArgument>
+      <code><![CDATA[$groupData['items']]]></code>
+      <code><![CDATA[$this->excludeAdmins]]></code>
     </InvalidArgument>
-    <InvalidPropertyAssignmentValue occurrences="1">
+    <InvalidPropertyAssignmentValue>
       <code>[]</code>
     </InvalidPropertyAssignmentValue>
-    <InvalidReturnStatement occurrences="1">
-      <code>$this-&gt;excludeAdmins</code>
+    <InvalidReturnStatement>
+      <code><![CDATA[$this->excludeAdmins]]></code>
     </InvalidReturnStatement>
-    <InvalidReturnType occurrences="1">
+    <InvalidReturnType>
       <code>string[]</code>
     </InvalidReturnType>
-    <InvalidScalarArgument occurrences="1">
-      <code>$groupData['items']</code>
-    </InvalidScalarArgument>
   </file>
   <file src="src/Security/RolesBuilder/SecurityRolesBuilder.php">
-    <InvalidArgument occurrences="4">
+    <InvalidArgument>
       <code>$childRoles</code>
       <code>$childRoles</code>
       <code>$childRoles</code>
       <code>$role</code>
+      <code>$securityRoles</code>
+      <code>$securityRoles</code>
     </InvalidArgument>
-    <InvalidArrayOffset occurrences="2">
+    <InvalidArrayOffset>
       <code>$securityRoles[$role]</code>
       <code>$securityRoles[$role]</code>
     </InvalidArrayOffset>
-    <InvalidOperand occurrences="1">
+    <InvalidOperand>
       <code>$role</code>
     </InvalidOperand>
+    <InvalidReturnStatement>
+      <code>$securityRoles</code>
+      <code>$securityRoles</code>
+    </InvalidReturnStatement>
+    <InvalidReturnType>
+      <code>mixed[]</code>
+      <code>mixed[]</code>
+    </InvalidReturnType>
   </file>
 </files>
