@@ -21,10 +21,10 @@
       <code>children</code>
     </UndefinedMethod>
   </file>
-  <file src="src/Form/Transformer/RestoreRolesTransformer.php">
-    <TooManyTemplateParams>
-      <code>DataTransformerInterface</code>
-    </TooManyTemplateParams>
+  <file src="src/Security/Authorization/Voter/UserAclVoter.php">
+    <LessSpecificImplementedReturnType>
+      <code>int</code>
+    </LessSpecificImplementedReturnType>
   </file>
   <file src="src/Security/EditableRolesBuilder.php">
     <LessSpecificImplementedReturnType>
