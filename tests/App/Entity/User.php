@@ -21,6 +21,7 @@ use Nucleos\UserBundle\Model\User as BaseUser;
 
 /**
  * @ORM\Entity()
+ *
  * @ORM\Table(name="user__user")
  *
  * @phpstan-extends BaseUser<GroupInterface>
@@ -29,13 +30,16 @@ class User extends BaseUser
 {
     /**
      * @ORM\Id
+     *
      * @ORM\Column(type="integer")
+     *
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected ?int $id = null;
 
     /**
      * @ORM\ManyToMany(targetEntity="Nucleos\UserAdminBundle\Tests\App\Entity\Group")
+     *
      * @ORM\JoinTable(name="user__user_group",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
