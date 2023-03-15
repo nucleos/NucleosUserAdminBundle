@@ -13,12 +13,15 @@ declare(strict_types=1);
 
 namespace Nucleos\UserAdminBundle\Tests\Action;
 
+use Closure;
 use Nucleos\UserAdminBundle\Action\ResetAction;
 use Nucleos\UserAdminBundle\Tests\Fixtures\PoolMockFactory;
 use Nucleos\UserBundle\Model\User;
 use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\Security\LoginManager;
+use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Rule\InvokedCount;
 use PHPUnit\Framework\TestCase;
 use Sonata\AdminBundle\Admin\Pool;
 use Sonata\AdminBundle\Templating\TemplateRegistryInterface;
@@ -320,14 +323,12 @@ final class ResetActionTest extends TestCase
             ->willReturn($form)
         ;
 
-        $this->router
-            ->method('generate')
-            ->withConsecutive([
-                'nucleos_user_admin_security_check', ['token' => 'token'],
-            ], [
-                'sonata_admin_dashboard',
-            ])
-            ->willReturn('/check', '/dashboard')
+        $this->router->expects($matcher = static::exactly(2))->method('generate')
+            ->willReturnCallback($this->withParameter($matcher, [
+                ['nucleos_user_admin_security_check', ['token' => 'token']],
+                ['sonata_admin_dashboard'],
+            ]))
+            ->willReturnOnConsecutiveCalls('/check', '/dashboard')
         ;
 
         $action = $this->getAction();
@@ -335,6 +336,19 @@ final class ResetActionTest extends TestCase
 
         static::assertInstanceOf(RedirectResponse::class, $result);
         static::assertSame('/dashboard', $result->getTargetUrl());
+    }
+
+    /**
+     * @param array<array-key, mixed[]> $parameters
+     */
+    protected function withParameter(InvokedCount $matcher, array $parameters): Closure
+    {
+        return static function () use ($matcher, $parameters): void {
+            /** @psalm-suppress InternalMethod */
+            $callNumber = $matcher->numberOfInvocations();
+
+            Assert::assertEquals($parameters[$callNumber-1], \func_get_args(), sprintf('Call %s', $callNumber));
+        };
     }
 
     private function getAction(): ResetAction
