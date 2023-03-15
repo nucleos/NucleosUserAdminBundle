@@ -96,12 +96,8 @@ final class SendEmailActionTest extends TestCase
 
         $this->urlGenerator
             ->method('generate')
-            ->withConsecutive(
-                ['nucleos_user_admin_resetting_check_email', ['username' => 'bar']]
-            )
-            ->willReturnOnConsecutiveCalls(
-                '/check-email'
-            )
+            ->with('nucleos_user_admin_resetting_check_email', ['username' => 'bar'])
+            ->willReturn('/check-email')
         ;
 
         $action = $this->getAction();
@@ -237,12 +233,8 @@ final class SendEmailActionTest extends TestCase
 
         $this->urlGenerator
             ->method('generate')
-            ->withConsecutive(
-                ['nucleos_user_admin_resetting_check_email', ['username' => 'bar']]
-            )
-            ->willReturnOnConsecutiveCalls(
-                '/check-email'
-            )
+            ->with('nucleos_user_admin_resetting_check_email', ['username' => 'bar'])
+            ->willReturn('/check-email')
         ;
 
         $action = $this->getAction();

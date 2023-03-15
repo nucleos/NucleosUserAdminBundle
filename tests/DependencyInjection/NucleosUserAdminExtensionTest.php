@@ -20,6 +20,7 @@ use Nucleos\UserAdminBundle\DependencyInjection\Configuration;
 use Nucleos\UserAdminBundle\DependencyInjection\NucleosUserAdminExtension;
 use Nucleos\UserAdminBundle\Twig\ImpersonateExtension;
 use Nucleos\UserAdminBundle\Twig\ImpersonateRuntime;
+use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Bundle\TwigBundle\DependencyInjection\TwigExtension;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -36,10 +37,7 @@ final class NucleosUserAdminExtensionTest extends AbstractExtensionTestCase
 
     public function testTwigConfigParameterIsSetting(): void
     {
-        $fakeContainer = $this->getMockBuilder(ContainerBuilder::class)
-            ->setMethods(['hasExtension', 'prependExtensionConfig'])
-            ->getMock()
-        ;
+        $fakeContainer = $this->createContainerBuilder();
 
         $fakeContainer->expects(static::once())
             ->method('hasExtension')
@@ -59,10 +57,7 @@ final class NucleosUserAdminExtensionTest extends AbstractExtensionTestCase
 
     public function testTwigConfigParameterIsSet(): void
     {
-        $fakeTwigExtension = $this->getMockBuilder(TwigExtension::class)
-            ->setMethods(['load', 'getAlias'])
-            ->getMock()
-        ;
+        $fakeTwigExtension = $this->createTwigExtension();
 
         $fakeTwigExtension
             ->method('getAlias')
@@ -158,5 +153,43 @@ final class NucleosUserAdminExtensionTest extends AbstractExtensionTestCase
         return [
             new NucleosUserAdminExtension(),
         ];
+    }
+
+    /**
+     * @return ContainerBuilder&MockObject
+     */
+    private function createContainerBuilder(): ContainerBuilder
+    {
+        $mockBuilder = $this->getMockBuilder(ContainerBuilder::class);
+
+        // @phpstan-ignore-next-line
+        if (!method_exists(ContainerBuilder::class, 'hasExtension')) {
+            $mockBuilder->addMethods(['hasExtension']);
+        }
+        // @phpstan-ignore-next-line
+        if (!method_exists(ContainerBuilder::class, 'prependExtensionConfig')) {
+            $mockBuilder->addMethods(['prependExtensionConfig']);
+        }
+
+        return $mockBuilder->getMock();
+    }
+
+    /**
+     * @return MockObject&TwigExtension
+     */
+    private function createTwigExtension(): TwigExtension
+    {
+        $mockBuilder = $this->getMockBuilder(TwigExtension::class);
+
+        // @phpstan-ignore-next-line
+        if (!method_exists(TwigExtension::class, 'load')) {
+            $mockBuilder = $mockBuilder->addMethods(['load']);
+        }
+        // @phpstan-ignore-next-line
+        if (!method_exists(TwigExtension::class, 'getAlias')) {
+            $mockBuilder = $mockBuilder->addMethods(['getAlias']);
+        }
+
+        return $mockBuilder->getMock();
     }
 }
