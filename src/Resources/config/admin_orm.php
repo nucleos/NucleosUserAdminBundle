@@ -17,7 +17,6 @@ return static function (ContainerConfigurator $container): void {
         ->set('nucleos_user_admin.admin.groupname', 'user')
         ->set('nucleos_user_admin.admin.label_catalogue', 'NucleosUserAdminBundle')
         ->set('nucleos_user_admin.admin.groupicon', '<i class=\'fa fa-users\'></i>')
-
     ;
 
     $container->services()
@@ -59,6 +58,5 @@ return static function (ContainerConfigurator $container): void {
             ->call('setTranslationDomain', [
                 '%nucleos_user_admin.admin.group.translation_domain%',
             ])
-
     ;
 };

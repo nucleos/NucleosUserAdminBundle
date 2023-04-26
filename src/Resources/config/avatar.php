@@ -38,6 +38,5 @@ return static function (ContainerConfigurator $container): void {
             ])
 
         ->alias(AvatarResolver::class, StaticAvatarResolver::class)
-
     ;
 };

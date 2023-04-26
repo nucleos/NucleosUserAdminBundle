@@ -97,6 +97,5 @@ return static function (ContainerConfigurator $container): void {
 
         ->set(LogoutAction::class)
             ->public()
-
     ;
 };

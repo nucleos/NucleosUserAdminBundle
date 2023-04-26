@@ -20,6 +20,5 @@ return static function (ContainerConfigurator $container): void {
             ->args([
                 service('nucleos_user_admin.admin.user')->ignoreOnInvalid(),
             ])
-
     ;
 };

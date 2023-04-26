@@ -39,13 +39,13 @@ final class NucleosUserAdminExtensionTest extends AbstractExtensionTestCase
     {
         $fakeContainer = $this->createContainerBuilder();
 
-        $fakeContainer->expects(static::once())
+        $fakeContainer->expects(self::once())
             ->method('hasExtension')
-            ->with(static::equalTo('twig'))
+            ->with(self::equalTo('twig'))
             ->willReturn(true)
         ;
 
-        $fakeContainer->expects(static::once())
+        $fakeContainer->expects(self::once())
             ->method('prependExtensionConfig')
             ->with('twig', ['form_themes' => ['@NucleosUserAdmin/Form/form_admin_fields.html.twig']])
         ;
@@ -70,9 +70,9 @@ final class NucleosUserAdminExtensionTest extends AbstractExtensionTestCase
 
         $twigConfigurations = $this->container->getExtensionConfig('twig');
 
-        static::assertArrayHasKey(0, $twigConfigurations);
-        static::assertArrayHasKey('form_themes', $twigConfigurations[0]);
-        static::assertSame(
+        self::assertArrayHasKey(0, $twigConfigurations);
+        self::assertArrayHasKey('form_themes', $twigConfigurations[0]);
+        self::assertSame(
             ['@NucleosUserAdmin/Form/form_admin_fields.html.twig'],
             $twigConfigurations[0]['form_themes']
         );
@@ -84,7 +84,7 @@ final class NucleosUserAdminExtensionTest extends AbstractExtensionTestCase
 
         $twigConfigurations = $this->container->getExtensionConfig('twig');
 
-        static::assertArrayNotHasKey(0, $twigConfigurations);
+        self::assertArrayNotHasKey(0, $twigConfigurations);
     }
 
     public function testLoadWithoutImpersonating(): void

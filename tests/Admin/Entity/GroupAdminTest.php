@@ -25,6 +25,6 @@ final class GroupAdminTest extends TestCase
             $this->createMock(GroupManager::class)
         );
 
-        static::assertNotEmpty($admin);
+        self::assertNotEmpty($admin);
     }
 }

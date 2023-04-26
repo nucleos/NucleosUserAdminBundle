@@ -22,21 +22,21 @@ final class LoginActionWebTest extends WebTestCase
 {
     public function testRequest(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request('GET', '/admin/login');
 
-        static::assertResponseIsSuccessful();
+        self::assertResponseIsSuccessful();
 
         $client->submitForm('save', [
             '_username' => 'foo',
             '_password' => 'bar',
         ]);
 
-        static::assertResponseRedirects('http://localhost/admin/login');
+        self::assertResponseRedirects('http://localhost/admin/login');
 
         $client->followRedirect();
 
-        static::assertResponseIsSuccessful();
+        self::assertResponseIsSuccessful();
     }
 }

@@ -56,18 +56,18 @@ final class RolesMatrixRuntimeTest extends TestCase
             ],
         ];
         $this->rolesBuilder
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('getRoles')
             ->willReturn($roles)
         ;
 
         $this->formView
-            ->expects(static::never())
+            ->expects(self::never())
             ->method('getIterator')
         ;
 
         $this->environment
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('render')
             ->with('@NucleosUserAdmin/Form/roles_matrix_list.html.twig', ['roles' => []])
             ->willReturn('')
@@ -87,7 +87,7 @@ final class RolesMatrixRuntimeTest extends TestCase
             ],
         ];
         $this->rolesBuilder
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('getRoles')
             ->willReturn($roles)
         ;
@@ -101,7 +101,7 @@ final class RolesMatrixRuntimeTest extends TestCase
         ;
 
         $this->environment
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('render')
             ->with('@NucleosUserAdmin/Form/roles_matrix_list.html.twig', [
                 'roles' => [
@@ -130,7 +130,7 @@ final class RolesMatrixRuntimeTest extends TestCase
             ],
         ];
         $this->rolesBuilder
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('getRoles')
             ->willReturn($roles)
         ;
@@ -144,7 +144,7 @@ final class RolesMatrixRuntimeTest extends TestCase
         ;
 
         $this->environment
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('render')
             ->with(
                 '@NucleosUserAdmin/Form/roles_matrix_list.html.twig',
@@ -176,24 +176,24 @@ final class RolesMatrixRuntimeTest extends TestCase
             ],
         ];
         $this->rolesBuilder
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('getRoles')
             ->willReturn($roles)
         ;
 
         $this->rolesBuilder
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('getPermissionLabels')
             ->willReturn(['EDIT', 'CREATE'])
         ;
 
         $this->formView
-            ->expects(static::never())
+            ->expects(self::never())
             ->method('getIterator')
         ;
 
         $this->environment
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('render')
             ->with(
                 '@NucleosUserAdmin/Form/roles_matrix.html.twig',
@@ -224,13 +224,13 @@ final class RolesMatrixRuntimeTest extends TestCase
             ],
         ];
         $this->rolesBuilder
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('getRoles')
             ->willReturn($roles)
         ;
 
         $this->rolesBuilder
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('getPermissionLabels')
             ->willReturn(['EDIT', 'CREATE'])
         ;
@@ -239,13 +239,13 @@ final class RolesMatrixRuntimeTest extends TestCase
         $form->vars['value'] = 'BASE_ROLE_FOO_EDIT';
 
         $this->formView
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('getIterator')
             ->willReturn(new ArrayIterator([$form]))
         ;
 
         $this->environment
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('render')
             ->with('@NucleosUserAdmin/Form/roles_matrix.html.twig', [
                 'grouped_roles'     => [
@@ -281,13 +281,13 @@ final class RolesMatrixRuntimeTest extends TestCase
             ],
         ];
         $this->rolesBuilder
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('getRoles')
             ->willReturn($roles)
         ;
 
         $this->rolesBuilder
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('getPermissionLabels')
             ->willReturn(['EDIT', 'CREATE'])
         ;
@@ -296,13 +296,13 @@ final class RolesMatrixRuntimeTest extends TestCase
         $form->vars['value'] = 'WRONG_VALUE';
 
         $this->formView
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('getIterator')
             ->willReturn(new ArrayIterator([$form]))
         ;
 
         $this->environment
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('render')
             ->with('@NucleosUserAdmin/Form/roles_matrix.html.twig', [
                 'grouped_roles'     => [

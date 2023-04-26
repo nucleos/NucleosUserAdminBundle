@@ -30,6 +30,5 @@ return static function (ContainerConfigurator $container): void {
                 service('security.acl.permission.map'),
                 service('logger')->nullOnInvalid(),
             ])
-
     ;
 };
