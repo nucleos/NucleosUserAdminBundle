@@ -20,10 +20,10 @@ final class RequestActionWebTest extends WebTestCase
 {
     public function testRequest(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request('GET', '/admin/resetting/request');
 
-        static::assertResponseIsSuccessful();
+        self::assertResponseIsSuccessful();
     }
 }

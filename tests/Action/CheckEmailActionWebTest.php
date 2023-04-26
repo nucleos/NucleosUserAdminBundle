@@ -20,14 +20,14 @@ final class CheckEmailActionWebTest extends WebTestCase
 {
     public function testRequest(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request('GET', '/admin/resetting/check-email');
 
-        static::assertResponseRedirects('/admin/resetting/request');
+        self::assertResponseRedirects('/admin/resetting/request');
 
         $client->followRedirect();
 
-        static::assertResponseIsSuccessful();
+        self::assertResponseIsSuccessful();
     }
 }

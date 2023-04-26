@@ -21,10 +21,10 @@ final class ResetActionWebTest extends WebTestCase
 {
     public function testRequestInvalidToken(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request('GET', '/admin/resetting/reset/my-token');
 
-        static::assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
+        self::assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
     }
 }

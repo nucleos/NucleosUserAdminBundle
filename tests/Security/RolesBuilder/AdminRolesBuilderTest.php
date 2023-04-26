@@ -130,7 +130,7 @@ final class AdminRolesBuilderTest extends TestCase
             'ADMIN'  => 'ADMIN',
         ];
 
-        static::assertSame($expected, $rolesBuilder->getPermissionLabels());
+        self::assertSame($expected, $rolesBuilder->getPermissionLabels());
     }
 
     /**
@@ -204,7 +204,7 @@ final class AdminRolesBuilderTest extends TestCase
             ],
         ];
 
-        static::assertSame($expected, $rolesBuilder->getRoles());
+        self::assertSame($expected, $rolesBuilder->getRoles());
     }
 
     public function testGetAddExcludeAdmins(): void
@@ -217,6 +217,6 @@ final class AdminRolesBuilderTest extends TestCase
         );
         $rolesBuilder->addExcludeAdmin('sonata.admin.bar');
 
-        static::assertSame(['sonata.admin.bar'], $rolesBuilder->getExcludeAdmins());
+        self::assertSame(['sonata.admin.bar'], $rolesBuilder->getExcludeAdmins());
     }
 }

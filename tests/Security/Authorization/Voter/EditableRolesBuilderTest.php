@@ -30,10 +30,10 @@ final class EditableRolesBuilderTest extends TestCase
         $token = $this->createMock(TokenInterface::class);
 
         $tokenStorage = $this->createMock(TokenStorageInterface::class);
-        $tokenStorage->expects(static::any())->method('getToken')->willReturn($token);
+        $tokenStorage->expects(self::any())->method('getToken')->willReturn($token);
 
         $authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
-        $authorizationChecker->expects(static::any())->method('isGranted')->willReturn(true);
+        $authorizationChecker->expects(self::any())->method('isGranted')->willReturn(true);
 
         $pool          = PoolMockFactory::create();
         $configuration = new SonataConfiguration('title', 'logo.png', []);
@@ -68,18 +68,18 @@ final class EditableRolesBuilderTest extends TestCase
         $roles         = $builder->getRoles();
         $rolesReadOnly = $builder->getRolesReadOnly();
 
-        static::assertEmpty($rolesReadOnly);
-        static::assertSame($expected, $roles);
+        self::assertEmpty($rolesReadOnly);
+        self::assertSame($expected, $roles);
     }
 
     public function testRolesFromAdminWithMasterAdmin(): void
     {
         $securityHandler = $this->createMock(SecurityHandlerInterface::class);
-        $securityHandler->expects(static::exactly(2))->method('getBaseRole')->willReturn('ROLE_FOO_%s');
+        $securityHandler->expects(self::exactly(2))->method('getBaseRole')->willReturn('ROLE_FOO_%s');
 
         $admin = $this->createMock(AdminInterface::class);
-        $admin->expects(static::exactly(2))->method('isGranted')->willReturn(true);
-        $admin->expects(static::exactly(2))->method('getSecurityInformation')->willReturn(['GUEST' => [
+        $admin->expects(self::exactly(2))->method('isGranted')->willReturn(true);
+        $admin->expects(self::exactly(2))->method('getSecurityInformation')->willReturn(['GUEST' => [
             0 => 'VIEW',
             1 => 'LIST',
         ], 'STAFF'                                                                                => [
@@ -92,15 +92,15 @@ final class EditableRolesBuilderTest extends TestCase
         ], 'ADMIN'                                                                                => [
             0 => 'MASTER',
         ]]);
-        $admin->expects(static::exactly(2))->method('getSecurityHandler')->willReturn($securityHandler);
+        $admin->expects(self::exactly(2))->method('getSecurityHandler')->willReturn($securityHandler);
 
         $token = $this->createMock(TokenInterface::class);
 
         $tokenStorage = $this->createMock(TokenStorageInterface::class);
-        $tokenStorage->expects(static::any())->method('getToken')->willReturn($token);
+        $tokenStorage->expects(self::any())->method('getToken')->willReturn($token);
 
         $authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
-        $authorizationChecker->expects(static::any())->method('isGranted')->willReturn(true);
+        $authorizationChecker->expects(self::any())->method('isGranted')->willReturn(true);
 
         $pool  = PoolMockFactory::create([
             'myadmin' => $admin,
@@ -118,17 +118,17 @@ final class EditableRolesBuilderTest extends TestCase
 
         $roles         = $builder->getRoles();
         $rolesReadOnly = $builder->getRolesReadOnly();
-        static::assertEmpty($rolesReadOnly);
-        static::assertSame($expected, $roles);
+        self::assertEmpty($rolesReadOnly);
+        self::assertSame($expected, $roles);
     }
 
     public function testWithNoSecurityToken(): void
     {
         $tokenStorage = $this->createMock(TokenStorageInterface::class);
-        $tokenStorage->expects(static::any())->method('getToken')->willReturn(null);
+        $tokenStorage->expects(self::any())->method('getToken')->willReturn(null);
 
         $authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
-        $authorizationChecker->expects(static::any())->method('isGranted')->willReturn(false);
+        $authorizationChecker->expects(self::any())->method('isGranted')->willReturn(false);
 
         $pool          = PoolMockFactory::create();
         $configuration = new SonataConfiguration('title', 'logo.png', []);
@@ -138,7 +138,7 @@ final class EditableRolesBuilderTest extends TestCase
         $roles         = $builder->getRoles();
         $rolesReadOnly = $builder->getRolesReadOnly();
 
-        static::assertEmpty($roles);
-        static::assertEmpty($rolesReadOnly);
+        self::assertEmpty($roles);
+        self::assertEmpty($rolesReadOnly);
     }
 }

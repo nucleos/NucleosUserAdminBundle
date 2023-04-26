@@ -144,10 +144,10 @@ final class LoginActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request);
 
-        static::assertInstanceOf(RedirectResponse::class, $result);
-        static::assertSame('/foo', $result->getTargetUrl());
+        self::assertInstanceOf(RedirectResponse::class, $result);
+        self::assertSame('/foo', $result->getTargetUrl());
 
-        static::assertSame([
+        self::assertSame([
             'sonata_flash_info' => ['trans.nucleos_user_admin_already_authenticated'],
         ], $session->getFlashBag()->all());
     }
@@ -173,7 +173,7 @@ final class LoginActionTest extends TestCase
             ->willReturn('/foo')
         ;
 
-        $this->authorizationChecker->expects(static::once())
+        $this->authorizationChecker->expects(self::once())
             ->method('isGranted')
             ->with('ROLE_ADMIN')
             ->willReturn(true)
@@ -182,8 +182,8 @@ final class LoginActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request);
 
-        static::assertInstanceOf(RedirectResponse::class, $result);
-        static::assertSame($expectedRedirectUrl, $result->getTargetUrl());
+        self::assertInstanceOf(RedirectResponse::class, $result);
+        self::assertSame($expectedRedirectUrl, $result->getTargetUrl());
     }
 
     /**
@@ -255,17 +255,17 @@ final class LoginActionTest extends TestCase
             ->method('add')
             ->willReturnSelf()
         ;
-        $form->expects(static::once())
+        $form->expects(self::once())
             ->method('createView')
             ->willReturn($view)
         ;
 
-        $this->formFactory->expects(static::once())
+        $this->formFactory->expects(self::once())
             ->method('create')
             ->willReturn($form)
         ;
 
-        $this->router->expects($matcher = static::exactly(2))->method('generate')
+        $this->router->expects($matcher = self::exactly(2))->method('generate')
             ->willReturnCallback($this->withParameter($matcher, [
                 ['nucleos_user_admin_security_check'],
                 ['sonata_admin_dashboard'],
@@ -273,7 +273,7 @@ final class LoginActionTest extends TestCase
             ->willReturnOnConsecutiveCalls('/check', '/reset')
         ;
 
-        $this->authorizationChecker->expects(static::once())
+        $this->authorizationChecker->expects(self::once())
             ->method('isGranted')
             ->with('ROLE_ADMIN')
             ->willReturn(false)
@@ -308,7 +308,7 @@ final class LoginActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request);
 
-        static::assertSame('template content', $result->getContent());
+        self::assertSame('template content', $result->getContent());
     }
 
     public static function unauthenticatedProvider(): array

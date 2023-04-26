@@ -26,7 +26,7 @@ final class RolesMatrixCompilerPassTest extends TestCase
 
         $container = $this->createMock(ContainerBuilder::class);
         $container
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('getDefinition')
             ->with('nucleos_user_admin.admin_roles_builder')
             ->willReturn($definition)
@@ -39,14 +39,14 @@ final class RolesMatrixCompilerPassTest extends TestCase
         ];
 
         $container
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('findTaggedServiceIds')
             ->with('sonata.admin')
             ->willReturn($taggedServices)
         ;
 
         $definition
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('addMethodCall')
             ->with('addExcludeAdmin', ['sonata.admin.bar'])
         ;

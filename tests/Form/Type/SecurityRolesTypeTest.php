@@ -32,56 +32,48 @@ final class SecurityRolesTypeTest extends TypeTestCase
         $type->configureOptions($optionResolver);
 
         $options = $optionResolver->resolve();
-        static::assertCount(3, $options['choices']);
+        self::assertCount(3, $options['choices']);
     }
 
     public function testGetParent(): void
     {
         $type = new SecurityRolesType($this->roleBuilder);
 
-        static::assertSame(ChoiceType::class, $type->getParent());
+        self::assertSame(ChoiceType::class, $type->getParent());
     }
 
     public function testSubmitValidData(): void
     {
-        $form = $this->factory->create(
-            $this->getSecurityRolesTypeName(),
-            null,
-            [
-                'multiple' => true,
-                'expanded' => true,
-                'required' => false,
-            ]
-        );
+        $form = $this->factory->create(SecurityRolesType::class, null, [
+            'multiple' => true,
+            'expanded' => true,
+            'required' => false,
+        ]);
 
         $form->submit([0 => 'ROLE_FOO']);
 
-        static::assertTrue($form->isSynchronized());
-        static::assertCount(1, $form->getData());
-        static::assertContains('ROLE_FOO', $form->getData());
+        self::assertTrue($form->isSynchronized());
+        self::assertCount(1, $form->getData());
+        self::assertContains('ROLE_FOO', $form->getData());
     }
 
     public function testSubmitWithHiddenRoleData(): void
     {
         $originalRoles = ['ROLE_SUPER_ADMIN', 'ROLE_USER'];
 
-        $form = $this->factory->create(
-            $this->getSecurityRolesTypeName(),
-            $originalRoles,
-            [
-                'multiple' => true,
-                'expanded' => true,
-                'required' => false,
-            ]
-        );
+        $form = $this->factory->create(SecurityRolesType::class, $originalRoles, [
+            'multiple' => true,
+            'expanded' => true,
+            'required' => false,
+        ]);
 
         // we keep hidden ROLE_SUPER_ADMIN and delete available ROLE_USER
         $form->submit([0 => 'ROLE_USER']);
 
-        static::assertNull($form->getTransformationFailure());
-        static::assertTrue($form->isSynchronized());
-        static::assertCount(2, $form->getData());
-        static::assertContains('ROLE_SUPER_ADMIN', $form->getData());
+        self::assertNull($form->getTransformationFailure());
+        self::assertTrue($form->isSynchronized());
+        self::assertCount(2, $form->getData());
+        self::assertContains('ROLE_SUPER_ADMIN', $form->getData());
     }
 
     /**
@@ -91,30 +83,18 @@ final class SecurityRolesTypeTest extends TypeTestCase
     {
         $this->roleBuilder = $this->createMock(EditableRolesBuilderInterface::class);
 
-        $this->roleBuilder->method('getRoles')->willReturn(
-            [
-                'ROLE_FOO'   => 'ROLE_FOO',
-                'ROLE_USER'  => 'ROLE_USER',
-                'ROLE_ADMIN' => 'ROLE_ADMIN: ROLE_USER',
-            ]
-        );
+        $this->roleBuilder->method('getRoles')->willReturn([
+            'ROLE_FOO'   => 'ROLE_FOO',
+            'ROLE_USER'  => 'ROLE_USER',
+            'ROLE_ADMIN' => 'ROLE_ADMIN: ROLE_USER',
+        ]);
 
         $this->roleBuilder->method('getRolesReadOnly')->willReturn([]);
 
         $childType = new SecurityRolesType($this->roleBuilder);
 
         return [
-            new PreloadedExtension(
-                [
-                    $childType,
-                ],
-                []
-            ),
+            new PreloadedExtension([$childType], []),
         ];
-    }
-
-    private function getSecurityRolesTypeName(): string
-    {
-        return SecurityRolesType::class;
     }
 }

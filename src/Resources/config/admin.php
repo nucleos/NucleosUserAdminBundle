@@ -88,6 +88,5 @@ return static function (ContainerConfigurator $container): void {
                 service('event_dispatcher'),
             ])
             ->call('setContainer', [new ReferenceConfigurator(ContainerInterface::class)])
-
     ;
 };

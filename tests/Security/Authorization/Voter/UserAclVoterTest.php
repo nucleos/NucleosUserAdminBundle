@@ -48,7 +48,7 @@ final class UserAclVoterTest extends TestCase
         $decision = $voter->vote($token, $user, ['EDIT']);
 
         // Then
-        static::assertSame(VoterInterface::ACCESS_ABSTAIN, $decision, 'Should abstain from voting');
+        self::assertSame(VoterInterface::ACCESS_ABSTAIN, $decision, 'Should abstain from voting');
     }
 
     public function testVoteWillDenyAccessWhenAUserIsLoggedInAndNotASuperAdmin(): void
@@ -74,7 +74,7 @@ final class UserAclVoterTest extends TestCase
         $decision = $voter->vote($token, $user, ['EDIT']);
 
         // Then
-        static::assertSame(VoterInterface::ACCESS_DENIED, $decision, 'Should deny access');
+        self::assertSame(VoterInterface::ACCESS_DENIED, $decision, 'Should deny access');
     }
 
     public function testVoteWillAbstainWhenAUserIsNotAvailable(): void
@@ -99,7 +99,7 @@ final class UserAclVoterTest extends TestCase
         $decision = $voter->vote($token, $user, ['EDIT']);
 
         // Then
-        static::assertSame(VoterInterface::ACCESS_ABSTAIN, $decision, 'Should abstain from voting');
+        self::assertSame(VoterInterface::ACCESS_ABSTAIN, $decision, 'Should abstain from voting');
     }
 
     public function testVoteWillAbstainWhenAUserIsLoggedInButIsNotAValidUser(): void
@@ -124,6 +124,6 @@ final class UserAclVoterTest extends TestCase
         $decision = $voter->vote($token, $user, ['EDIT']);
 
         // Then
-        static::assertSame(VoterInterface::ACCESS_ABSTAIN, $decision, 'Should abstain from voting');
+        self::assertSame(VoterInterface::ACCESS_ABSTAIN, $decision, 'Should abstain from voting');
     }
 }

@@ -112,7 +112,7 @@ final class ResetActionTest extends TestCase
     {
         $request = new Request();
 
-        $this->authorizationChecker->expects(static::once())
+        $this->authorizationChecker->expects(self::once())
             ->method('isGranted')
             ->willReturn(true)
         ;
@@ -126,8 +126,8 @@ final class ResetActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request, 'token');
 
-        static::assertInstanceOf(RedirectResponse::class, $result);
-        static::assertSame('/foo', $result->getTargetUrl());
+        self::assertInstanceOf(RedirectResponse::class, $result);
+        self::assertSame('/foo', $result->getTargetUrl());
     }
 
     public function testUnknownToken(): void
@@ -172,8 +172,8 @@ final class ResetActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request, 'token');
 
-        static::assertInstanceOf(RedirectResponse::class, $result);
-        static::assertSame('/foo', $result->getTargetUrl());
+        self::assertInstanceOf(RedirectResponse::class, $result);
+        self::assertSame('/foo', $result->getTargetUrl());
     }
 
     /**
@@ -200,7 +200,7 @@ final class ResetActionTest extends TestCase
             ->method('isSubmitted')
             ->willReturn(false)
         ;
-        $form->expects(static::once())
+        $form->expects(self::once())
             ->method('createView')
             ->willReturn($view)
         ;
@@ -211,7 +211,7 @@ final class ResetActionTest extends TestCase
             ->willReturn($user)
         ;
 
-        $this->formFactory->expects(static::once())
+        $this->formFactory->expects(self::once())
             ->method('create')
             ->willReturn($form)
         ;
@@ -242,7 +242,7 @@ final class ResetActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request, 'user-token');
 
-        static::assertSame('template content', $result->getContent());
+        self::assertSame('template content', $result->getContent());
     }
 
     /**
@@ -257,18 +257,18 @@ final class ResetActionTest extends TestCase
             ->method('isPasswordRequestNonExpired')
             ->willReturn(true)
         ;
-        $user->expects(static::once())
+        $user->expects(self::once())
             ->method('setLastLogin')
         ;
-        $user->expects(static::once())
+        $user->expects(self::once())
             ->method('setConfirmationToken')
             ->with(null)
         ;
-        $user->expects(static::once())
+        $user->expects(self::once())
             ->method('setPasswordRequestedAt')
             ->with(null)
         ;
-        $user->expects(static::once())
+        $user->expects(self::once())
             ->method('setEnabled')
             ->with(true)
         ;
@@ -293,7 +293,7 @@ final class ResetActionTest extends TestCase
         ;
 
         $bag = $this->createMock(FlashBag::class);
-        $bag->expects(static::once())
+        $bag->expects(self::once())
             ->method('add')
             ->with('success', 'resetting.flash.success')
         ;
@@ -308,22 +308,22 @@ final class ResetActionTest extends TestCase
             ->with('token')
             ->willReturn($user)
         ;
-        $this->userManager->expects(static::once())
+        $this->userManager->expects(self::once())
             ->method('updateUser')
             ->with($user)
         ;
 
-        $this->loginManager->expects(static::once())
+        $this->loginManager->expects(self::once())
             ->method('logInUser')
-            ->with('default', $user, static::isInstanceOf(Response::class))
+            ->with('default', $user, self::isInstanceOf(Response::class))
         ;
 
-        $this->formFactory->expects(static::once())
+        $this->formFactory->expects(self::once())
             ->method('create')
             ->willReturn($form)
         ;
 
-        $this->router->expects($matcher = static::exactly(2))->method('generate')
+        $this->router->expects($matcher = self::exactly(2))->method('generate')
             ->willReturnCallback($this->withParameter($matcher, [
                 ['nucleos_user_admin_security_check', ['token' => 'token']],
                 ['sonata_admin_dashboard'],
@@ -334,8 +334,8 @@ final class ResetActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request, 'token');
 
-        static::assertInstanceOf(RedirectResponse::class, $result);
-        static::assertSame('/dashboard', $result->getTargetUrl());
+        self::assertInstanceOf(RedirectResponse::class, $result);
+        self::assertSame('/dashboard', $result->getTargetUrl());
     }
 
     /**

@@ -58,7 +58,7 @@ final class CheckEmailActionTest extends TestCase
     {
         $request = new Request();
 
-        $this->urlGenerator->expects(static::once())
+        $this->urlGenerator->expects(self::once())
             ->method('generate')
             ->with('nucleos_user_admin_resetting_request')
             ->willReturn('/foo')
@@ -67,8 +67,8 @@ final class CheckEmailActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request);
 
-        static::assertInstanceOf(RedirectResponse::class, $result);
-        static::assertSame('/foo', $result->getTargetUrl());
+        self::assertInstanceOf(RedirectResponse::class, $result);
+        self::assertSame('/foo', $result->getTargetUrl());
     }
 
     public function testWithUsername(): void
@@ -81,7 +81,7 @@ final class CheckEmailActionTest extends TestCase
             'tokenLifetime' => 1,
         ];
 
-        $this->templating->expects(static::once())
+        $this->templating->expects(self::once())
             ->method('render')
             ->with('@NucleosUserAdmin/Admin/Security/Resetting/checkEmail.html.twig', $parameters)
             ->willReturn('template content')
@@ -96,7 +96,7 @@ final class CheckEmailActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request);
 
-        static::assertSame('template content', $result->getContent());
+        self::assertSame('template content', $result->getContent());
     }
 
     private function getAction(): CheckEmailAction

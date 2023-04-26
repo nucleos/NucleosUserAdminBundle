@@ -36,14 +36,14 @@ final class RolesMatrixTypeTest extends TypeTestCase
         $type->configureOptions($optionResolver);
 
         $options = $optionResolver->resolve();
-        static::assertCount(3, $options['choices']);
+        self::assertCount(3, $options['choices']);
     }
 
     public function testGetParent(): void
     {
         $type = new RolesMatrixType($this->roleBuilder);
 
-        static::assertSame(ChoiceType::class, $type->getParent());
+        self::assertSame(ChoiceType::class, $type->getParent());
     }
 
     public function testSubmitValidData(): void
@@ -60,9 +60,9 @@ final class RolesMatrixTypeTest extends TypeTestCase
 
         $form->submit([0 => 'ROLE_FOO']);
 
-        static::assertTrue($form->isSynchronized());
-        static::assertCount(1, $form->getData());
-        static::assertContains('ROLE_FOO', $form->getData());
+        self::assertTrue($form->isSynchronized());
+        self::assertCount(1, $form->getData());
+        self::assertContains('ROLE_FOO', $form->getData());
     }
 
     /**

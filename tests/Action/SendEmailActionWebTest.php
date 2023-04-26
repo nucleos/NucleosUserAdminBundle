@@ -20,16 +20,16 @@ final class SendEmailActionWebTest extends WebTestCase
 {
     public function testRequest(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request('POST', '/admin/resetting/send-email', [
             'username' => 'some-user',
         ]);
 
-        static::assertResponseRedirects('/admin/resetting/check-email?username=some-user');
+        self::assertResponseRedirects('/admin/resetting/check-email?username=some-user');
 
         $client->followRedirect();
 
-        static::assertResponseIsSuccessful();
+        self::assertResponseIsSuccessful();
     }
 }

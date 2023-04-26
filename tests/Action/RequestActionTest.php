@@ -71,7 +71,7 @@ final class RequestActionTest extends TestCase
     {
         $request = new Request();
 
-        $this->authorizationChecker->expects(static::once())
+        $this->authorizationChecker->expects(self::once())
             ->method('isGranted')
             ->willReturn(true)
         ;
@@ -85,8 +85,8 @@ final class RequestActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request);
 
-        static::assertInstanceOf(RedirectResponse::class, $result);
-        static::assertSame('/foo', $result->getTargetUrl());
+        self::assertInstanceOf(RedirectResponse::class, $result);
+        self::assertSame('/foo', $result->getTargetUrl());
     }
 
     /**
@@ -96,7 +96,7 @@ final class RequestActionTest extends TestCase
     {
         $request = new Request();
 
-        $this->authorizationChecker->expects(static::once())
+        $this->authorizationChecker->expects(self::once())
             ->method('isGranted')
             ->willReturn(false)
         ;
@@ -118,7 +118,7 @@ final class RequestActionTest extends TestCase
             ->method('isSubmitted')
             ->willReturn(false)
         ;
-        $form->expects(static::once())
+        $form->expects(self::once())
             ->method('createView')
             ->willReturn($view)
         ;
@@ -127,7 +127,7 @@ final class RequestActionTest extends TestCase
             ->willReturnSelf()
         ;
 
-        $this->formFactory->expects(static::once())
+        $this->formFactory->expects(self::once())
             ->method('create')
             ->willReturn($form)
         ;
@@ -138,7 +138,7 @@ final class RequestActionTest extends TestCase
             ->willReturn('/foo')
         ;
 
-        $this->templating->expects(static::once())
+        $this->templating->expects(self::once())
             ->method('render')
             ->with('@NucleosUserAdmin/Admin/Security/Resetting/request.html.twig', [
                 'base_template' => 'base.html.twig',
@@ -157,7 +157,7 @@ final class RequestActionTest extends TestCase
         $action = $this->getAction();
         $result = $action($request);
 
-        static::assertSame('template content', $result->getContent());
+        self::assertSame('template content', $result->getContent());
     }
 
     private function getAction(): RequestAction

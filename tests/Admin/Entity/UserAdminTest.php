@@ -25,6 +25,6 @@ final class UserAdminTest extends TestCase
             $this->createMock(UserManager::class)
         );
 
-        static::assertNotEmpty($admin);
+        self::assertNotEmpty($admin);
     }
 }
