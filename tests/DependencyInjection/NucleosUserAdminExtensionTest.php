@@ -160,7 +160,9 @@ final class NucleosUserAdminExtensionTest extends AbstractExtensionTestCase
      */
     private function createContainerBuilder(): ContainerBuilder
     {
-        $mockBuilder = $this->getMockBuilder(ContainerBuilder::class);
+        $mockBuilder = $this->getMockBuilder(ContainerBuilder::class)
+            ->disableOriginalConstructor()
+        ;
 
         // @phpstan-ignore-next-line
         if (!method_exists(ContainerBuilder::class, 'hasExtension')) {
