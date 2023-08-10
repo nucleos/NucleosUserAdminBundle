@@ -44,7 +44,9 @@ abstract class UserAdmin extends AbstractAdmin
 
     public function preUpdate($object): void
     {
-        $this->userManager->updateCanonicalFields($object);
+        if (method_exists($this->userManager, 'updateCanonicalFields')) {
+            $this->userManager->updateCanonicalFields($object);
+        }
     }
 
     protected function configureFormOptions(array &$formOptions): void
