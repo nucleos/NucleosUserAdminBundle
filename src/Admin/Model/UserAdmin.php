@@ -51,7 +51,7 @@ abstract class UserAdmin extends AbstractAdmin
 
     protected function configureFormOptions(array &$formOptions): void
     {
-        $formOptions['validation_groups'] = $this->isNewInstance() ? 'Registration' : 'Profile';
+        $formOptions['validation_groups'] = ['User', $this->isNewInstance() ? 'Registration' : 'Profile'];
     }
 
     protected function configureExportFields(): array

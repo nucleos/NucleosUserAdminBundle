@@ -120,7 +120,7 @@ final class ResetAction
             'action'            => $this->router->generate('nucleos_user_admin_security_check', [
                 'token' => $token,
             ]),
-            'validation_groups' => ['ResetPassword', 'Default'],
+            'validation_groups' => ['ResetPassword', 'User', 'Default'],
         ]);
 
         $form->handleRequest($request);

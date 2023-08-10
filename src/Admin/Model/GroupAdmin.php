@@ -42,7 +42,7 @@ abstract class GroupAdmin extends AbstractAdmin
 
     protected function configureFormOptions(array &$formOptions): void
     {
-        $formOptions['validation_groups'] = $this->isNewInstance() ? 'Registration' : 'Profile';
+        $formOptions['validation_groups'] = ['Group', $this->isNewInstance() ? 'Registration' : 'Profile'];
     }
 
     protected function configureListFields(ListMapper $list): void
