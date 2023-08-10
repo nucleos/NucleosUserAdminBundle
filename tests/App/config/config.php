@@ -73,7 +73,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         'mappings'     => [
             'App' => [
                 'is_bundle' => false,
-                'type'      => 'annotation',
+                'type'      => 'attribute',
                 'dir'       => '%kernel.project_dir%/Entity',
                 'prefix'    => 'Nucleos\UserAdminBundle\Tests\App\Entity',
                 'alias'     => 'App',

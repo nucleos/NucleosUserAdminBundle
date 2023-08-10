@@ -15,36 +15,25 @@ namespace Nucleos\UserAdminBundle\Tests\App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Nucleos\UserBundle\Model\GroupInterface;
 use Nucleos\UserBundle\Model\User as BaseUser;
 
 /**
- * @ORM\Entity()
- *
- * @ORM\Table(name="user__user")
- *
  * @phpstan-extends BaseUser<GroupInterface>
  */
+#[ORM\Entity]
+#[ORM\Table(name: 'user__user')]
 class User extends BaseUser
 {
-    /**
-     * @ORM\Id
-     *
-     * @ORM\Column(type="integer")
-     *
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+    #[ORM\Id]
+    #[ORM\Column(type: Types::INTEGER)]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
     protected ?int $id = null;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Nucleos\UserAdminBundle\Tests\App\Entity\Group")
-     *
-     * @ORM\JoinTable(name="user__user_group",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
-     * )
-     */
+    #[ORM\ManyToMany(targetEntity: Group::class)]
+    #[ORM\JoinTable(name: 'user__user_group')]
     protected Collection $groups;
 
     public function __construct()
