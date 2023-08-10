@@ -54,40 +54,6 @@ class User extends BaseUser
         $this->groups = new ArrayCollection();
     }
 
-    /**
-     * @return array<mixed>
-     */
-    public function __serialize(): array
-    {
-        return [
-            $this->password,
-            $this->usernameCanonical,
-            $this->username,
-            $this->enabled,
-            $this->id,
-            $this->email,
-            $this->emailCanonical,
-        ];
-    }
-
-    /**
-     * @param mixed $serialized
-     */
-    public function __unserialize($serialized): void
-    {
-        $data = unserialize($serialized);
-
-        [
-            $this->password,
-            $this->usernameCanonical,
-            $this->username,
-            $this->enabled,
-            $this->id,
-            $this->email,
-            $this->emailCanonical
-        ] = $data;
-    }
-
     public function getId(): ?int
     {
         return $this->id;
