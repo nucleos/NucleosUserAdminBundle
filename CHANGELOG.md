@@ -2,27 +2,30 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.3.0 - TBD
+## 3.3.0 - 2023-08-10
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.3.0](https://github.com/nucleos/NucleosUserAdminBundle/milestone/33)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.3.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **4**
+- Total contributors: **1**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [586: Add support for nucleos/user-bundle 3](https://github.com/nucleos/NucleosUserAdminBundle/pull/586) thanks to @core23
+ - [584: Add support for sonata-project/form-extensions 2](https://github.com/nucleos/NucleosUserAdminBundle/pull/584) thanks to @core23
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [579: Update build tools](https://github.com/nucleos/NucleosUserAdminBundle/pull/579) thanks to @core23
+ - [576: Drop support for PHP 8.0](https://github.com/nucleos/NucleosUserAdminBundle/pull/576) thanks to @core23
 
 ## 3.2.0 - 2022-12-12
 
