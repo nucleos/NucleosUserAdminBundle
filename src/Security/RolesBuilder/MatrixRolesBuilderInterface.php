@@ -13,6 +13,4 @@ declare(strict_types=1);
 
 namespace Nucleos\UserAdminBundle\Security\RolesBuilder;
 
-interface MatrixRolesBuilderInterface extends ExpandableRolesBuilderInterface, PermissionLabelsBuilderInterface
-{
-}
+interface MatrixRolesBuilderInterface extends ExpandableRolesBuilderInterface, PermissionLabelsBuilderInterface {}

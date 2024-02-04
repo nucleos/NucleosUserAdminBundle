@@ -121,7 +121,7 @@ parameters:
 			path: src/Security/RolesBuilder/SecurityRolesBuilder.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Tests\\\\Action\\\\LoginActionTest\\:\\:unauthenticatedProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Tests\\\\Action\\\\LoginActionTest\\:\\:provideUnauthenticatedCases\\(\\) return type has no value type specified in iterable type iterable\\.$#"
 			count: 1
 			path: tests/Action/LoginActionTest.php
 

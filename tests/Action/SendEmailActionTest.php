@@ -16,6 +16,7 @@ namespace Nucleos\UserAdminBundle\Tests\Action;
 use Nucleos\UserAdminBundle\Action\SendEmailAction;
 use Nucleos\UserBundle\Mailer\ResettingMailer;
 use Nucleos\UserBundle\Model\User;
+use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\Util\TokenGenerator;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -50,7 +51,7 @@ final class SendEmailActionTest extends TestCase
     protected $tokenGenerator;
 
     /**
-     * @var MockObject&UserProviderInterface
+     * @var MockObject&UserProviderInterface<UserInterface>
      */
     protected $userProvider;
 

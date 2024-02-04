@@ -35,10 +35,16 @@ final class SendEmailAction
 
     private TokenGenerator $tokenGenerator;
 
+    /**
+     * @var UserProviderInterface<UserInterface>
+     */
     private UserProviderInterface $userProvider;
 
     private int $resetTtl;
 
+    /**
+     * @param UserProviderInterface<UserInterface> $userProvider
+     */
     public function __construct(
         UrlGeneratorInterface $urlGenerator,
         UserManager $userManager,

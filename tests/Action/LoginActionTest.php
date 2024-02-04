@@ -153,7 +153,7 @@ final class LoginActionTest extends TestCase
     }
 
     /**
-     * @dataProvider userGrantedAdminProvider
+     * @dataProvider provideUserGrantedAdminCases
      */
     public function testUserGrantedAdmin(string $referer, string $expectedRedirectUrl): void
     {
@@ -189,7 +189,7 @@ final class LoginActionTest extends TestCase
     /**
      * @return string[][]
      */
-    public static function userGrantedAdminProvider(): array
+    public static function provideUserGrantedAdminCases(): iterable
     {
         return [
             ['', '/foo'],
@@ -199,7 +199,7 @@ final class LoginActionTest extends TestCase
     }
 
     /**
-     * @dataProvider unauthenticatedProvider
+     * @dataProvider provideUnauthenticatedCases
      *
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
@@ -311,7 +311,7 @@ final class LoginActionTest extends TestCase
         self::assertSame('template content', $result->getContent());
     }
 
-    public static function unauthenticatedProvider(): array
+    public static function provideUnauthenticatedCases(): iterable
     {
         $error = new AuthenticationException('An error');
 

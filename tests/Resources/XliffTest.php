@@ -32,7 +32,7 @@ final class XliffTest extends TestCase
     }
 
     /**
-     * @dataProvider getXliffPaths
+     * @dataProvider provideXliffCases
      */
     public function testXliff(string $path): void
     {
@@ -45,7 +45,7 @@ final class XliffTest extends TestCase
     /**
      * @return string[][]
      */
-    public static function getXliffPaths(): array
+    public static function provideXliffCases(): iterable
     {
         return [[__DIR__.'/../../src/Resources/translations']];
     }

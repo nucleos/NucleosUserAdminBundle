@@ -15,6 +15,4 @@ namespace Nucleos\UserAdminBundle\Admin\Entity;
 
 use Nucleos\UserAdminBundle\Admin\Model\UserAdmin as BaseUserAdmin;
 
-final class UserAdmin extends BaseUserAdmin
-{
-}
+final class UserAdmin extends BaseUserAdmin {}
