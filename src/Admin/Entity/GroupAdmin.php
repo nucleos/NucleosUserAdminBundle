@@ -15,6 +15,4 @@ namespace Nucleos\UserAdminBundle\Admin\Entity;
 
 use Nucleos\UserAdminBundle\Admin\Model\GroupAdmin as BaseGroupAdmin;
 
-final class GroupAdmin extends BaseGroupAdmin
-{
-}
+final class GroupAdmin extends BaseGroupAdmin {}

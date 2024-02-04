@@ -19,6 +19,7 @@ use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Sonata\AdminBundle\Admin\Pool;
 use Sonata\AdminBundle\Templating\TemplateRegistryInterface;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -30,9 +31,9 @@ use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
@@ -155,7 +156,7 @@ final class LoginAction
             return $this->authenticationUtils->getLastAuthenticationError();
         }
 
-        $authErrorKey = Security::AUTHENTICATION_ERROR;
+        $authErrorKey = SecurityRequestAttributes::AUTHENTICATION_ERROR;
         $session      = $request->hasSession() ? $request->getSession() : null;
 
         // get the error if any (works with forward and redirect -- see below)
@@ -181,7 +182,7 @@ final class LoginAction
             return $this->authenticationUtils->getLastUsername();
         }
 
-        return (null === $session) ? '' : $session->get(Security::LAST_USERNAME);
+        return (null === $session) ? '' : $session->get(SecurityRequestAttributes::LAST_USERNAME);
     }
 
     private function isAuthenticated(): bool

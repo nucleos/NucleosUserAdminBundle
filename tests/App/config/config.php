@@ -16,6 +16,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use Nucleos\UserAdminBundle\Tests\App\Entity\Group;
 use Nucleos\UserAdminBundle\Tests\App\Entity\User;
 use Nucleos\UserBundle\Model\UserInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->extension('framework', ['secret' => 'MySecret']);
@@ -62,7 +63,14 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ],
     ]);
 
-    $containerConfigurator->extension('security', ['enable_authenticator_manager' => true]);
+    $securityConfig = [];
+
+    // TODO: Remove if when dropping support of Symfony 5.4
+    if (!class_exists(IsGranted::class)) {
+        $securityConfig['enable_authenticator_manager'] = true;
+    }
+
+    $containerConfigurator->extension('security', $securityConfig);
 
     $containerConfigurator->extension('security', ['access_control' => [['path' => '^/.*', 'role' => 'PUBLIC_ACCESS']]]);
 
