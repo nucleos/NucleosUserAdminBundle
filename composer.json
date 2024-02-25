@@ -66,7 +66,7 @@
     },
     "require-dev": {
         "doctrine/doctrine-bundle": "^2.5",
-        "doctrine/orm": "^2.7",
+        "doctrine/orm": "^3.0",
         "ergebnis/composer-normalize": "^2.0.1",
         "knplabs/knp-menu": "^3.2",
         "knplabs/knp-menu-bundle": "^3.2",
