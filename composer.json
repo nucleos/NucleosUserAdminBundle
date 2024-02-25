@@ -54,7 +54,6 @@
         "symfony/http-kernel": "^6.4 || ^7.0",
         "symfony/options-resolver": "^6.4 || ^7.0",
         "symfony/routing": "^6.4 || ^7.0",
-        "symfony/security-acl": "^3.0",
         "symfony/security-core": "^6.4 || ^7.0",
         "symfony/security-csrf": "^6.4 || ^7.0",
         "symfony/security-http": "^6.4 || ^7.0",

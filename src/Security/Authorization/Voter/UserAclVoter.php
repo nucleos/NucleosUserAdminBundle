@@ -14,30 +14,36 @@ declare(strict_types=1);
 namespace Nucleos\UserAdminBundle\Security\Authorization\Voter;
 
 use Nucleos\UserBundle\Model\UserInterface;
-use Symfony\Component\Security\Acl\Voter\AclVoter;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Authorization\Voter\CacheableVoterInterface;
+use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 
-final class UserAclVoter extends AclVoter
+final class UserAclVoter implements VoterInterface, CacheableVoterInterface
 {
+    /**
+     * @deprecated without any replace
+     *
+     * @param mixed $class
+     */
     public function supportsClass($class): bool
     {
         return is_subclass_of($class, UserInterface::class);
     }
 
-    /**
-     * @param mixed|string $attribute
-     */
-    public function supportsAttribute($attribute): bool
+    public function supportsType(string $subjectType): bool
+    {
+        return is_subclass_of($subjectType, UserInterface::class);
+    }
+
+    public function supportsAttribute(string $attribute): bool
     {
         return 'EDIT' === $attribute || 'DELETE' === $attribute;
     }
 
     /**
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     *
-     * @param mixed $subject
      */
-    public function vote(TokenInterface $token, $subject, array $attributes): int
+    public function vote(TokenInterface $token, mixed $subject, array $attributes): int
     {
         if (!$this->isValidSubject($subject)) {
             return self::ACCESS_ABSTAIN;
@@ -58,11 +64,8 @@ final class UserAclVoter extends AclVoter
         return self::ACCESS_ABSTAIN;
     }
 
-    /**
-     * @param mixed $subject
-     */
-    private function isValidSubject($subject): bool
+    private function isValidSubject(mixed $subject): bool
     {
-        return \is_object($subject) && $this->supportsClass(\get_class($subject));
+        return \is_object($subject) && $this->supportsType(\get_class($subject));
     }
 }
