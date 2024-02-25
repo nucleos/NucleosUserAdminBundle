@@ -15,10 +15,6 @@ namespace Nucleos\UserAdminBundle\Tests\Security\Authorization\Voter;
 
 use Nucleos\UserAdminBundle\Security\Authorization\Voter\UserAclVoter;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Security\Acl\Model\AclProviderInterface;
-use Symfony\Component\Security\Acl\Model\ObjectIdentityRetrievalStrategyInterface;
-use Symfony\Component\Security\Acl\Model\SecurityIdentityRetrievalStrategyInterface;
-use Symfony\Component\Security\Acl\Permission\PermissionMapInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -37,12 +33,7 @@ final class UserAclVoterTest extends TestCase
         $token = $this->createMock(TokenInterface::class);
         $token->method('getUser')->willReturn($loggedInUser);
 
-        $aclProvider          = $this->createMock(AclProviderInterface::class);
-        $oidRetrievalStrategy = $this->createMock(ObjectIdentityRetrievalStrategyInterface::class);
-        $sidRetrievalStrategy = $this->createMock(SecurityIdentityRetrievalStrategyInterface::class);
-        $permissionMap        = $this->createMock(PermissionMapInterface::class);
-
-        $voter = new UserAclVoter($aclProvider, $oidRetrievalStrategy, $sidRetrievalStrategy, $permissionMap);
+        $voter = new UserAclVoter();
 
         // When
         $decision = $voter->vote($token, $user, ['EDIT']);
@@ -63,12 +54,7 @@ final class UserAclVoterTest extends TestCase
         $token = $this->createMock(TokenInterface::class);
         $token->method('getUser')->willReturn($loggedInUser);
 
-        $aclProvider          = $this->createMock(AclProviderInterface::class);
-        $oidRetrievalStrategy = $this->createMock(ObjectIdentityRetrievalStrategyInterface::class);
-        $sidRetrievalStrategy = $this->createMock(SecurityIdentityRetrievalStrategyInterface::class);
-        $permissionMap        = $this->createMock(PermissionMapInterface::class);
-
-        $voter = new UserAclVoter($aclProvider, $oidRetrievalStrategy, $sidRetrievalStrategy, $permissionMap);
+        $voter = new UserAclVoter();
 
         // When
         $decision = $voter->vote($token, $user, ['EDIT']);
@@ -88,12 +74,7 @@ final class UserAclVoterTest extends TestCase
         $token = $this->createMock(TokenInterface::class);
         $token->method('getUser')->willReturn($loggedInUser);
 
-        $aclProvider          = $this->createMock(AclProviderInterface::class);
-        $oidRetrievalStrategy = $this->createMock(ObjectIdentityRetrievalStrategyInterface::class);
-        $sidRetrievalStrategy = $this->createMock(SecurityIdentityRetrievalStrategyInterface::class);
-        $permissionMap        = $this->createMock(PermissionMapInterface::class);
-
-        $voter = new UserAclVoter($aclProvider, $oidRetrievalStrategy, $sidRetrievalStrategy, $permissionMap);
+        $voter = new UserAclVoter();
 
         // When
         $decision = $voter->vote($token, $user, ['EDIT']);
@@ -113,12 +94,7 @@ final class UserAclVoterTest extends TestCase
         $token = $this->createMock(TokenInterface::class);
         $token->method('getUser')->willReturn($loggedInUser);
 
-        $aclProvider          = $this->createMock(AclProviderInterface::class);
-        $oidRetrievalStrategy = $this->createMock(ObjectIdentityRetrievalStrategyInterface::class);
-        $sidRetrievalStrategy = $this->createMock(SecurityIdentityRetrievalStrategyInterface::class);
-        $permissionMap        = $this->createMock(PermissionMapInterface::class);
-
-        $voter = new UserAclVoter($aclProvider, $oidRetrievalStrategy, $sidRetrievalStrategy, $permissionMap);
+        $voter = new UserAclVoter();
 
         // When
         $decision = $voter->vote($token, $user, ['EDIT']);
