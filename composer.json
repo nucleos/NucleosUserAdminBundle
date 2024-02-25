@@ -65,8 +65,8 @@
         "twig/twig": "^2.14 || ^3.1"
     },
     "require-dev": {
-        "doctrine/doctrine-bundle": "^2.5",
-        "doctrine/orm": "^2.7",
+        "doctrine/doctrine-bundle": "^2.10",
+        "doctrine/orm": "^2.18 || ^3.0",
         "ergebnis/composer-normalize": "^2.0.1",
         "knplabs/knp-menu": "^3.2",
         "knplabs/knp-menu-bundle": "^3.2",
@@ -78,9 +78,9 @@
         "symfony/yaml": "^6.4 || ^7.0"
     },
     "conflict": {
-        "doctrine/doctrine-bundle": "<2.5",
-        "doctrine/orm": "<2.7",
-        "symfony/doctrine-bridge": "<5.4"
+        "doctrine/doctrine-bundle": "<2.10 || >=3",
+        "doctrine/orm": "<2.18 || >=4",
+        "symfony/doctrine-bridge": "<6.4 || >=8"
     },
     "autoload": {
         "psr-4": {
