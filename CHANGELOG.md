@@ -2,27 +2,34 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.4.0 - TBD
+## 3.4.0 - 2024-03-04
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.4.0](https://github.com/nucleos/NucleosUserAdminBundle/milestone/35)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.4.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **5**
+- Total contributors: **2**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [601: Update dependency doctrine/orm to ^2.18 || ^3.0](https://github.com/nucleos/NucleosUserAdminBundle/pull/601) thanks to @core23
+ - [590: Update dependency matthiasnoback/symfony-dependency-injection-test to v5](https://github.com/nucleos/NucleosUserAdminBundle/pull/590) thanks to @renovate[bot]
 
-### Fixed
+#### BC Break,dependency
 
-- Nothing.
+ - [600: Bump to symfony ^6.4 || ^7.0](https://github.com/nucleos/NucleosUserAdminBundle/pull/600) thanks to @core23
+
+#### Enhancement
+
+ - [593: Update tools ](https://github.com/nucleos/NucleosUserAdminBundle/pull/593) thanks to @core23
+ - [588: Update dependency Pygments to v2.17.1](https://github.com/nucleos/NucleosUserAdminBundle/pull/588) thanks to @renovate[bot]
 
 ## 3.3.0 - 2023-08-10
 
