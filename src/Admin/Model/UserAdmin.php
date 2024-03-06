@@ -18,6 +18,7 @@ use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
 use Nucleos\UserBundle\Model\LocaleAwareUser;
 use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManager;
+use Nucleos\UserBundle\Util\UserManipulator;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -35,11 +36,14 @@ abstract class UserAdmin extends AbstractAdmin
 {
     protected UserManager $userManager;
 
-    public function __construct(UserManager $userManager)
+    private ?UserManipulator $userManipulator;
+
+    public function __construct(UserManager $userManager, ?UserManipulator $userManipulator = null)
     {
         parent::__construct();
 
-        $this->userManager = $userManager;
+        $this->userManager     = $userManager;
+        $this->userManipulator = $userManipulator;
     }
 
     public function preUpdate($object): void
@@ -47,6 +51,11 @@ abstract class UserAdmin extends AbstractAdmin
         if (method_exists($this->userManager, 'updateCanonicalFields')) {
             $this->userManager->updateCanonicalFields($object);
         }
+    }
+
+    protected function postUpdate(object $object): void
+    {
+        $this->updatePassword($object);
     }
 
     protected function configureFormOptions(array &$formOptions): void
@@ -189,6 +198,17 @@ abstract class UserAdmin extends AbstractAdmin
                 ->end()
             ->end()
         ;
+    }
+
+    private function updatePassword(UserInterface $user): void
+    {
+        $plainPassword = $user->getPlainPassword();
+
+        if (null === $plainPassword) {
+            return;
+        }
+
+        $this->userManipulator?->changePassword($user->getUsername(), $plainPassword);
     }
 
     private function isNewInstance(): bool

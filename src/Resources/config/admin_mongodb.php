@@ -35,6 +35,7 @@ return static function (ContainerConfigurator $container): void {
             ])
             ->args([
                 service('nucleos_user.user_manager'),
+                service('nucleos_user.util.user_manipulator'),
             ])
             ->call('setTranslationDomain', [
                 '%nucleos_user_admin.admin.group.translation_domain%',
