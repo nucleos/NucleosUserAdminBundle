@@ -21,6 +21,7 @@ use Nucleos\UserBundle\Model\UserManager;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -120,6 +121,7 @@ abstract class UserAdmin extends AbstractAdmin
             ->with('general', ['label' => 'show.group_general'])
                 ->add('username')
                 ->add('email')
+                ->add('enabled', FieldDescriptionInterface::TYPE_BOOLEAN)
             ->end()
             ->with('groups', ['label' => 'show.group_groups'])
                 ->add('groups')
