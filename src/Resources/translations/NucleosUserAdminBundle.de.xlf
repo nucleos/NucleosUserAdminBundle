@@ -426,6 +426,10 @@
                 <source>list.label_id</source>
                 <target>ID</target>
             </trans-unit>
+            <trans-unit id="show.label_enabled">
+                <source>show.label_enabled</source>
+                <target>Aktiviert</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
