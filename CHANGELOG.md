@@ -2,27 +2,26 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.6.0 - TBD
+## 3.6.0 - 2024-05-18
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.6.0](https://github.com/nucleos/NucleosUserAdminBundle/milestone/39)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.6.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **3**
+- Total contributors: **2**
 
-### Removed
+#### Enhancement
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [605: Add status to show page](https://github.com/nucleos/NucleosUserAdminBundle/pull/605) thanks to @core23
+ - [604: Update dependency Pygments to v2.18.0](https://github.com/nucleos/NucleosUserAdminBundle/pull/604) thanks to @renovate[bot]
+ - [603: Update dependency psalm/plugin-phpunit to ^0.19.0](https://github.com/nucleos/NucleosUserAdminBundle/pull/603) thanks to @renovate[bot]
 
 ## 3.5.0 - 2024-03-06
 
