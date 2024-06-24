@@ -15,8 +15,7 @@ return static function (ContainerConfigurator $container): void {
     $container->parameters()
 
         ->set('nucleos_user_admin.admin.groupname', 'user')
-        ->set('nucleos_user_admin.admin.label_catalogue', 'NucleosUserAdminBundle')
-        ->set('nucleos_user_admin.admin.groupicon', '<i class=\'fa fa-users\'></i>')
+        ->set('nucleos_user_admin.admin.groupicon', 'fa fa-users')
     ;
 
     $container->services()
@@ -29,7 +28,6 @@ return static function (ContainerConfigurator $container): void {
                 'controller'                => '%nucleos_user_admin.admin.user.controller%',
                 'group'                     => '%nucleos_user_admin.admin.groupname%',
                 'label'                     => 'users',
-                'label_catalogue'           => '%nucleos_user_admin.admin.label_catalogue%',
                 'label_translator_strategy' => 'sonata.admin.label.strategy.underscore',
                 'icon'                      => '%nucleos_user_admin.admin.groupicon%',
             ])
@@ -49,7 +47,6 @@ return static function (ContainerConfigurator $container): void {
                 'controller'                => '%nucleos_user_admin.admin.group.controller%',
                 'group'                     => '%nucleos_user_admin.admin.groupname%',
                 'label'                     => 'groups',
-                'label_catalogue'           => '%nucleos_user_admin.admin.label_catalogue%',
                 'label_translator_strategy' => 'sonata.admin.label.strategy.underscore',
                 'icon'                      => '%nucleos_user_admin.admin.groupicon%',
             ])
