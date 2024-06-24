@@ -98,6 +98,8 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
             }
         }
 
+        uasort($adminRoles, static fn (array $a, array $b) => strcmp($a['admin_label'], $b['admin_label']));
+
         return $adminRoles;
     }
 
