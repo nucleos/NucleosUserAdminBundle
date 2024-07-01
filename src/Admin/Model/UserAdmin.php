@@ -152,9 +152,13 @@ abstract class UserAdmin extends AbstractAdmin
             ->end()
 
             ->tab('security', ['label' => 'form.group_security'])
-                ->with('groups', ['class' => 'col-md-8', 'label' => 'form.group_groups'])->end()
+                ->ifTrue($this->isGranted('ROLE_SUPER_ADMIN'))
+                    ->with('groups', ['class' => 'col-md-8', 'label' => 'form.group_groups'])->end()
+                ->ifEnd()
                 ->with('status', ['class' => 'col-md-4', 'label' => 'form.group_status'])->end()
-                ->with('roles', ['class' => 'col-md-12', 'label' => 'form.group_roles'])->end()
+                ->ifTrue($this->isGranted('ROLE_SUPER_ADMIN'))
+                    ->with('roles', ['class' => 'col-md-12', 'label' => 'form.group_roles'])->end()
+                ->ifEnd()
             ->end()
         ;
 
@@ -183,21 +187,23 @@ abstract class UserAdmin extends AbstractAdmin
                 ->with('status')
                     ->add('enabled', null, ['required' => false])
                 ->end()
-                ->with('groups')
-                    ->add('groups', ModelType::class, [
-                        'required' => false,
-                        'expanded' => true,
-                        'multiple' => true,
-                    ])
-                ->end()
-                ->with('roles')
-                    ->add('roles', RolesMatrixType::class, [
-                        'label'    => 'form.label_roles',
-                        'expanded' => true,
-                        'multiple' => true,
-                        'required' => false,
-                    ])
-                ->end()
+                ->ifTrue($this->isGranted('ROLE_SUPER_ADMIN'))
+                    ->with('groups')
+                        ->add('groups', ModelType::class, [
+                            'required' => false,
+                            'expanded' => true,
+                            'multiple' => true,
+                        ])
+                    ->end()
+                    ->with('roles')
+                        ->add('roles', RolesMatrixType::class, [
+                            'label'    => 'form.label_roles',
+                            'expanded' => true,
+                            'multiple' => true,
+                            'required' => false,
+                        ])
+                    ->end()
+                ->ifEnd()
             ->end()
         ;
     }
