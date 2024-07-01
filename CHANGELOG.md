@@ -2,27 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.8.0 - TBD
+## 3.8.0 - 2024-07-01
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.8.0](https://github.com/nucleos/NucleosUserAdminBundle/milestone/43)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.8.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
+ - [609: Prevent security role escalation](https://github.com/nucleos/NucleosUserAdminBundle/pull/609) thanks to @core23
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [608: Fix deprecations](https://github.com/nucleos/NucleosUserAdminBundle/pull/608) thanks to @core23
 
 ## 3.7.0 - 2024-06-24
 
