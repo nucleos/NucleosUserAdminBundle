@@ -2,27 +2,24 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.9.0 - TBD
+## 3.9.0 - 2024-07-05
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.9.0](https://github.com/nucleos/NucleosUserAdminBundle/milestone/45)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.9.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### Enhancement
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [610: Require group edit role to change user groups](https://github.com/nucleos/NucleosUserAdminBundle/pull/610) thanks to @core23
 
 ## 3.8.0 - 2024-07-01
 
