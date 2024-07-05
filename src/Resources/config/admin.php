@@ -12,6 +12,7 @@
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use Nucleos\UserAdminBundle\Controller\UserCRUDController;
+use Nucleos\UserAdminBundle\Form\Type\GroupType;
 use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
 use Nucleos\UserAdminBundle\Form\Type\SecurityRolesType;
 use Nucleos\UserAdminBundle\Security\EditableRolesBuilder;
@@ -64,6 +65,14 @@ return static function (ContainerConfigurator $container): void {
                 service('sonata.admin.configuration'),
                 service('translator'),
                 '%security.role_hierarchy.roles%',
+            ])
+
+        ->set(GroupType::class)
+            ->public()
+            ->tag('form.type')
+            ->args([
+                service('nucleos_user.group_manager'),
+                service('nucleos_user_admin.admin.group'),
             ])
 
         ->set(RolesMatrixType::class)

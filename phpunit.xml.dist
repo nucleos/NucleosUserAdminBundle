@@ -3,6 +3,8 @@
   <coverage/>
   <php>
     <env name="SYMFONY_DEPRECATIONS_HELPER" value="max[self]=0"/>
+    <env name="APP_DEBUG" value="false"/>
+    <env name="APP_ENV" value="test"/>
     <env name="KERNEL_CLASS" value="Nucleos\UserAdminBundle\Tests\App\AppKernel"/>
   </php>
   <testsuites>

@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Nucleos\UserAdminBundle\Admin\Model;
 
 use DomainException;
+use Nucleos\UserAdminBundle\Form\Type\GroupType;
 use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
 use Nucleos\UserBundle\Model\LocaleAwareUser;
 use Nucleos\UserBundle\Model\UserInterface;
@@ -24,7 +25,6 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\LocaleType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -152,13 +152,9 @@ abstract class UserAdmin extends AbstractAdmin
             ->end()
 
             ->tab('security', ['label' => 'form.group_security'])
-                ->ifTrue($this->isGranted('ROLE_SUPER_ADMIN'))
-                    ->with('groups', ['class' => 'col-md-8', 'label' => 'form.group_groups'])->end()
-                ->ifEnd()
+                ->with('groups', ['class' => 'col-md-8', 'label' => 'form.group_groups'])->end()
                 ->with('status', ['class' => 'col-md-4', 'label' => 'form.group_status'])->end()
-                ->ifTrue($this->isGranted('ROLE_SUPER_ADMIN'))
-                    ->with('roles', ['class' => 'col-md-12', 'label' => 'form.group_roles'])->end()
-                ->ifEnd()
+                ->with('roles', ['class' => 'col-md-12', 'label' => 'form.group_roles'])->end()
             ->end()
         ;
 
@@ -187,23 +183,21 @@ abstract class UserAdmin extends AbstractAdmin
                 ->with('status')
                     ->add('enabled', null, ['required' => false])
                 ->end()
-                ->ifTrue($this->isGranted('ROLE_SUPER_ADMIN'))
-                    ->with('groups')
-                        ->add('groups', ModelType::class, [
-                            'required' => false,
-                            'expanded' => true,
-                            'multiple' => true,
-                        ])
-                    ->end()
-                    ->with('roles')
-                        ->add('roles', RolesMatrixType::class, [
-                            'label'    => 'form.label_roles',
-                            'expanded' => true,
-                            'multiple' => true,
-                            'required' => false,
-                        ])
-                    ->end()
-                ->ifEnd()
+                ->with('groups')
+                    ->add('groups', GroupType::class, [
+                        'required' => false,
+                        'expanded' => true,
+                        'multiple' => true,
+                    ])
+                ->end()
+                ->with('roles')
+                    ->add('roles', RolesMatrixType::class, [
+                        'label'    => 'form.label_roles',
+                        'expanded' => true,
+                        'multiple' => true,
+                        'required' => false,
+                    ])
+                ->end()
             ->end()
         ;
     }
