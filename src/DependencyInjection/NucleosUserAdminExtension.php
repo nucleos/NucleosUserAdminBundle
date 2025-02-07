@@ -56,7 +56,7 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
             $loader->load('admin.php');
 
             if (\in_array($config['manager_type'], ['orm', 'mongodb'], true)) {
-                $loader->load(sprintf('admin_%s.php', $config['manager_type']));
+                $loader->load(\sprintf('admin_%s.php', $config['manager_type']));
             }
         }
 

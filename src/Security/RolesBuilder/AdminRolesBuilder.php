@@ -72,7 +72,7 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
         $this->excludeAdmins[] = $exclude;
     }
 
-    public function getRoles(string $domain = null): array
+    public function getRoles(?string $domain = null): array
     {
         $adminRoles = [];
         foreach ($this->pool->getAdminServiceIds() as $id) {
@@ -86,7 +86,7 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
             $baseRole = $securityHandler->getBaseRole($admin);
 
             foreach (array_keys($admin->getSecurityInformation()) as $key) {
-                $role              = sprintf($baseRole, $key);
+                $role              = \sprintf($baseRole, $key);
 
                 $adminRoles[$role] = [
                     'role'            => $role,
@@ -108,7 +108,7 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
      */
     private function getAdminLabel(AdminInterface $admin): string
     {
-        return sprintf(
+        return \sprintf(
             '%s > %s',
             $this->getGroupLabel($admin),
             $admin->getTranslator()->trans($admin->getLabel() ?? '', [], $admin->getTranslationDomain())

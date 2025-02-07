@@ -108,7 +108,7 @@ final class ResetAction
 
         if (null === $user) {
             throw new NotFoundHttpException(
-                sprintf('The user with "confirmation token" does not exist for value "%s"', $token)
+                \sprintf('The user with "confirmation token" does not exist for value "%s"', $token)
             );
         }
 
@@ -169,7 +169,7 @@ final class ResetAction
             // We simply do not authenticate users which do not pass the user
             // checker (not enabled, expired, etc.).
             $this->logger->warning(
-                sprintf('Unable to login user %d after password reset', $user->getUserIdentifier()),
+                \sprintf('Unable to login user %d after password reset', $user->getUserIdentifier()),
                 ['exception' => $ex]
             );
         }

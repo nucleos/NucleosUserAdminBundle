@@ -203,7 +203,7 @@ final class LoginActionTest extends TestCase
      *
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
-    public function testUnauthenticated(string $lastUsername, AuthenticationException $errorMessage = null): void
+    public function testUnauthenticated(string $lastUsername, ?AuthenticationException $errorMessage = null): void
     {
         $session           = $this->createMock(Session::class);
         $sessionParameters = [
@@ -329,7 +329,7 @@ final class LoginActionTest extends TestCase
         return static function () use ($matcher, $parameters): void {
             $callNumber = $matcher->numberOfInvocations();
 
-            Assert::assertEquals($parameters[$callNumber-1], \func_get_args(), sprintf('Call %s', $callNumber));
+            Assert::assertEquals($parameters[$callNumber-1], \func_get_args(), \sprintf('Call %s', $callNumber));
         };
     }
 
