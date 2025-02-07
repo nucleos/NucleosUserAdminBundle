@@ -144,7 +144,7 @@ final class EditableRolesBuilder implements EditableRolesBuilderInterface
             }
 
             foreach ($admin->getSecurityInformation() as $role => $permissions) {
-                $role = sprintf($baseRole, $role);
+                $role = \sprintf($baseRole, $role);
                 \call_user_func($func, $role, $isMaster, $permissions);
             }
         }
