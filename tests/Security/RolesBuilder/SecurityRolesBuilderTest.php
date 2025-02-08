@@ -55,7 +55,7 @@ final class SecurityRolesBuilderTest extends TestCase
     }
 
     /**
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
     public function testGetRoles(): void
     {
@@ -102,7 +102,7 @@ final class SecurityRolesBuilderTest extends TestCase
     }
 
     /**
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
     public function testGetRolesNotExpanded(): void
     {
@@ -149,7 +149,7 @@ final class SecurityRolesBuilderTest extends TestCase
     }
 
     /**
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
     public function testGetRolesWithExistingRole(): void
     {

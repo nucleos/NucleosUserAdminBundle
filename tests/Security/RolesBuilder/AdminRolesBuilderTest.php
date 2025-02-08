@@ -132,7 +132,7 @@ final class AdminRolesBuilderTest extends TestCase
     }
 
     /**
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
     public function testGetRoles(): void
     {

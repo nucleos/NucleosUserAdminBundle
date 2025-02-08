@@ -61,7 +61,7 @@ final class LoginAction
     private ?TranslatorInterface $translator;
 
     /**
-     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     * @SuppressWarnings("PHPMD.ExcessiveParameterList")
      */
     public function __construct(
         Environment $twig,
@@ -88,8 +88,8 @@ final class LoginAction
     }
 
     /**
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @SuppressWarnings(PHPMD.NPathComplexity)
+     * @SuppressWarnings("PHPMD.CyclomaticComplexity")
+     * @SuppressWarnings("PHPMD.NPathComplexity")
      */
     public function __invoke(Request $request): Response
     {
@@ -146,7 +146,7 @@ final class LoginAction
     }
 
     /**
-     * @SuppressWarnings(PHPMD.NPathComplexity)
+     * @SuppressWarnings("PHPMD.NPathComplexity")
      */
     private function getLastAuthenticationError(Request $request): ?AuthenticationException
     {

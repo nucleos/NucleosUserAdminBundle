@@ -208,7 +208,7 @@ final class RolesMatrixRuntimeTest extends TestCase
     }
 
     /**
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
     public function testRenderMatrix(): void
     {

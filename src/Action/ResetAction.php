@@ -62,7 +62,7 @@ final class ResetAction
     private string $firewallName;
 
     /**
-     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     * @SuppressWarnings("PHPMD.ExcessiveParameterList")
      */
     public function __construct(
         Environment $twig,
@@ -94,7 +94,7 @@ final class ResetAction
     }
 
     /**
-     * @SuppressWarnings(PHPMD.NPathComplexity)
+     * @SuppressWarnings("PHPMD.NPathComplexity")
      */
     public function __invoke(Request $request, string $token): Response
     {
