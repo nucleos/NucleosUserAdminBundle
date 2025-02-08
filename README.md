@@ -11,7 +11,6 @@ NucleosUserAdminBundle
 
 [![Continuous Integration](https://github.com/nucleos/NucleosUserAdminBundle/actions/workflows/continuous-integration.yml/badge.svg?event=push)](https://github.com/nucleos/NucleosUserAdminBundle/actions?query=workflow%3A"Continuous+Integration"+event%3Apush)
 [![Code Coverage](https://codecov.io/gh/nucleos/NucleosUserAdminBundle/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosUserAdminBundle)
-[![Type Coverage](https://shepherd.dev/github/nucleos/NucleosUserAdminBundle/coverage.svg)](https://shepherd.dev/github/nucleos/NucleosUserAdminBundle)
 
 The NucleosUserAdminBundle is an user admin backend for [SonataAdminBundle](https://github.com/sonata-project/SonataAdminBundle).
 
