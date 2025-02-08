@@ -39,7 +39,7 @@ final class UserAclVoter implements VoterInterface, CacheableVoterInterface
     }
 
     /**
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings("PHPMD.CyclomaticComplexity")
      */
     public function vote(TokenInterface $token, mixed $subject, array $attributes): int
     {

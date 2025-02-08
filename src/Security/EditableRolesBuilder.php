@@ -52,8 +52,8 @@ final class EditableRolesBuilder implements EditableRolesBuilderInterface
     }
 
     /**
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @SuppressWarnings(PHPMD.NPathComplexity)
+     * @SuppressWarnings("PHPMD.CyclomaticComplexity")
+     * @SuppressWarnings("PHPMD.NPathComplexity")
      *
      * @param bool|string|null $domain
      */

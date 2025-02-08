@@ -177,7 +177,7 @@ final class SendEmailActionTest extends TestCase
     }
 
     /**
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
     public function testEmailSent(): void
     {

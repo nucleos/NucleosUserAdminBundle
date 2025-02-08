@@ -88,7 +88,7 @@ final class RequestActionTest extends TestCase
     }
 
     /**
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
     public function testUnauthenticated(): void
     {
