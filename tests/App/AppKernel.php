@@ -31,6 +31,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
+use Symfony\UX\StimulusBundle\StimulusBundle;
 use Twig\Extra\TwigExtraBundle\TwigExtraBundle;
 
 final class AppKernel extends Kernel
@@ -62,6 +63,8 @@ final class AppKernel extends Kernel
         yield new SonataFormBundle();
 
         yield new SonataTwigBundle();
+
+        yield new StimulusBundle();
 
         yield new NucleosUserBundle();
 
