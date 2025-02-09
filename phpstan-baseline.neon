@@ -141,6 +141,11 @@ parameters:
 			path: tests/Admin/Entity/UserAdminTest.php
 
 		-
+			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Tests\\\\App\\\\Entity\\\\User\\:\\:getUserIdentifier\\(\\) should return non\\-empty\\-string but returns string\\.$#"
+			count: 1
+			path: tests/App/Entity/User.php
+
+		-
 			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Tests\\\\Fixtures\\\\PoolMockFactory\\:\\:create\\(\\) has parameter \\$adminServiceIds with generic interface Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface but does not specify its types\\: T$#"
 			count: 1
 			path: tests/Fixtures/PoolMockFactory.php
