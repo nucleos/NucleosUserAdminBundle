@@ -17,6 +17,9 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * @extends AbstractType<mixed>
+ */
 final class RolesMatrixType extends AbstractType
 {
     private ExpandableRolesBuilderInterface $rolesBuilder;

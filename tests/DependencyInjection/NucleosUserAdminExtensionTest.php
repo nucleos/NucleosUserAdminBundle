@@ -162,11 +162,9 @@ final class NucleosUserAdminExtensionTest extends AbstractExtensionTestCase
             ->disableOriginalConstructor()
         ;
 
-        // @phpstan-ignore-next-line
         if (!method_exists(ContainerBuilder::class, 'hasExtension')) {
             $mockBuilder->addMethods(['hasExtension']);
         }
-        // @phpstan-ignore-next-line
         if (!method_exists(ContainerBuilder::class, 'prependExtensionConfig')) {
             $mockBuilder->addMethods(['prependExtensionConfig']);
         }
@@ -181,11 +179,9 @@ final class NucleosUserAdminExtensionTest extends AbstractExtensionTestCase
     {
         $mockBuilder = $this->getMockBuilder(TwigExtension::class);
 
-        // @phpstan-ignore-next-line
         if (!method_exists(TwigExtension::class, 'load')) {
             $mockBuilder = $mockBuilder->addMethods(['load']);
         }
-        // @phpstan-ignore-next-line
         if (!method_exists(TwigExtension::class, 'getAlias')) {
             $mockBuilder = $mockBuilder->addMethods(['getAlias']);
         }

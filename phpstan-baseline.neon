@@ -1,187 +1,260 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Call to an undefined method Symfony\\\\Component\\\\HttpFoundation\\\\Session\\\\SessionInterface\\:\\:getFlashBag\\(\\)\\.$#"
+			message: '#^Call to an undefined method Symfony\\Component\\HttpFoundation\\Session\\SessionInterface\:\:getFlashBag\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: src/Action/ResetAction.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Admin\\\\Model\\\\GroupAdmin\\:\\:__construct\\(\\) has parameter \\$groupManager with generic interface Nucleos\\\\UserBundle\\\\Model\\\\GroupManager but does not specify its types\\: GroupTemplate$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\Admin\\Model\\GroupAdmin\:\:__construct\(\) has parameter \$groupManager with generic interface Nucleos\\UserBundle\\Model\\GroupManager but does not specify its types\: GroupTemplate$#'
+			identifier: missingType.generics
 			count: 1
 			path: src/Admin/Model/GroupAdmin.php
 
 		-
-			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Admin\\\\Model\\\\GroupAdmin\\:\\:\\$groupManager with generic interface Nucleos\\\\UserBundle\\\\Model\\\\GroupManager does not specify its types\\: GroupTemplate$#"
+			message: '#^Property Nucleos\\UserAdminBundle\\Admin\\Model\\GroupAdmin\:\:\$groupManager with generic interface Nucleos\\UserBundle\\Model\\GroupManager does not specify its types\: GroupTemplate$#'
+			identifier: missingType.generics
 			count: 1
 			path: src/Admin/Model/GroupAdmin.php
 
 		-
-			message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeDefinition\\:\\:children\\(\\)\\.$#"
+			message: '#^Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition\:\:children\(\)\.$#'
+			identifier: method.notFound
 			count: 4
 			path: src/DependencyInjection/Configuration.php
 
 		-
-			message: "#^Call to function is_subclass_of\\(\\) with 'Nucleos\\\\\\\\UserAdminBundle\\\\\\\\Controller\\\\\\\\UserCRUDController' and 'Symfony\\\\\\\\Contracts\\\\\\\\Service\\\\\\\\ServiceSubscriberInterface' will always evaluate to true\\.$#"
+			message: '#^Call to function is_subclass_of\(\) with ''Nucleos\\\\UserAdminBundle\\\\Controller\\\\UserCRUDController'' and ''Symfony\\\\Contracts\\\\Service\\\\ServiceSubscriberInterface'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
 			count: 1
 			path: src/DependencyInjection/NucleosUserAdminExtension.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureAdminClass\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\DependencyInjection\\NucleosUserAdminExtension\:\:configureAdminClass\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/DependencyInjection/NucleosUserAdminExtension.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureAvatar\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\DependencyInjection\\NucleosUserAdminExtension\:\:configureAvatar\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/DependencyInjection/NucleosUserAdminExtension.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureController\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\DependencyInjection\\NucleosUserAdminExtension\:\:configureController\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/DependencyInjection/NucleosUserAdminExtension.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:configureTranslationDomain\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\DependencyInjection\\NucleosUserAdminExtension\:\:configureTranslationDomain\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/DependencyInjection/NucleosUserAdminExtension.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:fixImpersonating\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\DependencyInjection\\NucleosUserAdminExtension\:\:fixImpersonating\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/DependencyInjection/NucleosUserAdminExtension.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\DependencyInjection\\\\NucleosUserAdminExtension\\:\\:fixImpersonating\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\DependencyInjection\\NucleosUserAdminExtension\:\:fixImpersonating\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/DependencyInjection/NucleosUserAdminExtension.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between false and array\\<\\(int\\|string\\)\\> will always evaluate to false\\.$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\Form\\Transformer\\RestoreRolesTransformer\:\:reverseTransform\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/Form/Transformer/RestoreRolesTransformer.php
+
+		-
+			message: '#^Class Nucleos\\UserAdminBundle\\Form\\Type\\GroupType extends generic class Symfony\\Component\\Form\\AbstractType but does not specify its types\: TData$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Form/Type/GroupType.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between false and array\<\(int\|string\)\> will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
 			count: 1
 			path: src/Form/Type/RolesMatrixType.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\EditableRolesBuilder\\:\\:__construct\\(\\) has parameter \\$rolesHierarchy with no value type specified in iterable type array\\.$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\Security\\EditableRolesBuilder\:\:__construct\(\) has parameter \$rolesHierarchy with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/Security/EditableRolesBuilder.php
 
 		-
-			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Security\\\\EditableRolesBuilder\\:\\:\\$rolesHierarchy type has no value type specified in iterable type array\\.$#"
+			message: '#^Property Nucleos\\UserAdminBundle\\Security\\EditableRolesBuilder\:\:\$rolesHierarchy type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/Security/EditableRolesBuilder.php
 
 		-
-			message: "#^Call to function is_array\\(\\) with array\\<int, array\\{admin\\: string, roles\\: array\\<int, string\\>, route_absolute\\: bool, route_params\\: array\\<string, string\\>\\}\\|array\\{label\\: string, roles\\: array\\<int, string\\>, route\\: string, route_absolute\\: bool, route_params\\: array\\<string, string\\>\\}\\> will always evaluate to true\\.$#"
+			message: '#^Call to function is_array\(\) with list\<array\{admin\: string, roles\: list\<string\>, route_absolute\: bool, route_params\: array\<string, string\>\}\|array\{label\: string, roles\: list\<string\>, route\: string, route_absolute\: bool, route_params\: array\<string, string\>\}\> will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
 			count: 1
 			path: src/Security/RolesBuilder/AdminRolesBuilder.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\AdminRolesBuilder\\:\\:getRoles\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\Security\\RolesBuilder\\AdminRolesBuilder\:\:getRoles\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/Security/RolesBuilder/AdminRolesBuilder.php
 
 		-
-			message: "#^Parameter \\#1 \\$admin of method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\AdminRolesBuilder\\:\\:getAdminLabel\\(\\) expects Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface\\<Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\>, Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface\\<object\\> given\\.$#"
+			message: '#^Parameter \#1 \$admin of method Nucleos\\UserAdminBundle\\Security\\RolesBuilder\\AdminRolesBuilder\:\:getAdminLabel\(\) expects Sonata\\AdminBundle\\Admin\\AdminInterface\<Nucleos\\UserBundle\\Model\\UserInterface\>, Sonata\\AdminBundle\\Admin\\AdminInterface\<object\> given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Security/RolesBuilder/AdminRolesBuilder.php
 
 		-
-			message: "#^Parameter \\#1 \\$admin of method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\AdminRolesBuilder\\:\\:getGroupLabel\\(\\) expects Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface\\<Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\>, Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface\\<object\\> given\\.$#"
+			message: '#^Parameter \#1 \$admin of method Nucleos\\UserAdminBundle\\Security\\RolesBuilder\\AdminRolesBuilder\:\:getGroupLabel\(\) expects Sonata\\AdminBundle\\Admin\\AdminInterface\<Nucleos\\UserBundle\\Model\\UserInterface\>, Sonata\\AdminBundle\\Admin\\AdminInterface\<object\> given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Security/RolesBuilder/AdminRolesBuilder.php
 
 		-
-			message: "#^Parameter \\#1 \\$admin of method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\AdminRolesBuilder\\:\\:isMaster\\(\\) expects Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface\\<Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\>, Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface\\<object\\> given\\.$#"
+			message: '#^Parameter \#1 \$admin of method Nucleos\\UserAdminBundle\\Security\\RolesBuilder\\AdminRolesBuilder\:\:isMaster\(\) expects Sonata\\AdminBundle\\Admin\\AdminInterface\<Nucleos\\UserBundle\\Model\\UserInterface\>, Sonata\\AdminBundle\\Admin\\AdminInterface\<object\> given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Security/RolesBuilder/AdminRolesBuilder.php
 
 		-
-			message: "#^Parameter \\#1 \\$items of method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\AdminRolesBuilder\\:\\:hasGroupAdmin\\(\\) expects array\\<string, mixed\\>, array\\<int, array\\<string, array\\<int\\|string, string\\>\\|bool\\|string\\>\\> given\\.$#"
+			message: '#^Parameter \#1 \$items of method Nucleos\\UserAdminBundle\\Security\\RolesBuilder\\AdminRolesBuilder\:\:hasGroupAdmin\(\) expects array\<string, mixed\>, list\<array\<string, array\<int\|string, string\>\|bool\|string\>\> given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Security/RolesBuilder/AdminRolesBuilder.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\ExpandableRolesBuilderInterface\\:\\:getExpandedRoles\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\Security\\RolesBuilder\\ExpandableRolesBuilderInterface\:\:getExpandedRoles\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/Security/RolesBuilder/ExpandableRolesBuilderInterface.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\RolesBuilderInterface\\:\\:getRoles\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\Security\\RolesBuilder\\RolesBuilderInterface\:\:getRoles\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/Security/RolesBuilder/RolesBuilderInterface.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\SecurityRolesBuilder\\:\\:getSecurityRoles\\(\\) has parameter \\$hierarchy with no value type specified in iterable type array\\.$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\Security\\RolesBuilder\\SecurityRolesBuilder\:\:getSecurityRoles\(\) has parameter \$hierarchy with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/Security/RolesBuilder/SecurityRolesBuilder.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Security\\\\RolesBuilder\\\\SecurityRolesBuilder\\:\\:recursiveArraySearch\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\Security\\RolesBuilder\\SecurityRolesBuilder\:\:recursiveArraySearch\(\) has parameter \$roles with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/Security/RolesBuilder/SecurityRolesBuilder.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Tests\\\\Action\\\\LoginActionTest\\:\\:provideUnauthenticatedCases\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\Tests\\Action\\LoginActionTest\:\:provideUnauthenticatedCases\(\) return type has no value type specified in iterable type iterable\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: tests/Action/LoginActionTest.php
 
 		-
-			message: "#^Call to function method_exists\\(\\) with 'Symfony\\\\\\\\Component\\\\\\\\Security\\\\\\\\Core\\\\\\\\User\\\\\\\\UserProviderInterface' and 'loadUserByIdentifier' will always evaluate to true\\.$#"
+			message: '#^Call to function method_exists\(\) with ''Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserProviderInterface'' and ''loadUserByIdentifier'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
 			count: 1
 			path: tests/Action/SendEmailActionTest.php
 
 		-
-			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotEmpty\\(\\) with Nucleos\\\\UserAdminBundle\\\\Admin\\\\Entity\\\\GroupAdmin will always evaluate to true\\.$#"
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertNotEmpty\(\) with Nucleos\\UserAdminBundle\\Admin\\Entity\\GroupAdmin will always evaluate to true\.$#'
+			identifier: staticMethod.alreadyNarrowedType
 			count: 1
 			path: tests/Admin/Entity/GroupAdminTest.php
 
 		-
-			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotEmpty\\(\\) with Nucleos\\\\UserAdminBundle\\\\Admin\\\\Entity\\\\UserAdmin will always evaluate to true\\.$#"
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertNotEmpty\(\) with Nucleos\\UserAdminBundle\\Admin\\Entity\\UserAdmin will always evaluate to true\.$#'
+			identifier: staticMethod.alreadyNarrowedType
 			count: 1
 			path: tests/Admin/Entity/UserAdminTest.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Tests\\\\App\\\\Entity\\\\User\\:\\:getUserIdentifier\\(\\) should return non\\-empty\\-string but returns string\\.$#"
+			message: '#^Method Nucleos\\UserAdminBundle\\Tests\\App\\Entity\\User\:\:getUserIdentifier\(\) should return non\-empty\-string but returns string\.$#'
+			identifier: return.type
 			count: 1
 			path: tests/App/Entity/User.php
 
 		-
-			message: "#^Method Nucleos\\\\UserAdminBundle\\\\Tests\\\\Fixtures\\\\PoolMockFactory\\:\\:create\\(\\) has parameter \\$adminServiceIds with generic interface Sonata\\\\AdminBundle\\\\Admin\\\\AdminInterface but does not specify its types\\: T$#"
+			message: '#^Call to function method_exists\(\) with ''Symfony\\\\Bundle\\\\TwigBundle\\\\DependencyInjection\\\\TwigExtension'' and ''getAlias'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: tests/DependencyInjection/NucleosUserAdminExtensionTest.php
+
+		-
+			message: '#^Call to function method_exists\(\) with ''Symfony\\\\Bundle\\\\TwigBundle\\\\DependencyInjection\\\\TwigExtension'' and ''load'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: tests/DependencyInjection/NucleosUserAdminExtensionTest.php
+
+		-
+			message: '#^Call to function method_exists\(\) with ''Symfony\\\\Component\\\\DependencyInjection\\\\ContainerBuilder'' and ''hasExtension'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: tests/DependencyInjection/NucleosUserAdminExtensionTest.php
+
+		-
+			message: '#^Call to function method_exists\(\) with ''Symfony\\\\Component\\\\DependencyInjection\\\\ContainerBuilder'' and ''prependExtensionCon…'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: tests/DependencyInjection/NucleosUserAdminExtensionTest.php
+
+		-
+			message: '#^Method Nucleos\\UserAdminBundle\\Tests\\Fixtures\\PoolMockFactory\:\:create\(\) has parameter \$adminServiceIds with generic interface Sonata\\AdminBundle\\Admin\\AdminInterface but does not specify its types\: T$#'
+			identifier: missingType.generics
 			count: 1
 			path: tests/Fixtures/PoolMockFactory.php
 
 		-
-			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertTrue\\(\\) with true and non\\-falsy\\-string will always evaluate to true\\.$#"
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertTrue\(\) with true and non\-falsy\-string will always evaluate to true\.$#'
+			identifier: staticMethod.alreadyNarrowedType
 			count: 1
 			path: tests/Resources/XliffTest.php
 
 		-
-			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\{confirm_exit\\: bool, default_admin_route\\: string, default_group\\: string, default_icon\\: string, default_translation_domain\\: string, dropdown_number_groups_per_colums\\: int, form_type\\: 'horizontal'\\|'standard', html5_validate\\: bool, \\.\\.\\.\\}, array\\{\\} given\\.$#"
+			message: '#^Parameter \#3 \$options of class Sonata\\AdminBundle\\SonataConfiguration constructor expects array\{confirm_exit\: bool, default_admin_route\: string, default_group\: string, default_icon\: string, default_translation_domain\: string, dropdown_number_groups_per_colums\: int, form_type\: ''horizontal''\|''standard'', html5_validate\: bool, \.\.\.\}, array\{\} given\.$#'
+			identifier: argument.type
 			count: 3
 			path: tests/Security/Authorization/Voter/EditableRolesBuilderTest.php
 
 		-
-			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\{confirm_exit\\: bool, default_admin_route\\: string, default_group\\: string, default_icon\\: string, default_translation_domain\\: string, dropdown_number_groups_per_colums\\: int, form_type\\: 'horizontal'\\|'standard', html5_validate\\: bool, \\.\\.\\.\\}, array\\{\\} given\\.$#"
+			message: '#^Parameter \#3 \$options of class Sonata\\AdminBundle\\SonataConfiguration constructor expects array\{confirm_exit\: bool, default_admin_route\: string, default_group\: string, default_icon\: string, default_translation_domain\: string, dropdown_number_groups_per_colums\: int, form_type\: ''horizontal''\|''standard'', html5_validate\: bool, \.\.\.\}, array\{\} given\.$#'
+			identifier: argument.type
 			count: 1
 			path: tests/Security/RolesBuilder/AdminRolesBuilderTest.php
 
 		-
-			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Tests\\\\Security\\\\RolesBuilder\\\\AdminRolesBuilderTest\\:\\:\\$token is never read, only written\\.$#"
+			message: '#^Property Nucleos\\UserAdminBundle\\Tests\\Security\\RolesBuilder\\AdminRolesBuilderTest\:\:\$token is never read, only written\.$#'
+			identifier: property.onlyWritten
 			count: 1
 			path: tests/Security/RolesBuilder/AdminRolesBuilderTest.php
 
 		-
-			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Tests\\\\Security\\\\RolesBuilder\\\\AdminRolesBuilderTest\\:\\:\\$tokenStorage is never read, only written\\.$#"
+			message: '#^Property Nucleos\\UserAdminBundle\\Tests\\Security\\RolesBuilder\\AdminRolesBuilderTest\:\:\$tokenStorage is never read, only written\.$#'
+			identifier: property.onlyWritten
 			count: 1
 			path: tests/Security/RolesBuilder/AdminRolesBuilderTest.php
 
 		-
-			message: "#^Parameter \\#3 \\$options of class Sonata\\\\AdminBundle\\\\SonataConfiguration constructor expects array\\{confirm_exit\\: bool, default_admin_route\\: string, default_group\\: string, default_icon\\: string, default_translation_domain\\: string, dropdown_number_groups_per_colums\\: int, form_type\\: 'horizontal'\\|'standard', html5_validate\\: bool, \\.\\.\\.\\}, array\\{role_super_admin\\: 'ROLE_SUPER_ADMIN', role_admin\\: 'ROLE_SONATA_ADMIN'\\} given\\.$#"
+			message: '#^Parameter \#3 \$options of class Sonata\\AdminBundle\\SonataConfiguration constructor expects array\{confirm_exit\: bool, default_admin_route\: string, default_group\: string, default_icon\: string, default_translation_domain\: string, dropdown_number_groups_per_colums\: int, form_type\: ''horizontal''\|''standard'', html5_validate\: bool, \.\.\.\}, array\{role_super_admin\: ''ROLE_SUPER_ADMIN'', role_admin\: ''ROLE_SONATA_ADMIN''\} given\.$#'
+			identifier: argument.type
 			count: 1
 			path: tests/Security/RolesBuilder/SecurityRolesBuilderTest.php
 
 		-
-			message: "#^Property Nucleos\\\\UserAdminBundle\\\\Tests\\\\Security\\\\RolesBuilder\\\\SecurityRolesBuilderTest\\:\\:\\$admin is never read, only written\\.$#"
+			message: '#^Property Nucleos\\UserAdminBundle\\Tests\\Security\\RolesBuilder\\SecurityRolesBuilderTest\:\:\$admin is never read, only written\.$#'
+			identifier: property.onlyWritten
 			count: 1
 			path: tests/Security/RolesBuilder/SecurityRolesBuilderTest.php
 
