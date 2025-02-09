@@ -23,6 +23,9 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * @extends AbstractType<mixed>
+ */
 final class SecurityRolesType extends AbstractType
 {
     protected EditableRolesBuilderInterface $rolesBuilder;

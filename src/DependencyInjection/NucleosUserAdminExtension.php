@@ -14,7 +14,6 @@ namespace Nucleos\UserAdminBundle\DependencyInjection;
 use Nucleos\UserAdminBundle\Controller\UserCRUDController;
 use Nucleos\UserAdminBundle\Twig\AvatarRuntime;
 use Nucleos\UserAdminBundle\Twig\ImpersonateRuntime;
-use RuntimeException;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -91,9 +90,6 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
         $container->setParameter('nucleos_user_admin.default_avatar', $config['avatar']['default_avatar']);
     }
 
-    /**
-     * @throws RuntimeException
-     */
     private function fixImpersonating(array $config): array
     {
         if (!isset($config['impersonating']['parameters'])) {
