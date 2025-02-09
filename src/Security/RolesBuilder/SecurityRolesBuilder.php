@@ -94,7 +94,6 @@ final class SecurityRolesBuilder implements ExpandableRolesBuilderInterface
      */
     private function getHierarchy(): array
     {
-        // @phpstan-ignore-next-line
         return array_merge(
             [
                 $this->configuration->getOption('role_super_admin') => [],
