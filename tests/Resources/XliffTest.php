@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserAdminBundle\Tests\Resources;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\Exception\InvalidResourceException;
 use Symfony\Component\Translation\Loader\XliffFileLoader;
@@ -29,9 +30,7 @@ final class XliffTest extends TestCase
         $this->loader = new XliffFileLoader();
     }
 
-    /**
-     * @dataProvider provideXliffCases
-     */
+    #[DataProvider('provideXliffCases')]
     public function testXliff(string $path): void
     {
         $this->validatePath($path);

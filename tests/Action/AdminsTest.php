@@ -14,15 +14,14 @@ namespace Nucleos\UserAdminBundle\Tests\Action;
 use Generator;
 use Nucleos\UserAdminBundle\Tests\App\Entity\Group;
 use Nucleos\UserAdminBundle\Tests\App\Entity\User;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @group integration
  */
 final class AdminsTest extends IntegrationTestCase
 {
-    /**
-     * @dataProvider provideCrudUrlsCases
-     */
+    #[DataProvider('provideCrudUrlsCases')]
     public function testCrudUrls(string $url): void
     {
         $client = self::createClient();

@@ -158,18 +158,7 @@ final class NucleosUserAdminExtensionTest extends AbstractExtensionTestCase
      */
     private function createContainerBuilder(): ContainerBuilder
     {
-        $mockBuilder = $this->getMockBuilder(ContainerBuilder::class)
-            ->disableOriginalConstructor()
-        ;
-
-        if (!method_exists(ContainerBuilder::class, 'hasExtension')) {
-            $mockBuilder->addMethods(['hasExtension']);
-        }
-        if (!method_exists(ContainerBuilder::class, 'prependExtensionConfig')) {
-            $mockBuilder->addMethods(['prependExtensionConfig']);
-        }
-
-        return $mockBuilder->getMock();
+        return $this->createMock(ContainerBuilder::class);
     }
 
     /**
@@ -177,15 +166,6 @@ final class NucleosUserAdminExtensionTest extends AbstractExtensionTestCase
      */
     private function createTwigExtension(): TwigExtension
     {
-        $mockBuilder = $this->getMockBuilder(TwigExtension::class);
-
-        if (!method_exists(TwigExtension::class, 'load')) {
-            $mockBuilder = $mockBuilder->addMethods(['load']);
-        }
-        if (!method_exists(TwigExtension::class, 'getAlias')) {
-            $mockBuilder = $mockBuilder->addMethods(['getAlias']);
-        }
-
-        return $mockBuilder->getMock();
+        return $this->createMock(TwigExtension::class);
     }
 }

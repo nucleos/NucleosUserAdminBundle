@@ -68,16 +68,7 @@ final class SendEmailActionTest extends TestCase
         $this->userManager      = $this->createMock(UserManager::class);
         $this->mailer           = $this->createMock(ResettingMailer::class);
         $this->tokenGenerator   = $this->createMock(TokenGenerator::class);
-
-        if (!method_exists(UserProviderInterface::class, 'loadUserByIdentifier')) {
-            $this->userProvider     = $this->getMockBuilder(UserProviderInterface::class)
-                ->addMethods(['loadUserByIdentifier'])
-                ->getMockForAbstractClass()
-            ;
-        } else {
-            $this->userProvider     = $this->createMock(UserProviderInterface::class);
-        }
-
+        $this->userProvider     = $this->createMock(UserProviderInterface::class);
         $this->resetTtl         = 60;
         $this->fromEmail        = 'noreply@localhost';
         $this->container        = $this->createMock(ContainerBuilder::class);
