@@ -163,12 +163,6 @@ parameters:
 			path: tests/Action/LoginActionTest.php
 
 		-
-			message: '#^Call to function method_exists\(\) with ''Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserProviderInterface'' and ''loadUserByIdentifier'' will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: tests/Action/SendEmailActionTest.php
-
-		-
 			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertNotEmpty\(\) with Nucleos\\UserAdminBundle\\Admin\\Entity\\GroupAdmin will always evaluate to true\.$#'
 			identifier: staticMethod.alreadyNarrowedType
 			count: 1
@@ -185,30 +179,6 @@ parameters:
 			identifier: return.type
 			count: 1
 			path: tests/App/Entity/User.php
-
-		-
-			message: '#^Call to function method_exists\(\) with ''Symfony\\\\Bundle\\\\TwigBundle\\\\DependencyInjection\\\\TwigExtension'' and ''getAlias'' will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: tests/DependencyInjection/NucleosUserAdminExtensionTest.php
-
-		-
-			message: '#^Call to function method_exists\(\) with ''Symfony\\\\Bundle\\\\TwigBundle\\\\DependencyInjection\\\\TwigExtension'' and ''load'' will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: tests/DependencyInjection/NucleosUserAdminExtensionTest.php
-
-		-
-			message: '#^Call to function method_exists\(\) with ''Symfony\\\\Component\\\\DependencyInjection\\\\ContainerBuilder'' and ''hasExtension'' will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: tests/DependencyInjection/NucleosUserAdminExtensionTest.php
-
-		-
-			message: '#^Call to function method_exists\(\) with ''Symfony\\\\Component\\\\DependencyInjection\\\\ContainerBuilder'' and ''prependExtensionCon…'' will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: tests/DependencyInjection/NucleosUserAdminExtensionTest.php
 
 		-
 			message: '#^Method Nucleos\\UserAdminBundle\\Tests\\Fixtures\\PoolMockFactory\:\:create\(\) has parameter \$adminServiceIds with generic interface Sonata\\AdminBundle\\Admin\\AdminInterface but does not specify its types\: T$#'

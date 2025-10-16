@@ -16,6 +16,7 @@ use Nucleos\UserAdminBundle\Action\LoginAction;
 use Nucleos\UserAdminBundle\Tests\Fixtures\PoolMockFactory;
 use Nucleos\UserBundle\Model\UserInterface;
 use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Rule\InvokedCount;
 use PHPUnit\Framework\TestCase;
@@ -150,9 +151,7 @@ final class LoginActionTest extends TestCase
         ], $session->getFlashBag()->all());
     }
 
-    /**
-     * @dataProvider provideUserGrantedAdminCases
-     */
+    #[DataProvider('provideUserGrantedAdminCases')]
     public function testUserGrantedAdmin(string $referer, string $expectedRedirectUrl): void
     {
         $session = $this->createMock(Session::class);
@@ -197,10 +196,9 @@ final class LoginActionTest extends TestCase
     }
 
     /**
-     * @dataProvider provideUnauthenticatedCases
-     *
      * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
+    #[DataProvider('provideUnauthenticatedCases')]
     public function testUnauthenticated(string $lastUsername, ?AuthenticationException $errorMessage = null): void
     {
         $session           = $this->createMock(Session::class);
