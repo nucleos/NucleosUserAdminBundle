@@ -38,7 +38,7 @@
     "require": {
         "php": "^8.3",
         "ext-json": "*",
-        "nucleos/user-bundle": "^3.4",
+        "nucleos/user-bundle": "^3.7 || ^4.0",
         "psr/container": "^1.0 || ^2.0",
         "psr/log": "^1.0 || ^2.0 || ^3.0",
         "sonata-project/admin-bundle": "^4.8.1",
@@ -65,7 +65,7 @@
         "twig/twig": "^2.14 || ^3.1"
     },
     "require-dev": {
-        "doctrine/doctrine-bundle": "^2.10",
+        "doctrine/doctrine-bundle": "^2.18 || ^3.0",
         "doctrine/orm": "^2.18 || ^3.0",
         "ergebnis/composer-normalize": "^2.0.1",
         "knplabs/knp-menu": "^3.2",
@@ -79,7 +79,7 @@
         "symfony/yaml": "^6.4 || ^7.0"
     },
     "conflict": {
-        "doctrine/doctrine-bundle": "<2.10 || >=3",
+        "doctrine/doctrine-bundle": "<2.18",
         "doctrine/orm": "<2.18 || >=4",
         "symfony/doctrine-bridge": "<6.4 || >=8"
     },

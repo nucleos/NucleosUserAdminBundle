@@ -35,6 +35,9 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
         }
     }
 
+    /**
+     * @SuppressWarnings("PHPMD.NPathComplexity")
+     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $processor     = new Processor();
@@ -42,7 +45,12 @@ final class NucleosUserAdminExtension extends Extension implements PrependExtens
         $config        = $processor->processConfiguration($configuration, $configs);
         $config        = $this->fixImpersonating($config);
 
-        $config['manager_type'] = $container->getParameter('nucleos_user.storage');
+        // TODO: Remove when dropping support of NucleosUserBundle 3
+        if ($container->hasParameter('nucleos_user.storage')) {
+            $config['manager_type'] = $container->getParameter('nucleos_user.storage');
+        } else {
+            $config['manager_type'] = 'orm';
+        }
 
         /** @var array<string, mixed> $bundles */
         $bundles = $container->getParameter('kernel.bundles');
