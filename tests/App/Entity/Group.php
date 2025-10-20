@@ -13,11 +13,19 @@ namespace Nucleos\UserAdminBundle\Tests\App\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Nucleos\UserBundle\Model\Group as BaseGroup;
+use Nucleos\UserBundle\Entity\BaseGroup;
+use Nucleos\UserBundle\Entity\BaseUser;
+use Nucleos\UserBundle\Model\Group as ModelGroup;
+
+if (class_exists(BaseUser::class)) {
+    abstract class InternalTestGroup extends BaseGroup {}
+} else {
+    abstract class InternalTestGroup extends ModelGroup {}
+}
 
 #[ORM\Entity]
 #[ORM\Table(name: 'user__group')]
-class Group extends BaseGroup
+class Group extends InternalTestGroup
 {
     #[ORM\Id]
     #[ORM\Column(type: Types::INTEGER)]
