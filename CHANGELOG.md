@@ -2,27 +2,40 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.10.0 - TBD
+## 3.10.0 - 2025-10-20
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.10.0](https://github.com/nucleos/NucleosUserAdminBundle/milestone/47)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.10.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **14**
+- Total contributors: **2**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [630: Add support for nucleos/user-bundle 4](https://github.com/nucleos/NucleosUserAdminBundle/pull/630) thanks to @core23
+ - [628: Update to phpunit v12](https://github.com/nucleos/NucleosUserAdminBundle/pull/628) thanks to @core23
+ - [626: Drop support for PHP 8.2](https://github.com/nucleos/NucleosUserAdminBundle/pull/626) thanks to @core23
+ - [625: Update dependency Pygments to v2.19.2](https://github.com/nucleos/NucleosUserAdminBundle/pull/625) thanks to @renovate[bot]
+ - [624: Update dependency sphinx to v8.2.3](https://github.com/nucleos/NucleosUserAdminBundle/pull/624) thanks to @renovate[bot]
+ - [623: Update dependency sphinx to v8.2.1](https://github.com/nucleos/NucleosUserAdminBundle/pull/623) thanks to @renovate[bot]
+ - [613: Update dependency sphinx&#95;rtd&#95;theme to v3](https://github.com/nucleos/NucleosUserAdminBundle/pull/613) thanks to @renovate[bot]
+ - [612: Update dependency matthiasnoback/symfony-dependency-injection-test to v6](https://github.com/nucleos/NucleosUserAdminBundle/pull/612) thanks to @renovate[bot]
+ - [611: Update dependency sphinx to v8](https://github.com/nucleos/NucleosUserAdminBundle/pull/611) thanks to @renovate[bot]
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [622: Fix CS](https://github.com/nucleos/NucleosUserAdminBundle/pull/622) thanks to @core23
+ - [621: Remove ci pipeline overrides ](https://github.com/nucleos/NucleosUserAdminBundle/pull/621) thanks to @core23
+ - [620: Sync tool config ](https://github.com/nucleos/NucleosUserAdminBundle/pull/620) thanks to @core23
+ - [619: Remove infection testing ](https://github.com/nucleos/NucleosUserAdminBundle/pull/619) thanks to @core23
+ - [614: Update PHPStan packages to v2 (major)](https://github.com/nucleos/NucleosUserAdminBundle/pull/614) thanks to @renovate[bot]
 
 ## 3.9.0 - 2024-07-05
 
