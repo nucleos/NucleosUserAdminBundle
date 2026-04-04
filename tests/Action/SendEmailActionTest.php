@@ -79,13 +79,13 @@ final class SendEmailActionTest extends TestCase
         $request = new Request([], ['username' => 'bar']);
 
         $this->userProvider
-            ->method('loadUserByIdentifier')
+            ->expects(self::once())->method('loadUserByIdentifier')
             ->with('bar')
             ->willThrowException(new UserNotFoundException())
         ;
 
         $this->urlGenerator
-            ->method('generate')
+            ->expects(self::once())->method('generate')
             ->with('nucleos_user_admin_resetting_check_email', ['username' => 'bar'])
             ->willReturn('/check-email')
         ;
@@ -108,7 +108,7 @@ final class SendEmailActionTest extends TestCase
         ;
 
         $this->userProvider
-            ->method('loadUserByIdentifier')
+            ->expects(self::once())->method('loadUserByIdentifier')
             ->with('bar')
             ->willReturn($user)
         ;
@@ -118,7 +118,7 @@ final class SendEmailActionTest extends TestCase
         ;
 
         $this->urlGenerator
-            ->method('generate')
+            ->expects(self::once())->method('generate')
             ->with('nucleos_user_admin_resetting_check_email')
             ->willReturn('/foo')
         ;
@@ -145,7 +145,7 @@ final class SendEmailActionTest extends TestCase
         ;
 
         $this->userProvider
-            ->method('loadUserByIdentifier')
+            ->expects(self::once())->method('loadUserByIdentifier')
             ->with('bar')
             ->willReturn($user)
         ;
@@ -155,7 +155,7 @@ final class SendEmailActionTest extends TestCase
         ;
 
         $this->urlGenerator
-            ->method('generate')
+            ->expects(self::once())->method('generate')
             ->with('nucleos_user_admin_resetting_request')
             ->willReturn('/foo')
         ;
@@ -207,22 +207,22 @@ final class SendEmailActionTest extends TestCase
         ;
 
         $this->userProvider
-            ->method('loadUserByIdentifier')
+            ->expects(self::once())->method('loadUserByIdentifier')
             ->with('bar')
             ->willReturn($user)
         ;
 
-        $this->tokenGenerator->expects(self::once())
-            ->method('generateToken')
+        $this->tokenGenerator
+            ->expects(self::once())->method('generateToken')
             ->willReturn('user-token')
         ;
 
-        $this->mailer->expects(self::once())
-            ->method('sendResettingEmailMessage')
+        $this->mailer
+            ->expects(self::once())->method('sendResettingEmailMessage')
         ;
 
         $this->urlGenerator
-            ->method('generate')
+            ->expects(self::once())->method('generate')
             ->with('nucleos_user_admin_resetting_check_email', ['username' => 'bar'])
             ->willReturn('/check-email')
         ;

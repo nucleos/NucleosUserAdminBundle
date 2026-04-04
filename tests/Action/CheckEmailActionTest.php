@@ -56,8 +56,8 @@ final class CheckEmailActionTest extends TestCase
     {
         $request = new Request();
 
-        $this->urlGenerator->expects(self::once())
-            ->method('generate')
+        $this->urlGenerator
+            ->expects(self::once())->method('generate')
             ->with('nucleos_user_admin_resetting_request')
             ->willReturn('/foo')
         ;
@@ -79,14 +79,14 @@ final class CheckEmailActionTest extends TestCase
             'tokenLifetime' => 1,
         ];
 
-        $this->templating->expects(self::once())
-            ->method('render')
+        $this->templating
+            ->expects(self::once())->method('render')
             ->with('@NucleosUserAdmin/Admin/Security/Resetting/checkEmail.html.twig', $parameters)
             ->willReturn('template content')
         ;
 
         $this->templateRegistry
-            ->method('getTemplate')
+            ->expects(self::once())->method('getTemplate')
             ->with('layout')
             ->willReturn('base.html.twig')
         ;

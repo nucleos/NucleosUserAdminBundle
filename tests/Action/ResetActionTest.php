@@ -116,7 +116,7 @@ final class ResetActionTest extends TestCase
         ;
 
         $this->router
-            ->method('generate')
+            ->expects(self::once())->method('generate')
             ->with('sonata_admin_dashboard')
             ->willReturn('/foo')
         ;
@@ -136,7 +136,7 @@ final class ResetActionTest extends TestCase
         $request = new Request();
 
         $this->userManager
-            ->method('findUserByConfirmationToken')
+            ->expects(self::once())->method('findUserByConfirmationToken')
             ->with('token')
             ->willReturn(null)
         ;
@@ -156,13 +156,13 @@ final class ResetActionTest extends TestCase
         ;
 
         $this->userManager
-            ->method('findUserByConfirmationToken')
+            ->expects(self::once())->method('findUserByConfirmationToken')
             ->with('token')
             ->willReturn($user)
         ;
 
         $this->router
-            ->method('generate')
+            ->expects(self::once())->method('generate')
             ->with('nucleos_user_admin_resetting_request')
             ->willReturn('/foo')
         ;
@@ -198,13 +198,13 @@ final class ResetActionTest extends TestCase
             ->method('isSubmitted')
             ->willReturn(false)
         ;
-        $form->expects(self::once())
-            ->method('createView')
+        $form
+            ->expects(self::once())->method('createView')
             ->willReturn($view)
         ;
 
         $this->userManager
-            ->method('findUserByConfirmationToken')
+            ->expects(self::once())->method('findUserByConfirmationToken')
             ->with('user-token')
             ->willReturn($user)
         ;
@@ -215,13 +215,13 @@ final class ResetActionTest extends TestCase
         ;
 
         $this->router
-            ->method('generate')
+            ->expects(self::once())->method('generate')
             ->with('nucleos_user_admin_security_check')
             ->willReturn('/check')
         ;
 
         $this->templating
-            ->method('render')
+            ->expects(self::once())->method('render')
             ->with('@NucleosUserAdmin/Admin/Security/Resetting/reset.html.twig', [
                 'token'         => 'user-token',
                 'form'          => $view,
@@ -232,7 +232,7 @@ final class ResetActionTest extends TestCase
         ;
 
         $this->templateRegistry
-            ->method('getTemplate')
+            ->expects(self::once())->method('getTemplate')
             ->with('layout')
             ->willReturn('base.html.twig')
         ;
@@ -255,19 +255,19 @@ final class ResetActionTest extends TestCase
             ->method('isPasswordRequestNonExpired')
             ->willReturn(true)
         ;
-        $user->expects(self::once())
-            ->method('setLastLogin')
+        $user
+            ->expects(self::once())->method('setLastLogin')
         ;
-        $user->expects(self::once())
-            ->method('setConfirmationToken')
+        $user
+            ->expects(self::once())->method('setConfirmationToken')
             ->with(null)
         ;
-        $user->expects(self::once())
-            ->method('setPasswordRequestedAt')
+        $user
+            ->expects(self::once())->method('setPasswordRequestedAt')
             ->with(null)
         ;
-        $user->expects(self::once())
-            ->method('setEnabled')
+        $user
+            ->expects(self::once())->method('setEnabled')
             ->with(true)
         ;
 
@@ -291,8 +291,8 @@ final class ResetActionTest extends TestCase
         ;
 
         $bag = $this->createMock(FlashBag::class);
-        $bag->expects(self::once())
-            ->method('add')
+        $bag
+            ->expects(self::once())->method('add')
             ->with('success', 'resetting.flash.success')
         ;
 
@@ -302,22 +302,22 @@ final class ResetActionTest extends TestCase
         ;
 
         $this->userManager
-            ->method('findUserByConfirmationToken')
+            ->expects(self::once())->method('findUserByConfirmationToken')
             ->with('token')
             ->willReturn($user)
         ;
-        $this->userManager->expects(self::once())
-            ->method('updateUser')
+        $this->userManager
+            ->expects(self::once())->method('updateUser')
             ->with($user)
         ;
 
-        $this->loginManager->expects(self::once())
-            ->method('logInUser')
+        $this->loginManager
+            ->expects(self::once())->method('logInUser')
             ->with('default', $user, self::isInstanceOf(Response::class))
         ;
 
-        $this->formFactory->expects(self::once())
-            ->method('create')
+        $this->formFactory
+            ->expects(self::once())->method('create')
             ->willReturn($form)
         ;
 
