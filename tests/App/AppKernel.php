@@ -88,7 +88,7 @@ final class AppKernel extends Kernel
 
     protected function configureRoutes(RoutingConfigurator $routes): void
     {
-        $routes->import('@SonataAdminBundle/Resources/config/routing/sonata_admin.xml')
+        $routes->import('@SonataAdminBundle/Resources/config/routing/sonata_admin.php')
             ->prefix('/admin')
         ;
         $routes->import('.', 'sonata_admin')

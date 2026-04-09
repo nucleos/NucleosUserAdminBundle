@@ -29,8 +29,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $containerConfigurator->extension('twig', ['strict_variables' => true]);
 
-    $containerConfigurator->extension('twig', ['exception_controller' => null]);
-
     $containerConfigurator->extension('security', ['password_hashers' => [
         UserInterface::class => 'plaintext',
     ]]);
