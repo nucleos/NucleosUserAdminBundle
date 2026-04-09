@@ -14,6 +14,7 @@ namespace Nucleos\UserAdminBundle\Security\Authorization\Voter;
 use Nucleos\UserBundle\Model\UserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\CacheableVoterInterface;
+use Symfony\Component\Security\Core\Authorization\Voter\Vote;
 use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 
 final class UserAclVoter implements VoterInterface, CacheableVoterInterface
@@ -41,7 +42,7 @@ final class UserAclVoter implements VoterInterface, CacheableVoterInterface
     /**
      * @SuppressWarnings("PHPMD.CyclomaticComplexity")
      */
-    public function vote(TokenInterface $token, mixed $subject, array $attributes): int
+    public function vote(TokenInterface $token, mixed $subject, array $attributes, ?Vote $vote = null): int
     {
         if (!$this->isValidSubject($subject)) {
             return self::ACCESS_ABSTAIN;
