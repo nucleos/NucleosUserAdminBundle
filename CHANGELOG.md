@@ -2,27 +2,24 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.11.0 - TBD
+## 3.11.0 - 2026-05-01
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.11.0](https://github.com/nucleos/NucleosUserAdminBundle/milestone/49)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.11.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### dependency
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [639: Add support for symfony 8](https://github.com/nucleos/NucleosUserAdminBundle/pull/639) thanks to @core23
 
 ## 3.10.0 - 2025-10-20
 
