@@ -69,13 +69,13 @@ final class RequestActionTest extends TestCase
     {
         $request = new Request();
 
-        $this->authorizationChecker->expects(self::once())
-            ->method('isGranted')
+        $this->authorizationChecker
+            ->expects(self::once())->method('isGranted')
             ->willReturn(true)
         ;
 
         $this->router
-            ->method('generate')
+            ->expects(self::once())->method('generate')
             ->with('sonata_admin_dashboard')
             ->willReturn('/foo')
         ;
@@ -94,13 +94,13 @@ final class RequestActionTest extends TestCase
     {
         $request = new Request();
 
-        $this->authorizationChecker->expects(self::once())
-            ->method('isGranted')
+        $this->authorizationChecker
+            ->expects(self::once())->method('isGranted')
             ->willReturn(false)
         ;
 
         $this->templateRegistry
-            ->method('getTemplate')
+            ->expects(self::once())->method('getTemplate')
             ->with('layout')
             ->willReturn('base.html.twig')
         ;
@@ -116,8 +116,8 @@ final class RequestActionTest extends TestCase
             ->method('isSubmitted')
             ->willReturn(false)
         ;
-        $form->expects(self::once())
-            ->method('createView')
+        $form
+            ->expects(self::once())->method('createView')
             ->willReturn($view)
         ;
         $form
@@ -125,19 +125,19 @@ final class RequestActionTest extends TestCase
             ->willReturnSelf()
         ;
 
-        $this->formFactory->expects(self::once())
-            ->method('create')
+        $this->formFactory
+            ->expects(self::once())->method('create')
             ->willReturn($form)
         ;
 
         $this->router
-            ->method('generate')
+            ->expects(self::once())->method('generate')
             ->with('nucleos_user_admin_resetting_send_email')
             ->willReturn('/foo')
         ;
 
-        $this->templating->expects(self::once())
-            ->method('render')
+        $this->templating
+            ->expects(self::once())->method('render')
             ->with('@NucleosUserAdmin/Admin/Security/Resetting/request.html.twig', [
                 'base_template' => 'base.html.twig',
                 'admin_pool'    => $this->pool,
@@ -147,7 +147,7 @@ final class RequestActionTest extends TestCase
         ;
 
         $this->templateRegistry
-            ->method('getTemplate')
+            ->expects(self::once())->method('getTemplate')
             ->with('layout')
             ->willReturn('base.html.twig')
         ;

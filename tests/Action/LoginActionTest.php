@@ -135,7 +135,7 @@ final class LoginActionTest extends TestCase
         $request->setSession($session);
 
         $this->router
-            ->method('generate')
+            ->expects(self::once())->method('generate')
             ->with('sonata_admin_dashboard')
             ->willReturn('/foo')
         ;
@@ -165,13 +165,13 @@ final class LoginActionTest extends TestCase
         ;
 
         $this->router
-            ->method('generate')
+            ->expects(self::once())->method('generate')
             ->with('sonata_admin_dashboard')
             ->willReturn('/foo')
         ;
 
-        $this->authorizationChecker->expects(self::once())
-            ->method('isGranted')
+        $this->authorizationChecker
+            ->expects(self::once())->method('isGranted')
             ->with('ROLE_ADMIN')
             ->willReturn(true)
         ;
@@ -251,13 +251,13 @@ final class LoginActionTest extends TestCase
             ->method('add')
             ->willReturnSelf()
         ;
-        $form->expects(self::once())
-            ->method('createView')
+        $form
+            ->expects(self::once())->method('createView')
             ->willReturn($view)
         ;
 
-        $this->formFactory->expects(self::once())
-            ->method('create')
+        $this->formFactory
+            ->expects(self::once())->method('create')
             ->willReturn($form)
         ;
 
@@ -269,26 +269,26 @@ final class LoginActionTest extends TestCase
             ->willReturnOnConsecutiveCalls('/check', '/reset')
         ;
 
-        $this->authorizationChecker->expects(self::once())
-            ->method('isGranted')
+        $this->authorizationChecker
+            ->expects(self::once())->method('isGranted')
             ->with('ROLE_ADMIN')
             ->willReturn(false)
         ;
 
         $this->csrfTokenManager
-            ->method('getToken')
+            ->expects(self::once())->method('getToken')
             ->with('authenticate')
             ->willReturn($csrfToken)
         ;
 
         $this->templateRegistry
-            ->method('getTemplate')
+            ->expects(self::once())->method('getTemplate')
             ->with('layout')
             ->willReturn('base.html.twig')
         ;
 
         $this->templating
-            ->method('render')
+            ->expects(self::once())->method('render')
             ->with('@NucleosUserAdmin/Admin/Security/login.html.twig', [
                 'admin_pool'    => $this->pool,
                 'base_template' => 'base.html.twig',
